@@ -1,0 +1,20 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    { "type": "Feature",
+      "properties": {
+        "state": "Massachusetts",
+        "title": "Massachusetts – Consumer AI transparency",
+        "sector": "consumer_transparency",
+        "status": "pending",
+        "last_updated": "2026-02-01",
+        "summary": "Disclosure obligations for certain automated decisions impacting consumers.",
+        "source_title": "Official legislature page",
+        "source_url": "https://malegislature.gov/",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": { "type": "Point", "coordinates": [-71.0589, 42.3601] }
+    }
+  ]
+}

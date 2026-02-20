@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>US AI Legislation Map</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="title">US AI Legislation Map</div>
+      <div class="subtitle">Interactive hubs for state-level AI policy activity</div>
+    </div>
+
+    <div class="controls">
+      <label>
+        Sector
+        <select id="sectorFilter">
+          <option value="all">All</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="employment">Employment</option>
+          <option value="biometrics">Biometrics</option>
+          <option value="synthetic_media">Synthetic media</option>
+          <option value="consumer_transparency">Consumer transparency</option>
+        </select>
+      </label>
+
+      <div class="checks">
+        <label><input type="checkbox" class="statusFilter" value="passed" checked /> Passed</label>
+        <label><input type="checkbox" class="statusFilter" value="pending" checked /> Pending</label>
+        <label><input type="checkbox" class="statusFilter" value="guidance" checked /> Guidance</label>
+      </div>
+    </div>
+  </header>
+
+  <div id="map"></div>
+
+  <footer class="footer">
+    <span id="count"></span>
+    <span class="muted">Tip: hover (desktop) or tap (mobile) a marker for details and sources.</span>
+  </footer>
+
+  <div class="legend">
+    <div><span class="dot passed"></span> Passed</div>
+    <div><span class="dot pending"></span> Pending</div>
+    <div><span class="dot guidance"></span> Guidance</div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="./data/hubs.js"></script>
+  <script src="./src/app.js"></script>
+</body>
+</html>
