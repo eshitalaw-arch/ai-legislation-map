@@ -33,9 +33,9 @@
       </label>
 
       <div class="checks">
-        <label><input type="checkbox" class="statusFilter" value="passed" checked /> Passed</label>
-        <label><input type="checkbox" class="statusFilter" value="pending" checked /> Pending</label>
-        <label><input type="checkbox" class="statusFilter" value="guidance" checked /> Guidance</label>
+        <label class="status-label passed" title="Enacted into law (may not be in effect yet)"><input type="checkbox" class="statusFilter" value="passed" checked /> Passed</label>
+        <label class="status-label pending" title="Bill still moving through the legislature or awaiting signature"><input type="checkbox" class="statusFilter" value="pending" checked /> Pending</label>
+        <label class="status-label guidance" title="Not a statute: executive orders, AG advisories, agency rules or policies"><input type="checkbox" class="statusFilter" value="guidance" checked /> Guidance</label>
       </div>
     </div>
   </header>
@@ -44,15 +44,9 @@
 
   <footer class="footer">
     <span id="count"></span>
-    <span class="muted">Tip: hover (desktop) or tap (mobile) a marker for details and sources. States with several entries show a cluster of markers around the capital.</span>
+    <span class="muted"><b class="c-passed">Passed</b> = enacted law · <b class="c-pending">Pending</b> = bill not yet law · <b class="c-guidance">Guidance</b> = executive orders, AG advisories, agency rules. Hover or tap a marker for details.</span>
   </footer>
 
-  <div class="legend">
-    <div class="legend-title">What the colors mean</div>
-    <div class="legend-row"><span class="dot passed"></span><div><strong>Passed</strong><span>Enacted into law (may not be in effect yet)</span></div></div>
-    <div class="legend-row"><span class="dot pending"></span><div><strong>Pending</strong><span>Bill still moving through the legislature or awaiting signature</span></div></div>
-    <div class="legend-row"><span class="dot guidance"></span><div><strong>Guidance</strong><span>Not a statute: executive orders, AG advisories, agency rules or policies</span></div></div>
-  </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="./data/hubs.js"></script>
