@@ -31,8 +31,8 @@ function selectedStatuses() {
 function passesFilters(props) {
   const sector = sectorEl.value;
   const statuses = selectedStatuses();
-  const okSector = (sector === "all") || (props.sector === sector);
-  const okSubcat = sector !== "workforce" || !subcatEl || subcatEl.value === "all" || props.subcategory === subcatEl.value;
+  const okSector = (sector === "all") || (props.sector === sector) || isAlso(props, sector);
+  const okSubcat = sector !== "workforce" || !subcatEl || subcatEl.value === "all" || workforceSubcat(props) === subcatEl.value;
   const okStatus = statuses.has(props.status);
   return okSector && okSubcat && okStatus;
 }
@@ -58,9 +58,18 @@ const SUBCAT_LABELS = {
   studies: "Studies & planning"
 };
 
+// Some entries are cross-listed in a second sector, e.g. also = "workforce:decisions"
+function isAlso(p, sector) { return !!p.also && p.also.split(":")[0] === sector; }
+function workforceSubcat(p) { return p.sector === "workforce" ? p.subcategory : (isAlso(p, "workforce") ? p.also.split(":")[1] : ""); }
+
 function sectorText(p) {
   const base = SECTOR_LABELS[p.sector] || p.sector || "—";
-  return p.subcategory && SUBCAT_LABELS[p.subcategory] ? `${base} › ${SUBCAT_LABELS[p.subcategory]}` : base;
+  let txt = p.subcategory && SUBCAT_LABELS[p.subcategory] ? `${base} › ${SUBCAT_LABELS[p.subcategory]}` : base;
+  if (p.also) {
+    const [sec, sub] = p.also.split(":");
+    txt += `; also ${SECTOR_LABELS[sec] || sec}${sub && SUBCAT_LABELS[sub] ? " › " + SUBCAT_LABELS[sub] : ""}`;
+  }
+  return txt;
 }
 
 const safe = (x) => (x ?? "").toString()
@@ -314,8 +323,9 @@ function openProfile(name) {
   const r = RISK && RISK.states[name];
   const entries = allFeatures.map(f => f.properties).filter(p => p.state === name);
   const order = { passed: 0, pending: 1, guidance: 2 };
-  const workforce = entries.filter(p => p.sector === "workforce").sort((a, b) => order[a.status] - order[b.status]);
-  const other = entries.filter(p => p.sector !== "workforce").sort((a, b) => order[a.status] - order[b.status]);
+  const isWf = p => p.sector === "workforce" || isAlso(p, "workforce");
+  const workforce = entries.filter(isWf).sort((a, b) => order[a.status] - order[b.status]);
+  const other = entries.filter(p => !isWf(p)).sort((a, b) => order[a.status] - order[b.status]);
 
   let exposure = `<p class="note">No Tufts Digital Planet figures are available for this jurisdiction.</p>`;
   if (r) {
