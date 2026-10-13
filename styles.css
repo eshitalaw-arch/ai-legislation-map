@@ -70,3 +70,11 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
 .status-label.pending input { accent-color: #d97706; }
 .status-label.guidance input { accent-color: #2563eb; }
 .footer { flex-wrap: wrap; }
+
+.about { position: absolute; top: 90px; left: 50%; transform: translateX(-50%); width: min(560px, calc(100% - 32px));
+  max-height: calc(100% - 180px); overflow: auto; background: #fff; border: 1px solid #e7e7e7; border-radius: 12px;
+  padding: 16px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); z-index: 1100; font-size: 13px; line-height: 1.5; }
+.about[hidden] { display: none; }
+.about h2 { margin: 0 0 8px; font-size: 16px; }
+.about p { margin: 0 0 10px; }
+.about-close { position: absolute; top: 8px; right: 10px; border: 0; background: none; font-size: 20px; cursor: pointer; }

@@ -184,3 +184,8 @@ render();
 // React to filter changes
 if (sectorEl) sectorEl.addEventListener("change", render);
 statusEls.forEach(el => el.addEventListener("change", render));
+
+// About & sources panel
+const aboutPanel = document.getElementById("aboutPanel");
+document.getElementById("aboutLink")?.addEventListener("click", e => { e.preventDefault(); aboutPanel.hidden = false; });
+document.getElementById("aboutClose")?.addEventListener("click", () => { aboutPanel.hidden = true; });
