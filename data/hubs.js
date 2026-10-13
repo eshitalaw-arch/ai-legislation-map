@@ -9,6 +9,7 @@ window.HUBS = {
         "state": "Alabama",
         "title": "Alabama – AI in health insurance coverage decisions (SB 63)",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Insurers that use AI for medical-necessity reviews of prior authorization requests must base decisions on the patient's own history and clinical circumstances, disclose that use, and leave any denial, delay or modification to a licensed physician or qualified professional. Passed in April 2026 and effective Oct. 1, 2026. A 2026 chatbot age-verification bill (HB 324) stalled in committee, and a legislative commission is studying AI and children's safety.",
@@ -31,6 +32,7 @@ window.HUBS = {
         "state": "Alabama",
         "title": "Alabama – Materially deceptive media in elections (HB 172)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Makes it a crime to knowingly distribute materially deceptive AI-generated media of a person within 90 days before an election with intent to harm a candidate or deceive voters, unless the media carries a prescribed disclaimer; a first offense is a Class A misdemeanor and repeat offenses within five years are a Class D felony. Injunctive relief is also available. Enacted in 2024 and effective Oct. 1, 2024.",
@@ -53,6 +55,7 @@ window.HUBS = {
         "state": "Arizona",
         "title": "Arizona – HB 2175 Human Review of Health Insurance Denials",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Before an insurer denies a claim or prior authorization on medical-necessity grounds, its medical director must review the denial individually using independent medical judgment and may not rely solely on recommendations from any other source. Supporters framed it as preventing AI-only denials, though the text does not mention AI. Signed May 12, 2025 (Ch. 165), effective after June 30, 2026.",
@@ -73,8 +76,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "Arkansas",
+        "title": "Arkansas – Digital and AI skills initiative with Google",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "Announced by Governor Sanders on October 3, 2025, the state is partnering with Google to provide free scholarships for Google AI courses and Career Certificates to tens of thousands of Arkansans aged 18 and up.",
+        "source_title": "Arkansas Department of Commerce – Arkansas Partners with Google on Digital and AI Skills Initiative",
+        "source_url": "https://commerce.arkansas.gov/?p=999",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.2891,
+          34.7469
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Arkansas",
         "title": "Arkansas – Ownership of AI-generated content (HB 1876, Act 927)",
         "sector": "consumer_transparency",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Generally, the person who supplies the input to a generative AI tool owns the resulting content, and the person who supplies lawfully acquired training data owns the resulting model, unless transferred by contract; outputs produced by employees at the employer's direction belong to the employer, and the Act grants no ownership of infringing content. Act 927 was approved April 21, 2025, and in force August 5, 2025.",
@@ -97,6 +124,7 @@ window.HUBS = {
         "state": "Arkansas",
         "title": "Arkansas – Public-entity AI use policies (HB 1958, Act 848)",
         "sector": "government",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Public entities must adopt a policy on authorized use of AI and automated decision tools, keep an authorized human employee responsible for final decisions even when a tool recommends otherwise, and train all employees on the policy. Act 848 was approved April 17, 2025.",
@@ -119,6 +147,7 @@ window.HUBS = {
         "state": "California",
         "title": "California – AB 1979 AI in Health Care Services",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Health facilities, clinics and physician offices may not use AI to independently perform clinical functions that require a license, and licensed providers must keep independent judgment when AI informs care. Businesses offering healthcare chatbots are treated as providers under the state's medical confidentiality law. Signed September 30, 2026 (Ch. 854).",
@@ -141,6 +170,7 @@ window.HUBS = {
         "state": "California",
         "title": "California – AB 2013 Generative AI Training Data Transparency",
         "sector": "consumer_transparency",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Developers of generative AI systems offered to Californians must post high-level summaries of their training datasets. Signed September 28, 2024 (Ch. 817) and in force since January 1, 2026. In xAI v. Bonta, a federal court denied a preliminary injunction on March 4, 2026; xAI's Ninth Circuit appeal (No. 26-1591) is set for oral argument on November 18, 2026.",
@@ -163,6 +193,7 @@ window.HUBS = {
         "state": "California",
         "title": "California – AB 2839 / AB 2655 Election Deepfake Laws (enjoined)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "These 2024 laws restricted distribution of deceptive AI election content (AB 2839) and required large platforms to remove or label it (AB 2655). In Kohls v. Bonta, a federal court permanently enjoined AB 2839 on First Amendment grounds on August 29, 2025, and the state appealed to the Ninth Circuit. AB 2655 is unenforceable after the parties stipulated it is preempted by Section 230.",
@@ -185,6 +216,7 @@ window.HUBS = {
         "state": "California",
         "title": "California – AI Transparency Act (SB 942, as amended by AB 853 and SB 1000)",
         "sector": "consumer_transparency",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Generative AI providers must embed latent provenance disclosures in content and offer a verification tool. AB 853 (2025) added duties for large online platforms (January 1, 2027) and capture-device makers (January 1, 2028). SB 1000 (Ch. 861) took effect immediately on September 30, 2026: it removes the 1-million-user threshold, drops the manifest-disclosure option, replaces the AI detection tool with a disclosure verification tool, and adds licensee remediation deadlines.",
@@ -205,8 +237,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "California",
+        "title": "California – AI-Ready California literacy micro-credential",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "The Labor and Workforce Development Agency launched AI-Ready California, a pilot online micro-credential in foundational AI literacy delivered through San Diego State University's Global Campus with the community college and CSU systems and industry partners. The first cohort of 500 participants is drawn from the San Diego Community College District and unemployment insurance claimants in the RESEA reemployment program.",
+        "source_title": "California Labor & Workforce Development Agency – California launches first-in-nation AI literacy micro-credential program",
+        "source_url": "https://www.labor.ca.gov/2026/07/14/california-launches-first-in-nation-ai-literacy-micro-credential-program/",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4934,
+          38.5767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "California",
         "title": "California – CPPA Automated Decisionmaking Technology (ADMT) Regulations",
         "sector": "comprehensive",
+        "subcategory": "",
         "status": "guidance",
         "last_updated": "2026-10-13",
         "summary": "These CCPA regulations cover ADMT used for significant decisions (pre-use notice, opt-out and access rights), risk assessments and cybersecurity audits. Approved in September 2025, they took effect January 1, 2026. ADMT duties apply from January 1, 2027; risk-assessment attestations are due April 1, 2028, and cybersecurity audit certifications phase in from April 1, 2028 to April 1, 2030 by business size.",
@@ -227,8 +283,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "California",
+        "title": "California – Executive Order N-6-26 on AI workforce disruption",
+        "sector": "workforce",
+        "subcategory": "displacement",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "Executive Order N-6-26, signed May 21, 2026, directs the Labor and Workforce Development Agency to recommend WARN Act revisions within 180 days and has EDD launch a dashboard of AI's employment effects by sector using unemployment insurance data. It also calls for an AI playbook for dislocated workers in AI-exposed occupations and for steering WIOA funds toward AI literacy and retraining.",
+        "source_title": "Office of Governor Gavin Newsom – Executive Order N-6-26 (signed PDF)",
+        "source_url": "https://www.gov.ca.gov/wp-content/uploads/2026/05/5.21.26-AI-Workforce-EO-FINAL-SIGNED.pdf",
+        "analysis_title": "DLA Piper – California Governor issues Executive Order on AI workforce disruption",
+        "analysis_url": "https://www.dlapiper.com/en-us/insights/publications/2026/05/california-governor-issues-executive-order-on-ai-workforce-disruption"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4934,
+          38.5767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "California",
         "title": "California – SB 243 / SB 1119 Companion Chatbots (Adam's Law)",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "SB 243 (2025) set AI-disclosure and suicide-prevention protocol duties for companion chatbot operators. SB 1119 (Adam's Law, Ch. 190, signed September 10, 2026) replaces its rules for minors with protective default settings, parental controls, risk assessments and crisis protocols, mostly operative July 1, 2027. Independent child-safety audits are due by January 1, 2029; operators with under $500 million in revenue are exempt until 2032.",
@@ -251,6 +331,7 @@ window.HUBS = {
         "state": "California",
         "title": "California – SB 53 Transparency in Frontier AI Act",
         "sector": "frontier_models",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Large frontier developers must publish frontier AI safety frameworks and transparency reports, report critical safety incidents to Cal OES, and protect whistleblowers. Signed September 29, 2025 (Ch. 138) and in effect since January 1, 2026. Executive Order N-9-26 (September 18, 2026) directs the state to recommend amendments to its AI safety laws by November 16, 2026, considering independent verification, frontier-model 'kill switches' and broader loss-of-control incident reporting.",
@@ -272,7 +353,8 @@ window.HUBS = {
       "properties": {
         "state": "California",
         "title": "California – SB 947 'No Robo Bosses Act' (Employment ADS)",
-        "sector": "employment",
+        "sector": "workforce",
+        "subcategory": "decisions",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Employers may not rely solely on automated decision system outputs for discipline or termination without human corroboration, must give workers written notice after such use, and must provide access to related data on request. The law also bars ADS uses that violate labor or civil-rights law. Signed September 30, 2026 (Ch. 859), operative July 1, 2027, with civil penalties of $500 per violation.",
@@ -292,9 +374,33 @@ window.HUBS = {
     {
       "type": "Feature",
       "properties": {
+        "state": "California",
+        "title": "California – SB 951 AI layoff (technological displacement) notice",
+        "sector": "workforce",
+        "subcategory": "displacement",
+        "status": "passed",
+        "last_updated": "2026-10-13",
+        "summary": "Signed September 30, 2026, SB 951 amends Cal/WARN so that when a covered layoff is caused in whole or in substantial part by AI or other automated technology, the notice must state that it is for a technology displacement and identify the affected jobs, locations, automated functions and type of technology. EDD must publish summaries of these notices and a quarterly statewide summary, and report to the Legislature on AI and hiring by January 1, 2028; the law takes effect January 1, 2027.",
+        "source_title": "Office of Governor Gavin Newsom – Governor signs more first-in-the-nation AI worker protections (Sept. 30, 2026)",
+        "source_url": "https://www.gov.ca.gov/2026/09/30/californias-nation-leading-ai-framework-just-got-stronger-governor-newsom-signs-more-first-in-the-nation-worker-protections-and-more/",
+        "analysis_title": "Littler – California Amends Its WARN Act Again",
+        "analysis_url": "https://www.littler.com/news-analysis/asap/california-amends-its-warn-act-again"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4934,
+          38.5767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "state": "Colorado",
         "title": "Colorado – AG Rulemaking for ADMT Act and Chatbot Safety Act",
         "sector": "comprehensive",
+        "subcategory": "",
         "status": "guidance",
         "last_updated": "2026-10-13",
         "summary": "The Attorney General filed proposed rules on August 11, 2026, implementing SB 26-189 and HB 26-1263, and released an interim redline on October 6, 2026. The public hearing and written comment deadline are both October 26, 2026. The rules are intended to take effect January 1, 2027.",
@@ -317,6 +423,7 @@ window.HUBS = {
         "state": "Colorado",
         "title": "Colorado – HB 26-1139 AI in Health Care Utilization Review",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "AI-driven coverage decisions must rest on each patient's own clinical history rather than group data alone, and medical-necessity denials or delays must be reviewed by a qualified licensed clinician. Payers must disclose to regulators how they use AI and how humans oversee it, and may not pay for AI-delivered psychotherapy. Signed June 2, 2026, effective January 1, 2027.",
@@ -339,6 +446,7 @@ window.HUBS = {
         "state": "Colorado",
         "title": "Colorado – HB 26-1195 AI in Psychotherapy",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "AI may not hold therapeutic conversations with clients unless the provider is actively present in a real-time session. Providers must approve AI-generated treatment plans and get written, revocable consent before AI records or transcribes sessions, and offering AI psychotherapy without a regulated professional is a deceptive trade practice. Signed June 3, 2026, effective August 12, 2026.",
@@ -361,6 +469,7 @@ window.HUBS = {
         "state": "Colorado",
         "title": "Colorado – HB 26-1263 Chatbot Safety Act",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Operators of conversational AI services must disclose that users are talking to AI, follow a self-harm crisis protocol with annual reports to the AG, and protect minors through age estimation, limits on engagement rewards and blocks on sexual content. They also may not claim output comes from licensed professionals. Signed May 29, 2026, effective January 1, 2027; the AG has proposed rules, including the contents of annual reports.",
@@ -383,6 +492,7 @@ window.HUBS = {
         "state": "Colorado",
         "title": "Colorado – SB 26-189 Automated Decision-Making Technology Act (replaces SB 24-205 AI Act)",
         "sector": "comprehensive",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Signed May 14, 2026, this law repealed and replaced the 2024 Colorado AI Act before it was ever enforced. It drops impact assessments and risk-management programs in favor of notices, adverse-outcome explanations, and data-correction and human-review rights for covered ADMT used in consequential decisions. It takes effect January 1, 2027, enforced only by the AG after a 60-day cure notice; the DOJ joined xAI's pending challenge to the prior law in April 2026.",
@@ -404,7 +514,8 @@ window.HUBS = {
       "properties": {
         "state": "Connecticut",
         "title": "Connecticut – AI Responsibility and Transparency Act (SB 5, P.A. 26-15): employment",
-        "sector": "employment",
+        "sector": "workforce",
+        "subcategory": "decisions",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "This broad online-safety and AI law sets notice duties for automated employment decision technology, with main duties such as interaction disclosures and pre-decision notices applying from Oct. 1, 2027. From Oct. 1, 2026, employers must disclose in WARN notices whether AI is linked to layoffs, and large frontier developers may not retaliate against whistleblowers. Signed in late May 2026; the AG enforces it, with a 60-day cure option for violations through 2027.",
@@ -425,8 +536,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "Connecticut",
+        "title": "Connecticut – Connecticut AI Academy (P.A. 26-15)",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "passed",
+        "last_updated": "2026-10-13",
+        "summary": "Separate from its WARN disclosure provisions, Public Act 26-15 requires the Board of Regents to establish a Connecticut AI Academy by December 31, 2026, to offer online AI courses through Charter Oak State College in coordination with the Labor Department and workforce boards. The act also directs a higher-education alliance on AI workforce development and tasks a renamed advisory committee with building AI training programs.",
+        "source_title": "Connecticut Office of Legislative Research – 2026 Acts Affecting Higher Education",
+        "source_url": "https://prdext3.cga.ct.gov/olr/Documents/year/AA/2026AA-0077_2026%20Acts%20Affecting%20Higher%20Education.pdf",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6822,
+          41.764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Connecticut",
         "title": "Connecticut – SB 5 (P.A. 26-15): AI companion protections",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "AI companion operators must have protocols for suicide, self-harm and imminent violence, and for minors must block harmful content, romantic or sexual interactions and manipulative engagement. The companion rules take effect Jan. 1, 2027. Separately, generative AI providers with over one million monthly users must embed content provenance data, effective Oct. 1, 2026.",
@@ -449,6 +584,7 @@ window.HUBS = {
         "state": "Connecticut",
         "title": "Connecticut – Surveillance pricing law (HB 5563, P.A. 26-130)",
         "sector": "consumer_transparency",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Generally bars retailers and third-party delivery platforms from setting prices based on personal data. Other businesses that advertise an online price set by surveillance pricing must disclose 'THIS PRICE WAS INCREASED USING YOUR PERSONAL DATA' or a similar statement. Signed June 4, 2026; the pricing provisions take effect July 1, 2027.",
@@ -471,6 +607,7 @@ window.HUBS = {
         "state": "Delaware",
         "title": "Delaware – AI sandbox joint resolution (HJR 7)",
         "sector": "government",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "A joint resolution signed by Gov. Meyer on July 23, 2025, directing the Delaware AI Commission to work with the Secretary of State on a regulatory sandbox framework for testing agentic AI, in sectors such as corporate governance, biotech and financial services. The sandbox itself requires legislation, which the Commission was tasked with drafting.",
@@ -493,6 +630,7 @@ window.HUBS = {
         "state": "Florida",
         "title": "Florida – AG criminal investigation of OpenAI/ChatGPT",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "guidance",
         "last_updated": "2026-10-13",
         "summary": "On 4/21/2026 AG James Uthmeier opened a criminal investigation into whether OpenAI bears criminal responsibility for ChatGPT's role in the April 17, 2025 FSU shooting, subpoenaing its policies on user threats of harm and on cooperation with law enforcement. The probe came after the Legislature declined to pass the Governor's AI Bill of Rights: it stalled in the House during the regular session, and the House did not take it up in the special session that opened 4/28/2026.",
@@ -515,6 +653,7 @@ window.HUBS = {
         "state": "Florida",
         "title": "Florida – AI disclaimers in political ads (HB 919)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Political ads, electioneering communications and some other ads that use generative AI must carry a set disclaimer, with criminal and civil penalties and expedited complaint hearings. Governor approved it 4/26/2024 as Ch. 2024-126, effective 7/1/2024.",
@@ -537,6 +676,7 @@ window.HUBS = {
         "state": "Florida",
         "title": "Florida – Brooke's Law: takedown of altered sexual depictions (HB 1161)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Covered online platforms must set up a process, with notice, for removing altered (including AI-generated) sexual depictions of identifiable people posted without consent; good-faith compliance brings immunity and unreasonable failure to comply is prohibited. Approved 6/10/2025 as Ch. 2025-133 and effective the same day.",
@@ -559,6 +699,7 @@ window.HUBS = {
         "state": "Georgia",
         "title": "Georgia – Conversational AI safeguards for minors (SB 540)",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Georgia's Conversational AI Safety Act requires conversational AI services to disclose that users are talking to AI, bars sexually explicit interactions and simulated romantic relationships with minors, requires a crisis-referral protocol for users expressing suicidal thoughts, and requires parental control tools. The Attorney General enforces it, with no private right of action. Gov. Kemp signed it on 5/11/2026 (Act 518), and it takes effect 7/1/2027.",
@@ -581,6 +722,7 @@ window.HUBS = {
         "state": "Georgia",
         "title": "Georgia – No AI-only insurance coverage denials (SB 444)",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Changes Georgia's private review agent law so that insurers cannot base health coverage decisions solely on AI systems or other software tools. Enacted in the 2026 session; it takes effect 1/1/2027.",
@@ -603,6 +745,7 @@ window.HUBS = {
         "state": "Hawaii",
         "title": "Hawaii – HB 2137 (Act 247) Digital Imitations / Deepfakes",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Sets consumer protection standards for harmful AI imitations of a person's voice, face, likeness or performance. Victims can seek injunctions, punitive damages, and up to $25,000 per piece of content. Signed July 14, 2026; press reports say it took effect immediately.",
@@ -625,6 +768,7 @@ window.HUBS = {
         "state": "Hawaii",
         "title": "Hawaii – SB 3001 (Act 248) Conversational AI Companions",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "AI companion operators must disclose AI use, keep suicide and self-harm response protocols, avoid addictive design aimed at minors, and not misrepresent a chatbot as human; violations are unfair or deceptive practices with no private right of action. Annual reports to the Department of Health's Behavioral Health Administration begin January 1, 2028. Signed July 14, 2026.",
@@ -647,6 +791,7 @@ window.HUBS = {
         "state": "Idaho",
         "title": "Idaho – SB 1297 Conversational AI Safety Act",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Public conversational AI services must disclose AI use, refer users who express suicidal ideation to crisis services, and may not be programmed to claim they provide professional mental or behavioral health care. For known minors, the law adds recurring disclosures, limits on unpredictable engagement rewards, measures against sexual content, and parental tools. The Attorney General can seek $1,000 per violation, capped at $500,000 per operator, with no private right of action. Signed March 31, 2026 (Ch. 249), effective July 1, 2027.",
@@ -669,6 +814,7 @@ window.HUBS = {
         "state": "Illinois",
         "title": "Illinois – BIPA 2024 amendment (SB 2979) limiting per-scan damages",
         "sector": "biometrics",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Public Act 103-0769 took effect August 2, 2024. When an entity repeatedly collects or discloses the same person's biometric data by the same method, that now counts as one BIPA violation with one recovery, and electronic signatures are allowed for written releases. In April 2026 the Seventh Circuit held in Clay v. Union Pacific that the damages change applies retroactively to pending cases.",
@@ -691,6 +837,7 @@ window.HUBS = {
         "state": "Illinois",
         "title": "Illinois – HB 1806 Wellness and Oversight for Psychological Resources Act (AI therapy)",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Public Act 104-0054 was approved and took effect on August 1, 2025. Only licensed professionals may provide therapy, and AI may not make independent therapeutic decisions, communicate therapeutically with clients, or detect emotions or mental states. Licensed providers may use it for administrative and supplementary tasks, with written client consent where sessions are recorded or transcribed. IDFPR may impose civil penalties of up to $10,000 per violation.",
@@ -712,7 +859,8 @@ window.HUBS = {
       "properties": {
         "state": "Illinois",
         "title": "Illinois – HB 3773 AI in employment decisions (Human Rights Act)",
-        "sector": "employment",
+        "sector": "workforce",
+        "subcategory": "decisions",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Public Act 103-0804 (approved August 9, 2024, effective January 1, 2026) amends the Illinois Human Rights Act. Employers may not use AI that discriminates against protected classes, may not use zip codes as a proxy, and must notify workers when AI is used in employment decisions. IDHR proposed notice rules on May 15, 2026 but withdrew and postponed them on June 2, 2026; the statute applies even though no final rules exist.",
@@ -735,6 +883,7 @@ window.HUBS = {
         "state": "Illinois",
         "title": "Illinois – HB 4875 Right of Publicity Act AI amendment (digital replicas)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Public Act 103-0836 was approved on August 9, 2024 and took effect January 1, 2025. It amends the Right of Publicity Act to define AI, generative AI and digital replicas, and gives recording artists' exclusive labels or contract partners standing to enforce. It also bars knowingly distributing sound recordings or audiovisual works that contain unauthorized digital replicas and makes those who materially contribute to or facilitate such a violation liable once they have actual knowledge of it.",
@@ -755,8 +904,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "Illinois",
+        "title": "Illinois – HB 5760 Commission on AI and Workforce Transition",
+        "sector": "workforce",
+        "subcategory": "studies",
+        "status": "pending",
+        "last_updated": "2026-10-13",
+        "summary": "Filed April 30, 2026, HB 5760 would create a commission to assess how generative and frontier AI affect Illinois workers and to review workforce, apprenticeship, unemployment insurance and income-support programs. The Act would sunset January 1, 2034.",
+        "source_title": "Illinois General Assembly – HB 5760 bill status",
+        "source_url": "https://my.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB5760.xml",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.6548,
+          39.7983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Illinois",
         "title": "Illinois – SB 315 Artificial Intelligence Safety Measures Act",
         "sector": "frontier_models",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Governor Pritzker signed this law (Public Act 104-0538) on July 6, 2026, and it takes effect January 1, 2027, with most developer duties starting in 2028. Large frontier developers must publish catastrophic-risk safety frameworks and undergo annual independent third-party audits, which the Governor called a first among states; frontier developers must report critical safety incidents within 72 hours (24 hours if there is imminent risk of death or serious injury), and whistleblowers are protected. The Attorney General alone enforces it, with penalties of up to $1M for a first violation and $3M for each later one.",
@@ -779,6 +952,7 @@ window.HUBS = {
         "state": "Illinois",
         "title": "Illinois – SB 316 AI Companion Model Safety Act",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "pending",
         "last_updated": "2026-10-13",
         "summary": "The Senate passed this bill 57-0 on May 21, 2026. Operators of AI companions would have to detect and respond to suicidal ideation or self-harm with crisis referrals, disclose that the companion is not human, and keep material harmful to minors away from known minors. Violations would count under the Consumer Fraud Act, with a proposed effective date of January 1, 2027. The House re-referred it to the Rules Committee on May 31, 2026, and it has not moved since.",
@@ -798,9 +972,33 @@ window.HUBS = {
     {
       "type": "Feature",
       "properties": {
+        "state": "Illinois",
+        "title": "Illinois – SB 3571 WARN Act AI disclosure",
+        "sector": "workforce",
+        "subcategory": "displacement",
+        "status": "pending",
+        "last_updated": "2026-10-13",
+        "summary": "SB 3571 would amend the Illinois WARN Act so employers must disclose AI-related job impacts when giving notice of a mass layoff or closing, including how many workers lost jobs substantially because AI replaced or automated their work. It was assigned to the Senate AI and Social Media Committee in March 2026.",
+        "source_title": "Illinois General Assembly – SB 3571 bill status",
+        "source_url": "https://my.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB3571.xml",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.6548,
+          39.7983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "state": "Indiana",
         "title": "Indiana – HEA 1133 (2024) AI/altered media in campaign ads",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Enacted in March 2024. Campaign communications that include AI-generated or digitally altered audio, video, or images of a candidate must carry a set disclaimer, and a depicted candidate can sue the sponsor or payer when the disclaimer is missing.",
@@ -823,6 +1021,7 @@ window.HUBS = {
         "state": "Indiana",
         "title": "Indiana – HEA 1271 (2026) AI in health claim downcoding",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Signed in March 2026 and effective July 1, 2026. Insurers may not use AI or other automated tools as the sole basis for downcoding a claim without first reviewing the patient's medical record, and must notify physicians when a claim is downcoded.",
@@ -845,6 +1044,7 @@ window.HUBS = {
         "state": "Iowa",
         "title": "Iowa – HF 2240 (2024) nonconsensual synthetic intimate images",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Signed April 19, 2024 (Acts ch. 1065). It makes it criminal harassment to distribute altered or AI-generated nude or sexual images that falsely depict an identifiable person, and adult offenders must register as sex offenders. A companion 2024 law (SF 2243) extended child sexual exploitation offenses to computer-generated images.",
@@ -867,6 +1067,7 @@ window.HUBS = {
         "state": "Iowa",
         "title": "Iowa – SF 2417 conversational AI services (chatbots and minors)",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Signed May 2, 2026 (Acts ch. 1068), with obligations applying from July 1, 2027. Operators must disclose that the service is AI, follow suicide and self-harm referral protocols, and not present the service as licensed mental health care. For minors they must block sexual content and romantic role-play, avoid unpredictable engagement rewards, and provide privacy and parental tools. The Attorney General enforces it, with no private right of action and penalties of up to $1,000 per violation and $500,000 per operator.",
@@ -889,6 +1090,7 @@ window.HUBS = {
         "state": "Kansas",
         "title": "Kansas – HB 2313 ban on DeepSeek and foreign-adversary AI on state devices",
         "sector": "government",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Signed April 8, 2025. State employees may not access DeepSeek or other AI platforms controlled by countries of concern (China, Cuba, Iran, North Korea, Russia, Venezuela) on state devices, and agencies must block them on state networks. Existing accounts must be deleted, except those used for law enforcement and cybersecurity.",
@@ -911,6 +1113,7 @@ window.HUBS = {
         "state": "Kansas",
         "title": "Kansas – SB 186 AI deepfake and child exploitation law",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Signed in April 2025 (2025 Session Laws ch. 120) and effective July 1, 2025. It criminalizes AI-generated child sexual abuse material and extends the breach-of-privacy statute to nonconsensual AI-created or altered sexual depictions of identifiable people.",
@@ -933,6 +1136,7 @@ window.HUBS = {
         "state": "Kentucky",
         "title": "Kentucky – AI-generated child sexual abuse material (HB 366)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Amends KRS 531.335 so that possessing or viewing sexual performances by minors includes computer-generated images, and requires those convicted to serve 85% of their sentence before probation or parole eligibility. Signed 4/13/2026 (Acts Ch. 109) and in effect since mid-July 2026.",
@@ -955,6 +1159,7 @@ window.HUBS = {
         "state": "Kentucky",
         "title": "Kentucky – SB 4: state government AI governance",
         "sector": "government",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "The Commonwealth Office of Technology sets AI policy standards, an AI Governance Committee approves state agency AI use, and agencies must disclose certain AI uses, train employees and report each year to the legislature. The law also covers synthetic media in electioneering communications, with a cause of action and a defense for conspicuous disclosure. Signed 3/24/2025 (Acts Ch. 66).",
@@ -977,6 +1182,7 @@ window.HUBS = {
         "state": "Louisiana",
         "title": "Louisiana – AI in political ads (HB 459, Act 806)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Election communications that use AI to alter a candidate's image, likeness, or voice must clearly disclose the AI use. Violations meant to injure a candidate or deceive voters can bring a fine of up to $2,000 and up to two years in prison. Signed June 9, 2026, effective Aug. 1, 2026. A companion law, Act 559 (HB 639), requires a disclosure at the start of campaign robocalls that use AI to imitate a public figure's voice.",
@@ -999,6 +1205,7 @@ window.HUBS = {
         "state": "Louisiana",
         "title": "Louisiana – AI sexual imagery & CSAM training (Acts 782 and 211)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Act 782 (HB 119) sets a sentence of 5 to 20 years at hard labor for knowingly creating or possessing AI-generated sexual material depicting minors, and raises nonconsensual AI sexual image offenses from misdemeanors to felonies. Act 211 (SB 110) bars using a child's image to train AI to produce child sexual abuse material. Both took effect Aug. 1, 2026.",
@@ -1021,6 +1228,7 @@ window.HUBS = {
         "state": "Maine",
         "title": "Maine – AI chatbot disclosure in consumer transactions (LD 1727)",
         "sector": "consumer_transparency",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Businesses may not use an AI chatbot with consumers in a way that could mislead a reasonable consumer into believing they are dealing with a human, unless the consumer is told otherwise. A violation counts as a violation of the Maine Unfair Trade Practices Act. Enacted in 2025 as Public Law ch. 294.",
@@ -1043,6 +1251,7 @@ window.HUBS = {
         "state": "Maine",
         "title": "Maine – AI in mental health services (LD 2082)",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Only licensed professionals may offer therapy or psychotherapy to the public, including services delivered through AI. Licensees may use AI only for administrative or supplementary support. They may not let it make independent therapeutic decisions or communicate therapeutically with clients, and supplementary use requires the client's written consent. Signed Apr. 13, 2026 as Public Law ch. 687.",
@@ -1065,6 +1274,7 @@ window.HUBS = {
         "state": "Maryland",
         "title": "Maryland – AI Governance Act of 2024 (SB 818)",
         "sector": "government",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "State government units must inventory and assess the AI systems they use. The Department of Information Technology must adopt policies and procedures for how agencies develop, procure, deploy, use, and assess AI. Approved May 9, 2024 (Ch. 496); effective July 1, 2024.",
@@ -1087,6 +1297,7 @@ window.HUBS = {
         "state": "Maryland",
         "title": "Maryland – Election misinformation and deepfakes (SB 141, Ch. 444)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "The State Administrator of Elections must act on credible reports of election misinformation or disinformation, including deepfakes, and may publish correct information. The law also bars knowingly or recklessly creating, using, or spreading a deepfake to produce materially false information. Approved May 12, 2026; effective June 1, 2026.",
@@ -1107,8 +1318,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "Maryland",
+        "title": "Maryland – Lighthouse Industries AI upskilling and internship grants",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "In February 2026 the Maryland Department of Labor announced $4 million to prepare workers for AI and emerging-technology jobs, including a $1.5 million AI internship program and a $1 million upskilling and reskilling grant program requiring partnerships with at least three employers.",
+        "source_title": "Maryland Department of Labor – Gov. Moore announces investments to prepare Maryland workers for AI and emerging technology economies",
+        "source_url": "https://labor.maryland.gov/whatsnews/govmooreannouncesinvestmentstopreparemdworkersforaiandemergingtechnologyeconomies.shtml",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.4909,
+          38.9787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Maryland",
         "title": "Maryland – Protection From Predatory Pricing Act (HB 895, Ch. 154)",
         "sector": "consumer_transparency",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Large food retailers (stores of 15,000+ sq. ft.) and third-party delivery services may not use dynamic pricing or a consumer's personal data to charge that consumer more for tax-exempt food. Loyalty programs, promotions, and cost-based price differences are exempt. The AG's Consumer Protection Division enforces the law after a 45-day cure period, and there is no private right of action. Approved Apr. 28, 2026; effective Oct. 1, 2026.",
@@ -1131,6 +1366,7 @@ window.HUBS = {
         "state": "Massachusetts",
         "title": "Massachusetts – AG advisory on AI",
         "sector": "consumer_transparency",
+        "subcategory": "",
         "status": "guidance",
         "last_updated": "2026-10-13",
         "summary": "AG Andrea Campbell's April 16, 2024 advisory explains that the state's consumer protection law (Chapter 93A), anti-discrimination laws, and data security laws apply to AI developers, suppliers, and users. It warns against misrepresenting what an AI system can do or how reliable it is, and against using AI that discriminates on protected characteristics.",
@@ -1151,8 +1387,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "Massachusetts",
+        "title": "Massachusetts – Free statewide AI training with Google",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "Announced February 26, 2026, a partnership between the MA AI Hub and Google gives all Massachusetts residents free access to the Google AI Professional Certificate and Google Career Certificates, with a focus on workers, students and small businesses. The labor secretary also signaled plans to expand AI skills training through MassHire.",
+        "source_title": "Mass.gov – Governor Healey and Google announce statewide partnership to provide free AI training",
+        "source_url": "https://www.mass.gov/news/governor-healey-and-google-announce-new-statewide-partnership-to-provide-free-ai-training-to-residents",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0637,
+          42.3588
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Massachusetts",
         "title": "Massachusetts – Frontier AI safety provisions in economic development bill (S.3178)",
         "sector": "frontier_models",
+        "subcategory": "",
         "status": "pending",
         "last_updated": "2026-10-13",
         "summary": "The Senate's July 2026 economic development bill would require large frontier AI developers to publish safety frameworks, let the attorney general sue for violations, and create an AI safety commission. The bill is in a House–Senate conference committee and is not law. On Sept. 18, 2026, Gov. Healey urged conferees to keep and strengthen the AI provisions with independent safety reviews and earlier incident reporting.",
@@ -1175,6 +1435,7 @@ window.HUBS = {
         "state": "Michigan",
         "title": "Michigan – AI in political ads and election deepfakes (HB 5141, 5143–5145, 2023)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "This package was signed Nov. 30, 2023 (Public Acts 263–266 of 2023). It requires a disclosure on political ads and pre-recorded calls generated with AI. It also bars distributing materially deceptive media within 90 days of an election unless it carries a disclaimer, and sets sentencing guidelines for violations.",
@@ -1197,6 +1458,7 @@ window.HUBS = {
         "state": "Michigan",
         "title": "Michigan – Protection from Intimate Deep Fakes Act (HB 4047/4048)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Public Act 11 of 2025 (HB 4047) was signed Aug. 26, 2025 and took immediate effect. Creating or sharing intimate deepfakes without consent is a misdemeanor (up to 1 year). It becomes a felony of up to 3 years when aggravating factors apply, such as intent to profit or harass. Victims can sue for damages and seek injunctions.",
@@ -1219,6 +1481,7 @@ window.HUBS = {
         "state": "Michigan",
         "title": "Michigan – SB 760 companion chatbots and minors",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "pending",
         "last_updated": "2026-10-13",
         "summary": "This bill would bar making companion chatbots available to minors and regulate their operators. The Senate passed it 20–17 on April 29, 2026. It is waiting in the House Communications and Technology Committee.",
@@ -1241,6 +1504,7 @@ window.HUBS = {
         "state": "Minnesota",
         "title": "Minnesota – Election deepfake law (Minn. Stat. § 609.771)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "This 2023 law makes it a crime to spread a realistic deepfake without consent, with intent to hurt a candidate or influence an election, during set windows before conventions and elections. Penalties range up to 5 years for repeat offenders. In Kohls v. Ellison, the Eighth Circuit on Feb. 9, 2026 affirmed the denial of a preliminary injunction and later denied rehearing en banc. The case is being held alongside a separate 2025 challenge by X Corp.",
@@ -1263,6 +1527,7 @@ window.HUBS = {
         "state": "Minnesota",
         "title": "Minnesota – HF 1606 nudification technology ban (enjoined on appeal)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Signed May 7, 2026 (2026 Laws ch. 72) and effective Aug. 1, 2026. Websites and apps may not let users create realistic fake nude images of identifiable people, and advertising or promoting such tools is also banned. The AG can seek civil penalties of up to $500,000 per violation, and victims can sue for up to triple damages. A federal district court refused in September 2026 to block the law, but on Oct. 2, 2026 the Eighth Circuit enjoined it while xAI's appeal proceeds.",
@@ -1282,9 +1547,33 @@ window.HUBS = {
     {
       "type": "Feature",
       "properties": {
+        "state": "Minnesota",
+        "title": "Minnesota – SF 4576/HF 4369 AI displacement notice and transition period",
+        "sector": "workforce",
+        "subcategory": "displacement",
+        "status": "pending",
+        "last_updated": "2026-10-13",
+        "summary": "These companion bills would require notice and a transitional employment period for workers displaced by AI, with penalties for noncompliance. The Senate Labor Committee recommended SF 4576 as amended on April 7, 2026, and re-referred it to State and Local Government.",
+        "source_title": "Minnesota Office of the Revisor of Statutes – SF 4576 (2026)",
+        "source_url": "https://www.revisor.mn.gov/bills/bill.php?b=Senate&f=SF4576&ssn=0&y=2026",
+        "analysis_title": "MultiState – AI Workforce Protection Bills Emerge as States Weigh Job Displacement Risks",
+        "analysis_url": "https://www.multistate.ai/updates/vol-108-ai-workforce-displacement-legislation"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1023,
+          44.9551
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "state": "Mississippi",
         "title": "Mississippi – AI Regulation (AIR) Task Force (SB 2426)",
         "sector": "government",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "This 2025 law created a legislative task force with seven voting members that studies AI and reports annually until it dissolves on Dec. 31, 2027. Its first report, adopted Jan. 13, 2026, recommended a statutory definition of AI and chatbot disclosure by state and local agencies. The Legislature then enacted an AI definition in HB 1723, signed March 9, 2026 and effective July 1, 2026.",
@@ -1305,8 +1594,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "Mississippi",
+        "title": "Mississippi – AI education and workforce MOU with NVIDIA",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "Under a June 18, 2025 memorandum of understanding with NVIDIA, Mississippi's community colleges, universities and technical institutions will offer AI programs using NVIDIA Deep Learning Institute resources, coordinated with the Mississippi Artificial Intelligence Network and AccelerateMS.",
+        "source_title": "Office of Governor Tate Reeves – Mississippi to advance AI education, innovation and workforce development with NVIDIA",
+        "source_url": "https://governorreeves.ms.gov/state-of-mississippi-to-advance-artificial-intelligence-education-innovation-and-workforce-development-with-nvidia/",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.1821,
+          32.3038
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Mississippi",
         "title": "Mississippi – Executive Order 1584 on AI",
         "sector": "government",
+        "subcategory": "",
         "status": "guidance",
         "last_updated": "2026-10-13",
         "summary": "Gov. Reeves issued the state's first AI executive order on Jan. 8, 2025. It directs the Department of Information Technology Services to inventory AI that state agencies use or plan to use, review agency AI practices and procurement, and develop policy recommendations for responsible AI use that protects residents' privacy and security.",
@@ -1326,9 +1639,33 @@ window.HUBS = {
     {
       "type": "Feature",
       "properties": {
+        "state": "Missouri",
+        "title": "Missouri – Executive Order 26-02 AI workforce and education",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "Governor Kehoe's Executive Order 26-02 (January 13, 2026) has the Department of Higher Education and Workforce Development evaluate AI training at public colleges and launch AI-focused degrees, certifications, apprenticeships and rapid retraining. Reports and recommendations are due by November 30, 2026.",
+        "source_title": "Missouri Secretary of State – Executive Order 26-02",
+        "source_url": "https://www.sos.mo.gov/CMSImages/Library/Reference/Orders/2026/26-02.pdf",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.1735,
+          38.5792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "state": "Montana",
         "title": "Montana – HB 178 Limits on Government Use of AI",
         "sector": "government",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "State and local government entities may not use AI for cognitive behavioral manipulation, for classifying people in ways that cause unlawful discrimination or disparate impact, for malicious purposes, or for surveillance of public spaces, with limited exceptions such as locating missing or wanted people. Signed May 5, 2025 (Ch. 427, Laws of 2025).",
@@ -1351,6 +1688,7 @@ window.HUBS = {
         "state": "Montana",
         "title": "Montana – SB 212 Right to Compute Act",
         "sector": "frontier_models",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Creates a statutory right to privately own and use computational resources for lawful purposes. Government restrictions must be demonstrably necessary and narrowly tailored to a compelling interest. The act also addresses AI systems that control critical infrastructure. Signed April 16, 2025 (Ch. 150, Laws of 2025).",
@@ -1373,6 +1711,7 @@ window.HUBS = {
         "state": "Nebraska",
         "title": "Nebraska – LB 525 Conversational Artificial Intelligence Safety Act",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "The Legislature folded the Conversational AI Safety Act (LB 1185) into LB 525, and Gov. Pillen approved it on April 14, 2026. The AI provisions apply from July 1, 2027. Operators must disclose AI when a user could believe they are talking to a human, add safeguards for minors, follow self-harm response protocols, and not present the service as professional mental health care. The AG enforces the act with civil penalties of at least $1,000 per violation, capped at $500,000 per operator.",
@@ -1395,6 +1734,7 @@ window.HUBS = {
         "state": "Nevada",
         "title": "Nevada – AB 406 AI in Mental and Behavioral Health Care",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "AI providers may not offer systems programmed to deliver professional mental or behavioral health care, or claim that their AI can act as a therapist. Clinicians may not use AI in direct patient care, but may use it for administrative tasks if they review its output. Civil penalties run up to $15,000 per violation. Signed June 5, 2025, effective July 1, 2025.",
@@ -1417,6 +1757,7 @@ window.HUBS = {
         "state": "New Hampshire",
         "title": "New Hampshire – AI chatbots and child endangerment (HB 143)",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Operators of AI chat services can be charged with endangering the welfare of a child if they knowingly direct communications meant to push a minor toward sexual conduct, drug or alcohol use, self-harm, or violence. Operators are also liable for $1,000 per violation in liquidated damages, which the attorney general enforces after a 90-day cure period. Approved Aug. 1, 2025 (ch. 270); effective Jan. 1, 2026.",
@@ -1439,6 +1780,7 @@ window.HUBS = {
         "state": "New Hampshire",
         "title": "New Hampshire – Deepfake fraud (HB 1432)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Knowingly creating, distributing, or presenting a deepfake of an identifiable person to embarrass, harass, entrap, defame, extort, or otherwise cause financial or reputational harm is a class B felony. The law also creates a private right of action and bars lobbyists who have used deepfakes from registering. Enacted in 2024 as Chapter 243; effective Jan. 1, 2025.",
@@ -1459,8 +1801,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "New Jersey",
+        "title": "New Jersey – A5316 Artificial Intelligence Workforce Transition Act",
+        "sector": "workforce",
+        "subcategory": "displacement",
+        "status": "pending",
+        "last_updated": "2026-10-13",
+        "summary": "Introduced June 23, 2026, A5316 would require employers with 100 or more employees to give the state 90 days' notice before deploying AI expected to cut or restructure 25 or more jobs, with penalties of up to $3,000 per affected worker. It would add 26 weeks of unemployment benefits for certified AI-displaced workers in training, create an AI Displacement Account in the Workforce Development Partnership Fund, and offer retention and retraining tax credits.",
+        "source_title": "New Jersey Legislature – Assembly Bill A5316 (introduced text)",
+        "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A5500/5316_I1.PDF",
+        "analysis_title": "MultiState – AI Workforce Protection Bills Emerge as States Weigh Job Displacement Risks",
+        "analysis_url": "https://www.multistate.ai/updates/vol-108-ai-workforce-displacement-legislation"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.77,
+          40.2206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New Jersey",
         "title": "New Jersey – DCR guidance on algorithmic discrimination",
         "sector": "comprehensive",
+        "subcategory": "",
         "status": "guidance",
         "last_updated": "2026-10-13",
         "summary": "Guidance issued in January 2025 by the NJ Attorney General and Division on Civil Rights explains that the Law Against Discrimination covers automated decision tools used in employment, housing, credit, public accommodations and contracting. Employers and others can be liable for disparate impact without any intent to discriminate, and using a vendor-built tool is no defense. The guidance suggests impact assessments and independent pre- and post-deployment bias audits but creates no new legal requirements.",
@@ -1481,8 +1847,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "New Jersey",
+        "title": "New Jersey – DOL guidance on AI literacy in the workforce system",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "Workforce notice WD-PY25-14 (April 20, 2026) encourages state and local workforce boards to use WIOA funds for AI literacy and training, including for dislocated workers, and adopts the U.S. DOL AI Literacy Framework's core competencies. It also suggests AI literacy screening at intake and AI content in work-based learning.",
+        "source_title": "New Jersey Department of Labor – WD-PY25-14: AI in the New Jersey Workforce Development System",
+        "source_url": "https://www.nj.gov/labor/assets/PDFs/WIOA/documents/resources/AI%20Guidance%20WD-PY25-14.pdf",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.77,
+          40.2206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New Jersey",
         "title": "New Jersey – Deceptive deepfake law (A3540/S2544)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Sets criminal penalties and a civil cause of action for creating or sharing deceptive AI-generated audio or visual media. Making or distributing a deepfake to further other criminal activity is a third-degree crime, carrying prison time and fines of up to $30,000, and victims can sue. Gov. Murphy signed A3540/S2544 on Apr. 2, 2025.",
@@ -1505,6 +1895,7 @@ window.HUBS = {
         "state": "New Jersey",
         "title": "New Jersey – Fair Price Protection Act (surveillance pricing ban)",
         "sector": "consumer_transparency",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Makes it an unlawful practice under the Consumer Fraud Act to vary grocery and other foodstuff prices based on a shopper's personal data. Publicly disclosed discounts and qualifying loyalty programs are still allowed. The law also starts a one-year moratorium on new electronic shelf labels on Feb. 1, 2027. Gov. Sherrill signed it on July 23, 2026 (P.L.2026, c.55), and the main prohibition takes effect Aug. 1, 2027.",
@@ -1525,8 +1916,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "New Jersey",
+        "title": "New Jersey – S1840 Responsible AI Advancement and Workforce Protection Act",
+        "sector": "workforce",
+        "subcategory": "displacement",
+        "status": "pending",
+        "last_updated": "2026-10-13",
+        "summary": "S1840 would create an AI Horizon Fund, financed partly by a 5% assessment on gross AI revenue, to pay for worker retraining and community resilience. Employers with 100 or more employees whose AI deployment leads to layoffs would file an AI Impact Disclosure, and AI-displaced workers would get 13 extra weeks of unemployment benefits.",
+        "source_title": "New Jersey Legislature – Senate Bill S1840 (introduced text)",
+        "source_url": "https://pub.njleg.gov/Bills/2026/S2000/1840_I1.HTM",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.77,
+          40.2206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New Jersey",
         "title": "New Jersey – Workplace AI bill (S4075)",
-        "sector": "employment",
+        "sector": "workforce",
+        "subcategory": "displacement",
         "status": "pending",
         "last_updated": "2026-10-13",
         "summary": "Would require an independent impact assessment before employers or public entities deploy electronic monitoring tools, automated employment decision systems, or automated benefit or service decision systems. Workers and their unions would get 60 days' written notice, and the bill would restrict certain surveillance and guarantee human review of adverse decisions. Public employees displaced by these systems would receive severance, health benefits and retraining. The Senate Labor Committee reported it favorably on Oct. 1, 2026, and it now goes to the Senate Budget Committee.",
@@ -1549,6 +1964,7 @@ window.HUBS = {
         "state": "New Mexico",
         "title": "New Mexico – HB 182 AI Disclosure in Election Ads",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Political ads that use AI-generated images, video or audio to deceive or mislead must carry a clear disclaimer. Audio-only ads must state it at the beginning and end. The State Ethics Commission leads enforcement and shares it with the Secretary of State. Gov. Lujan Grisham signed the law on March 5, 2024 (Laws 2024, ch. 57).",
@@ -1570,7 +1986,8 @@ window.HUBS = {
       "properties": {
         "state": "New York",
         "title": "New York City – Local Law 144 (AEDT bias audits)",
-        "sector": "employment",
+        "sector": "workforce",
+        "subcategory": "decisions",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "NYC employers and employment agencies using automated employment decision tools must have an independent bias audit within the prior year, post a summary of the results, and notify candidates. DCWP can impose civil penalties of $500 to $1,500 per violation, with each day counted separately. A December 2025 State Comptroller audit found DCWP's complaint-driven enforcement ineffective, and DCWP agreed to most of the recommendations, including better complaint routing and stronger investigations.",
@@ -1591,8 +2008,78 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "New York",
+        "title": "New York – A3719 \"robot tax\" on AI-displaced workers",
+        "sector": "workforce",
+        "subcategory": "displacement",
+        "status": "pending",
+        "last_updated": "2026-10-13",
+        "summary": "The proposed robot tax act would impose a corporate tax surcharge when technology such as AI replaces a worker, equal to the state and local taxes tied to that worker's final-year wages. It was re-referred to the Assembly Ways and Means Committee on January 7, 2026.",
+        "source_title": "New York State Senate – Assembly Bill A3719 (2025-2026)",
+        "source_url": "https://www.nysenate.gov/legislation/bills/2025/A3719",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.7572,
+          42.6526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New York",
+        "title": "New York – A9533 Automation Displacement Protection Act",
+        "sector": "workforce",
+        "subcategory": "displacement",
+        "status": "pending",
+        "last_updated": "2026-10-13",
+        "summary": "This Assembly bill would require employers with 50 or more full-time workers to give at least 90 days' notice before an AI-driven displacement affecting 25 employees or 25% of the workforce, and to provide a 90-day transition period with continued pay or funded retraining. Violators could lose state incentives for five years and face penalties up to $10,000 per day for willful violations; it was referred to the Codes Committee on April 28, 2026.",
+        "source_title": "New York State Senate – Assembly Bill A9533 (2025-2026)",
+        "source_url": "https://www.nysenate.gov/legislation/bills/2025/A9533",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.7572,
+          42.6526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New York",
+        "title": "New York – A9581/S8706 annual AI workforce impact reports",
+        "sector": "workforce",
+        "subcategory": "displacement",
+        "status": "pending",
+        "last_updated": "2026-10-13",
+        "summary": "Passed by both houses (Senate vote June 4, 2026) but not yet delivered to the Governor, this bill would require businesses with more than 50 employees, or any publicly traded company, to report annually to the Department of Labor by March 1 on workers displaced, hired or with changed hours due to AI and on positions left unfilled because of AI. The DOL would publish an aggregate report, and late filers face up to $500 per day after a 90-day cure period.",
+        "source_title": "New York State Senate – Assembly Bill A9581 (2025-2026)",
+        "source_url": "https://www.nysenate.gov/legislation/bills/2025/A9581",
+        "analysis_title": "Thompson Coburn – New York Legislature passes AI workforce impact disclosure bill",
+        "analysis_url": "https://www.thompsoncoburn.com/insights/new-york-legislature-passes-ai-workforce-impact-disclosure-bill/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.7572,
+          42.6526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New York",
         "title": "New York – AI Companion Models safeguards (GBL Art. 47)",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "AI companion operators must tell users they are not talking to a human, at the start of an interaction and at least every three hours during continued use. They must also detect expressions of suicidal ideation or self-harm and refer users to crisis services. The law (GBL Art. 47, enacted in the FY2026 budget) took effect Nov. 5, 2025, and the AG can seek penalties of up to $15,000 per day, paid into a suicide prevention fund.",
@@ -1613,8 +2100,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "New York",
+        "title": "New York – AI training for the state workforce",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "In April 2026, Governor Hochul expanded responsible-AI training, delivered with InnovateUS, to more than 100,000 state employees alongside the AI Pro generative AI assistant built by the Office of Information Technology Services. Agencies using AI Pro must require the training.",
+        "source_title": "NYS Office of Information Technology Services – Governor Hochul delivers AI training tool to the state workforce (Apr. 6, 2026)",
+        "source_url": "https://its.ny.gov/node/11046",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.7572,
+          42.6526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New York",
         "title": "New York – Algorithmic Pricing Disclosure Act",
         "sector": "consumer_transparency",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Businesses that set a price with an algorithm using a consumer's personal data must display the label 'THIS PRICE WAS SET BY AN ALGORITHM USING YOUR PERSONAL DATA' (GBL § 349-a), a rule in effect since Nov. 10, 2025. A broader ban, the One Fair Price Act (S8623B/A9349B), passed the Legislature on June 4, 2026 and would replace the disclosure rule. As of mid-October 2026, the Legislature's records show no delivery to or action by Gov. Hochul.",
@@ -1637,6 +2148,7 @@ window.HUBS = {
         "state": "New York",
         "title": "New York – Kids chatbot safety bill (S9051B/A10379)",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "pending",
         "last_updated": "2026-10-13",
         "summary": "Would add GBL Article 48, barring operators from offering 'unsafe AI companion features' to known minors. These include features that simulate companionship, claim to be human, encourage secrecy or isolation, promote self-harm, or produce sexually explicit content. Operators would also have to offer age-determination methods, with AG enforcement and a Jan. 1, 2027 effective date. The bill passed the Senate 60-0 on June 4, 2026 and the Assembly on June 5, 2026, and as of mid-October 2026 it has not been delivered to or acted on by Gov. Hochul.",
@@ -1659,6 +2171,7 @@ window.HUBS = {
         "state": "New York",
         "title": "New York – RAISE Act (frontier AI safety)",
         "sector": "frontier_models",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Large frontier developers must publish an AI safety framework and transparency reports, and must report critical safety incidents within 72 hours to a new office within the Department of Financial Services. The law covers models trained on more than 10^26 operations, built by developers with over $500M in annual revenue, and the AG can seek penalties of up to $1M for a first violation and $3M for later ones. Hochul signed the original act (ch. 699 of 2025) on Dec. 19, 2025, then signed chapter amendment S8828 (ch. 96 of 2026) on Mar. 27, 2026, which brought it closer to California's SB 53. It takes effect Jan. 1, 2027.",
@@ -1679,8 +2192,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "New York",
+        "title": "New York – S8928 AI Workforce Impact Transparency Act",
+        "sector": "workforce",
+        "subcategory": "displacement",
+        "status": "pending",
+        "last_updated": "2026-10-13",
+        "summary": "Introduced January 16, 2026, S8928 would write into law a requirement that WARN notices state whether job losses stem in whole or part from AI or automation, and have the Labor Commissioner keep a database and publish quarterly summaries by sector and location. It would also create a two-year DOL pilot to test compliance and data accuracy; the bill sits in the Senate Labor Committee.",
+        "source_title": "New York State Legislature – Senate Bill S8928 text",
+        "source_url": "https://legislation.nysenate.gov/pdf/bills/2025/s8928",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.7572,
+          42.6526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New York",
         "title": "New York – Synthetic performer ad disclosure (S8420-A/A8887-B)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Amends GBL § 396-b so that anyone producing a commercial ad must conspicuously disclose a 'synthetic performer' they know the ad uses, meaning an AI-generated human-like figure. Penalties are $1,000 for a first violation and $5,000 for each later one. Hochul signed it on Dec. 11, 2025 (ch. 617), and it took effect June 9, 2026.",
@@ -1700,9 +2237,33 @@ window.HUBS = {
     {
       "type": "Feature",
       "properties": {
+        "state": "New York",
+        "title": "New York – WARN notice AI disclosure",
+        "sector": "workforce",
+        "subcategory": "displacement",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "In her 2025 State of the State, Governor Hochul directed the Department of Labor to require employers filing WARN layoff notices to indicate whether AI use was a factor, while pointing affected workers to state training programs. The DOL added a checkbox asking whether technological innovation or automation contributed to the layoff in March 2025; reviewers found no filer had checked it in over a year of notices.",
+        "source_title": "Office of Governor Kathy Hochul – 2025 State of the State Book",
+        "source_url": "https://www.governor.ny.gov/sites/default/files/2025-01/2025StateoftheStateBook.pdf",
+        "analysis_title": "Hunton Andrews Kurth – New York WARN Act: No AI-Related Layoffs Reported in First Year",
+        "analysis_url": "https://www.hunton.com/hunton-employment-labor-perspectives/new-york-warn-act-no-ai-related-layoffs-reported-in-first-year-of-adding-ai-related-disclosure-to-the-system"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.7572,
+          42.6526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "state": "North Carolina",
         "title": "North Carolina – EO 24: AI Leadership Council & AI Accelerator",
         "sector": "government",
+        "subcategory": "",
         "status": "guidance",
         "last_updated": "2026-10-13",
         "summary": "Gov. Stein signed this order on Sept. 2, 2025. It creates an AI Leadership Council of at least 25 members, an AI Accelerator within NCDIT, and AI oversight teams in each Cabinet agency, and it calls for AI literacy training for the public, including on AI-driven fraud and scams. The Council's Statewide AI Strategic Roadmap recommends a comprehensive policy package to protect residents in the 2027 legislative cycle.",
@@ -1722,9 +2283,33 @@ window.HUBS = {
     {
       "type": "Feature",
       "properties": {
+        "state": "North Carolina",
+        "title": "North Carolina – S 988 Protecting Workers in the Age of AI Act",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "pending",
+        "last_updated": "2026-10-13",
+        "summary": "S 988 would create an AI Workforce Transition Program and Fund at the Department of Commerce, funded with $50 million, to provide retraining and credentials for workers displaced by AI or automation, through community colleges and other partners. Employers receiving state incentives would have to report layoffs attributable to AI; the bill was re-referred to Appropriations on May 5, 2026.",
+        "source_title": "North Carolina General Assembly – Senate Bill 988 (2025-2026)",
+        "source_url": "https://www.ncleg.gov/Sessions/2025/Bills/Senate/HTML/S988v1.html",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6391,
+          35.7804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "state": "North Dakota",
         "title": "North Dakota – HB 1167 AI disclosure in political communications",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Requires political communications that use AI to impersonate a person's image or voice to carry an AI-generated-content disclaimer. The governor signed it in April 2025. Also in 2025, North Dakota extended its laws on nonconsensual sexual images (HB 1351) and child pornography (HB 1386) to computer-generated content.",
@@ -1747,6 +2332,7 @@ window.HUBS = {
         "state": "Ohio",
         "title": "Ohio – DAS Policy IT-17 Use of AI in state agencies",
         "sector": "government",
+        "subcategory": "",
         "status": "guidance",
         "last_updated": "2026-10-13",
         "summary": "Ohio's Department of Administrative Services adopted IT-17 in late 2023 to govern AI use by agencies under the Governor's authority, built around five principles including fairness, accountability, security and transparency. A multi-agency AI Council must approve generative AI use cases before development, keeps a central repository of approved uses, and audits AI solutions for compliance.",
@@ -1769,6 +2355,7 @@ window.HUBS = {
         "state": "Ohio",
         "title": "Ohio – K-12 AI policy mandate (HB 96, R.C. 3301.24)",
         "sector": "government",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "The FY2026–27 budget (HB 96) added R.C. 3301.24, which required the Department of Education and Workforce to produce a model AI policy by Dec. 31, 2025. Every school district, community school and STEM school had to adopt its own AI-use policy by July 1, 2026, and could adopt the model.",
@@ -1791,6 +2378,7 @@ window.HUBS = {
         "state": "Ohio",
         "title": "Ohio – SB 163 AI-generated CSAM, deepfake identity fraud and watermarking",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "pending",
         "last_updated": "2026-10-13",
         "summary": "Would make AI-generated child sexual abuse material a crime, and would bar using a digital replica of a person without consent to induce financial decisions, damage reputations, or depict them sexually. It would also let victims of unlawful replicas sue, and would require watermarks on AI-generated content, enforceable by the Attorney General. The Senate passed it unanimously on May 20, 2026, and it is pending in the House Technology and Innovation Committee.",
@@ -1813,6 +2401,7 @@ window.HUBS = {
         "state": "Oklahoma",
         "title": "Oklahoma – AI-generated intimate images (HB 1364)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Extends Oklahoma's revenge-porn statute to AI-generated sexual depictions. The base offense is a misdemeanor, and committing it for financial gain or as a repeat offense is a felony. Gov. Stitt signed it in May 2025, and it took effect Nov. 1, 2025.",
@@ -1835,6 +2424,7 @@ window.HUBS = {
         "state": "Oklahoma",
         "title": "Oklahoma – Responsible Technology in Schools Act (SB 1734)",
         "sector": "government",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Classroom AI must operate under educator supervision with human review of outputs, and it cannot be the primary basis for grading, discipline, placement or other high-stakes decisions. Districts must give parents an annual disclosure of AI tools, vendors and student data collected, and parents can opt students out without academic penalty. Gov. Stitt signed it in May 2026. Its requirements took effect July 1, 2026, and district boards must adopt AI policies before the 2027–28 school year.",
@@ -1857,6 +2447,7 @@ window.HUBS = {
         "state": "Oregon",
         "title": "Oregon – SB 1546 AI Companions",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "AI companion operators must disclose that users are interacting with AI and must keep a protocol to detect suicidal or self-harm ideation and refer users to crisis lifelines, publishing an annual report on those referrals. For known or suspected minors, operators must give break reminders at least every three hours and take reasonable steps to prevent romantic or sexual content and simulated emotional dependence. Injured users can sue for the greater of actual damages or $1,000 per violation. Gov. Kotek signed it on March 31, 2026 (Or. Laws 2026, ch. 85), and it takes effect Jan. 1, 2027.",
@@ -1879,6 +2470,7 @@ window.HUBS = {
         "state": "Pennsylvania",
         "title": "Pennsylvania – Digital forgery crime (SB 649, Act 35 of 2025)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Adds 18 Pa.C.S. § 4101.1, which makes it a crime to create a forged digital likeness of a real person and distribute it as genuine with intent to defraud or injure. It is a first-degree misdemeanor, or a third-degree felony when part of a scheme to defraud, coerce or steal. Gov. Shapiro signed SB 649 on July 7, 2025 (Act 35), and it took effect 60 days later.",
@@ -1901,6 +2493,7 @@ window.HUBS = {
         "state": "Pennsylvania",
         "title": "Pennsylvania – Governor's AI consumer-protection actions (Feb. 2026)",
         "sector": "government",
+        "subcategory": "",
         "status": "guidance",
         "last_updated": "2026-10-13",
         "summary": "On Feb. 27, 2026, Gov. Shapiro announced a multi-agency AI literacy toolkit and a Department of State process for reporting AI bots that may be practicing a licensed profession without a license. He also created a 12-member AI Enforcement Task Force at the Department of State to evaluate AI companion bots, which shares complaints and referrals with the Attorney General.",
@@ -1923,6 +2516,7 @@ window.HUBS = {
         "state": "Pennsylvania",
         "title": "Pennsylvania – SAFECHAT Act (SB 1090)",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "pending",
         "last_updated": "2026-10-13",
         "summary": "Would require operators of AI companion chatbots to disclose that the companion is artificial, keep protocols that block suicide and self-harm content and refer at-risk users to crisis services, and, for minors, add periodic break reminders and block sexually explicit content. It passed the Senate 49-1 on Mar. 17, 2026 and is pending in the House.",
@@ -1945,6 +2539,7 @@ window.HUBS = {
         "state": "Rhode Island",
         "title": "Rhode Island – AI chatbot self-harm protocols (S2195/H7350)",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Operators of AI companion chatbots must keep protocols to detect expressions of suicidal ideation, self-harm, or intent to harm others and refer users to crisis services, and must tell users they are not talking to a human at the start of a session and at least every three hours. Starting July 1, 2027, operators must file annual reports with the AG on protocol activations. The AG enforces the law, with penalties of up to $15,000 per day; it was signed June 22, 2026.",
@@ -1967,6 +2562,7 @@ window.HUBS = {
         "state": "Rhode Island",
         "title": "Rhode Island – AI in mental health care / therapy chatbot ban (H7349/S2197)",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Therapy or psychotherapy offered to the public, including through AI, must come from a licensed professional, and clinicians may not let AI make independent therapeutic decisions or set treatment plans. Patients must be told in writing and give consent before AI provides supplementary support in recorded or transcribed sessions. Signed June 22, 2026; a companion law signed the same day, H7538, requires providers to notify patients when AI documents a visit.",
@@ -1989,6 +2585,7 @@ window.HUBS = {
         "state": "South Carolina",
         "title": "South Carolina – AI-generated CSAM (S. 28, Act 57)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Creates a felony for knowingly producing, distributing, soliciting, or possessing obscene sexual depictions of minors, expressly covering computer-generated and digital images even when no real child exists. Gov. McMaster signed it May 22, 2025 as Act No. 57, effective on signing. A companion bill, S. 29 (Act No. 58), extends sexual-exploitation offenses to morphed images of identifiable minors.",
@@ -2011,6 +2608,7 @@ window.HUBS = {
         "state": "South Dakota",
         "title": "South Dakota – SB 164 (2025) election deepfakes",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Signed March 25, 2025, the law bars spreading a deepfake of a candidate within 90 days of an election when the person intends to injure the candidate and knows or should know it is a deepfake. Violations are a Class 1 misdemeanor, and the AG, the candidate, or the person depicted can seek an injunction and damages. Satire and parody are exempt, and carrying a prescribed AI-manipulation disclosure is an affirmative defense.",
@@ -2033,6 +2631,7 @@ window.HUBS = {
         "state": "South Dakota",
         "title": "South Dakota – SB 41 (2026) sexual deepfakes felony",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Signed March 16, 2026 and effective July 1, 2026, the law makes it a Class 5 felony (up to five years in prison) to knowingly create or distribute realistic digitally fabricated nude or sexual images of an identifiable person. It does this by adding the offense to South Dakota's criminal invasion-of-privacy statute.",
@@ -2055,6 +2654,7 @@ window.HUBS = {
         "state": "Tennessee",
         "title": "Tennessee – AI may not pose as a mental health professional (SB 1580)",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Bars developers and deployers from advertising or claiming that an AI system is, or can act as, a qualified mental health professional. A violation counts as an unfair or deceptive practice under the TN Consumer Protection Act, with a private right of action and a $5,000 civil penalty per violation. Signed 4/1/2026 as Public Chapter 647, effective 7/1/2026.",
@@ -2077,6 +2677,7 @@ window.HUBS = {
         "state": "Tennessee",
         "title": "Tennessee – ELVIS Act (voice & likeness)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Expands Tennessee's publicity-rights law to protect a person's voice, including AI-simulated voices. It creates liability for unauthorized use, for distribution, and for tools whose primary purpose is replicating a specific person. Signed 3/21/2024 and effective 7/1/2024.",
@@ -2099,6 +2700,7 @@ window.HUBS = {
         "state": "Tennessee",
         "title": "Tennessee – TACIR studies of AI and child safety (Pub. Ch. 1066 & 1082)",
         "sector": "government",
+        "subcategory": "",
         "status": "guidance",
         "last_updated": "2026-10-13",
         "summary": "Two 2026 laws direct the Tennessee Advisory Commission on Intergovernmental Relations to study AI risks, especially to children, and options to reduce them (PC 1066 from SB 1493; PC 1082 from SB 1700, which as filed would have restricted harmful chatbots for minors). The PC 1066 study is under way as of September 2026, and PC 1082's study begins once it is finished.",
@@ -2121,6 +2723,7 @@ window.HUBS = {
         "state": "Texas",
         "title": "Texas – HB 149 Texas Responsible AI Governance Act (TRAIGA)",
         "sector": "comprehensive",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Bans developing or deploying AI intended to incite self-harm, harm to others, or crime, to unlawfully discriminate (disparate impact alone does not show intent), or to produce prohibited sexual content or deepfakes. Government entities may not use AI for social scoring or rights-infringing biometric identification, and healthcare providers must disclose AI use to patients. Effective January 1, 2026, the AG enforces it exclusively, with a 60-day cure period and penalties of up to $200,000 per uncurable violation, and opened an online AI complaint portal on September 1, 2026.",
@@ -2143,6 +2746,7 @@ window.HUBS = {
         "state": "Texas",
         "title": "Texas – SB 1188 AI in Diagnosis & EHR Requirements",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Practitioners who use AI for diagnostic or treatment recommendations based on patient records must review AI-generated records under medical-records standards and disclose that use to patients; these duties took effect September 1, 2025. Covered entities must also physically store electronic health records in the U.S. or its territories starting January 1, 2026.",
@@ -2165,6 +2769,7 @@ window.HUBS = {
         "state": "Utah",
         "title": "Utah – Artificial Intelligence Policy Act (as amended)",
         "sector": "consumer_transparency",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Businesses using generative AI must disclose it when a consumer clearly asks, and licensed professionals must disclose 'high-risk' AI interactions; these disclosure rules have no end date. The Act also created the Office of AI Policy and its regulatory sandbox, which 2025 SB 332 extended to July 1, 2027. 2026 HB 320 (effective May 6, 2026) reworked the sandbox program.",
@@ -2185,8 +2790,32 @@ window.HUBS = {
       "type": "Feature",
       "properties": {
         "state": "Utah",
+        "title": "Utah – Executive Order 2026-08 Pro-Human AI and state workforce AI literacy",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "Executive Order 2026-08, signed October 6, 2026, requires applicable state employees to complete AI literacy training and directs the Division of Technology Services and Division of Human Resource Management to build a training strategy, with specialized training for agency AI leads. It prioritizes upskilling existing staff to work alongside AI.",
+        "source_title": "Office of Governor Spencer J. Cox – Executive Order 2026-08",
+        "source_url": "https://governor.utah.gov/wp-content/uploads/2026.10.06-Pro-Human-AI-Executive-Order-1.pdf",
+        "analysis_title": "GovTech – Utah Governor Signs Executive Order for Pro-Human AI",
+        "analysis_url": "https://www.govtech.com/artificial-intelligence/utah-governor-signs-executive-order-for-pro-human-ai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.8882,
+          40.7774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Utah",
         "title": "Utah – HB 276 AI Modifications (Digital Voyeurism Prevention & Content Provenance)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Generative AI services may not distribute counterfeit intimate images without verified consent, and platforms must remove such images within 48 hours of a valid notice. Large platforms must detect and display content provenance data, large generative AI providers and capture-device makers must embed latent disclosures, and the Division of Consumer Protection can fine up to $2,500 per violation. Signed March 24, 2026; most duties begin January 1, 2027, with device duties covering devices made on or after January 1, 2028.",
@@ -2209,6 +2838,7 @@ window.HUBS = {
         "state": "Utah",
         "title": "Utah – HB 452 Mental Health Chatbots",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Mental health chatbot suppliers must clearly disclose that the chatbot is AI and not a human. They generally may not sell or share users' health information or inputs, and in-chat ads must be labeled and may not be targeted using user input. The Division of Consumer Protection can impose fines of up to $2,500 per violation. Signed March 25, 2025 and effective May 7, 2025.",
@@ -2231,6 +2861,7 @@ window.HUBS = {
         "state": "Vermont",
         "title": "Vermont – AI in mental health services (H.816, Act 156)",
         "sector": "healthcare",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Companies may not offer mental health services to the public, including through AI, unless a licensed mental health professional provides them. Clinicians may still use HIPAA-compliant AI tools whose output they review and approve. Violations are treated as Consumer Protection Act violations, enforceable by the AG and by private parties. Signed June 17, 2026 and effective on passage.",
@@ -2253,6 +2884,7 @@ window.HUBS = {
         "state": "Vermont",
         "title": "Vermont – Synthetic media in elections (S.23, Act 75)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Requires a clear disclosure on deceptive synthetic media of candidates, or synthetic media meant to sway an election with materially false content, when it is distributed within 90 days before an election. Satire, parody, and bona fide newscasts are exempt. Knowing violations carry fines of up to $1,000, and misrepresented candidates may seek injunctions. Gov. Scott signed it March 5, 2026, effective immediately.",
@@ -2275,6 +2907,7 @@ window.HUBS = {
         "state": "Virginia",
         "title": "Virginia – EO 22: Rapid-Response AI Task Force",
         "sector": "government",
+        "subcategory": "",
         "status": "guidance",
         "last_updated": "2026-10-13",
         "summary": "Gov. Spanberger signed this order on 9/18/2026. It sets up a data center accountability framework and an AI task force to assess AI risks to the workforce, privacy and cybersecurity and to recommend executive or legislative action. AI policies issued under former Gov. Youngkin's EO 30 stay in effect until the task force replaces them.",
@@ -2297,6 +2930,7 @@ window.HUBS = {
         "state": "Virginia",
         "title": "Virginia – Synthetic media in political ads (HB 868, carried to 2027)",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "pending",
         "last_updated": "2026-10-13",
         "summary": "Would require disclosure of synthetic media in political campaign advertisements and set penalties. A subcommittee recommended it 6-2 on 2/3/2026, but on 2/6/2026 the full House Privileges and Elections Committee continued it to the 2027 session, where it remains pending.",
@@ -2316,9 +2950,33 @@ window.HUBS = {
     {
       "type": "Feature",
       "properties": {
+        "state": "Virginia",
+        "title": "Virginia – Virginia Has Jobs AI Career Launch Pad",
+        "sector": "workforce",
+        "subcategory": "reskilling",
+        "status": "guidance",
+        "last_updated": "2026-10-13",
+        "summary": "Launched July 15, 2025 by Governor Youngkin with the Virginia Works agency and Google, the AI Career Launch Pad offers scholarships for Google AI Essentials and Google Career Certificates. The release cites about 31,000 AI-related job postings in Virginia.",
+        "source_title": "Office of the Governor of Virginia – AI Career Launch Pad announcement",
+        "source_url": "https://www.governor.virginia.gov/newsroom/news-releases/2025/july/name-1053354-en.html",
+        "analysis_title": "",
+        "analysis_url": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.4332,
+          37.5388
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "state": "Washington",
         "title": "Washington – HB 1170 AI Content Disclosure / Provenance",
         "sector": "consumer_transparency",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Generative AI providers with over 1 million monthly users that are publicly available in Washington must embed hard-to-remove latent provenance data in image, video, or audio content their systems create or materially alter, where commercially and technically reasonable. The AG alone enforces it as a Consumer Protection Act violation. Signed March 24, 2026 (Ch. 167, Laws of 2026), effective February 1, 2027.",
@@ -2341,6 +2999,7 @@ window.HUBS = {
         "state": "Washington",
         "title": "Washington – HB 2225 AI Companion Chatbots",
         "sector": "chatbots",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Companion chatbots must disclose they are AI at the start of each interaction and every three hours (hourly for minors), and may not claim to be human. Operators must block sexual content and manipulative tactics for minors and keep self-harm detection and referral protocols. Enforced under the Consumer Protection Act. Signed March 24, 2026 (Ch. 168), effective January 1, 2027.",
@@ -2363,6 +3022,7 @@ window.HUBS = {
         "state": "Washington",
         "title": "Washington – SB 5886 Personality Rights / Forged Digital Likenesses",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "Gives people a property right in their 'forged digital likeness', meaning realistic digitally created or altered images or voice recordings that are likely to deceive. Unauthorized commercial use is treated as infringement, with a $3,000 civil penalty plus damages, profits, and noneconomic damages. Signed March 16, 2026 (Ch. 69), effective June 11, 2026.",
@@ -2385,6 +3045,7 @@ window.HUBS = {
         "state": "Wisconsin",
         "title": "Wisconsin – 2023 Act 123 AI disclosure in political ads",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "AB 664, enacted March 21, 2024, requires political audio and video ads containing synthetic media substantially produced by generative AI to carry a prescribed 'generated by AI' disclosure. Intentional violations carry a forfeiture of up to $1,000 each.",
@@ -2407,6 +3068,7 @@ window.HUBS = {
         "state": "Wisconsin",
         "title": "Wisconsin – 2025 Act 34 synthetic intimate representations",
         "sector": "synthetic_media",
+        "subcategory": "",
         "status": "passed",
         "last_updated": "2026-10-13",
         "summary": "SB 33 was enacted October 2, 2025, published October 3, and took effect the day after publication. It defines a 'synthetic intimate representation' and makes it a crime to post or distribute a realistic, technologically generated intimate depiction of an identifiable person with intent to coerce, harass, or intimidate them.",

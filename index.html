@@ -21,7 +21,7 @@
         <select id="sectorFilter">
           <option value="all">All</option>
           <option value="healthcare">Healthcare</option>
-          <option value="employment">Employment</option>
+          <option value="workforce">AI and Workforce Impact</option>
           <option value="biometrics">Biometrics</option>
           <option value="synthetic_media">Synthetic media</option>
           <option value="consumer_transparency">Consumer transparency</option>
@@ -32,10 +32,29 @@
         </select>
       </label>
 
+      <label id="subcatWrap" hidden>
+        Workforce subcategory
+        <select id="subcatFilter">
+          <option value="all">All workforce measures</option>
+          <option value="decisions">Employment decisions &amp; worker protections</option>
+          <option value="displacement">Displacement &amp; employer notification</option>
+          <option value="reskilling">Reskilling &amp; transition</option>
+          <option value="studies">Studies &amp; planning</option>
+        </select>
+      </label>
+
       <div class="checks">
         <label class="status-label passed" title="Enacted into law (may not be in effect yet)"><input type="checkbox" class="statusFilter" value="passed" checked /> Passed</label>
         <label class="status-label pending" title="Bill still moving through the legislature or awaiting signature"><input type="checkbox" class="statusFilter" value="pending" checked /> Pending</label>
         <label class="status-label guidance" title="Not a statute: executive orders, AG advisories, agency rules or policies"><input type="checkbox" class="statusFilter" value="guidance" checked /> Guidance</label>
+      </div>
+
+      <div class="risk-toggle">
+        <label class="switch"><input type="checkbox" id="riskToggle" /> Show job-risk context</label>
+        <div id="riskScale" class="risk-scale" hidden>
+          <span id="riskMin"></span><span class="risk-bar"></span><span id="riskMax"></span>
+          <span class="risk-caption">share of jobs at risk from AI · <a href="#" class="about-open">Tufts Digital Planet</a></span>
+        </div>
       </div>
     </div>
   </header>
@@ -44,7 +63,7 @@
 
   <footer class="footer">
     <span id="count"></span>
-    <span class="muted"><b class="c-passed">Passed</b> = enacted law · <b class="c-pending">Pending</b> = bill not yet law · <b class="c-guidance">Guidance</b> = executive orders, AG advisories, agency rules. Hover or tap a marker for details. · <a href="#" id="aboutLink">About &amp; sources</a></span>
+    <span class="muted"><b class="c-passed">Passed</b> = enacted law · <b class="c-pending">Pending</b> = bill not yet law · <b class="c-guidance">Guidance</b> = executive orders, AG advisories, agency rules. Hover or tap a marker for details; click a state for its profile. · <a href="#" id="aboutLink" class="about-open">About &amp; sources</a></span>
   </footer>
 
 
@@ -54,10 +73,21 @@
     <p><strong>What this is.</strong> A reference map of notable state-level AI laws, pending bills and official guidance in the United States. Status is current as of October 13, 2026. It is not a complete list of every AI-related bill.</p>
     <p><strong>Sources.</strong> Every entry's first link is an official government source: the state legislature's bill page or enacted text, a governor's order or signing release, an attorney general, or a state agency. Where a second link appears, it is independent analysis (a law firm, news outlet or policy tracker) and is labeled with its publisher. Dates, numbers and court rulings in each summary were checked against the linked sources.</p>
     <p><strong>Method.</strong> Entries were compiled from state legislature records, executive and agency publications and reputable legal trackers, then checked individually against the official source. Summaries are written in our own words and are simplified; read the linked text for the precise legal requirements.</p>
+    <p><strong>Job-risk context.</strong> The optional state shading and the exposure figures in state profiles come from Tufts University's Digital Planet: Chakravorti, Bhaskar et al., "When Wired Belts Become the New Rust Belts: AI and the Emerging Geography of American Job Risk," Digital Planet, The Fletcher School at Tufts University, March 17, 2026 (<a href="https://digitalplanet.tufts.edu/ai-and-the-emerging-geography-of-american-job-risk-page/" target="_blank" rel="noopener">report and interactive site</a>), using its March 2026 data booklet. Figures are the study's median adoption scenario: the estimated share of each state's jobs at risk of loss as AI is adopted. They are projections, not forecasts of actual job losses, and they vary widely across the study's slower and faster scenarios. Tufts does not publish industry figures by state, so state profiles show the state's most at-risk metro areas and the study's national industry figures. The figures are reproduced from Tufts' data; this map does not modify their methodology.</p>
+    <p><strong>No preparedness score.</strong> State profiles deliberately do not rate how prepared a state is. Legislation is only one part of a state's response; budgets, workforce programs, education systems and private-sector action are not captured here.</p>
+    <p><strong>Map data.</strong> State outlines from the us-atlas project (U.S. Census Bureau cartographic boundaries). Base map © OpenStreetMap contributors.</p>
     <p><strong>Not legal advice.</strong> This map is for general information only. Laws change frequently, and effective dates, amendments and litigation can affect whether a provision applies. Consult the official text or a qualified attorney before relying on it.</p>
   </div>
 
+  <aside id="profile" class="profile" hidden aria-live="polite">
+    <button class="about-close" id="profileClose" aria-label="Close state profile">×</button>
+    <div id="profileBody"></div>
+  </aside>
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+  <script src="./data/us-states.js"></script>
+  <script src="./data/jobrisk.js"></script>
   <script src="./data/hubs.js"></script>
   <script src="./src/app.js"></script>
 </body>
