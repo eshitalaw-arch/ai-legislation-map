@@ -34,25 +34,32 @@ function passesFilters(props) {
   return okSector && okStatus;
 }
 
+const STATUS_COLORS = { passed: "#1b7f3b", pending: "#d97706", guidance: "#2563eb" };
+const STATUS_LABELS = { passed: "Passed", pending: "Pending", guidance: "Guidance" };
+const SECTOR_LABELS = {
+  healthcare: "Healthcare",
+  employment: "Employment",
+  biometrics: "Biometrics",
+  synthetic_media: "Synthetic media",
+  consumer_transparency: "Consumer transparency",
+  chatbots: "Chatbots & AI companions",
+  comprehensive: "Comprehensive / algorithmic discrimination",
+  frontier_models: "Frontier AI safety",
+  government: "Government use of AI"
+};
+
 function markerStyle(props) {
-  const byStatus = {
-    passed:   { radius: 7, fillOpacity: 0.95 },
-    pending:  { radius: 6, fillOpacity: 0.90 },
-    guidance: { radius: 6, fillOpacity: 0.75 }
-  };
-  return Object.assign(
-    { weight: 1, color: "#111", fillColor: "#111" },
-    byStatus[props.status] || { radius: 6, fillOpacity: 0.85 }
-  );
+  const fill = STATUS_COLORS[props.status] || "#555";
+  return { radius: 7, weight: 1.5, color: "#fff", fillColor: fill, fillOpacity: 0.95 };
 }
 
 function popupHTML(p) {
-  const safe = (x) => (x ?? "").toString();
+  const safe = (x) => (x ?? "").toString()
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-  // Use target=_self for local file:// reliability. Once you publish, you can switch to _blank.
   const sourceLink = p.source_url
     ? `<div style="margin-top:6px;">
-         <a href="${safe(p.source_url)}" target="_self" rel="noopener">
+         <a href="${safe(p.source_url)}" target="_blank" rel="noopener">
            ${safe(p.source_title || "Official source")}
          </a>
        </div>`
@@ -60,7 +67,7 @@ function popupHTML(p) {
 
   const analysisLink = p.analysis_url
     ? `<div>
-         <a href="${safe(p.analysis_url)}" target="_self" rel="noopener">
+         <a href="${safe(p.analysis_url)}" target="_blank" rel="noopener">
            ${safe(p.analysis_title || "Analysis")}
          </a>
        </div>`
@@ -71,7 +78,7 @@ function popupHTML(p) {
       <h3>${safe(p.title || "AI policy hub")}</h3>
       <div class="meta">
         <div><strong>${safe(p.state || "")}</strong></div>
-        <div>Status: ${safe(p.status || "—")} · Sector: ${safe(p.sector || "—")} · Updated: ${safe(p.last_updated || "—")}</div>
+        <div>Status: ${safe(STATUS_LABELS[p.status] || p.status || "—")} · Sector: ${safe(SECTOR_LABELS[p.sector] || p.sector || "—")} · Updated: ${safe(p.last_updated || "—")}</div>
       </div>
       <div>${safe(p.summary || "")}</div>
       ${sourceLink}
@@ -119,18 +126,41 @@ function attachHoverPopupBehavior(marker) {
 function render() {
   layerGroup.clearLayers();
 
-  const filtered = allFeatures.filter(f => passesFilters(f.properties || {}));
+  const filtered = allFeatures.filter(f => {
+    const c = f.geometry && f.geometry.coordinates;
+    return c && c.length === 2 && passesFilters(f.properties || {});
+  });
 
+  // Group entries that share a location so they can be fanned out in a ring
+  const groups = new Map();
   filtered.forEach(f => {
-    const coords = f.geometry && f.geometry.coordinates;
-    if (!coords || coords.length !== 2) return;
+    const key = f.geometry.coordinates.join(",");
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(f);
+  });
 
-    const [lng, lat] = coords;
+  const zoom = map.getZoom();
+  const placed = [];
+  groups.forEach(list => {
+    const [lng, lat] = list[0].geometry.coordinates;
+    if (list.length === 1) { placed.push([list[0], [lat, lng]]); return; }
+    const center = map.project([lat, lng], zoom);
+    const radiusPx = 9 + list.length * 2.5;
+    list.forEach((f, i) => {
+      const angle = (2 * Math.PI * i) / list.length - Math.PI / 2;
+      const pt = L.point(center.x + radiusPx * Math.cos(angle), center.y + radiusPx * Math.sin(angle));
+      const ll = map.unproject(pt, zoom);
+      placed.push([f, [ll.lat, ll.lng]]);
+    });
+  });
+
+  placed.forEach(([f, latlng]) => {
     const p = f.properties || {};
 
-    const marker = L.circleMarker([lat, lng], markerStyle(p));
+    const marker = L.circleMarker(latlng, markerStyle(p));
 
     marker.bindPopup(popupHTML(p), {
+      maxWidth: 320,
       closeButton: true,
       autoPan: true,
       closeOnClick: true
@@ -140,8 +170,11 @@ function render() {
     marker.addTo(layerGroup);
   });
 
-  if (countEl) countEl.textContent = `${filtered.length} hubs shown`;
+  if (countEl) countEl.textContent = `${filtered.length} entries shown`;
 }
+
+// Re-fan clustered markers when zoom changes so rings keep a constant on-screen size
+map.on("zoomend", render);
 
 // Load hubs from window.HUBS
 const fc = window.HUBS;

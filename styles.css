@@ -48,6 +48,6 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 .dot{ display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:8px; vertical-align:middle; background:#111; }
-.dot.passed{ opacity:0.9; }
-.dot.pending{ opacity:0.75; }
-.dot.guidance{ opacity:0.5; }
+.dot.passed{ background:#1b7f3b; }
+.dot.pending{ background:#d97706; }
+.dot.guidance{ background:#2563eb; }
