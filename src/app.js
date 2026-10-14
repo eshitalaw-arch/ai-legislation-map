@@ -204,6 +204,8 @@ function render() {
   }
   const panel = document.getElementById("profile");
   if (panel && !panel.hidden && currentProfile) openProfile(currentProfile, { keepScroll: true });
+  const cmp = document.getElementById("compare");
+  if (cmp && !cmp.hidden) drawCompare();
 }
 
 
@@ -234,8 +236,7 @@ const POL = window.POLITICS_2024 || null;
 const shadeSelect = document.getElementById("shadeSelect");
 const riskScale = document.getElementById("riskScale");
 const polScale = document.getElementById("polScale");
-const bothScale = document.getElementById("bothScale");
-const shadeMode = () => (shadeSelect ? shadeSelect.value : "none");
+const shadeMode = () => { const v = shadeSelect ? shadeSelect.value : "none"; return v === "both" ? "politics" : v; };
 // "R+1.7" / "D+5.9" from a signed margin (Republican positive)
 const marginText = (m) => (m == null ? "—" : (m > 0 ? "R+" : "D+") + (Math.abs(m) * 100).toFixed(1));
 const pct = (x) => (x == null ? "—" : (Math.round(x * 1000) / 10).toFixed(1) + "%");
@@ -278,30 +279,6 @@ function polColor(m) {
   return "#" + a.map((c, k) => Math.round(c + (b[k] - c) * local).toString(16).padStart(2, "0")).join("");
 }
 
-// Bivariate palette: column = 2024 result (D, close, R), row = job-risk third (0 low .. 2 high)
-const BIV = {
-  D0: "#c6dbef", D1: "#6baed6", D2: "#08519c",
-  S0: "#dadaeb", S1: "#9e9ac8", S2: "#54278f",
-  R0: "#fcbba1", R1: "#fb6a4a", R2: "#a50f15"
-};
-const CLOSE_MARGIN = 0.05;
-// Job-risk thirds across the 50 states (DC and territories excluded)
-const RISK_BREAKS = (() => {
-  if (!RISK) return [0, 0];
-  const v = Object.entries(RISK.states).filter(([k]) => k !== "District of Columbia" && k !== "Puerto Rico")
-    .map(([, x]) => x.pct_median).sort((a, b) => a - b);
-  return [v[Math.round(v.length / 3)], v[Math.round((2 * v.length) / 3)]];
-})();
-function bivKey(name) {
-  const r = RISK && RISK.states[name], v = POL && POL.states[name];
-  if (!r || !v) return null;
-  const col = Math.abs(v.margin) < CLOSE_MARGIN ? "S" : (v.margin > 0 ? "R" : "D");
-  const row = r.pct_median >= RISK_BREAKS[1] ? 2 : (r.pct_median >= RISK_BREAKS[0] ? 1 : 0);
-  return col + row;
-}
-const BIV_ROW = ["lower", "middle", "higher"];
-const BIV_COL = { D: "Harris won by 5+ pts", S: "decided by under 5 pts", R: "Trump won by 5+ pts" };
-
 map.createPane("statesPane");
 map.getPane("statesPane").style.zIndex = 350; // below markers (overlayPane = 400)
 
@@ -313,14 +290,13 @@ function stateStyle(feature) {
   let fill = "#ccc";
   if (mode === "risk") { const r = RISK && RISK.states[name]; fill = r ? riskColor(r.pct_median) : "#ccc"; }
   if (mode === "politics") { const v = POL && POL.states[name]; fill = v ? polColor(v.margin) : "#ccc"; }
-  if (mode === "both") { const k = bivKey(name); fill = k ? BIV[k] : "#ccc"; }
   return {
     pane: "statesPane",
     weight: on ? 0.8 : 0.5,
     color: on ? "#fff" : "#9a9a9a",
     opacity: on ? 1 : 0.35,
     fillColor: fill,
-    fillOpacity: on ? (mode === "both" ? 0.85 : 0.72) : 0
+    fillOpacity: on ? 0.72 : 0
   };
 }
 
@@ -340,13 +316,6 @@ if (window.topojson && window.US_STATES_TOPO) {
   }).addTo(map);
 }
 
-// Fill the bivariate legend swatches and job-risk labels
-document.querySelectorAll(".biv-grid i").forEach(el => { el.style.background = BIV[el.dataset.c]; });
-if (RISK) {
-  document.getElementById("bivLo").textContent = `Lower job risk (<${pct(RISK_BREAKS[0])})`;
-  document.getElementById("bivMid").textContent = `Middle`;
-  document.getElementById("bivHi").textContent = `Higher job risk (${pct(RISK_BREAKS[1])}+)`;
-}
 if (RISK) {
   document.getElementById("riskMin").textContent = pct(RISK.min_pct);
   document.getElementById("riskMax").textContent = pct(RISK.max_pct);
@@ -361,18 +330,14 @@ function shadeLine(name) {
   const r = RISK && RISK.states[name], v = POL && POL.states[name];
   const voteLine = v ? `<br>2024 president: <b>${marginText(v.margin)}</b> (Trump ${pct(v.r_pct)}, Harris ${pct(v.d_pct)})` : "";
   if (mode === "politics") return voteLine;
-  if (mode === "both") {
-    const k = bivKey(name);
-    return voteLine + (r ? `<br>Jobs at risk: <b>${pct(r.pct_median)}</b>${k ? ` (${BIV_ROW[+k[1]]} third of states)` : ""}` : "");
-  }
   return "";
 }
 
 shadeSelect?.addEventListener("change", () => {
   const mode = shadeMode();
+  if (shadeSelect.value === "both") openCompare(); else closeCompare(false);
   if (riskScale) riskScale.hidden = mode !== "risk";
   if (polScale) polScale.hidden = mode !== "politics";
-  if (bothScale) bothScale.hidden = mode !== "both";
   statesLayer?.setStyle(stateStyle);
   syncChromeHeights();
   render();
@@ -449,3 +414,136 @@ function openProfile(name, opts = {}) {
 // Draw once everything above is defined; badge sizes and callout positions depend on zoom
 render();
 map.on("zoomend", render);
+
+// ============================
+// Comparison chart: job risk (y) vs. 2024 presidential margin (x), one dot per state
+// ============================
+const compareEl = document.getElementById("compare");
+const compareChart = document.getElementById("compareChart");
+const compareTable = document.getElementById("compareTable");
+const ABBR = { "Alabama":"AL","Alaska":"AK","Arizona":"AZ","Arkansas":"AR","California":"CA","Colorado":"CO","Connecticut":"CT","Delaware":"DE",
+  "Florida":"FL","Georgia":"GA","Hawaii":"HI","Idaho":"ID","Illinois":"IL","Indiana":"IN","Iowa":"IA","Kansas":"KS","Kentucky":"KY",
+  "Louisiana":"LA","Maine":"ME","Maryland":"MD","Massachusetts":"MA","Michigan":"MI","Minnesota":"MN","Mississippi":"MS","Missouri":"MO",
+  "Montana":"MT","Nebraska":"NE","Nevada":"NV","New Hampshire":"NH","New Jersey":"NJ","New Mexico":"NM","New York":"NY",
+  "North Carolina":"NC","North Dakota":"ND","Ohio":"OH","Oklahoma":"OK","Oregon":"OR","Pennsylvania":"PA","Rhode Island":"RI",
+  "South Carolina":"SC","South Dakota":"SD","Tennessee":"TN","Texas":"TX","Utah":"UT","Vermont":"VT","Virginia":"VA","Washington":"WA",
+  "West Virginia":"WV","Wisconsin":"WI","Wyoming":"WY" };
+let compareTip = null;
+
+function compareRows() {
+  const counts = {};
+  allFeatures.map(f => f.properties).filter(passesFilters).forEach(p => { counts[p.state] = (counts[p.state] || 0) + 1; });
+  return Object.keys(ABBR).filter(n => POL && POL.states[n] && RISK && RISK.states[n]).map(n => ({
+    name: n, abbr: ABBR[n], margin: POL.states[n].margin, r: POL.states[n].r_pct, d: POL.states[n].d_pct,
+    risk: RISK.states[n].pct_median, n: counts[n] || 0
+  }));
+}
+
+function textOn(hex) {
+  const [r, g, b] = hex.match(/\w\w/g).map(h => parseInt(h, 16));
+  return (0.299 * r + 0.587 * g + 0.114 * b) > 150 ? "#1f1f1f" : "#fff";
+}
+
+function drawCompare() {
+  if (!compareChart) return;
+  const rows = compareRows();
+  // Draw at the container's real width so text stays readable on phones
+  const W = Math.max(340, Math.min(860, compareChart.clientWidth || 860));
+  const narrow = W < 600;
+  const H = narrow ? 420 : 460, m = { t: 14, r: 14, b: 46, l: narrow ? 50 : 58 };
+  const xMin = -0.35, xMax = 0.5, yMin = 0.044, yMax = 0.076;
+  const X = v => m.l + ((v - xMin) / (xMax - xMin)) * (W - m.l - m.r);
+  const Y = v => H - m.b - ((v - yMin) / (yMax - yMin)) * (H - m.t - m.b);
+  const rad = n => (narrow ? 8 : 9) + (narrow ? 1.6 : 2.6) * Math.sqrt(n);
+  let g = "";
+  for (let t = 0.045; t <= 0.0751; t += 0.005) {
+    g += `<line class="grid" x1="${m.l}" x2="${W - m.r}" y1="${Y(t)}" y2="${Y(t)}"/>` +
+         `<text class="axis-text" x="${m.l - 8}" y="${Y(t)}" text-anchor="end" dominant-baseline="central">${(t * 100).toFixed(1)}%</text>`;
+  }
+  for (let t = -0.3; t <= 0.501; t += (narrow ? 0.2 : 0.1)) {
+    const v = Math.round(t * 10) / 10;
+    const lab = v === 0 ? "Even" : (v < 0 ? "D+" : "R+") + Math.abs(v * 100).toFixed(0);
+    g += `<line class="grid" x1="${X(v)}" x2="${X(v)}" y1="${m.t}" y2="${H - m.b}"/>` +
+         `<text class="axis-text" x="${X(v)}" y="${H - m.b + 16}" text-anchor="middle">${lab}</text>`;
+  }
+  g += `<line class="zero" x1="${X(0)}" x2="${X(0)}" y1="${m.t}" y2="${H - m.b}"/>`;
+  g += `<text class="axis-title" x="${X(-0.18)}" y="${H - 6}" text-anchor="middle">← Harris won</text>`;
+  g += `<text class="axis-title" x="${X(0.25)}" y="${H - 6}" text-anchor="middle">Trump won →</text>`;
+  g += `<text class="axis-title" transform="translate(12 ${(H - m.b + m.t) / 2}) rotate(-90)" text-anchor="middle">${narrow ? "Jobs at risk ↑" : "Share of jobs at risk from AI ↑"}</text>`;
+  // Nudge overlapping dots apart (small, local moves) so every state stays visible and clickable
+  const pts = rows.map(d => ({ d, x0: X(d.margin), y0: Y(d.risk), x: X(d.margin), y: Y(d.risk), r: rad(d.n) }));
+  for (let it = 0; it < 200; it++) {
+    let moved = false;
+    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+      const a = pts[i], b = pts[j];
+      let dx = b.x - a.x, dy = b.y - a.y, dist = Math.hypot(dx, dy);
+      const need = a.r + b.r + 1;
+      if (dist < need) {
+        if (dist < 0.01) { dx = 1; dy = 0; dist = 1; }
+        const push = (need - dist) / 2;
+        a.x -= (dx / dist) * push; a.y -= (dy / dist) * push;
+        b.x += (dx / dist) * push; b.y += (dy / dist) * push;
+        moved = true;
+      }
+    }
+    pts.forEach(q => { q.x += (q.x0 - q.x) * 0.02; q.y += (q.y0 - q.y) * 0.02; }); // gentle pull back to the true spot
+    if (!moved) break;
+  }
+  // Big dots first so small ones stay on top
+  pts.sort((a, b) => b.r - a.r).forEach(q => {
+    const d = q.d, fill = polColor(d.margin);
+    const shifted = Math.hypot(q.x - q.x0, q.y - q.y0) > 3;
+    g += `<g class="pt" tabindex="0" role="button" data-state="${safe(d.name)}" aria-label="${safe(d.name)}: ${marginText(d.margin)}, ${pct(d.risk)} of jobs at risk, ${d.n} entries">` +
+      (shifted ? `<line x1="${q.x0.toFixed(1)}" y1="${q.y0.toFixed(1)}" x2="${q.x.toFixed(1)}" y2="${q.y.toFixed(1)}" stroke="#999" stroke-width="1"/><circle cx="${q.x0.toFixed(1)}" cy="${q.y0.toFixed(1)}" r="1.8" fill="#777"/>` : "") +
+      `<circle class="dot" cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="${q.r.toFixed(1)}" fill="${fill}"/>
+      <text class="dot-label" x="${q.x.toFixed(1)}" y="${q.y.toFixed(1)}" fill="${textOn(fill)}">${d.abbr}</text></g>`;
+  });
+  compareChart.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Scatter chart of states by 2024 presidential margin and share of jobs at risk from AI">${g}</svg>`;
+
+  const byName = Object.fromEntries(rows.map(r => [r.name, r]));
+  compareChart.querySelectorAll("g.pt").forEach(el => {
+    const d = byName[el.dataset.state];
+    const show = (ev) => {
+      if (!compareTip) { compareTip = document.createElement("div"); compareTip.className = "compare-tip"; document.body.appendChild(compareTip); }
+      compareTip.innerHTML = `<strong>${safe(d.name)}</strong><br>2024: <b>${marginText(d.margin)}</b> (Trump ${pct(d.r)}, Harris ${pct(d.d)})` +
+        `<br>Jobs at risk: <b>${pct(d.risk)}</b><br>${d.n} AI ${d.n === 1 ? "entry" : "entries"} on this map<br><span style="opacity:.7">Click for state profile</span>`;
+      const b = el.getBoundingClientRect();
+      compareTip.style.left = Math.min(window.innerWidth - 270, b.right + 8) + "px";
+      compareTip.style.top = Math.max(8, b.top - 10) + "px";
+      compareTip.hidden = false;
+    };
+    const hide = () => { if (compareTip) compareTip.hidden = true; };
+    el.addEventListener("mouseenter", show); el.addEventListener("focus", show);
+    el.addEventListener("mouseleave", hide); el.addEventListener("blur", hide);
+    const open = () => { hide(); openProfile(d.name); };
+    el.addEventListener("click", open);
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  });
+
+  if (compareTable) {
+    const sorted = [...rows].sort((a, b) => b.risk - a.risk);
+    compareTable.innerHTML = `<table><thead><tr><th>State</th><th class="num">Jobs at risk</th><th class="num">2024 margin</th><th class="num">AI entries</th></tr></thead><tbody>` +
+      sorted.map(d => `<tr><td>${safe(d.name)}</td><td class="num">${pct(d.risk)}</td><td class="num">${marginText(d.margin)}</td><td class="num">${d.n}</td></tr>`).join("") +
+      `</tbody></table>`;
+  }
+}
+
+function openCompare() {
+  if (!compareEl) return;
+  drawCompare();
+  compareEl.hidden = false;
+}
+function closeCompare(resetSelect = true) {
+  if (!compareEl || compareEl.hidden) return;
+  compareEl.hidden = true;
+  if (compareTip) compareTip.hidden = true;
+  if (resetSelect && shadeSelect && shadeSelect.value === "both") shadeSelect.value = "politics";
+}
+document.getElementById("compareClose")?.addEventListener("click", () => closeCompare());
+document.getElementById("compareTableToggle")?.addEventListener("click", e => {
+  e.preventDefault();
+  compareTable.hidden = !compareTable.hidden;
+  e.target.textContent = compareTable.hidden ? "View as table" : "Hide table";
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeCompare(); });
+window.addEventListener("resize", () => { if (compareEl && !compareEl.hidden) drawCompare(); });
