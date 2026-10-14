@@ -216,12 +216,4 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
 .src-tag { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em;
   color: #1b5e20; background: #e8f5e9; border-radius: 3px; padding: 0 4px; margin-right: 6px; }
 .src-tag.third { color: #6b4e00; background: #fff4d6; }
-details.verify { margin-top: 6px; font-size: 12px; border-radius: 6px; padding: 4px 8px; background: #f6f8f6; }
-details.verify summary { cursor: pointer; font-weight: 600; list-style: none; }
-details.verify summary::-webkit-details-marker { display: none; }
-details.verify .vi { display: inline-block; width: 16px; height: 16px; line-height: 16px; text-align: center; border-radius: 50%;
-  color: #fff; font-size: 10px; margin-right: 6px; }
-details.verify.ok .vi { background: #1b7f3b; } details.verify.part .vi { background: #b45309; }
-details.verify.warn .vi { background: #b91c1c; } details.verify.none .vi { background: #6b7280; }
-details.verify.part { background: #fff8eb; } details.verify.warn { background: #fdecec; } details.verify.none { background: #f1f1f3; }
-details.verify p { margin: 6px 0 2px; }
+.src-tag.plain { color: #555; background: #eee; }

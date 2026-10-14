@@ -24,11 +24,8 @@ window.HUBS = {
         "source_url": "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2026RS/SB63-enr.pdf",
         "analysis_title": "WAFF 48 News – AI commission weighs laws to keep kids, teens safe",
         "analysis_url": "https://www.waff.com/2026/07/24/ai-commission-weighs-laws-keep-kids-teens-safe/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "SB 63 text supports individual-patient review, disclosure, human adverse decisions and October 1, 2026 effectiveness. April passage date and the separate HB 324/commission claims need their own legislative sources.",
         "more_sources": []
       },
       "geometry": {
@@ -60,11 +57,8 @@ window.HUBS = {
         "source_url": "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2024RS/HB172-enr.pdf",
         "analysis_title": "TCPAWorld – Alabama deceptive media law",
         "analysis_url": "https://tcpaworld.com/2024/05/24/new-ai-law-alert-alabama-next-state-to-take-a-stand-against-ai-generated-deceptive-media-in-political-campaigns/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official enrolled text supports the disclaimer framework, misdemeanor/repeat-felony penalties and injunctive relief. Do not treat the enrolled version alone as evidence of gubernatorial signature.",
         "more_sources": []
       },
       "geometry": {
@@ -96,11 +90,8 @@ window.HUBS = {
         "source_url": "https://www.azleg.gov/legtext/57leg/1R/laws/0165.htm",
         "analysis_title": "Arizona Medical Association release",
         "analysis_url": "https://www.azmed.org/physicians-celebrate-new-law-to-regulate-artificial-intelligence-in-healthcare-medical-claims",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Chaptered text confirms medical-director review, independent judgment, May 12, 2025 approval and effectiveness after June 30, 2026. AI is not named in the text.",
         "more_sources": []
       },
       "geometry": {
@@ -132,11 +123,8 @@ window.HUBS = {
         "source_url": "https://commerce.arkansas.gov/?p=999",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Commerce announcement confirms October 3, 2025, free Google course/certificate scholarships and broad workforce eligibility. Categorize as a training initiative, not legal guidance.",
         "more_sources": []
       },
       "geometry": {
@@ -168,11 +156,8 @@ window.HUBS = {
         "source_url": "https://arkleg.state.ar.us/Acts/FTPDocument?path=%2FACTS%2F2025R%2FPublic%2F&file=927.pdf&ddBienniumSession=2025%2F2025R",
         "analysis_title": "Digital Policy Alert – Act 927",
         "analysis_url": "https://digitalpolicyalert.org/event/30887-act-regarding-the-ownership-of-model-training-and-content-generated-by-a-generative-artificial-intelligence-tool-hb-1876-was-signed-by-governor",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Act 927 text confirms input-based content/model ownership, employment exception, lawful-training-data condition and April 21, 2025 approval. August 5 commencement was not independently established by this short act text.",
         "more_sources": []
       },
       "geometry": {
@@ -204,11 +189,8 @@ window.HUBS = {
         "source_url": "https://arkleg.state.ar.us/Acts/FTPDocument?path=%2FACTS%2F2025R%2FPublic%2F&file=848.pdf&ddBienniumSession=2025%2F2025R",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Act 848 text supports public-entity policies, human responsibility and employee training. Keep the final act rather than an earlier bill version.",
         "more_sources": []
       },
       "geometry": {
@@ -240,11 +222,8 @@ window.HUBS = {
         "source_url": "https://www.gov.ca.gov/2026/09/30/californias-nation-leading-ai-framework-just-got-stronger-governor-newsom-signs-more-first-in-the-nation-worker-protections-and-more/",
         "analysis_title": "Fisher Phillips – California bans AI tools that read employees' emotions or nervous system data",
         "analysis_url": "https://www.fisherphillips.com/en/insights/insights/california-bans-ai-tools-that-read-employees-emotions-or-nervous-system-data.html",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Governor signing notice and signing message support September 30 enactment and emotion/neural-data restrictions. Final scope, safety exception, penalty and commencement require chaptered text.",
         "more_sources": [
           "https://www.gov.ca.gov/wp-content/uploads/2026/09/SIGN-msg-AB-1883.pdf"
         ]
@@ -278,11 +257,8 @@ window.HUBS = {
         "source_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1979",
         "analysis_title": "Latham & Watkins on 2026 California AI laws",
         "analysis_url": "https://www.lw.com/en/insights/newest-slate-of-ai-laws-keeps-california-at-the-forefront-of-us-regulation",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Governor confirms signing; official pre-enactment board/committee analyses support policy direction. Chapter 854 and the final wording need the chaptered text; an April bill analysis is not a substitute.",
         "more_sources": []
       },
       "geometry": {
@@ -314,11 +290,8 @@ window.HUBS = {
         "source_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202320240AB2013",
         "analysis_title": "AI Lawsuit Tracker – xAI v. Bonta",
         "analysis_url": "https://ailawsuittracker.com/cases/x-ai-llc-v-rob-bonta-2-25-cv-12295/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official law source host authenticated. Training-data law and March 2026 litigation are separate propositions; court order and November hearing schedule need direct judicial evidence. The linked statute cannot establish appeal status.",
         "more_sources": []
       },
       "geometry": {
@@ -350,11 +323,8 @@ window.HUBS = {
         "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202320240AB2839",
         "analysis_title": "AI Challenge Watch – Kohls v. Bonta",
         "analysis_url": "https://aichallengewatch.com/cases/kohls-v-bonta/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "Blocked by court (AB 2839 enjoined; AB 2655 unenforceable)",
-        "verification": "partial",
-        "verification_note": "Two laws and two litigation outcomes are combined but only AB 2839 is linked. Add AB 2655 and the relevant court orders. Preserve enacted status separately from injunction/preemption status; do not mark fully verified.",
         "more_sources": []
       },
       "geometry": {
@@ -386,11 +356,8 @@ window.HUBS = {
         "source_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1000",
         "analysis_title": "MoFo: California revamps AI transparency requirements",
         "analysis_url": "https://www.mofo.com/resources/insights/261001-california-revamps-ai-transparency-requirements",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official assembly analysis supports expansion beyond the one-million-user threshold and the verification-tool change. Final urgency, deadlines and AB 853 amendments require the current chaptered texts.",
         "more_sources": []
       },
       "geometry": {
@@ -422,11 +389,8 @@ window.HUBS = {
         "source_url": "https://www.labor.ca.gov/2026/07/14/california-launches-first-in-nation-ai-literacy-micro-credential-program/",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "LWDA confirms the pilot, SDSU Global Campus delivery and initial 500-person cohort from SDCCD and RESEA claimants. Categorize as a training programme.",
         "more_sources": []
       },
       "geometry": {
@@ -458,11 +422,8 @@ window.HUBS = {
         "source_url": "https://www.cppa.ca.gov/announcements/2025/20250923.html",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Use Adopted regulation. CPPA confirms January 1, 2026 effectiveness, ADMT compliance from January 1, 2027 and staged audit/assessment deadlines. Effective and compliance dates need distinct fields.",
         "more_sources": []
       },
       "geometry": {
@@ -494,11 +455,8 @@ window.HUBS = {
         "source_url": "https://calcivilrights.ca.gov/2025/06/30/civil-rights-council-secures-approval-for-regulations-to-protect-against-employment-discrimination-related-to-artificial-intelligence/",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "These are adopted, binding regulations, not guidance. Official CRD announcement confirms June 27, 2025 approval, October 1 effectiveness and four-year records retention.",
         "more_sources": []
       },
       "geometry": {
@@ -530,11 +488,8 @@ window.HUBS = {
         "source_url": "https://www.gov.ca.gov/wp-content/uploads/2026/05/5.21.26-AI-Workforce-EO-FINAL-SIGNED.pdf",
         "analysis_title": "DLA Piper – California Governor issues Executive Order on AI workforce disruption",
         "analysis_url": "https://www.dlapiper.com/en-us/insights/publications/2026/05/california-governor-issues-executive-order-on-ai-workforce-disruption",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Signed EO N-6-26 is a primary instrument supporting the workforce/WARN/dashboard directions. Categorize as Executive order, rather than general guidance.",
         "more_sources": []
       },
       "geometry": {
@@ -566,11 +521,8 @@ window.HUBS = {
         "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB1119",
         "analysis_title": "National Law Review – California enacts companion chatbot child-safety requirements",
         "analysis_url": "https://natlawreview.com/article/california-enacts-companion-chatbot-child-safety-requirements",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Enactment is corroborated by official governor material. Exact child-safety audit deadlines and small-operator exemption require current statutory text. Clarify that the revenue exemption concerns the relevant audit provision, rather than all chatbot duties.",
         "more_sources": []
       },
       "geometry": {
@@ -602,11 +554,8 @@ window.HUBS = {
         "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB53",
         "analysis_title": "Office of Governor Newsom – Executive Order N-9-26",
         "analysis_url": "https://www.gov.ca.gov/wp-content/uploads/2026/09/FINAL-N-9-26-AI-EO-9.18.26-SIGNED.pdf",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official senator/governor materials support SB 53 enactment and the signed N-9-26 order is available. The combined entry needs separate sources for the statute and September 2026 executive directions.",
         "more_sources": [
           "https://sd11.senate.ca.gov/news/governor-newsom-signs-senator-wieners-landmark-ai-law-set-commonsense-guardrails-boost"
         ]
@@ -640,11 +589,8 @@ window.HUBS = {
         "source_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB947",
         "analysis_title": "Latham & Watkins on 2026 California AI laws",
         "analysis_url": "https://www.lw.com/en/insights/newest-slate-of-ai-laws-keeps-california-at-the-forefront-of-us-regulation",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Governor confirms September 30 signing and human oversight for employment actions. A senator webpage gives an inconsistent August date; prefer the legislative history and signed chapter. Final penalties/operative date need chapter text.",
         "more_sources": []
       },
       "geometry": {
@@ -676,11 +622,8 @@ window.HUBS = {
         "source_url": "https://www.gov.ca.gov/2026/09/30/californias-nation-leading-ai-framework-just-got-stronger-governor-newsom-signs-more-first-in-the-nation-worker-protections-and-more/",
         "analysis_title": "Littler – California Amends Its WARN Act Again",
         "analysis_url": "https://www.littler.com/news-analysis/asap/california-amends-its-warn-act-again",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official governor notice confirms signing and layoff-transparency objective. Detailed EDD reporting deadlines and notice contents require SB 951 chaptered text; the announcement alone does not substantiate all details.",
         "more_sources": []
       },
       "geometry": {
@@ -712,11 +655,8 @@ window.HUBS = {
         "source_url": "https://coag.gov/ai/",
         "analysis_title": "Wiley alert on proposed rules",
         "analysis_url": "https://www.wiley.law/alert-Colorado-Proposes-Detailed-Rules-Implementing-New-ADMT-and-Chatbot-Laws",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Use Proposed regulation / rulemaking. The AG page confirms August 11 filing, October 6 interim draft and October 26 comment process. It is not an adopted final rule.",
         "more_sources": []
       },
       "geometry": {
@@ -748,11 +688,8 @@ window.HUBS = {
         "source_url": "https://leg.colorado.gov/bills/HB26-1139",
         "analysis_title": "Snell & Wilmer on Colorado AI health laws",
         "analysis_url": "https://www.swlaw.com/publication/update-colorados-three-front-ai-healthcare-landscape-has-shifted-what-changed-and-what-it-means/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Legislature enacted-law summary supports individual clinical factors, human review, regulatory disclosure and the AI psychotherapy payment prohibition. History confirms June 2 signing; uploaded signed-act date June 3 is a posting/version date.",
         "more_sources": []
       },
       "geometry": {
@@ -784,11 +721,8 @@ window.HUBS = {
         "source_url": "https://leg.colorado.gov/bills/HB26-1195",
         "analysis_title": "Snell & Wilmer on Colorado AI health laws",
         "analysis_url": "https://www.swlaw.com/publication/update-colorados-three-front-ai-healthcare-landscape-has-shifted-what-changed-and-what-it-means/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Enacted-law summary supports synchronous human-provider interaction, reviewed treatment plans and consent restrictions. Retain the statutory exceptions rather than describing a universal AI ban.",
         "more_sources": []
       },
       "geometry": {
@@ -820,11 +754,8 @@ window.HUBS = {
         "source_url": "https://leg.colorado.gov/bills/HB26-1263",
         "analysis_title": "Wiley alert on proposed Colorado ADMT and chatbot rules",
         "analysis_url": "https://www.wiley.law/alert-Colorado-Proposes-Detailed-Rules-Implementing-New-ADMT-and-Chatbot-Laws",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Legislature confirms enacted conversational-service safeguards and May 29, 2026 signature. AG webpage has a conflicting signing date; prioritize legislative history. Main duties begin January 1, 2027.",
         "more_sources": []
       },
       "geometry": {
@@ -856,11 +787,8 @@ window.HUBS = {
         "source_url": "https://leg.colorado.gov/bills/SB26-189",
         "analysis_title": "Davis Polk: Colorado repeals and replaces AI Act",
         "analysis_url": "https://www.davispolk.com/insights/client-update/colorado-repeals-and-replaces-landmark-ai-act-publishes-draft-rules-public",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Replace unconditional cure wording: before initiating qualifying enforcement actions before January 1, 2030, the AG provides a 60-day opportunity where cure is possible. The law also preserves existing discrimination litigation; exclusive AG enforcement is for this act.",
         "more_sources": []
       },
       "geometry": {
@@ -892,11 +820,8 @@ window.HUBS = {
         "source_url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00015-R00SB-00005-PA.PDF",
         "analysis_title": "Future of Privacy Forum – SB 5 in Five",
         "analysis_url": "https://fpf.org/blog/sb-5-in-five-what-to-know-about-connecticuts-new-ai-law/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official PA 26-15 text is indexed, but complete current provisions/amendments were not accessible. Employment, WARN, whistleblower and cure provisions must be tied to sections and checked against later 2026 amendments.",
         "more_sources": []
       },
       "geometry": {
@@ -928,11 +853,8 @@ window.HUBS = {
         "source_url": "https://prdext3.cga.ct.gov/olr/Documents/year/AA/2026AA-0077_2026%20Acts%20Affecting%20Higher%20Education.pdf",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official PA 26-15 indexed text confirms Board of Regents duty to establish the AI Academy by December 31, 2026. Remaining alliance/advisory details need section-level review.",
         "more_sources": [
           "https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00015-R00SB-00005-PA.pdf"
         ]
@@ -966,11 +888,8 @@ window.HUBS = {
         "source_url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00015-R00SB-00005-PA.PDF",
         "analysis_title": "Future of Privacy Forum – SB 5 in Five",
         "analysis_url": "https://fpf.org/blog/sb-5-in-five-what-to-know-about-connecticuts-new-ai-law/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official PA 26-15 source is indexed, but companion/provenance sections and their different dates were not fully readable. Do not infer that all provisions share one effective date.",
         "more_sources": []
       },
       "geometry": {
@@ -1002,11 +921,8 @@ window.HUBS = {
         "source_url": "https://cga.ct.gov/2026/ACT/PA/PDF/2026PA-00130-R00HB-05563-PA.PDF",
         "analysis_title": "EPIC – Connecticut enacts surveillance pricing ban",
         "analysis_url": "https://epic.org/connecticut-is-second-state-to-enact-surveillance-pricing-ban/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "qualified",
-        "verification_note": "The pricing framework originated in PA 26-64 (SB 4); PA 26-130 modifies it and delays pricing provisions to July 1, 2027. Cite both/current law. Official summary allows substantially similar disclosure, so that CSV wording is not by itself an error. Follow-up (Oct. 14, 2026): The audit's origin claim is confirmed. PA 26-64 (SB 4) §11, approved May 27, 2026 and effective Oct 1, 2026, enacted the original ban for retail sellers and third-party delivery services, with the disclosure 'THIS PRICE WAS INCREASED BY A PRICE SETTING DEVICE USING YOUR PERSONAL DATA' (www.cga.ct.gov PA 26-64 PDF). PA 26-130 §11, signed June 4, 2026, is marked '(NEW)', takes effect July 1, 2027, permits a 'substantially similar' disclosure, gives the AG enforcement under CUTPA and creates no private right of action. The audit's 'modifies' claim is not confirmed from text I could read: PA 26-130 never cites PA 26-64. Its only relevant repealer is §19, which repeals §44 of PA 26-100. A secondary source (recordinglaw.com) says PA 26-100 §66 repealed PA 26-64 §11 and §44 enacted a replacement, which PA 26-130 then repealed and re-enacted for July 1, 2027. The PA 26-100 PDF and the OLR summaries were blocked by robots, so I could not verify that chain. The summary is worded to avoid asserting the exact mechanism.",
         "more_sources": [
           "https://www.cga.ct.gov/2026/SUM/PDF/2026SUM00064-R02SB-00004-SUM.PDF",
           "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00064-R00SB-00004-PA.PDF"
@@ -1041,11 +957,8 @@ window.HUBS = {
         "source_url": "https://legis.delaware.gov/BillDetail/142629",
         "analysis_title": "Delaware News – AI sandbox initiative",
         "analysis_url": "https://news.delaware.gov/2025/07/23/delaware-launches-bold-ai-sandbox-initiative/",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "HJR 7 was signed July 23, 2025. Categorize as Adopted joint resolution; it directs a sandbox framework and does not by itself create an operational sandbox.",
         "more_sources": []
       },
       "geometry": {
@@ -1077,11 +990,8 @@ window.HUBS = {
         "source_url": "https://www.myfloridalegal.com/newsrelease/attorney-general-james-uthmeier-launches-criminal-investigation-openai-chatgpt",
         "analysis_title": "NBC 6 South Florida – Florida House again rejects DeSantis AI, vaccine measures",
         "analysis_url": "https://www.nbcmiami.com/news/local/florida-house-again-rejects-gov-desantis-ai-vaccine-measures/3802321/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official AG host and release identity authenticated. Investigation exists; claims about separate failed legislative sessions need bill histories. Use Investigation / enforcement action, rather than Guidance.",
         "more_sources": []
       },
       "geometry": {
@@ -1113,11 +1023,8 @@ window.HUBS = {
         "source_url": "https://www.flsenate.gov/Session/Bill/2024/919",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Florida legislative record supports enactment of AI political-ad disclosures as Chapter 2024-126. Core requirements and July 1, 2024 commencement are consistent.",
         "more_sources": []
       },
       "geometry": {
@@ -1149,11 +1056,8 @@ window.HUBS = {
         "source_url": "https://www.flsenate.gov/Session/Bill/2025/1161",
         "analysis_title": "FSU College of Law – HB 1161 (2025) 'Brooke's Law' and Platform Accountability",
         "analysis_url": "https://law.fsu.edu/node/22910",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official House record confirms June 10, 2025 effectiveness and Chapter 2025-133. Takedown procedure and good-faith provisions are consistent.",
         "more_sources": [
           "https://www.flhouse.gov/Sections/Bills/billsdetail.aspx?BillId=81845"
         ]
@@ -1187,11 +1091,8 @@ window.HUBS = {
         "source_url": "https://www.legis.ga.gov/legislation/73452",
         "analysis_title": "Regulations.ai – Georgia SB 540 summary",
         "analysis_url": "https://regulations.ai/regulations/RAI-US-GA-SB54000-2026",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Scope should be AI companion chatbots meeting the statutory definition, not all conversational AI services. The governor-hosted final text expressly excludes several customer-service, enterprise and narrow educational tools. Use SB 540 / O.C.G.A. 39-5-6 rather than implying an unverified formal short title. Follow-up (Oct. 14, 2026): The governor's download URL was blocked (permission prompt timed out). The legis.ga.gov bill page renders only a loading shell. The official enrolled-text document (legis.ga.gov/api/legislation/document/20252026/248169) returned binary data I could not parse. I read the enrolled text through LegiScan's copy of that same official PDF. It adds O.C.G.A. 39-5-6 with no short title. It covers 'AI companion chatbots', defined by three features: retaining prior interactions, asking unprompted emotion-based questions, and sustaining personal dialogue. It excludes internal business tools, enterprise, productivity and research tools, customer-service bots, voice assistants, narrow educational tools, and certain game and entertainment features. Duties include AI disclosure at session start and every 3 hours (hourly for minors), a crisis protocol with 988 referral and annual reporting, minors' protections against sexual content and romantic role-play, and account and parental tools for known minors. The AG may seek civil penalties up to $10,000 per knowing violation, with a 30-day cure for certain first violations; no private right of action is created. Effective July 1, 2027. LegiScan shows passage and signature on 2026-05-11. I could not verify 'Act 518' and dropped it from the summary.",
         "more_sources": [
           "https://gov.georgia.gov/document/2026-signed-legislation/sb-540/download"
         ]
@@ -1225,11 +1126,8 @@ window.HUBS = {
         "source_url": "https://www.legis.ga.gov/legislation/72666",
         "analysis_title": "Becker's – 7 AI health insurance state laws passed in 2026",
         "analysis_url": "https://www.beckerspayer.com/policy-updates/7-ai-health-insurance-state-laws-passed-in-2026/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Governor-hosted final SB 444 requires natural-person utilization review with a clinical peer before adverse determinations; AI cannot supersede peer judgment. January 1, 2027 effective date confirmed.",
         "more_sources": [
           "https://gov.georgia.gov/document/2026-signed-legislation/sb-444/download"
         ]
@@ -1263,11 +1161,8 @@ window.HUBS = {
         "source_url": "https://governor.hawaii.gov/?p=12919",
         "analysis_title": "Hawaii Public Radio – Green approves bills that crack down on artificial intelligence",
         "analysis_url": "https://www.hawaiipublicradio.org/local-news/2026-07-15/green-approves-bills-that-cracks-down-on-artificial-intelligence",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official governor announcement confirms Act 247/HB 2137 and signing. Replace press reports say effective immediately with a dated provision from the act; damages and commencement need final statutory text.",
         "more_sources": []
       },
       "geometry": {
@@ -1299,11 +1194,8 @@ window.HUBS = {
         "source_url": "https://governor.hawaii.gov/?p=12919",
         "analysis_title": "Hunton Andrews Kurth – Hawaii enacts AI companion disclosure and safety law",
         "analysis_url": "https://www.hunton.com/privacy-and-cybersecurity-law-blog/hawaii-enacts-ai-companion-disclosure-and-safety-law",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official governor announcement confirms Act 248/SB 3001 and companion-safety policy. Exact reporting date, enforcement and private-action exclusion need final act text.",
         "more_sources": []
       },
       "geometry": {
@@ -1335,11 +1227,8 @@ window.HUBS = {
         "source_url": "https://legislature.idaho.gov/sessioninfo/2026/legislation/S1297/",
         "analysis_title": "Orrick – 2026 State Chatbot Laws: Key Provisions and Regulatory Trends",
         "analysis_url": "https://www.orrick.com/en/Insights/2026/04/2026-State-Chatbot-Laws-Key-Provisions-and-Regulatory-Trends",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Official Idaho legislative host is legitimate, but the linked page/final PDF did not yield primary text in this review. Secondary trackers corroborate status but were not substituted for primary verification. Follow-up (Oct. 14, 2026): Resolved. The official bill page (legislature.idaho.gov) loaded. Its history shows: passed Senate 21-12-2 on 3/19, passed House 54-12-4 on 3/26, signed by the Governor 3/31/26, Session Law Ch. 249, effective 07/01/2027. The House passed the engrossed version without amendment, so S1297E1 is the final text, and I loaded it. It adds Idaho Code Title 48, Chapter 21. It covers publicly accessible 'conversational AI services', with exclusions for developer, enterprise, narrow-topic, voice-assistant, customer-service and game tools. General duties: AI disclosure, a suicidal-ideation crisis-referral protocol, and no programming to claim professional mental or behavioral health care. Known-minor duties: persistent disclosure or disclosure every 3 hours, no unpredictable engagement rewards, measures against sexual content, and parental and account tools. The AG enforces with $1,000 per violation capped at $500,000 per operator, or actual damages if greater, plus injunctions; the law states it creates no private right of action. The existing summary is accurate; I made one small addition.",
         "more_sources": [
           "https://legislature.idaho.gov/wp-content/uploads/sessioninfo/2026/legislation/S1297E1.pdf"
         ]
@@ -1373,11 +1262,8 @@ window.HUBS = {
         "source_url": "https://ilga.gov/legislation/ilcs/documents/082000420K5.htm",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Current official ILCS text supports applicant notice, explanation and consent for Illinois-based video interviews. Source also contains sharing/deletion duties; CSV is a selective summary.",
         "more_sources": [
           "https://www.ilga.gov/Legislation/ILCS/Articles?ActID=4015&ChapterID=6&Print=True"
         ]
@@ -1411,11 +1297,8 @@ window.HUBS = {
         "source_url": "https://ilga.gov/Legislation/publicacts/view/103-0769",
         "analysis_title": "ABA Business Law Today – Seventh Circuit holds BIPA damages amendment applies retroactively",
         "analysis_url": "https://www.americanbar.org/groups/business_law/resources/business-law-today/2026-may/7th-circuit-holds-bipa-damages-remedy-applies-retroactively",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official act confirms single-recovery/electronic-signature amendments. A directly retrieved Seventh Circuit opinion confirms retroactivity to pending cases; add that judicial source to support the litigation sentence.",
         "more_sources": [
           "https://media.ca7.uscourts.gov/cgi-bin/OpinionsWeb/processWebInputExternal.pl?Path=Y2026%2FD04-01%2FC%3A25-2762%3AJ%3ABrennan%3Aaut%3AT%3AfnOp%3AN%3A3515978%3AS%3A0&Submit=Display"
         ]
@@ -1449,11 +1332,8 @@ window.HUBS = {
         "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/HTML/10400HB1806.html",
         "analysis_title": "Sheppard Mullin – Illinois becomes first state to regulate AI in mental health therapy services",
         "analysis_url": "https://www.sheppard.com/insights/blogs/illinois-becomes-the-first-state-to-regulate-the-use-of-ai-mental-health-therapy-services",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official enrolled bill supports licensed-provider and AI-use restrictions. Check final public-act effective date, penalties and whether consent itself must be written versus written disclosure followed by consent.",
         "more_sources": []
       },
       "geometry": {
@@ -1485,11 +1365,8 @@ window.HUBS = {
         "source_url": "https://www.ilga.gov/ftp/legislation/103/BillStatus/HTML/10300HB3773.html",
         "analysis_title": "National Law Review (Ogletree Deakins) – Illinois postpones proposed regulations on AI in employment",
         "analysis_url": "https://natlawreview.com/article/illinois-postpones-proposed-regulations-ai-employment",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official bill record confirms PA 103-0804 and employment discrimination/notice amendments. The May/June 2026 rule-withdrawal narrative needs its own IDHR notice; the old bill history cannot prove it.",
         "more_sources": []
       },
       "geometry": {
@@ -1521,11 +1398,8 @@ window.HUBS = {
         "source_url": "https://www.ilga.gov/ftp/legislation/103/BillStatus/HTML/10300HB4875.html",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official bill record confirms PA 103-0836 and digital-replica/publicity-rights changes. Use final amendments rather than the synopsis as introduced.",
         "more_sources": []
       },
       "geometry": {
@@ -1557,11 +1431,8 @@ window.HUBS = {
         "source_url": "https://my.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB5760.xml",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "qualified",
-        "verification_note": "Pending status and January 1, 2034 sunset supported. Add latest action: referred to House Rules on May 5, 2026; filing on April 30 alone is not the current procedural position. Follow-up (Oct. 14, 2026): The official ILGA bill-status XML (my.ilga.gov) loaded but appears stale; its only action is the April 30, 2026 filing. It confirms the commission's scope and the January 1, 2034 repeal. The ilga.gov BillStatus page and the my.ilga.gov HTML page were robots-blocked, and lrb.ilga.gov was permission-blocked. LegiScan (secondary) shows First Reading and referral to the House Rules Committee on May 5, 2026 as the last action, matching the audit. The stage update rests on LegiScan, not an official page I could load.",
         "more_sources": [
           "https://www.ilga.gov/Legislation/BillStatus?DocNum=5760&DocTypeID=HB&GAID=18&LegId=0&Print=1&SessionID=114"
         ]
@@ -1595,11 +1466,8 @@ window.HUBS = {
         "source_url": "https://ilga.gov/Legislation/PublicActs/PrinterFriendly/104-0538",
         "analysis_title": "Office of Gov. JB Pritzker – Signing release (July 6, 2026)",
         "analysis_url": "https://gov-pritzker-newsroom.prezly.com/gov-pritzker-signs-nation-leading-artificial-intelligence-safety-law",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official governor announcement and legislative record corroborate enactment. Full final duties, 2028 implementation timing, audits and incident-reporting exceptions require current public-act text; avoid certifying from an earlier version.",
         "more_sources": []
       },
       "geometry": {
@@ -1631,11 +1499,8 @@ window.HUBS = {
         "source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=316&GAID=18&DocTypeID=SB&LegId=157798&SessionID=114",
         "analysis_title": "LegiScan – IL SB316 (2025-2026) history",
         "analysis_url": "https://legiscan.com/IL/bill/SB316/2025",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official bill is identified. The complete latest history was inaccessible in direct retrieval, so the exact 57-0 vote, May 31 re-referral and no movement since claim remain unconfirmed here.",
         "more_sources": []
       },
       "geometry": {
@@ -1667,11 +1532,8 @@ window.HUBS = {
         "source_url": "https://my.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB3571.xml",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "qualified",
-        "verification_note": "Update last action to May 22, 2026: Rule 3-9(a), re-referred to Assignments. The CSV mentions an earlier March committee assignment. Pending status remains appropriate. Follow-up (Oct. 14, 2026): The official XML (my.ilga.gov) loaded but is stale; its last entry is the 3/27/2026 Rule 2-10 deadline extension. It confirms the WARN Act amendments (820 ILCS 65/10, 65/45, new 65/47) and the assignment to the AI and Social Media committee. The official HTML status page was robots-blocked and lrb.ilga.gov was permission-blocked. LegiScan (secondary) shows the bill and Senate Committee Amendment 1 re-referred to Assignments under Rule 3-9(a) on May 22, 2026, matching the audit.",
         "more_sources": [
           "https://www.ilga.gov/ftp/legislation/104/BillStatus/HTML/10400SB3571.html"
         ]
@@ -1705,11 +1567,8 @@ window.HUBS = {
         "source_url": "https://iga.in.gov/legislative/2024/bills/house/1133/details",
         "analysis_title": "Indiana House Republicans – Olthoff's bill requiring disclosure of AI use in deceptive election ads now law",
         "analysis_url": "https://www.indianahouserepublicans.com/news/press-releases/olthoff-s-bill-requiring-disclosure-of-ai-use-in-deceptive-election-ads-now-law/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Indiana judiciary legislative update confirms HEA 1133 / Public Law 81, disclaimer requirement and candidate remedy. Primary legislature page is JavaScript-dependent.",
         "more_sources": [
           "https://legislativeupdate.courts.in.gov/2024/03/28/use-of-digitally-altered-media-in-elections/"
         ]
@@ -1743,11 +1602,8 @@ window.HUBS = {
         "source_url": "https://iga.in.gov/legislative/2026/bills/house/1271/details",
         "analysis_title": "Physicians Practice – Indiana law targets AI downcoding",
         "analysis_url": "https://www.physicianspractice.com/view/indiana-law-ai-downcoding-states-payers",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official legislature identifies HB 1271 and downcoding restrictions. Full final text/signature were not retrieved; the enrolled act is needed to verify the precise AI-only restriction and notice requirement.",
         "more_sources": []
       },
       "geometry": {
@@ -1779,11 +1635,8 @@ window.HUBS = {
         "source_url": "https://www.legis.iowa.gov/docs/publications/iactc/90.2/CH1065.pdf",
         "analysis_title": "MultiState – Iowa AI policy overview",
         "analysis_url": "https://www.multistate.ai/ai-policy-overview-iowa",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Chapter 1065 supports altered-intimate-image harassment and adult sex-offender registration. Separate SF 2243 statement needs its own primary source.",
         "more_sources": [
           "https://www.legis.iowa.gov/docs/acts/2024/CH1065.pdf"
         ]
@@ -1817,11 +1670,8 @@ window.HUBS = {
         "source_url": "https://www.legis.iowa.gov/docs/publications/iactc/91.2/CH1068.pdf",
         "analysis_title": "Iowa Capital Dispatch (via News From The States) – commentary on Iowa's new AI law",
         "analysis_url": "https://www.newsfromthestates.com/article/iowas-new-ai-law-start-stronger-regulations-are-needed-protect-kids",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Chapter 1068 confirms the conversational-service framework, penalties, May 2, 2026 approval and July 1, 2027 applicability. June 11 in the PDF is a production date, not signature.",
         "more_sources": []
       },
       "geometry": {
@@ -1853,11 +1703,8 @@ window.HUBS = {
         "source_url": "https://www.kslegislature.gov/bills/HB2313/",
         "analysis_title": "Byte Back (Husch Blackwell) – Kansas enacts law banning state use of DeepSeek",
         "analysis_url": "https://byteback.beehiiv.com/p/kansas-enacts-law-banning-state-use-of-deepseek",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Kansas record confirms signed substitute HB 2313 and state-device/network restrictions. Add deletion, country-list and exception clauses from the enrolled text before treating every detail as verified.",
         "more_sources": []
       },
       "geometry": {
@@ -1889,11 +1736,8 @@ window.HUBS = {
         "source_url": "https://www.kslegislature.gov/bills/SB186/",
         "analysis_title": "Regulations.ai – Kansas SB 186 summary",
         "analysis_url": "https://regulations.ai/regulations/RAI-US-KS-SB18600-2025",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Kansas record confirms signed SB 186 and synthetic-child-image/privacy offenses. Chapter/date details should be traced to the session law.",
         "more_sources": []
       },
       "geometry": {
@@ -1925,11 +1769,8 @@ window.HUBS = {
         "source_url": "https://apps.legislature.ky.gov/record/26rs/hb366.html",
         "analysis_title": "WKYT – Kentucky law targeting AI child sexual abuse materials takes effect",
         "analysis_url": "https://www.wkyt.com/2026/07/15/kentucky-law-targeting-ai-child-sexual-abuse-materials-takes-effect/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Kentucky official bill record supports computer-generated minor images and the 85% sentence requirement. Use final act/history for exact July commencement.",
         "more_sources": []
       },
       "geometry": {
@@ -1961,11 +1802,8 @@ window.HUBS = {
         "source_url": "https://apps.legislature.ky.gov/record/25rs/sb4.html",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Kentucky record confirms Chapter 66 and March 24, 2025 signature. Official enacted chapter includes AI governance and election-media provisions.",
         "more_sources": [
           "https://apps.legislature.ky.gov/law/acts/25RS/documents/0066.pdf"
         ]
@@ -1999,11 +1837,8 @@ window.HUBS = {
         "source_url": "https://www.legis.la.gov/legis/BillInfo.aspx?s=26RS&b=HB459&sbi=y",
         "analysis_title": "Phelps Dunbar – Louisiana targets AI use in political communications and digital content",
         "analysis_url": "https://www.phelps.com/insights/louisiana-targets-ai-use-in-political-communications-and-digital-content.html",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Louisiana record confirms HB 459 signed as Act 806. Final act available; HB 639/Act 559 is a distinct law and needs its own supporting source.",
         "more_sources": [
           "https://www.legis.la.gov/legis/BillInfo.aspx?i=250271",
           "https://www.legis.la.gov/Legis/ViewDocument.aspx?d=1481244"
@@ -2038,11 +1873,8 @@ window.HUBS = {
         "source_url": "https://www.legis.la.gov/legis/BillInfo.aspx?s=26RS&b=HB119&sbi=y",
         "analysis_title": "Phelps Dunbar – Louisiana targets AI use in political communications and digital content",
         "analysis_url": "https://www.phelps.com/insights/louisiana-targets-ai-use-in-political-communications-and-digital-content.html",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official records identify Acts 782 and 211; Act 211 digest confirms training-image prohibition and August 1, 2026 effect. Add both act texts for the combined row.",
         "more_sources": [
           "https://www.legis.la.gov/Legis/ViewDocument.aspx?d=1481219",
           "https://www.legis.la.gov/legis/ViewDocument.aspx?d=1483917"
@@ -2077,11 +1909,8 @@ window.HUBS = {
         "source_url": "https://www.maine.gov/governor/mills/news/task-force-releases-report-artificial-intelligence-maine-2025-11-10",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official governor report announcement is identified. Publication-path date and stated announcement date differ; the final report is needed to verify all 34 recommendations and exact announcement timing.",
         "more_sources": []
       },
       "geometry": {
@@ -2113,11 +1942,8 @@ window.HUBS = {
         "source_url": "https://lldc.mainelegislature.org/Open/Sums/132/sum132-LD-1727.pdf",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official legislative-library PDF identifies itself as an enacted-law summary and supports Chapter 294 chatbot transparency. It is a legislative summary, not the verbatim statute.",
         "more_sources": []
       },
       "geometry": {
@@ -2149,11 +1975,8 @@ window.HUBS = {
         "source_url": "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=HP1397&item=3&snum=132",
         "analysis_title": "Maine Law and Legislative Reference Library – LD 2082 law summary",
         "analysis_url": "https://lldc.mainelegislature.org/Open/Sums/132/sum132-LD-2082.pdf",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Change written consent to written disclosure and consent. The act requires specified information in writing and separately requires client/representative consent, without specifying that consent itself is written in the reviewed clause. Follow-up (Oct. 14, 2026): I loaded the chaptered law (P.L. ch. 687, approved Apr. 13, 2026). The audit is right that the client must be informed in writing of three things: that AI will be used, its specific purpose, and how session data is stored, retained, used for training and deleted. The audit is wrong that consent need not be written. Each licensing section defines 'Consent' as a clear, explicit and affirmative act communicating the individual's 'express, informed, voluntary, specific and unambiguous written agreement' (electronic or by initialing a section of a general consent-to-treatment form), revocable, and excluding broad terms-of-use acceptance. The existing summary's 'written consent' is therefore correct, and I made no change. Optional clarification: 'supplementary use requires written disclosure of specified information and the client's written, revocable consent.'",
         "more_sources": [
           "https://legislature.maine.gov/legis/bills/getPDF.asp?item=3&paper=HP1397&snum=132"
         ]
@@ -2187,11 +2010,8 @@ window.HUBS = {
         "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0818?ys=2024RS",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Maryland record confirms Chapter 496, July 1, 2024 effect and AI inventory/policy framework.",
         "more_sources": []
       },
       "geometry": {
@@ -2223,11 +2043,8 @@ window.HUBS = {
         "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0141?ys=2026RS",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official record confirms Chapter 444, May 12, 2026 approval, June 1 effectiveness and election-misinformation/deepfake response framework.",
         "more_sources": []
       },
       "geometry": {
@@ -2259,11 +2076,8 @@ window.HUBS = {
         "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb1202?ys=2020RS",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Chapter 446 supports employer facial-recognition waiver requirements; record confirms enactment without signature and October 1, 2020 effectiveness.",
         "more_sources": [
           "https://mgaleg.maryland.gov/2020RS/chapters_noln/Ch_446_hb1202T.pdf"
         ]
@@ -2297,11 +2111,8 @@ window.HUBS = {
         "source_url": "https://labor.maryland.gov/whatsnews/govmooreannouncesinvestmentstopreparemdworkersforaiandemergingtechnologyeconomies.shtml",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official February 18, 2026 announcement confirms total $4m, $1.5m internships, $1m upskilling and at least three employer partners. Categorize as funding/training initiative.",
         "more_sources": []
       },
       "geometry": {
@@ -2333,11 +2144,8 @@ window.HUBS = {
         "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb0895?ys=2026RS",
         "analysis_title": "Greenberg Traurig – Algorithmic pricing under fire: state restrictions on personalized and surveillance pricing",
         "analysis_url": "https://www.gtlaw.com/es/insights/2026/9/algorithmic-pricing-under-fire-state-restrictions-on-personalized-and-surveillance-pricing",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official record identifies enacted HB 895/Chapter 154. Precise retailer threshold, exemption scope, 45-day cure and private-action exclusion require full chapter text.",
         "more_sources": []
       },
       "geometry": {
@@ -2369,11 +2177,8 @@ window.HUBS = {
         "source_url": "https://www.mass.gov/news/ag-campbell-issues-advisory-providing-guidance-on-how-state-consumer-protection-and-other-laws-apply-to-artificial-intelligence",
         "analysis_title": "Massachusetts AGO – AI advisory text (PDF)",
         "analysis_url": "https://www.mass.gov/doc/ago-ai-advisory-41624/download",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official April 16, 2024 AG announcement supports application of existing consumer, discrimination and data laws to AI.",
         "more_sources": []
       },
       "geometry": {
@@ -2405,11 +2210,8 @@ window.HUBS = {
         "source_url": "https://www.mass.gov/news/governor-healey-and-google-announce-new-statewide-partnership-to-provide-free-ai-training-to-residents",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Government announcement is identified and Google primary announcement confirms February 26, 2026 partnership and no-cost AI/career training. Google corroboration is primary programme evidence, not a government source.",
         "more_sources": []
       },
       "geometry": {
@@ -2441,11 +2243,8 @@ window.HUBS = {
         "source_url": "https://www.mass.gov/news/governor-healey-calls-for-strong-ai-safety-and-transparency-protections-in-mass-wins-act",
         "analysis_title": "NBC Boston – Mass. Senate's $325M economic development bill seeks to add housing, rein in AI",
         "analysis_url": "https://www.nbcboston.com/news/local/mass-senates-325m-economic-development-bill-seeks-to-add-housing-rein-in-ai/3982505/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Senate official fact sheet supports S.3178 and AI safety provisions; governor September announcement is identified. Current conference status needs legislative history, beyond an executive press release.",
         "more_sources": [
           "https://malegislature.gov/PressRoom/Detail?pressReleaseId=1445"
         ]
@@ -2479,11 +2278,8 @@ window.HUBS = {
         "source_url": "https://malegislature.gov/Bills/194/H77",
         "analysis_title": "Massachusetts AFL-CIO – Joint Committee on Advanced IT hosts hearing on bill to place guardrails on use of AI",
         "analysis_url": "https://massaflcio.org/news/joint-committee-advanced-it-hosts-hearing-bill-place-guardrails-use-ai",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official H.77 text and history support FAIR Act employment safeguards and December 24, 2025 referral to House Ways and Means. Companion S.35 should have its own record.",
         "more_sources": []
       },
       "geometry": {
@@ -2515,11 +2311,8 @@ window.HUBS = {
         "source_url": "https://legislature.mi.gov/Bills/Bill?ObjectName=2023-HB-5141",
         "analysis_title": "MultiState – Michigan AI policy overview",
         "analysis_url": "https://www.multistate.ai/ai-policy-overview-michigan",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Michigan record identifies HB 5141/PA 263 and AI political-ad disclosure. Each of the other three acts should be linked to substantiate the package and common signature date.",
         "more_sources": []
       },
       "geometry": {
@@ -2551,11 +2344,8 @@ window.HUBS = {
         "source_url": "https://capitol.legislature.mi.gov/documents/2025-2026/publicact/htm/2025-PA-0011.htm",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official PA 11 text confirms the Protection from Intimate Deep Fakes Act and August 26, 2025 effective date. Criminal/civil remedies should be tied to both HB 4047 and HB 4048.",
         "more_sources": []
       },
       "geometry": {
@@ -2587,11 +2377,8 @@ window.HUBS = {
         "source_url": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-SB-0760",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Official Michigan host authenticated; direct latest SB 760 history was unavailable and primary searches did not establish the claimed vote/current House committee. Do not mark fully verified. Follow-up (Oct. 14, 2026): Resolved. The official Michigan bill page (legislature.mi.gov) loaded. History shows: Senate passed the S-1 substitute on 4/29/2026, roll call #66, 20 yeas and 17 nays (SJ 38, p. 394). The House received it the same day and referred it to the Committee on Communications and Technology (HJ 33, p. 549). The official description reads 'availability of companion chatbots to minors; prohibit'. I loaded the as-passed-Senate text. It regulates 'advanced chatbots', with exclusions for customer-service, research, internal, clinical and narrow educational tools. Unless the operator actually knows the user is an adult, it bars features that simulate companionship, facilitate self-harm, encourage secrecy or isolation, put engagement over safety, or generate sexual content. Enforcement: AG civil fines of $25,000 per violation and a private action for harmed minors or parents. Key provisions take effect when AG rules take effect. I enriched the summary.",
         "more_sources": [
           "https://legislature.mi.gov/documents/2025-2026/billengrossed/Senate/htm/2025-SEBS-0760.htm"
         ]
@@ -2625,11 +2412,8 @@ window.HUBS = {
         "source_url": "https://www.revisor.mn.gov/statutes/cite/609.771",
         "analysis_title": "Hamilton Lincoln Law Institute – Kohls v. Ellison case page",
         "analysis_url": "https://hlli.org/kohls-v-ellison/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Current statute supports election-deepfake offense. Specific 2026 court disposition and claimed coordinated case status need a directly retrieved judicial order; statute alone does not substantiate litigation.",
         "more_sources": []
       },
       "geometry": {
@@ -2661,11 +2445,8 @@ window.HUBS = {
         "source_url": "https://www.revisor.mn.gov/laws/2026/0/72/",
         "analysis_title": "MPR News – US appeals court blocks Minnesota law barring nudified photos in xAI lawsuit",
         "analysis_url": "https://mprnews.org/story/2026/10/02/us-appeals-court-blocks-minnesota-law-barring-nudified-photos-in-xai-lawsuit",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "Blocked by court pending appeal (8th Cir., Oct. 2, 2026)",
-        "verification": "partial",
-        "verification_note": "Official chapter/House summary confirm nudification ban, August 1 effect, civil penalties and damages. October 2 appeal injunction is independently reported but exact judicial order/scope was not retrieved; preserve unresolved litigation qualification.",
         "more_sources": [
           "https://www.revisor.mn.gov/laws/2026/0/Session%2BLaw/Chapter/72/",
           "https://www.house.mn.gov/NewLaws/story/2026/5741"
@@ -2700,11 +2481,8 @@ window.HUBS = {
         "source_url": "https://www.revisor.mn.gov/bills/bill.php?b=Senate&f=SF4576&ssn=0&y=2026",
         "analysis_title": "MultiState – AI Workforce Protection Bills Emerge as States Weigh Job Displacement Risks",
         "analysis_url": "https://www.multistate.ai/updates/vol-108-ai-workforce-displacement-legislation",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Current Revisor history confirms companion HF 4369 and April 7, 2026 amended pass/re-referral to State and Local Government. Replace the inaccessible older-format URL.",
         "more_sources": [
           "https://www.revisor.mn.gov/bills/94/2026/0/SF/4576/"
         ]
@@ -2738,11 +2516,8 @@ window.HUBS = {
         "source_url": "https://www.peer.ms.gov/sites/default/files/2026-01/AIRTF_FInal_011326.pdf",
         "analysis_title": "Regulations.ai – Mississippi HB 1723 (2026)",
         "analysis_url": "https://regulations.ai/regulations/RAI-US-MS-HB17230-2026",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official task-force report supports seven voting members/2027 sunset. Official 2026 legislative summary confirms HB 1723 signed March 9 and effective July 1. Add that source for the separate law.",
         "more_sources": [
           "https://www.legislature.ms.gov/media/1368/26-summary.pdf"
         ]
@@ -2776,11 +2551,8 @@ window.HUBS = {
         "source_url": "https://governorreeves.ms.gov/state-of-mississippi-to-advance-artificial-intelligence-education-innovation-and-workforce-development-with-nvidia/",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official June 18, 2025 MOU announcement supports institutional training, MAIN/AccelerateMS collaboration and NVIDIA Deep Learning Institute resources.",
         "more_sources": []
       },
       "geometry": {
@@ -2812,11 +2584,8 @@ window.HUBS = {
         "source_url": "https://governorreeves.ms.gov/?p=1463",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Governor announcement and ITS official explanation confirm EO 1584, January 8, 2025 date and AI inventory/procurement-policy directions. Categorize as Executive order.",
         "more_sources": [
           "https://www.its.ms.gov/services/innovating"
         ]
@@ -2850,11 +2619,8 @@ window.HUBS = {
         "source_url": "https://www.sos.mo.gov/CMSImages/Library/Reference/Orders/2026/26-02.pdf",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Secretary of State published order confirms January 13, 2026 date, education/workforce directions and November 30 reporting deadline.",
         "more_sources": [
           "https://www.sos.mo.gov/library/reference/orders/2026/eo2"
         ]
@@ -2888,11 +2654,8 @@ window.HUBS = {
         "source_url": "https://mca.legmt.gov/bills/mca/title_0020/chapter_0210/part_0010/section_0020/0020-0210-0010-0020.html",
         "analysis_title": "Montana Free Press Capitol Tracker – HB 178",
         "analysis_url": "https://projects.montanafreepress.org/capitol-tracker-2025/bills/hb-178/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Current MCA 2-21-102 confirms the prohibited government uses and surveillance exceptions. Broad policy summary is consistent.",
         "more_sources": []
       },
       "geometry": {
@@ -2924,11 +2687,8 @@ window.HUBS = {
         "source_url": "https://mca.legmt.gov/bills/mca/title_0020/chapter_0100/part_0020/section_0040/0020-0100-0020-0040.html",
         "analysis_title": "Montana Free Press Capitol Tracker – SB 212",
         "analysis_url": "https://projects.montanafreepress.org/capitol-tracker-2025/bills/sb-212/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "MCA 2-10-204 confirms right-to-compute standard. Critical-infrastructure clause and signing date are outside the linked section; add the full act/other sections.",
         "more_sources": []
       },
       "geometry": {
@@ -2960,11 +2720,8 @@ window.HUBS = {
         "source_url": "https://nebraskalegislature.gov/FloorDocs/109/PDF/Slip/LB525.pdf",
         "analysis_title": "Nebraska Unicameral Update – LB 1185 chatbot provisions added to LB 525",
         "analysis_url": "https://update.legislature.ne.gov/?p=40584",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official LB 525 text/history confirm folded LB 1185, April 14, 2026 approval, July 1, 2027 AI provisions, no private action and penalty cap.",
         "more_sources": [
           "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=59601"
         ]
@@ -2998,11 +2755,8 @@ window.HUBS = {
         "source_url": "https://www.leg.state.nv.us/App/NELIS/REL/83rd2025/Bill/12575/Overview",
         "analysis_title": "Wilson Sonsini – Nevada passes law limiting AI use for mental and behavioral healthcare",
         "analysis_url": "https://www.wsgr.com/en/insights/nevada-passes-law-limiting-ai-use-for-mental-and-behavioral-healthcare.html",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official Nevada record and legislative texts identify the AI/mental-health policy. Retrieved pre-final versions are insufficient to certify final scope, penalty and dates.",
         "more_sources": []
       },
       "geometry": {
@@ -3034,11 +2788,8 @@ window.HUBS = {
         "source_url": "https://gc.nh.gov/bill_status/pdf.aspx?q=billVersion&id=17004",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Liquidated damages are at least $1,000 per violation, not a fixed $1,000 ceiling or exclusive remedy. Final Chapter 270 confirms AG-only action, 90-day cure, August 1 approval and January 1, 2026 effect. Follow-up (Oct. 14, 2026): I loaded the official Chapter 270 text (gc.nh.gov). RSA 507:8-k III makes the operator liable for no less than $1,000 per violation in liquidated damages, so $1,000 is a floor, not a fixed amount. Paragraph II gives the AG 'the sole right of action' and requires 90 days for satisfactory assurances of a cure before suit. RSA 639:3 III-a covers knowingly directing communications intended to get a child to imminently engage in sexual conduct (or the production of depictions of it), illegal drug or alcohol use, self-harm or suicide, or violent crime. Approved Aug. 1, 2025; effective Jan. 1, 2026.",
         "more_sources": []
       },
       "geometry": {
@@ -3070,11 +2821,8 @@ window.HUBS = {
         "source_url": "https://gc.nh.gov/rsa/html/LXII/638/638-26-a.htm",
         "analysis_title": "Akin – New Hampshire imposes new regulations on AI and criminalizes deepfakes",
         "analysis_url": "https://www.akingump.com/en/insights/ai-law-and-regulation-tracker/new-hampshire-imposes-new-regulations-on-ai-and-criminalizes-deepfakes",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Current RSA 638:26-a supports knowingly harmful deepfakes as a Class B felony. Civil/lobbyist provisions are separate sections and need links to the complete act.",
         "more_sources": []
       },
       "geometry": {
@@ -3106,11 +2854,8 @@ window.HUBS = {
         "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A5500/5316_I1.PDF",
         "analysis_title": "MultiState – AI Workforce Protection Bills Emerge as States Weigh Job Displacement Risks",
         "analysis_url": "https://www.multistate.ai/updates/vol-108-ai-workforce-displacement-legislation",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official legislature PDF and HTML confirm introduced A5316, June 23, 2026 and workforce-transition proposal. Status must remain proposed.",
         "more_sources": [
           "https://pub.njleg.gov/Bills/2026/A5500/5316_I1.HTM"
         ]
@@ -3144,11 +2889,8 @@ window.HUBS = {
         "source_url": "https://www.nj.gov/oag/newsreleases25/2025-0108_DCR-Guidance-on-Algorithmic-Discrimination.pdf",
         "analysis_title": "Littler – AI in the Garden State",
         "analysis_url": "https://www.littler.com/news-analysis/asap/ai-garden-state-new-guidance-algorithmic-discrimination-and-new-jersey-law",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official January 2025 DCR guidance confirms vendor tools do not immunize users and discrimination can occur without intent. Guidance is not a new statute.",
         "more_sources": []
       },
       "geometry": {
@@ -3180,11 +2922,8 @@ window.HUBS = {
         "source_url": "https://www.nj.gov/labor/assets/PDFs/WIOA/documents/resources/AI%20Guidance%20WD-PY25-14.pdf",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official WD-PY25-14 document supports WIOA/AI-literacy, USDOL competencies, intake assessment and work-based learning. Guidance classification is appropriate.",
         "more_sources": []
       },
       "geometry": {
@@ -3216,11 +2955,8 @@ window.HUBS = {
         "source_url": "https://nj.gov/governor/news/news/562025/approved/20250402a.shtml",
         "analysis_title": "Akin – NJ Enacts Law Against Deceptive AI Deepfakes",
         "analysis_url": "https://www.akingump.com/en/insights/ai-law-and-regulation-tracker/new-jersey-enacts-law-against-deceptive-ai-deepfakes",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official governor release is identified. Exact offenses, $30,000 fine and civil-action scope require enacted A3540/S2544, not the announcement alone.",
         "more_sources": []
       },
       "geometry": {
@@ -3252,11 +2988,8 @@ window.HUBS = {
         "source_url": "https://www.nj.gov/governor/news/2026/20260723a.shtml",
         "analysis_title": "Lowenstein Sandler – NJ Fair Price Protection Act",
         "analysis_url": "https://www.lowenstein.com/news-insights/publications/client-alerts/new-jersey-s-fair-price-protection-act-prohibits-surveillance-pricing-for-groceries-amid-developing-regulatory-landscape-white-collar",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official governor confirms Fair Price Protection Act signing. August 2027 main prohibition, February shelf-label moratorium and exemptions need the actual Chapter 55; unavailable direct chapter was not certified.",
         "more_sources": []
       },
       "geometry": {
@@ -3288,11 +3021,8 @@ window.HUBS = {
         "source_url": "https://pub.njleg.gov/Bills/2026/S2000/1840_I1.HTM",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official introduced S1840 text supports AI Horizon Fund, revenue assessment and 13-week unemployment-benefit proposal. It remains a proposal, not an operative tax.",
         "more_sources": []
       },
       "geometry": {
@@ -3324,11 +3054,8 @@ window.HUBS = {
         "source_url": "https://pub.njleg.state.nj.us/bills/2026/S4500/4075_I1.HTM",
         "analysis_title": "Philadelphia Inquirer – NJ bill on AI and workers (Oct. 2026)",
         "analysis_url": "https://www.inquirer.com/politics/ai-worker-protection-nj-bill-20261007.html",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Official October 1 committee statement supports favourable Labor action and core proposal. The source is a committee statement, not bill text. Add introduced/current text and current status record. Follow-up (Oct. 14, 2026): I loaded the official introduced text (pub.njleg.state.nj.us .../4075_I1.HTM): introduced May 4, 2026 by Sens. Zwicker, Turner and Scutari; effective 18 months after enactment. The pub.njleg.gov host the audit cited was permission-blocked, so I used the state.nj.us host. I also loaded the Oct. 1, 2026 Senate Labor Committee statement, which confirms the favorable report and the core provisions. The official bill-search page rendered without data. LegiScan (secondary) shows a 5-0 committee vote, referral to Senate Budget and Appropriations on Oct. 1, 2026, and Assembly companion A4981. The source now points to the bill text and the committee statement moves to extra_sources.",
         "more_sources": [
           "https://pub.njleg.gov/Bills/2026/S4500/4075_S1.PDF",
           "https://pub.njleg.gov/Bills/2026/S4500/4075_I1.HTM",
@@ -3364,11 +3091,8 @@ window.HUBS = {
         "source_url": "https://www.nmlegis.gov/Legislation/Legislation?chamber=H&legType=B&legNo=182&year=24",
         "analysis_title": "BABL AI – New Mexico enacts AI disclosure law for campaign ads",
         "analysis_url": "https://babl.ai/new-mexico-enacts-law-requiring-disclosure-of-ai-generated-content-in-political-campaign-ads/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Final law also requires the disclaimer at intervals no longer than two minutes for audio over two minutes. Clarify materially deceptive media as defined and the separate civil/criminal enforcement routes. Follow-up (Oct. 14, 2026): I loaded the final HB 182 text (nmlegis.gov/Sessions/24 Regular/final/HB0182.pdf) and the bill page (chaptered as ch. 57, signed 3/5/2024). Confirmed:\n- 'Materially deceptive media' is defined (§1-19-26) as AI-made image, video or audio depicting a person in speech or conduct they did not engage in, published without consent.\n- For audio-only ads (§1-19-26.4), the disclaimer must be spoken at the beginning, at the end, and at intervals of at most two minutes for audio longer than two minutes.\n- Disclaimer violations carry civil penalties under §1-19-34.6.\n- §1-19-26.8 separately prohibits knowingly distributing such media within 90 days before an election with intent to mislead voters, unless it carries a disclaimer.\n- Willful and knowing violations are a misdemeanor, or a fourth-degree felony on a second conviction.\n- The AG, DAs, the depicted person, candidates or voter organizations may seek injunctions.\nCorrection beyond the audit: the text never mentions the State Ethics Commission, and mentions the Secretary of State only to define 'prescribed form'. I removed the existing claim that the Commission leads enforcement alongside the SoS because the loaded text does not support it.",
         "more_sources": [
           "https://www.nmlegis.gov/Sessions/24%20Regular/final/HB0182.pdf"
         ]
@@ -3402,11 +3126,8 @@ window.HUBS = {
         "source_url": "https://www.osc.ny.gov/state-agencies/audits/2025/12/02/enforcement-local-law-144-automated-employment-decision-tools",
         "analysis_title": "DLA Piper – Critical audit of NYC AI hiring law (Jan. 2026)",
         "analysis_url": "https://www.dlapiper.com/en-au/insights/publications/2026/01/critical-audit-of-nyc-ai-hiring-law-signals-increased-risk-for-employers",
-        "analysis_type": "Third-party",
         "jurisdiction": "City (New York City)",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Comptroller audit supports Local Law 144 audit/notice requirements and enforcement weaknesses. NYC is municipal jurisdiction and should not be counted as another statewide law.",
         "more_sources": []
       },
       "geometry": {
@@ -3438,11 +3159,8 @@ window.HUBS = {
         "source_url": "https://www.nysenate.gov/legislation/bills/2025/A3719",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official A3719 text/history supports robot-tax proposal and January 7, 2026 Ways and Means referral.",
         "more_sources": []
       },
       "geometry": {
@@ -3474,11 +3192,8 @@ window.HUBS = {
         "source_url": "https://www.nysenate.gov/legislation/bills/2025/A9533",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Identify current version as A9533A. Text specifies the lesser of 25 employees or 25% of workforce and a 90-day transition measured from notice; avoid implying an additional consecutive 90-day period. Follow-up (Oct. 14, 2026): I loaded the nysenate.gov A9533 page. The active version is A9533A (amended and recommitted to Labor 4/23/2026; reported and referred to Codes 4/28/2026). The text confirms:\n- 50+ full-time employees in the state.\n- No fewer than 90 days' written notice before a technological displacement of 25 or more employees or 25% of the workforce, 'whichever is less'.\n- A 'transition employment period of ninety days from the date of notice', with continued employment or equivalent wages, or employer-paid approved retraining.\n- Five-year ineligibility for state grants, loans and tax incentives.\n- Up to $10,000 per day for willful violations, plus up to 60 days' back pay for failure to give notice.",
         "more_sources": []
       },
       "geometry": {
@@ -3510,11 +3225,8 @@ window.HUBS = {
         "source_url": "https://www.nysenate.gov/legislation/bills/2025/A9581",
         "analysis_title": "Thompson Coburn – New York Legislature passes AI workforce impact disclosure bill",
         "analysis_url": "https://www.thompsoncoburn.com/insights/new-york-legislature-passes-ai-workforce-impact-disclosure-bill/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Use A9581B/S8706B and Passed both chambers; not enacted. Official history confirms June 4 Senate passage and no listed governor delivery. Do not imply that legislative passage creates an operative reporting duty.",
         "more_sources": []
       },
       "geometry": {
@@ -3546,11 +3258,8 @@ window.HUBS = {
         "source_url": "https://www.governor.ny.gov/news/governor-hochul-pens-letter-ai-companion-companies-notifying-them-safeguard-requirements-are",
         "analysis_title": "Fenwick – NY AI Companion Safeguard Law Takes Effect",
         "analysis_url": "https://www.fenwick.com/insights/publications/new-yorks-ai-companion-safeguard-law-takes-effect",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official governor notice confirms existing AI-companion safeguards are in force. Use actual GBL Article 47 for full enforcement/penalty definitions.",
         "more_sources": []
       },
       "geometry": {
@@ -3582,11 +3291,8 @@ window.HUBS = {
         "source_url": "https://its.ny.gov/node/11046",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official April 6, 2026 ITS release confirms statewide training, over 100,000 staff, InnovateUS and required training for agencies choosing AI Pro.",
         "more_sources": []
       },
       "geometry": {
@@ -3618,11 +3324,8 @@ window.HUBS = {
         "source_url": "https://ag.ny.gov/press-release/2025/attorney-general-james-warns-new-yorkers-about-algorithmic-pricing-new-law-takes",
         "analysis_title": "Greenberg Traurig – State restrictions on personalized pricing (Sept. 2026)",
         "analysis_url": "https://www.gtlaw.com/es/insights/2026/9/algorithmic-pricing-under-fire-state-restrictions-on-personalized-and-surveillance-pricing",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official AG release supports enacted pricing-disclosure rule. Current official companion-bill history separately supports the still-unenacted broader proposal; distinguish them.",
         "more_sources": [
           "https://www.nysenate.gov/legislation/bills/2025/S8623/amendment/B"
         ]
@@ -3656,11 +3359,8 @@ window.HUBS = {
         "source_url": "https://governor.ny.gov/news/governor-hochul-announces-membership-futureworks-commission",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official March 19 and May 18 releases confirm launch, 20 members, three chairs and end-of-year recommendations. Categorize as Commission / initiative.",
         "more_sources": []
       },
       "geometry": {
@@ -3692,11 +3392,8 @@ window.HUBS = {
         "source_url": "https://www.nysenate.gov/legislation/bills/2025/S9051",
         "analysis_title": "Bloomberg Law – AI chatbots for minors face new restrictions under NY bill (June 5, 2026)",
         "analysis_url": "https://news.bloomberglaw.com/health-law-and-business/ai-chatbots-for-minors-to-face-new-restrictions-under-ny-bill",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Current version S9051B/A10379C is passed by both chambers, not enacted. The January 1, 2027 date is a proposed date. Official history supports the listed June passage dates.",
         "more_sources": []
       },
       "geometry": {
@@ -3728,11 +3425,8 @@ window.HUBS = {
         "source_url": "https://www.nysenate.gov/legislation/laws/CVS/80",
         "analysis_title": "Manhattan Institute – New York's LOADinG Act: Protecting public-sector jobs from AI",
         "analysis_url": "https://manhattan.institute/article/new-yorks-loading-act-protecting-public-sector-jobs-from-ai",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "corrected",
-        "verification_note": "Update for S8831, Chapter 86 of 2026, signed February 13. Current Civil Service Law 80(10) bars displacement by defined AI systems; do not extend it indiscriminately to all automated decision tools. July 1, 2028 sunset is confirmed. Follow-up (Oct. 14, 2026): I loaded three official pages.\n- S8831: signed as Chapter 86 on Feb 13, 2026, a chapter amendment to L.2025 c.711. Its §12 amends Civil Service Law §80(10) to strike 'and automated decision-making tools', and its §17 sets the July 1, 2028 expiration.\n- Current CVS §80 text (revision 2026-02-27): applies to 'artificial intelligence systems as defined by section one hundred three-e of the state technology law'. Use may not cause discharge, displacement or loss of position, including partial displacement (reduced hours, wages or benefits); may not transfer existing duties to an AI system; may not impair bargaining agreements; and must preserve existing employees' rights. It covers the state, public authorities, local governments, school districts and BOCES, and is marked 'Repealed July 1, 2028'.\n- S7599C: ch. 711 of 2025, signed Dec 19, 2025, which had extended the protections to automated decision-making tools before S8831 narrowed them back.\nThe source now points to the current statute.",
         "more_sources": [
           "https://www.nysenate.gov/legislation/bills/2025/S8831",
           "https://www.nysenate.gov/legislation/laws/CVS/80",
@@ -3768,11 +3462,8 @@ window.HUBS = {
         "source_url": "https://www.nysenate.gov/legislation/bills/2025/S8828",
         "analysis_title": "Wiley – NY Finalizes RAISE Act",
         "analysis_url": "https://www.wiley.law/alert-New-York-Finalizes-RAISE-Act-for-Frontier-AI-Models-Law-Takes-Effect-January-1-2027",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official S8828 history/text support March 27, 2026 chapter amendment and January 1, 2027 operative law. Keep original act and amendment linked; coverage/enforcement summaries should preserve statutory definitions.",
         "more_sources": []
       },
       "geometry": {
@@ -3804,11 +3495,8 @@ window.HUBS = {
         "source_url": "https://legislation.nysenate.gov/pdf/bills/2025/s8928",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official S8928 text/history confirms January 16 introduction, Labor committee status, WARN disclosure and two-year pilot. Replace inaccessible PDF URL with readable bill page.",
         "more_sources": [
           "https://www.nysenate.gov/legislation/bills/2025/S8928"
         ]
@@ -3842,11 +3530,8 @@ window.HUBS = {
         "source_url": "https://www.nysenate.gov/legislation/bills/2025/S8420/amendment/A",
         "analysis_title": "Cooley – NY Enacts Synthetic Performer Disclosure Law",
         "analysis_url": "https://www.cooley.com/news/insight/2026/2026-01-29-new-york-enacts-synthetic-performer-disclosure-law-for-advertisements-including-those-using-generative-ai",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official S8420A record/text supports synthetic-performer advertising disclosure and penalties; current chapter/effective-date information is consistent.",
         "more_sources": []
       },
       "geometry": {
@@ -3878,11 +3563,8 @@ window.HUBS = {
         "source_url": "https://www.governor.ny.gov/sites/default/files/2025-01/2025StateoftheStateBook.pdf",
         "analysis_title": "Hunton Andrews Kurth – New York WARN Act: No AI-Related Layoffs Reported in First Year",
         "analysis_url": "https://www.hunton.com/hunton-employment-labor-perspectives/new-york-warn-act-no-ai-related-layoffs-reported-in-first-year-of-adding-ai-related-disclosure-to-the-system",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "State of the State supports policy intent. The March checkbox implementation and assertion that no filer checked it for over a year are empirical claims not proved by that source; add form-version evidence and dated analysis, or remove them.",
         "more_sources": []
       },
       "geometry": {
@@ -3914,11 +3596,8 @@ window.HUBS = {
         "source_url": "https://governor.nc.gov/executive-order-no-24-advancing-trustworthy-artificial-intelligence-benefits-all-north-carolinians",
         "analysis_title": "NC Department of Information Technology – Statewide AI Strategic Roadmap (AI Leadership Council)",
         "analysis_url": "https://it.nc.gov/documents/statewide-ai-strategic-roadmap/download",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official EO 24 and announcement support September 2, 2025 order, AI council/accelerator and public training. Subsequent 2027 roadmap recommendation needs its own council report.",
         "more_sources": [
           "https://governor.nc.gov/news/press-releases/2025/09/02/governor-stein-announces-executive-order-ai"
         ]
@@ -3952,11 +3631,8 @@ window.HUBS = {
         "source_url": "https://www.ncleg.gov/Sessions/2025/Bills/Senate/HTML/S988v1.html",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official bill history confirms pending S988 and May 5, 2026 Appropriations/Base Budget referral. Readable history is preferable to a standalone introduced document.",
         "more_sources": [
           "https://www.ncleg.gov/BillLookUp/2025/S988"
         ]
@@ -3990,11 +3666,8 @@ window.HUBS = {
         "source_url": "https://ndlegis.gov/assembly/69-2025/regular/bill-overview/bo1167.html",
         "analysis_title": "MultiState – North Dakota overview",
         "analysis_url": "https://www.multistate.ai/ai-policy-overview-north-dakota",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official HB 1167 record confirms April 11, 2025 signature and political AI disclosures. HB 1351/1386 are distinct laws and need separate official references.",
         "more_sources": []
       },
       "geometry": {
@@ -4026,11 +3699,8 @@ window.HUBS = {
         "source_url": "https://dam.assets.ohio.gov/image/upload/das.ohio.gov/technology-strategy/policy/Use_of_AI_FAQs.pdf",
         "analysis_title": "Community Solutions – Ohio DAS releases policy governing use of AI",
         "analysis_url": "https://communitysolutions.com/resources/ohio-department-of-administrative-services-releases-policy-governing-use-of-ai",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "unresolved",
-        "verification_note": "Government host is authentic but linked FAQ PDF returns 404. This is an FAQ link, not the policy itself. The canonical IT-17 page also failed direct retrieval; obtain the current signed policy before certifying its full requirements. Follow-up (Oct. 14, 2026): The audit's claim that the FAQ link is broken is not confirmed: the FAQ PDF on dam.assets.ohio.gov loaded for me via WebFetch and is an official DAS document (possibly a cached copy). However, I could not load the policy itself. The canonical das.ohio.gov IT-17 page and a guessed dam.assets.ohio.gov/.../IT-17.pdf were both blocked by permission prompts. A non-official copy of the policy (digitalgovernmenthub.org/wp-content/uploads/2024/02/IT-17.pdf) shows an effective date of Dec. 4, 2023, signed by DAS Director Kathleen Madden under ORC 125.18. It covers agencies, boards and commissions under the Governor's authority, and the AI Council keeps a central repository of approved generative AI use cases and audits AI solutions. That copy matches the existing summary but is not official. I limited the summary to what the official FAQ supports:\n- five principles (fairness, accountability, security and safety, transparency and explainability, human-centricity)\n- AI Council approval of generative AI use cases before development\n- disclosure of generative AI use in deliverables\n- only public-record data entered\nThe source is unchanged; the owner should verify the das.ohio.gov IT-17 page manually.",
         "more_sources": [
           "https://das.ohio.gov/technology-and-strategy/policies/it-17"
         ]
@@ -4064,11 +3734,8 @@ window.HUBS = {
         "source_url": "https://education.ohio.gov/Topics/AI-in-Ohio-s-Education/Model-Policy",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official DEW page/release confirms model policy by December 31, 2025 and school adoption by July 1, 2026. Model guidance and statutory mandate are distinct.",
         "more_sources": [
           "https://education.ohio.gov/Media/Media-Releases/2025-Media-Releases/Ohio-Department-of-Education-and-Workforce-Release"
         ]
@@ -4102,11 +3769,8 @@ window.HUBS = {
         "source_url": "https://ohiohouse.gov/legislation/136/sb163",
         "analysis_title": "NBC4 (WCMH) – Ohio Senate passes bill targeting AI child sexual abuse material, deepfakes",
         "analysis_url": "https://www.nbc4i.com/news/politics/ohio-senate-passes-bill-targeting-ai-child-sexual-abuse-material-deepfakes/amp/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official House page identifies current Senate-passed version and House Technology/Innovation committee. Core subject matter and pending status supported; full latest vote/date should be linked to history.",
         "more_sources": []
       },
       "geometry": {
@@ -4138,11 +3802,8 @@ window.HUBS = {
         "source_url": "https://www.okhouse.gov/posts/news-20250507_4",
         "analysis_title": "BABL AI – Oklahoma enacts AI revenge porn law",
         "analysis_url": "https://babl.ai/oklahoma-enacts-nation-leading-ai-revenge-porn-law/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official House announcement confirms signed HB 1364 and synthetic-intimate-image offense expansion. Final criminal grading should be tied to the statute.",
         "more_sources": []
       },
       "geometry": {
@@ -4174,11 +3835,8 @@ window.HUBS = {
         "source_url": "https://www.oklegislature.gov/cf_pdf/2025-26%20ENR/SB/SB1734%20ENR.PDF",
         "analysis_title": "Lightspeed – SB 1734 is now law",
         "analysis_url": "https://www.lightspeedsystems.com/blog/oklahoma-sb-1734-is-now-law-what-every-district-needs-to-do-before-2027-28/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official record confirms the Responsible Technology in Schools Act; legislative release supports educator guidance and parental opt-out. Final signature/July date and 2027-28 district-policy deadline remain unconfirmed from complete final text.",
         "more_sources": []
       },
       "geometry": {
@@ -4210,11 +3868,8 @@ window.HUBS = {
         "source_url": "https://www.oregonlegislature.gov/bills_laws/lawsstatutes/2026orLaw0085.pdf",
         "analysis_title": "Dechert (via Mondaq) – Cyber Bits Issue 93: Oregon SB 1546",
         "analysis_url": "https://www.mondaq.com/unitedstates/new-technology/1766642/dechert-cyber-bits-issue-93-march-26-2026",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Oregon measure record supports companion disclosures, crisis protocols, public reports and private remedy. Use enrolled/chaptered text for exact minor safeguards and commencement.",
         "more_sources": [
           "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/sb1546"
         ]
@@ -4248,11 +3903,8 @@ window.HUBS = {
         "source_url": "https://www.pa.gov/governor/newsroom/2025-press-releases/gov--shapiro-signs-new-digital-forgery-law",
         "analysis_title": "Justia – Pennsylvania Act 35 of 2025 (text)",
         "analysis_url": "https://law.justia.com/codes/pennsylvania/act-35/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official governor release confirms July 7, 2025 digital-forgery law. Detailed grading and 60-day effect should remain linked to Act 35.",
         "more_sources": []
       },
       "geometry": {
@@ -4284,11 +3936,8 @@ window.HUBS = {
         "source_url": "https://www.pa.gov/governor/newsroom/2026-press-releases/governor-shapiro-takes-action-to-protect-pennsylvanians-using-ai",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official governor release supports toolkit, unlicensed-profession complaints and 12-member task force. Classify as executive/enforcement initiative.",
         "more_sources": []
       },
       "geometry": {
@@ -4320,11 +3969,8 @@ window.HUBS = {
         "source_url": "https://www.attorneygeneral.gov/?p=33164",
         "analysis_title": "City & State PA – Lawmakers advance SAFECHAT Act (Mar. 2026)",
         "analysis_url": "https://www.cityandstatepa.com/policy/2026/03/pa-lawmakers-advance-safechat-act-protect-children-ai-chatbot-interactions/412207/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Pennsylvania legislature history confirms March 17, 2026 Senate vote 49-1 and subsequent House stage. Replace AG proposal release with bill history/current text.",
         "more_sources": [
           "https://www.palegis.us/legislation/bills/2025/sb1090"
         ]
@@ -4358,11 +4004,8 @@ window.HUBS = {
         "source_url": "https://www.rilegislature.gov/pressrelease/Lists/PressReleases/DispForm.aspx?ID=376765",
         "analysis_title": "Transparency Coalition – Rhode Island enacts three new AI laws",
         "analysis_url": "https://www.transparencycoalition.ai/news/rhode-island-enacts-four-new-ai-laws-including-a-therapy-chatbot-ban",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official June 23 announcement confirms enacted chatbot safeguards. Full penalty, reporting date and June 22 signature need chaptered statute or enacted bill history.",
         "more_sources": []
       },
       "geometry": {
@@ -4394,11 +4037,8 @@ window.HUBS = {
         "source_url": "https://webserver.rilegislature.gov/BillText26/HouseText26/H7349A.htm",
         "analysis_title": "Transparency Coalition – Rhode Island enacts three new AI laws",
         "analysis_url": "https://www.transparencycoalition.ai/news/rhode-island-enacts-four-new-ai-laws-including-a-therapy-chatbot-ban",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official release confirms enactment of mental-health AI oversight. Full amended text and separate H7538 patient-notification law require their own primary citations.",
         "more_sources": []
       },
       "geometry": {
@@ -4430,11 +4070,8 @@ window.HUBS = {
         "source_url": "https://www.scstatehouse.gov/sess126_2025-2026/bills/28.htm",
         "analysis_title": "SC Statehouse – S. 29 bill status (Act No. 58)",
         "analysis_url": "https://www.scstatehouse.gov/sess126_2025-2026/bills/29.htm",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official S28/Act57 record supports computer-generated obscene child depictions, signature and immediate effect. Separate S29/Act58 requires its own official source.",
         "more_sources": []
       },
       "geometry": {
@@ -4466,11 +4103,8 @@ window.HUBS = {
         "source_url": "https://mylrc.sdlegislature.gov/api/Documents/284327.pdf",
         "analysis_title": "Akin – SD cracks down on unlabeled deepfakes",
         "analysis_url": "https://www.akingump.com/en/insights/ai-law-and-regulation-tracker/south-dakota-cracks-down-on-unlabeled-deepfakes-in-elections",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Chapter 68 session law supports 90-day election restriction, misdemeanor, injunctive/damages remedies and disclosure affirmative defense. March 25, 2025 signature printed on law.",
         "more_sources": [
           "https://mylrc.sdlegislature.gov/api/Documents/SessionLaw/284331.pdf?Year=2025"
         ]
@@ -4504,11 +4138,8 @@ window.HUBS = {
         "source_url": "https://mylrc.sdlegislature.gov/api/Documents/306427.pdf",
         "analysis_title": "South Dakota Searchlight – deepfakes felony bill signed",
         "analysis_url": "https://southdakotasearchlight.com/2026/03/17/creating-sharing-of-deepfakes-will-be-a-felony-under-south-dakota-bill-now-signed-into-law/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official SB41 text/record supports digitally fabricated intimate-image offense and Class5 grading. Exact signature/commencement remain to be traced to history.",
         "more_sources": [
           "https://sdlegislature.gov/Session/Bill/26753"
         ]
@@ -4542,11 +4173,8 @@ window.HUBS = {
         "source_url": "https://www.tn.gov/health/licensure/legislation.html",
         "analysis_title": "Healthcare Law Insights (Keegan & Vergara) – Tennessee bars AI from posing as mental health professionals",
         "analysis_url": "https://www.healthcarelawinsights.com/2026/04/tennessee-draws-a-line-new-law-bars-ai-from-posing-as-mental-health-professionals/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Tennessee history confirms SB1580/PC647, April 1 signature and July 1, 2026 effect. Broad health-department landing page should be replaced with direct history/act.",
         "more_sources": [
           "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB1470&ga=114"
         ]
@@ -4580,11 +4208,8 @@ window.HUBS = {
         "source_url": "https://www.tn.gov/governor/news/2024/3/21/photos--gov--lee-signs-elvis-act-into-law.html",
         "analysis_title": "Manatt – ELVIS Act analysis",
         "analysis_url": "https://manatt.com/insights/newsletters/client-alert/tennessees-elvis-act-expands-publicity-rights-for",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official governor signing notice confirms ELVIS Act voice/likeness protection and March 21, 2024 signature. Use actual act for nuanced liability/exceptions.",
         "more_sources": []
       },
       "geometry": {
@@ -4616,11 +4241,8 @@ window.HUBS = {
         "source_url": "https://www.tn.gov/content/dam/tn/tacir/commission-meetings/2026september/2026Sept_Tab6ChildSafety_Memo.pdf",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official TACIR memo/meeting records corroborate two distinct 2026 study mandates. They are study mandates rather than enacted substantive chatbot prohibitions.",
         "more_sources": []
       },
       "geometry": {
@@ -4652,11 +4274,8 @@ window.HUBS = {
         "source_url": "https://www.texasattorneygeneral.gov/consumer-protection/file-consumer-complaint/consumer-ai-rights",
         "analysis_title": "Cloud Security Alliance – research note on the TRAIGA complaint portal",
         "analysis_url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-texas-traiga-enforcement-portal-20260913-c/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official AG Consumer AI Rights page supports TRAIGA, intended harmful/discriminatory uses, covered government uses and exclusive AG channel. Exact statutory penalties/cure conditions require full act.",
         "more_sources": []
       },
       "geometry": {
@@ -4688,11 +4307,8 @@ window.HUBS = {
         "source_url": "https://capitol.texas.gov/tlodocs/89R/billtext/html/SB01188F.htm",
         "analysis_title": "Texas Medical Association – SB 1188 summary",
         "analysis_url": "https://www.texmed.org/Template.aspx?id=66759",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official enrolled SB1188 supports diagnostic-use review/disclosure, September 1, 2025 effect and January 1, 2026 EHR storage provision. Retain statutory scope and conditional implementation qualifications.",
         "more_sources": []
       },
       "geometry": {
@@ -4724,11 +4340,8 @@ window.HUBS = {
         "source_url": "https://gov.texas.gov/uploads/files/organization/twic/Workforce_Impacts_of_AI.pdf",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "June 2026 TWIC report confirms 49,135 nationally announced AI-citing job cuts through April. Describe as employer-reported attribution, not independently proven causal losses; report explicitly notes uncertainty.",
         "more_sources": []
       },
       "geometry": {
@@ -4760,11 +4373,8 @@ window.HUBS = {
         "source_url": "https://le.utah.gov/Session/2025/bills/enrolled/SB0332.pdf",
         "analysis_title": "Vaquill: Utah AI law explained from the statute",
         "analysis_url": "https://www.vaquill.ai/blog/utah-ai-laws-explained-from-the-statute",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official SB332 source is identified but unavailable in direct retrieval. Current 2026 HB320 sandbox changes require a separate current act; a 2025 bill cannot authenticate later amendments.",
         "more_sources": []
       },
       "geometry": {
@@ -4796,11 +4406,8 @@ window.HUBS = {
         "source_url": "https://governor.utah.gov/wp-content/uploads/2026.10.06-Pro-Human-AI-Executive-Order-1.pdf",
         "analysis_title": "GovTech – Utah Governor Signs Executive Order for Pro-Human AI",
         "analysis_url": "https://www.govtech.com/artificial-intelligence/utah-governor-signs-executive-order-for-pro-human-ai",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Governor executive-order register and October 6, 2026 announcement confirm EO2026-08 and human-guided AI/workforce training. Signed PDF was inaccessible; publication identity is corroborated.",
         "more_sources": [
           "https://governor.utah.gov/executive-orders/",
           "https://governor.utah.gov/uncategorized/news-release-gov-cox-signs-executive-order-establishing-utahs-pro-human-approach-to-ai-in-state-government/"
@@ -4835,11 +4442,8 @@ window.HUBS = {
         "source_url": "https://le.utah.gov/Session/2026/bills/enrolled/HB0276.pdf",
         "analysis_title": "Regulations.ai – Utah HB 276 summary",
         "analysis_url": "https://regulations.ai/regulations/RAI-US-UT-HB27600-2026",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official enrolled HB276 and bill record identified. Exact 48-hour notice validity, provenance thresholds, exceptions and staged dates require clause-by-clause final text review.",
         "more_sources": []
       },
       "geometry": {
@@ -4871,11 +4475,8 @@ window.HUBS = {
         "source_url": "https://le.utah.gov/Session/2025/bills/enrolled/HB0452.pdf",
         "analysis_title": "Wilson Sonsini – Utah enacts mental health chatbot law",
         "analysis_url": "https://www.wsgr.com/en/insights/utah-enacts-mental-health-chatbot-law.html",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official HB452 text and Commerce page support mental-health-chatbot protections and May 7, 2025 implementation. Precise advertising/data-sharing exceptions should remain in the law link.",
         "more_sources": []
       },
       "geometry": {
@@ -4907,11 +4508,8 @@ window.HUBS = {
         "source_url": "https://legislature.vermont.gov/bill/status/2026/H.816",
         "analysis_title": "Vermont Legislature – Act 156 as enacted (PDF)",
         "analysis_url": "https://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT156/ACT156%20As%20Enacted.pdf",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Vermont record confirms H816/Act156 and June17 approval. Final permitted clinical support and enforcement scope should be tied to enacted version.",
         "more_sources": []
       },
       "geometry": {
@@ -4943,11 +4541,8 @@ window.HUBS = {
         "source_url": "https://legislature.vermont.gov/bill/status/2026/S.23",
         "analysis_title": "Vermont Legislature – Act 75 Act Summary (PDF)",
         "analysis_url": "http://legislature.vermont.gov/Documents/2026/Docs/ACTS/ACT075/ACT075%20Act%20Summary.pdf",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Vermont record confirms S23/Act75 and March5, 2026 signature. Final synthetic-media restrictions and exceptions are supported at core level; direct enacted text is preferred.",
         "more_sources": []
       },
       "geometry": {
@@ -4979,11 +4574,8 @@ window.HUBS = {
         "source_url": "https://www.governor.virginia.gov/media/governorvirginiagov/governor-of-virginia/pdf/eo/eo-22-establishing-va-data-center-accountability-and-ai-initiatives.pdf",
         "analysis_title": "Greenberg Traurig – EO 22 analysis",
         "analysis_url": "https://www.gtlaw.com/ar/insights/2026/9/virginia-executive-order-22-sets-new-requirements-for-data-center-development-and-ai-governance",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Governor-issued EO22 and September18 announcement support AI task force, workforce/privacy/cybersecurity focus and data-centre framework. Classify as Executive order.",
         "more_sources": []
       },
       "geometry": {
@@ -5015,11 +4607,8 @@ window.HUBS = {
         "source_url": "https://lis.virginia.gov/bill-details/20261/HB868",
         "analysis_title": "FastDemocracy – VA HB 868 status history",
         "analysis_url": "https://fastdemocracy.com/bill-search/va/2027/bills/VAB00046797/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official Virginia host is authenticated but direct page exposed no usable latest history. Carry-over claim and committee votes remain unconfirmed in primary text here; keep distinct from an active enacted law.",
         "more_sources": []
       },
       "geometry": {
@@ -5051,11 +4640,8 @@ window.HUBS = {
         "source_url": "https://www.governor.virginia.gov/newsroom/news-releases/2025/july/name-1053354-en.html",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official governor source is identified but unavailable directly; primary-source search did not expose complete July15 programme release. Date, scholarship terms and job-posting count remain unconfirmed.",
         "more_sources": []
       },
       "geometry": {
@@ -5087,11 +4673,8 @@ window.HUBS = {
         "source_url": "https://virginiaworks.gov/artificial-intelligence-and-its-implications-for-virginias-workforce/",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Virginia Works publication is indexed with June15, 2026 date and named report. Exposure-versus-displacement argument is plausible; full report text remains required for detailed certification.",
         "more_sources": []
       },
       "geometry": {
@@ -5123,11 +4706,8 @@ window.HUBS = {
         "source_url": "https://agportal-s3bucket.s3.us-west-2.amazonaws.com/AI%20Task%20Force/Washington%20State%20AI%20%26%20Labor%20Survey%20Report%202026_Final.pdf?VersionId=QqdpKPaFkWh._B4Wpk2_.FE_Hp6X9f6M",
         "analysis_title": "Washington State Attorney General – Washington State AI Task Force releases final report",
         "analysis_url": "https://www.atg.wa.gov/news/news-releases/washington-state-ai-task-force-releases-final-report",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Actual report identifies Washington AG as publisher; official AG notices identify the same release. Report confirms 582 respondents, December-January fieldwork, 80% negative feelings, 12% job loss and 55% of displaced respondents attributing a factor to AI. These are survey reports, not verified causation.",
         "more_sources": []
       },
       "geometry": {
@@ -5159,11 +4739,8 @@ window.HUBS = {
         "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1170&Year=2025",
         "analysis_title": "Washington State Legislature – HB 1170 session law (Ch. 167, Laws of 2026)",
         "analysis_url": "https://lawfilesext.leg.wa.gov/biennium/2025-26/Pdf/Bills/Session%20Laws/House/1170-S2.SL.pdf",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Washington history confirms March24, 2026 signing, Chapter167 and February1, 2027 effect. Principal provenance framework supported; exact commercial/technical qualifiers require chapter text.",
         "more_sources": []
       },
       "geometry": {
@@ -5195,11 +4772,8 @@ window.HUBS = {
         "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1622&Year=2025",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official history confirms 2026 January28 second-substitute recommendation and February3 Rules2 Review referral. Pending is accurate; it has not been enacted.",
         "more_sources": []
       },
       "geometry": {
@@ -5231,11 +4805,8 @@ window.HUBS = {
         "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1672&Year=2025",
         "analysis_title": "Williams Kastner – Washington advances bills regulating employer use of AI and electronic monitoring",
         "analysis_url": "https://www.williamskastner.com/news-insights/article/washington-advances-bills-regulating-employer-use-of-ai-and-electronic-monitoring/",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official HB1672 history confirms January12, 2026 reintroduction and Appropriations status. Separate HB2144 claim requires its own text/history.",
         "more_sources": []
       },
       "geometry": {
@@ -5267,11 +4838,8 @@ window.HUBS = {
         "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025",
         "analysis_title": "Washington State Legislature – HB 2225 session law (Ch. 168, Laws of 2026)",
         "analysis_url": "https://lawfilesext.leg.wa.gov/biennium/2025-26/Pdf/Bills/Session%20Laws/House/2225-S.SL.pdf",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Washington history confirms March24, Chapter168 and January1, 2027 effect. Use chaptered text for exact minor/knowledge triggers rather than a categorical absolute block obligation.",
         "more_sources": []
       },
       "geometry": {
@@ -5303,11 +4871,8 @@ window.HUBS = {
         "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=5886&Year=2025",
         "analysis_title": "Washington State Legislature – SB 5886 session law (Ch. 69, Laws of 2026)",
         "analysis_url": "https://lawfilesext.leg.wa.gov/biennium/2025-26/Pdf/Bills/Session%20Laws/Senate/5886-S.SL.pdf",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official Washington bill record identifies SB5886 personality-rights expansion and enacted status. Exact $3,000 remedy should be verified from current rights statute; avoid calling a statutory damages alternative a cumulative penalty without checking.",
         "more_sources": []
       },
       "geometry": {
@@ -5339,11 +4904,8 @@ window.HUBS = {
         "source_url": "https://docs.legis.wisconsin.gov/2023/related/acts/123",
         "analysis_title": "Rep. Neylon – Act 123 signed",
         "analysis_url": "https://legis.wisconsin.gov/assembly/15/neylon/news/rep-neylon-s-bill-on-campaign-ads-with-artificial-intelligence-signed-into-law/",
-        "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Official Legislative Council annual report corroborates Act123 AI political-ad disclosure. Actual act link was inaccessible; March21 enactment and intentional-violation forfeiture were not fully authenticated.",
         "more_sources": [
           "https://legis.wisconsin.gov/lc/media/0c1fuvyy/24annreport_chr_web.pdf"
         ]
@@ -5377,11 +4939,8 @@ window.HUBS = {
         "source_url": "https://docs.legis.wisconsin.gov/2025/related/acts/34",
         "analysis_title": "WKOW – Evers signs AI image bill",
         "analysis_url": "https://www.wkow.com/news/state/evers-signs-bill-banning-misuse-of-ai-generated-images/article_e19c92e5-3e2f-471f-85ae-e1458adc9d25.html",
-        "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "partial",
-        "verification_note": "Current Wisconsin statute is indexed with synthetic-intimate-representation provision and Act34 provenance. Exact October enactment/publication dates require official act/history; do not certify dates from a secondary account.",
         "more_sources": []
       },
       "geometry": {
@@ -5413,11 +4972,8 @@ window.HUBS = {
         "source_url": "https://www.dwd.wisconsin.gov/ai-taskforce/pdf/ai-advisory-action-plan.pdf",
         "analysis_title": "",
         "analysis_url": "",
-        "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "confirmed",
-        "verification_note": "Official DWD page confirms EO211, August2023 creation and July2024 advisory action plan. Plan is a report with recommendations, not implemented legislation.",
         "more_sources": [
           "https://dwd.wisconsin.gov/ai-taskforce/"
         ]
