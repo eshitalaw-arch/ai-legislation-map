@@ -8,9 +8,11 @@
 const map = L.map("map", { zoomControl: true, zoomSnap: 0.25 });
 const US_BOUNDS = [[24.3, -124.8], [49.4, -64.5]];
 function fitUS() {
-  // Leave room on the right for the Northeast callout column
-  const narrow = document.getElementById("map").clientWidth < 700;
-  map.fitBounds(US_BOUNDS, { paddingTopLeft: [6, 6], paddingBottomRight: [narrow ? 44 : 10, 6] });
+  // Leave room on the right for the Northeast callouts, plus the findings note when it's open on wide screens
+  const w = document.getElementById("map").clientWidth;
+  const note = document.getElementById("gapNote");
+  const noteRoom = note && !note.hidden && !note.classList.contains("collapsed") && w >= 900 ? 300 : 0;
+  map.fitBounds(US_BOUNDS, { paddingTopLeft: [6, 6], paddingBottomRight: [(w < 700 ? 44 : 10) + noteRoom, 6] });
 }
 let lastFit = null;
 function fitUSAndRemember() { fitUS(); lastFit = { c: map.getCenter(), z: map.getZoom() }; }
@@ -204,8 +206,6 @@ function render() {
   }
   const panel = document.getElementById("profile");
   if (panel && !panel.hidden && currentProfile) openProfile(currentProfile, { keepScroll: true });
-  const cmp = document.getElementById("compare");
-  if (cmp && !cmp.hidden) drawCompare();
 }
 
 
@@ -236,7 +236,7 @@ const POL = window.POLITICS_2024 || null;
 const shadeSelect = document.getElementById("shadeSelect");
 const riskScale = document.getElementById("riskScale");
 const polScale = document.getElementById("polScale");
-const shadeMode = () => { const v = shadeSelect ? shadeSelect.value : "none"; return v === "both" ? "politics" : v; };
+const shadeMode = () => (shadeSelect ? shadeSelect.value : "none");
 // "R+1.7" / "D+5.9" from a signed margin (Republican positive)
 const marginText = (m) => (m == null ? "—" : (m > 0 ? "R+" : "D+") + (Math.abs(m) * 100).toFixed(1));
 const pct = (x) => (x == null ? "—" : (Math.round(x * 1000) / 10).toFixed(1) + "%");
@@ -279,6 +279,24 @@ function polColor(m) {
   return "#" + a.map((c, k) => Math.round(c + (b[k] - c) * local).toString(16).padStart(2, "0")).join("");
 }
 
+// AI response gap: highlight the top third of states by job risk, colored by their strongest workforce measure
+const GAP_COLORS = { none: "#e6550d", partial: "#fdd0a2", law: "#74c476", other: "#f0f0f0" };
+const GAP_OUTLINE = { d: "#08306b", r: "#67000d" };
+const GAP_LABELS = { none: "No workforce measure", partial: "Study, executive action or pending bill only", law: "Workforce law enacted" };
+const HIGH_RISK_MIN = (() => {
+  if (!RISK) return Infinity;
+  const v = Object.entries(RISK.states).filter(([k]) => k !== "District of Columbia" && k !== "Puerto Rico")
+    .map(([, x]) => x.pct_median).sort((a, b) => b - a);
+  return v[Math.round(v.length / 3) - 1]; // value of the 17th-highest state
+})();
+function gapClass(name) {
+  const r = RISK && RISK.states[name];
+  // DC and territories aren't covered by this map's research, so they're never highlighted
+  if (!r || name === "District of Columbia" || name === "Puerto Rico" || r.pct_median < HIGH_RISK_MIN) return "other";
+  const lvl = responseOf(name).level;
+  return lvl === 3 ? "law" : lvl === 0 ? "none" : "partial";
+}
+
 map.createPane("statesPane");
 map.getPane("statesPane").style.zIndex = 350; // below markers (overlayPane = 400)
 
@@ -290,6 +308,18 @@ function stateStyle(feature) {
   let fill = "#ccc";
   if (mode === "risk") { const r = RISK && RISK.states[name]; fill = r ? riskColor(r.pct_median) : "#ccc"; }
   if (mode === "politics") { const v = POL && POL.states[name]; fill = v ? polColor(v.margin) : "#ccc"; }
+  if (mode === "gap") {
+    const k = gapClass(name), v = POL && POL.states[name];
+    const highlighted = k !== "other";
+    return {
+      pane: "statesPane",
+      weight: highlighted ? 3 : 0.8,
+      color: highlighted && v ? (v.margin > 0 ? GAP_OUTLINE.r : GAP_OUTLINE.d) : "#fff",
+      opacity: 1,
+      fillColor: GAP_COLORS[k],
+      fillOpacity: highlighted ? 0.9 : 0.75
+    };
+  }
   return {
     pane: "statesPane",
     weight: on ? 0.8 : 0.5,
@@ -308,7 +338,7 @@ if (window.topojson && window.US_STATES_TOPO) {
     onEachFeature: (f, layer) => {
       layer.on("click", () => openProfile(f.properties.name));
       layer.on("mouseover", () => layer.setStyle({ weight: 2, color: "#54278f", opacity: 0.9 }));
-      layer.on("mouseout", () => statesLayer.resetStyle(layer));
+      layer.on("mouseout", () => { statesLayer.resetStyle(layer); });
       layer.bindTooltip(() => `<strong>${safe(f.properties.name)}</strong>` + shadeLine(f.properties.name) +
         `<br><span style="opacity:.7">Click for state profile</span>`,
         { sticky: true, direction: "top", opacity: 0.95 });
@@ -330,15 +360,31 @@ function shadeLine(name) {
   const r = RISK && RISK.states[name], v = POL && POL.states[name];
   const voteLine = v ? `<br>2024 president: <b>${marginText(v.margin)}</b> (Trump ${pct(v.r_pct)}, Harris ${pct(v.d_pct)})` : "";
   if (mode === "politics") return voteLine;
+  if (mode === "gap") {
+    const k = gapClass(name), resp = responseOf(name);
+    const riskLine = r ? `<br>${pct(r.pct_median)} of jobs at risk${k !== "other" ? " (top third of states)" : ""}` : "";
+    const respLine = `<br>Workforce response: <b>${k === "other" ? RESPONSE_LEVELS[resp.level].label : GAP_LABELS[k]}</b>` +
+      (resp.measures.length ? ` (${resp.measures.length})` : "");
+    return riskLine + respLine + voteLine;
+  }
   return "";
 }
 
 shadeSelect?.addEventListener("change", () => {
   const mode = shadeMode();
-  if (shadeSelect.value === "both") openCompare(); else closeCompare(false);
   if (riskScale) riskScale.hidden = mode !== "risk";
   if (polScale) polScale.hidden = mode !== "politics";
+  if (gapScale) gapScale.hidden = mode !== "gap";
+  const untouchedBefore = !userHasMovedMap();
+  if (gapNote) {
+    gapNote.hidden = mode !== "gap";
+    // Start collapsed on phones so the map stays visible
+    if (mode === "gap") { drawFindings(); setGapCollapsed(window.innerWidth < 600); }
+  }
+  if (untouchedBefore) fitUSAndRemember();
   statesLayer?.setStyle(stateStyle);
+  // Draw highlighted states last so their outlines aren't hidden under neighbors
+  if (mode === "gap") statesLayer?.eachLayer(l => { if (gapClass(l.feature.properties.name) !== "other") l.bringToFront(); });
   syncChromeHeights();
   render();
 });
@@ -416,26 +462,31 @@ render();
 map.on("zoomend", render);
 
 // ============================
-// Comparison chart: job risk (y) vs. 2024 presidential margin (x), one dot per state
+// AI response gap: workforce response per state + findings note
 // ============================
-const compareEl = document.getElementById("compare");
-const compareChart = document.getElementById("compareChart");
-const compareTable = document.getElementById("compareTable");
-const ABBR = { "Alabama":"AL","Alaska":"AK","Arizona":"AZ","Arkansas":"AR","California":"CA","Colorado":"CO","Connecticut":"CT","Delaware":"DE",
-  "Florida":"FL","Georgia":"GA","Hawaii":"HI","Idaho":"ID","Illinois":"IL","Indiana":"IN","Iowa":"IA","Kansas":"KS","Kentucky":"KY",
-  "Louisiana":"LA","Maine":"ME","Maryland":"MD","Massachusetts":"MA","Michigan":"MI","Minnesota":"MN","Mississippi":"MS","Missouri":"MO",
-  "Montana":"MT","Nebraska":"NE","Nevada":"NV","New Hampshire":"NH","New Jersey":"NJ","New Mexico":"NM","New York":"NY",
-  "North Carolina":"NC","North Dakota":"ND","Ohio":"OH","Oklahoma":"OK","Oregon":"OR","Pennsylvania":"PA","Rhode Island":"RI",
-  "South Carolina":"SC","South Dakota":"SD","Tennessee":"TN","Texas":"TX","Utah":"UT","Vermont":"VT","Virginia":"VA","Washington":"WA",
-  "West Virginia":"WV","Wisconsin":"WI","Wyoming":"WY" };
-let compareTip = null;
+const gapScale = document.getElementById("gapScale");
+const gapNote = document.getElementById("gapNote");
+document.querySelectorAll(".gap-legend .sw").forEach(el => { el.style.background = GAP_COLORS[el.dataset.gap]; });
+document.getElementById("gapNoteClose")?.addEventListener("click", () => {
+  const untouched = !userHasMovedMap();
+  gapNote.hidden = true;
+  if (untouched) fitUSAndRemember();
+});
+const gapToggle = document.getElementById("gapNoteToggle");
+function setGapCollapsed(c) {
+  const untouched = !userHasMovedMap();
+  gapNote?.classList.toggle("collapsed", c); gapToggle?.setAttribute("aria-expanded", String(!c));
+  if (untouched) fitUSAndRemember();
+}
+gapToggle?.addEventListener("click", () => setGapCollapsed(!gapNote.classList.contains("collapsed")));
+gapToggle?.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); gapToggle.click(); } });
 
 // Strongest AI-and-workforce measure a state has on this map (uses all entries, not the filters)
 const RESPONSE_LEVELS = [
-  { key: 0, label: "No workforce measure", sub: "nothing on this map" },
-  { key: 1, label: "Executive action or study", sub: "orders, programs, reports" },
-  { key: 2, label: "Bill pending", sub: "not yet law" },
-  { key: 3, label: "Law enacted", sub: "signed into law" }
+  { key: 0, label: "No workforce measure" },
+  { key: 1, label: "Executive action or study" },
+  { key: 2, label: "Bill pending" },
+  { key: 3, label: "Law enacted" }
 ];
 function isWorkforce(p) { return p.sector === "workforce" || isAlso(p, "workforce"); }
 function responseOf(name) {
@@ -444,146 +495,23 @@ function responseOf(name) {
   return { level, measures: w };
 }
 
-function compareRows() {
-  return Object.keys(ABBR).filter(n => POL && POL.states[n] && RISK && RISK.states[n]).map(n => {
+function drawFindings() {
+  const el = document.getElementById("gapFindings");
+  if (!el || !RISK || !POL) return;
+  const rows = Object.keys(POL.states).filter(n => n !== "District of Columbia" && RISK.states[n]).map(n => {
     const resp = responseOf(n);
-    return { name: n, abbr: ABBR[n], margin: POL.states[n].margin, r: POL.states[n].r_pct, d: POL.states[n].d_pct,
-      risk: RISK.states[n].pct_median, jobs: RISK.states[n].jobs_median, level: resp.level, measures: resp.measures };
+    return { name: n, margin: POL.states[n].margin, risk: RISK.states[n].pct_median, jobs: RISK.states[n].jobs_median, level: resp.level, measures: resp.measures };
   });
-}
-
-function textOn(hex) {
-  const [r, g, b] = hex.match(/\w\w/g).map(h => parseInt(h, 16));
-  return (0.299 * r + 0.587 * g + 0.114 * b) > 150 ? "#1f1f1f" : "#fff";
-}
-
-function drawFindings(rows) {
-  const el = document.getElementById("compareFindings");
-  if (!el) return;
   const total = rows.reduce((a, r) => a + r.jobs, 0);
-  const share = f => rows.filter(f).reduce((a, r) => a + r.jobs, 0) / total;
-  const noticeStates = rows.filter(r => r.measures.some(p => p.layoff_notice === true && p.status === "passed")).map(r => r.name);
+  const share = f => Math.round(rows.filter(f).reduce((a, r) => a + r.jobs, 0) / total * 100);
+  const notice = rows.filter(r => r.measures.some(p => p.layoff_notice === true && p.status === "passed")).map(r => r.name);
   const trump = rows.filter(r => r.margin > 0), harris = rows.filter(r => r.margin < 0);
   const enacted = g => g.reduce((a, r) => a + r.measures.filter(p => p.status === "passed").length, 0);
-  const sorted = [...rows].sort((a, b) => b.risk - a.risk);
-  const topThird = sorted.slice(0, Math.round(rows.length / 3));
-  const gaps = topThird.filter(r => r.level === 0).map(r => r.name);
-  const fmtM = x => (x / 1e6).toFixed(1) + "M";
+  const high = rows.filter(r => r.risk >= HIGH_RISK_MIN);
+  const gaps = high.filter(r => r.level === 0).map(r => r.name);
   el.innerHTML = `
-    <div class="finding"><span class="fig">${Math.round(share(r => r.level === 0) * 100)}%</span>of the ${fmtM(total)} jobs at risk are in states with no AI-workforce measure on this map.</div>
-    <div class="finding"><span class="fig">${Math.round(share(r => noticeStates.includes(r.name)) * 100)}%</span>are in a state that has enacted a law requiring AI to be disclosed in layoff notices${noticeStates.length ? ` (${noticeStates.join(" and ")} only)` : ""}.</div>
-    <div class="finding"><span class="fig">${enacted(trump)} vs ${enacted(harris)}</span>enacted AI-workforce laws in the ${trump.length} Trump-won vs the ${harris.length} Harris-won states.${enacted(trump) === 0 ? " Trump-won states' measures so far are executive orders, training programs and studies." : ""}</div>
-    <div class="finding"><span class="fig">${gaps.length}</span>of the ${topThird.length} highest-risk states have no AI-workforce measure on this map${gaps.length ? `: ${gaps.join(", ")}` : ""}.</div>`;
+    <li><b>${gaps.length} of the ${high.length}</b> highest-risk states have no AI-workforce measure${gaps.length ? `: ${gaps.join(", ")}` : ""}.</li>
+    <li><b>${share(r => r.level === 0)}%</b> of the ${(total / 1e6).toFixed(1)}M jobs at risk are in states with no AI-workforce measure.</li>
+    <li><b>${share(r => notice.includes(r.name))}%</b> are in states that require AI to be disclosed in layoff notices${notice.length ? ` (${notice.join(" and ")})` : ""}.</li>
+    <li><b>${enacted(trump)} vs ${enacted(harris)}</b> enacted AI-workforce laws in Trump-won vs Harris-won states.${enacted(trump) === 0 ? " Trump-won states have used executive orders, training programs and studies." : ""}</li>`;
 }
-
-function drawCompare() {
-  if (!compareChart) return;
-  const rows = compareRows();
-  drawFindings(rows);
-  // Draw at the container's real width so text stays readable on phones
-  const W = Math.max(340, Math.min(860, compareChart.clientWidth || 860));
-  const narrow = W < 600;
-  const H = narrow ? 460 : 470, m = { t: 44, r: 10, b: 14, l: narrow ? 44 : 56 };
-  const yMin = 0.044, yMax = 0.076;
-  const Y = v => H - m.b - ((v - yMin) / (yMax - yMin)) * (H - m.t - m.b);
-  const colW = (W - m.l - m.r) / RESPONSE_LEVELS.length;
-  const colX = k => m.l + colW * (k + 0.5);
-  const maxJobs = Math.max(...rows.map(r => r.jobs));
-  const rad = j => (narrow ? 6.5 : 8) + (narrow ? 9 : 13) * Math.sqrt(j / maxJobs);
-  let g = "";
-  RESPONSE_LEVELS.forEach((c, k) => {
-    if (k % 2 === 1) g += `<rect class="col-band" x="${m.l + colW * k}" y="${m.t - 6}" width="${colW}" height="${H - m.t - m.b + 6}"/>`;
-    const count = rows.filter(r => r.level === c.key).length;
-    g += `<text class="col-label" x="${colX(k)}" y="${narrow ? 14 : 16}" text-anchor="middle">${narrow ? ["None", "Action/study", "Pending", "Enacted"][k] : c.label}</text>` +
-         `<text class="col-sub" x="${colX(k)}" y="${narrow ? 28 : 31}" text-anchor="middle">${count} states${narrow ? "" : " · " + c.sub}</text>`;
-  });
-  for (let t = 0.045; t <= 0.0751; t += 0.005) {
-    g += `<line class="grid" x1="${m.l}" x2="${W - m.r}" y1="${Y(t)}" y2="${Y(t)}"/>` +
-         `<text class="axis-text" x="${m.l - 6}" y="${Y(t)}" text-anchor="end" dominant-baseline="central">${(t * 100).toFixed(1)}%</text>`;
-  }
-  g += `<text class="axis-title" transform="translate(11 ${(H - m.b + m.t) / 2}) rotate(-90)" text-anchor="middle">${narrow ? "Jobs at risk ↑" : "Share of jobs at risk from AI ↑"}</text>`;
-
-  // Beeswarm within each column: height stays exact (job risk); dots slide sideways to the nearest free spot
-  const pts = rows.map(d => ({ d, x0: colX(d.level), y0: Y(d.risk), x: colX(d.level), y: Y(d.risk), r: rad(d.jobs) }));
-  RESPONSE_LEVELS.forEach(c => {
-    const col = pts.filter(q => q.d.level === c.key).sort((a, b) => b.r - a.r);
-    const placed = [];
-    col.forEach(q => {
-      const half = colW / 2 - q.r - 2;
-      const fits = (x, y) => placed.every(o => Math.hypot(o.x - x, o.y - y) >= o.r + q.r + 1);
-      let best = null;
-      // Try sideways offsets first; if the column is full, allow a small vertical nudge
-      for (let dy = 0; dy <= 60 && !best; dy += 2) {
-        for (const sy of dy ? [1, -1] : [1]) {
-          for (let off = 0; off <= half && !best; off += 1) {
-            for (const sx of off ? [1, -1] : [1]) {
-              const x = q.x0 + sx * off, y = q.y0 + sy * dy;
-              if (fits(x, y)) { best = { x, y }; break; }
-            }
-          }
-          if (best) break;
-        }
-      }
-      if (best) { q.x = best.x; q.y = best.y; }
-      placed.push(q);
-    });
-  });
-  pts.sort((a, b) => b.r - a.r).forEach(q => {
-    const d = q.d, fill = polColor(d.margin);
-    g += `<g class="pt" tabindex="0" role="button" data-state="${safe(d.name)}" aria-label="${safe(d.name)}: ${pct(d.risk)} of jobs at risk; ${RESPONSE_LEVELS[d.level].label}; 2024 ${marginText(d.margin)}">` +
-      `<circle class="dot" cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="${q.r.toFixed(1)}" fill="${fill}"/>` +
-      (q.r >= 8 ? `<text class="dot-label" x="${q.x.toFixed(1)}" y="${q.y.toFixed(1)}" fill="${textOn(fill)}">${d.abbr}</text>` : "") + `</g>`;
-  });
-  compareChart.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="States by share of jobs at risk from AI and strongest AI-workforce measure, colored by 2024 presidential result">${g}</svg>`;
-
-  const byName = Object.fromEntries(rows.map(r => [r.name, r]));
-  compareChart.querySelectorAll("g.pt").forEach(el => {
-    const d = byName[el.dataset.state];
-    const show = () => {
-      if (!compareTip) { compareTip = document.createElement("div"); compareTip.className = "compare-tip"; document.body.appendChild(compareTip); }
-      const list = d.measures.slice(0, 4).map(p => `<li>${safe(p.title.replace(/^[^–]+–\s*/, ""))} <span style="opacity:.7">(${safe(STATUS_LABELS[p.status])})</span></li>`).join("");
-      compareTip.innerHTML = `<strong>${safe(d.name)}</strong><br>Jobs at risk: <b>${pct(d.risk)}</b> (about ${num(d.jobs)})` +
-        `<br>2024: <b>${marginText(d.margin)}</b> (Trump ${pct(d.r)}, Harris ${pct(d.d)})` +
-        `<br>Workforce response: <b>${RESPONSE_LEVELS[d.level].label}</b>` +
-        (list ? `<ul style="margin:4px 0 0;padding-left:16px">${list}</ul>${d.measures.length > 4 ? `<span style="opacity:.7">+${d.measures.length - 4} more</span><br>` : ""}` : "<br>") +
-        `<span style="opacity:.7">Click for state profile</span>`;
-      const b = el.getBoundingClientRect();
-      compareTip.style.left = Math.max(8, Math.min(window.innerWidth - 270, b.right + 8)) + "px";
-      compareTip.style.top = Math.max(8, Math.min(window.innerHeight - 220, b.top - 10)) + "px";
-      compareTip.hidden = false;
-    };
-    const hide = () => { if (compareTip) compareTip.hidden = true; };
-    el.addEventListener("mouseenter", show); el.addEventListener("focus", show);
-    el.addEventListener("mouseleave", hide); el.addEventListener("blur", hide);
-    const open = () => { hide(); openProfile(d.name); };
-    el.addEventListener("click", open);
-    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
-  });
-
-  if (compareTable) {
-    const sorted = [...rows].sort((a, b) => b.risk - a.risk);
-    compareTable.innerHTML = `<table><thead><tr><th>State</th><th class="num">Jobs at risk</th><th class="num">Number</th><th>Strongest workforce measure</th><th class="num">2024</th></tr></thead><tbody>` +
-      sorted.map(d => `<tr><td>${safe(d.name)}</td><td class="num">${pct(d.risk)}</td><td class="num">${num(d.jobs)}</td><td>${RESPONSE_LEVELS[d.level].label}</td><td class="num">${marginText(d.margin)}</td></tr>`).join("") +
-      `</tbody></table>`;
-  }
-}
-
-function openCompare() {
-  if (!compareEl) return;
-  drawCompare();
-  compareEl.hidden = false;
-}
-function closeCompare(resetSelect = true) {
-  if (!compareEl || compareEl.hidden) return;
-  compareEl.hidden = true;
-  if (compareTip) compareTip.hidden = true;
-  if (resetSelect && shadeSelect && shadeSelect.value === "both") shadeSelect.value = "politics";
-}
-document.getElementById("compareClose")?.addEventListener("click", () => closeCompare());
-document.getElementById("compareTableToggle")?.addEventListener("click", e => {
-  e.preventDefault();
-  compareTable.hidden = !compareTable.hidden;
-  e.target.textContent = compareTable.hidden ? "View as table" : "Hide table";
-});
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeCompare(); });
-window.addEventListener("resize", () => { if (compareEl && !compareEl.hidden) drawCompare(); });
