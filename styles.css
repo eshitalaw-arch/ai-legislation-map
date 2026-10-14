@@ -130,3 +130,12 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
 #polScale[hidden] { display: none; }
 .pol-line { margin: 8px 0 0; font-size: 12.5px; }
 .pol-chip { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; border: 1px solid rgba(0,0,0,.15); }
+
+/* Bivariate legend: 3 x 3 grid (vote across, job risk up) */
+.biv-legend[hidden] { display: none; }
+.biv-legend { display: flex; flex-direction: column; gap: 4px; }
+.biv-grid { display: grid; grid-template-columns: auto repeat(3, 42px); grid-auto-rows: 14px; gap: 2px 3px; align-items: center; font-size: 10.5px; }
+.biv-grid i { display: block; width: 42px; height: 14px; border-radius: 2px; }
+.biv-grid b { font-weight: 600; text-align: center; font-size: 9.5px; white-space: nowrap; }
+.biv-rlab { text-align: right; padding-right: 4px; opacity: .8; white-space: nowrap; }
+.biv-ylab { position: absolute; left: -14px; top: 22px; transform: rotate(-90deg); font-size: 9.5px; opacity: .7; white-space: nowrap; }

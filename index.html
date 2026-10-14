@@ -6,7 +6,7 @@
   <title>US AI Legislation Map</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="./styles.css?v=20261014b" />
+  <link rel="stylesheet" href="./styles.css?v=20261014d" />
 </head>
 <body>
   <header class="topbar">
@@ -56,11 +56,21 @@
             <option value="none">Nothing</option>
             <option value="risk">Job-risk context (AI)</option>
             <option value="politics">2024 presidential vote</option>
+            <option value="both">Job risk + 2024 vote together</option>
           </select>
         </label>
         <div id="riskScale" class="risk-scale" hidden>
           <span id="riskMin"></span><span class="risk-bar"></span><span id="riskMax"></span>
           <span class="risk-caption">share of jobs at risk from AI · <a href="#" class="about-open">Tufts Digital Planet</a></span>
+        </div>
+        <div id="bothScale" class="biv-legend" hidden>
+          <div class="biv-grid">
+            <span class="biv-rlab" id="bivHi">Higher</span><i data-c="D2"></i><i data-c="S2"></i><i data-c="R2"></i>
+            <span class="biv-rlab" id="bivMid">Middle</span><i data-c="D1"></i><i data-c="S1"></i><i data-c="R1"></i>
+            <span class="biv-rlab" id="bivLo">Lower</span><i data-c="D0"></i><i data-c="S0"></i><i data-c="R0"></i>
+            <span></span><b>Harris</b><b>Close</b><b>Trump</b>
+          </div>
+          <span class="risk-caption">Color = 2024 winner, "close" = under 5 pts (<a href="#" class="about-open">FEC</a>); darker = more jobs at risk from AI (<a href="#" class="about-open">Tufts</a>)</span>
         </div>
         <div id="polScale" class="risk-scale" hidden>
           <span>D+30</span><span class="risk-bar pol-bar"></span><span>R+30</span>
@@ -86,6 +96,7 @@
     <p><strong>Method.</strong> Entries were compiled from state legislature records, executive and agency publications and reputable legal trackers, then checked individually against the official source. Summaries are written in our own words and are simplified; read the linked text for the precise legal requirements.</p>
     <p><strong>Job-risk context.</strong> The optional state shading and the exposure figures in state profiles come from Tufts University's Digital Planet: Chakravorti, Bhaskar et al., "When Wired Belts Become the New Rust Belts: AI and the Emerging Geography of American Job Risk," Digital Planet, The Fletcher School at Tufts University, March 17, 2026 (<a href="https://digitalplanet.tufts.edu/ai-and-the-emerging-geography-of-american-job-risk-page/" target="_blank" rel="noopener">report and interactive site</a>), using its March 2026 data booklet. Figures are the study's median adoption scenario: the estimated share of each state's jobs at risk of loss as AI is adopted. They are projections, not forecasts of actual job losses, and they vary widely across the study's slower and faster scenarios. Tufts does not publish industry figures by state, so state profiles show the state's most at-risk metro areas and the study's national industry figures. The figures are reproduced from Tufts' data; this map does not modify their methodology.</p>
     <p><strong>Political leaning.</strong> The optional red/blue shading shows each state's 2024 presidential result: Donald Trump's share of the vote minus Kamala Harris's, as a percentage of all votes cast, from the Federal Election Commission's <a href="https://www.fec.gov/documents/5644/2024presgeresults.pdf" target="_blank" rel="noopener">Official 2024 Presidential General Election Results</a>. Darker means a wider margin; the scale is capped at 30 points. It describes how a state voted for president, not the party that controls its government or how its AI laws were passed.</p>
+    <p><strong>Job risk + 2024 vote together.</strong> This view combines both measures. Color shows the 2024 presidential result: blue where Harris won by 5 points or more, red where Trump did, and purple where the margin was under 5 points. Darkness shows job risk, split into thirds of the 50 states (lower, middle, higher share of jobs at risk in the Tufts median scenario). The combination shows where the two overlap; it does not imply that either one causes the other.</p>
     <p><strong>No preparedness score.</strong> State profiles deliberately do not rate how prepared a state is. Legislation is only one part of a state's response; budgets, workforce programs, education systems and private-sector action are not captured here.</p>
     <p><strong>Map data.</strong> State outlines from the us-atlas project (U.S. Census Bureau cartographic boundaries). Base map © OpenStreetMap contributors.</p>
     <p><strong>Not legal advice.</strong> This map is for general information only. Laws change frequently, and effective dates, amendments and litigation can affect whether a provision applies. Consult the official text or a qualified attorney before relying on it.</p>
@@ -98,10 +109,10 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-  <script src="./data/us-states.js?v=20261014b"></script>
-  <script src="./data/jobrisk.js?v=20261014b"></script>
-  <script src="./data/politics.js?v=20261014b"></script>
-  <script src="./data/hubs.js?v=20261014b"></script>
-  <script src="./src/app.js?v=20261014b"></script>
+  <script src="./data/us-states.js?v=20261014d"></script>
+  <script src="./data/jobrisk.js?v=20261014d"></script>
+  <script src="./data/politics.js?v=20261014d"></script>
+  <script src="./data/hubs.js?v=20261014d"></script>
+  <script src="./src/app.js?v=20261014d"></script>
 </body>
 </html>

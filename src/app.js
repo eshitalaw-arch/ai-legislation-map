@@ -12,7 +12,12 @@ function fitUS() {
   const narrow = document.getElementById("map").clientWidth < 700;
   map.fitBounds(US_BOUNDS, { paddingTopLeft: [6, 6], paddingBottomRight: [narrow ? 44 : 10, 6] });
 }
-fitUS();
+let lastFit = null;
+function fitUSAndRemember() { fitUS(); lastFit = { c: map.getCenter(), z: map.getZoom() }; }
+function userHasMovedMap() {
+  return !lastFit || map.getZoom() !== lastFit.z || map.getCenter().distanceTo(lastFit.c) > 1000;
+}
+fitUSAndRemember();
 
 // 2) Tiles
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -229,6 +234,7 @@ const POL = window.POLITICS_2024 || null;
 const shadeSelect = document.getElementById("shadeSelect");
 const riskScale = document.getElementById("riskScale");
 const polScale = document.getElementById("polScale");
+const bothScale = document.getElementById("bothScale");
 const shadeMode = () => (shadeSelect ? shadeSelect.value : "none");
 // "R+1.7" / "D+5.9" from a signed margin (Republican positive)
 const marginText = (m) => (m == null ? "—" : (m > 0 ? "R+" : "D+") + (Math.abs(m) * 100).toFixed(1));
@@ -240,7 +246,9 @@ function syncChromeHeights() {
   const f = document.querySelector(".footer")?.offsetHeight || 36;
   document.documentElement.style.setProperty("--header-h", h + "px");
   document.documentElement.style.setProperty("--footer-h", f + "px");
+  const untouched = !userHasMovedMap();
   map.invalidateSize();
+  if (untouched) fitUSAndRemember();
 }
 window.addEventListener("resize", syncChromeHeights);
 syncChromeHeights();
@@ -270,6 +278,30 @@ function polColor(m) {
   return "#" + a.map((c, k) => Math.round(c + (b[k] - c) * local).toString(16).padStart(2, "0")).join("");
 }
 
+// Bivariate palette: column = 2024 result (D, close, R), row = job-risk third (0 low .. 2 high)
+const BIV = {
+  D0: "#c6dbef", D1: "#6baed6", D2: "#08519c",
+  S0: "#dadaeb", S1: "#9e9ac8", S2: "#54278f",
+  R0: "#fcbba1", R1: "#fb6a4a", R2: "#a50f15"
+};
+const CLOSE_MARGIN = 0.05;
+// Job-risk thirds across the 50 states (DC and territories excluded)
+const RISK_BREAKS = (() => {
+  if (!RISK) return [0, 0];
+  const v = Object.entries(RISK.states).filter(([k]) => k !== "District of Columbia" && k !== "Puerto Rico")
+    .map(([, x]) => x.pct_median).sort((a, b) => a - b);
+  return [v[Math.round(v.length / 3)], v[Math.round((2 * v.length) / 3)]];
+})();
+function bivKey(name) {
+  const r = RISK && RISK.states[name], v = POL && POL.states[name];
+  if (!r || !v) return null;
+  const col = Math.abs(v.margin) < CLOSE_MARGIN ? "S" : (v.margin > 0 ? "R" : "D");
+  const row = r.pct_median >= RISK_BREAKS[1] ? 2 : (r.pct_median >= RISK_BREAKS[0] ? 1 : 0);
+  return col + row;
+}
+const BIV_ROW = ["lower", "middle", "higher"];
+const BIV_COL = { D: "Harris won by 5+ pts", S: "decided by under 5 pts", R: "Trump won by 5+ pts" };
+
 map.createPane("statesPane");
 map.getPane("statesPane").style.zIndex = 350; // below markers (overlayPane = 400)
 
@@ -281,13 +313,14 @@ function stateStyle(feature) {
   let fill = "#ccc";
   if (mode === "risk") { const r = RISK && RISK.states[name]; fill = r ? riskColor(r.pct_median) : "#ccc"; }
   if (mode === "politics") { const v = POL && POL.states[name]; fill = v ? polColor(v.margin) : "#ccc"; }
+  if (mode === "both") { const k = bivKey(name); fill = k ? BIV[k] : "#ccc"; }
   return {
     pane: "statesPane",
     weight: on ? 0.8 : 0.5,
     color: on ? "#fff" : "#9a9a9a",
     opacity: on ? 1 : 0.35,
     fillColor: fill,
-    fillOpacity: on ? 0.72 : 0
+    fillOpacity: on ? (mode === "both" ? 0.85 : 0.72) : 0
   };
 }
 
@@ -307,6 +340,13 @@ if (window.topojson && window.US_STATES_TOPO) {
   }).addTo(map);
 }
 
+// Fill the bivariate legend swatches and job-risk labels
+document.querySelectorAll(".biv-grid i").forEach(el => { el.style.background = BIV[el.dataset.c]; });
+if (RISK) {
+  document.getElementById("bivLo").textContent = `Lower job risk (<${pct(RISK_BREAKS[0])})`;
+  document.getElementById("bivMid").textContent = `Middle`;
+  document.getElementById("bivHi").textContent = `Higher job risk (${pct(RISK_BREAKS[1])}+)`;
+}
 if (RISK) {
   document.getElementById("riskMin").textContent = pct(RISK.min_pct);
   document.getElementById("riskMax").textContent = pct(RISK.max_pct);
@@ -318,9 +358,12 @@ function shadeLine(name) {
     const r = RISK && RISK.states[name];
     return r ? `<br>${pct(r.pct_median)} of jobs at risk (Tufts, median scenario)` : "";
   }
-  if (mode === "politics") {
-    const v = POL && POL.states[name];
-    return v ? `<br>2024 president: <b>${marginText(v.margin)}</b> (Trump ${pct(v.r_pct)}, Harris ${pct(v.d_pct)})` : "";
+  const r = RISK && RISK.states[name], v = POL && POL.states[name];
+  const voteLine = v ? `<br>2024 president: <b>${marginText(v.margin)}</b> (Trump ${pct(v.r_pct)}, Harris ${pct(v.d_pct)})` : "";
+  if (mode === "politics") return voteLine;
+  if (mode === "both") {
+    const k = bivKey(name);
+    return voteLine + (r ? `<br>Jobs at risk: <b>${pct(r.pct_median)}</b>${k ? ` (${BIV_ROW[+k[1]]} third of states)` : ""}` : "");
   }
   return "";
 }
@@ -329,6 +372,7 @@ shadeSelect?.addEventListener("change", () => {
   const mode = shadeMode();
   if (riskScale) riskScale.hidden = mode !== "risk";
   if (polScale) polScale.hidden = mode !== "politics";
+  if (bothScale) bothScale.hidden = mode !== "both";
   statesLayer?.setStyle(stateStyle);
   syncChromeHeights();
   render();
