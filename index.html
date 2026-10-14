@@ -6,7 +6,7 @@
   <title>US AI Legislation Map</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="./styles.css?v=20261014k" />
+  <link rel="stylesheet" href="./styles.css?v=20261014l" />
 </head>
 <body>
   <header class="topbar">
@@ -56,7 +56,7 @@
             <option value="none">Nothing</option>
             <option value="risk">Job-risk context (AI)</option>
             <option value="politics">2024 presidential vote</option>
-            <option value="redblue">Red vs. blue states: how they respond</option>
+            <option value="redblue">Republican vs. Democratic states</option>
           </select>
         </label>
         <div id="riskScale" class="risk-scale" hidden>
@@ -64,7 +64,7 @@
           <span class="risk-caption">share of jobs at risk from AI · <a href="#" class="about-open">Tufts Digital Planet</a></span>
         </div>
         <div id="gapScale" class="gap-legend" hidden>
-          <div class="gap-row"><i class="sw" style="background:#f2a7a9"></i>Trump won in 2024 &nbsp; <i class="sw" style="background:#a6c8ea"></i>Harris won in 2024</div>
+          <div class="gap-row"><i class="sw" style="background:#f2a7a9"></i>Voted Republican (2024) &nbsp; <i class="sw" style="background:#a6c8ea"></i>Voted Democratic (2024)</div>
           <div class="muted" style="font-size:11.5px">Circles show each state's AI laws, bills and guidance</div>
         </div>
         <div id="polScale" class="risk-scale" hidden>
@@ -90,8 +90,8 @@
     <p><strong>Sources.</strong> Every entry's first link is an official government source: the state legislature's bill page or enacted text, a governor's order or signing release, an attorney general, or a state agency. Where a second link appears, it is independent analysis (a law firm, news outlet or policy tracker) and is labeled with its publisher. Dates, numbers and court rulings in each summary were checked against the linked sources.</p>
     <p><strong>Method.</strong> Entries were compiled from state legislature records, executive and agency publications and reputable legal trackers, then checked individually against the official source. Summaries are written in our own words and are simplified; read the linked text for the precise legal requirements.</p>
     <p><strong>Job-risk context.</strong> The optional state shading and the exposure figures in state profiles come from Tufts University's Digital Planet: Chakravorti, Bhaskar et al., "When Wired Belts Become the New Rust Belts: AI and the Emerging Geography of American Job Risk," Digital Planet, The Fletcher School at Tufts University, March 17, 2026 (<a href="https://digitalplanet.tufts.edu/ai-and-the-emerging-geography-of-american-job-risk-page/" target="_blank" rel="noopener">report and interactive site</a>), using its March 2026 data booklet. Figures are the study's median adoption scenario: the estimated share of each state's jobs at risk of loss as AI is adopted. They are projections, not forecasts of actual job losses, and they vary widely across the study's slower and faster scenarios. Tufts does not publish industry figures by state, so state profiles show the state's most at-risk metro areas and the study's national industry figures. The figures are reproduced from Tufts' data; this map does not modify their methodology.</p>
-    <p><strong>Political leaning.</strong> The optional red/blue shading shows each state's 2024 presidential result: Donald Trump's share of the vote minus Kamala Harris's, as a percentage of all votes cast, from the Federal Election Commission's <a href="https://www.fec.gov/documents/5644/2024presgeresults.pdf" target="_blank" rel="noopener">Official 2024 Presidential General Election Results</a>. Darker means a wider margin; the scale is capped at 30 points. It describes how a state voted for president, not the party that controls its government or how its AI laws were passed.</p>
-    <p><strong>Red vs. blue states.</strong> This view colors each state by its 2024 presidential winner (FEC) and compares the two groups: the share of Trump-won and Harris-won states that have passed at least one law in each topic on this map. Shares are used because the groups differ in size (31 and 19 states). The map lists notable measures rather than every bill, so the comparison describes what is on this map.</p>
+    <p><strong>Political leaning.</strong> The optional red/blue shading shows each state's 2024 presidential result: the Republican candidate's share of the presidential vote minus the Democratic candidate's, as a percentage of all votes cast (R+ means the state voted Republican, D+ Democratic), from the Federal Election Commission's <a href="https://www.fec.gov/documents/5644/2024presgeresults.pdf" target="_blank" rel="noopener">Official 2024 Presidential General Election Results</a>. Darker means a wider margin; the scale is capped at 30 points. It describes how a state voted for president, not the party that controls its government or how its AI laws were passed.</p>
+    <p><strong>Red vs. blue states.</strong> This view colors each state by its 2024 presidential winner (FEC) and compares the two groups: the share of states that voted Republican and states that voted Democratic for president in 2024 that have passed at least one law in each topic on this map. Shares are used because the groups differ in size (31 and 19 states). The map lists notable measures rather than every bill, so the comparison describes what is on this map.</p>
     <p><strong>No preparedness score.</strong> State profiles deliberately do not rate how prepared a state is. Legislation is only one part of a state's response; budgets, workforce programs, education systems and private-sector action are not captured here.</p>
     <p><strong>Map data.</strong> State outlines from the us-atlas project (U.S. Census Bureau cartographic boundaries). Base map © OpenStreetMap contributors.</p>
     <p><strong>Not legal advice.</strong> This map is for general information only. Laws change frequently, and effective dates, amendments and litigation can affect whether a provision applies. Consult the official text or a qualified attorney before relying on it.</p>
@@ -99,7 +99,7 @@
 
   <aside id="gapNote" class="gap-note" hidden aria-label="Red vs. blue comparison">
     <button class="about-close" id="gapNoteClose" aria-label="Hide comparison">×</button>
-    <h3 id="gapNoteToggle" tabindex="0" role="button" aria-expanded="true">Do red and blue states respond differently?</h3>
+    <h3 id="gapNoteToggle" tabindex="0" role="button" aria-expanded="true">Do Republican and Democratic states respond differently?</h3>
     <div id="gapFindings"></div>
     <p class="gap-caveat">Based on the notable measures on this map, not every bill. Washington, DC is not included. <a href="#" class="about-open">Sources</a></p>
   </aside>
@@ -111,10 +111,10 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-  <script src="./data/us-states.js?v=20261014k"></script>
-  <script src="./data/jobrisk.js?v=20261014k"></script>
-  <script src="./data/politics.js?v=20261014k"></script>
-  <script src="./data/hubs.js?v=20261014k"></script>
-  <script src="./src/app.js?v=20261014k"></script>
+  <script src="./data/us-states.js?v=20261014l"></script>
+  <script src="./data/jobrisk.js?v=20261014l"></script>
+  <script src="./data/politics.js?v=20261014l"></script>
+  <script src="./data/hubs.js?v=20261014l"></script>
+  <script src="./src/app.js?v=20261014l"></script>
 </body>
 </html>

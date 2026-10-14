@@ -342,7 +342,7 @@ function shadeLine(name) {
     return r ? `<br>${pct(r.pct_median)} of jobs at risk (Tufts, median scenario)` : "";
   }
   const r = RISK && RISK.states[name], v = POL && POL.states[name];
-  const voteLine = v ? `<br>2024 president: <b>${marginText(v.margin)}</b> (Trump ${pct(v.r_pct)}, Harris ${pct(v.d_pct)})` : "";
+  const voteLine = v ? `<br>2024 president: <b>${marginText(v.margin)}</b> (Republican ${pct(v.r_pct)}, Democratic ${pct(v.d_pct)})` : "";
   if (mode === "politics") return voteLine;
   if (mode === "redblue") return voteLine;
   return "";
@@ -424,7 +424,7 @@ function openProfile(name, opts = {}) {
   profileBody.innerHTML = `
     <h2>${safe(name)}</h2>
     <div class="note" style="margin-top:0">State profile · current as of Oct 13, 2026</div>
-    ${POL && POL.states[name] ? `<p class="pol-line"><span class="pol-chip" style="background:${polColor(POL.states[name].margin)}"></span>2024 presidential vote: <strong>${marginText(POL.states[name].margin)}</strong> (Trump ${pct(POL.states[name].r_pct)}, Harris ${pct(POL.states[name].d_pct)}) <span class="note">· <a href="${safe(POL.source_url)}" target="_blank" rel="noopener">FEC</a></span></p>` : ""}
+    ${POL && POL.states[name] ? `<p class="pol-line"><span class="pol-chip" style="background:${polColor(POL.states[name].margin)}"></span>2024 presidential vote: <strong>${marginText(POL.states[name].margin)}</strong> (Republican ${pct(POL.states[name].r_pct)}, Democratic ${pct(POL.states[name].d_pct)}) <span class="note">· <a href="${safe(POL.source_url)}" target="_blank" rel="noopener">FEC</a></span></p>` : ""}
     ${filterNote}
     ${section("AI and workforce measures", workforce, "None on this map" + (entries === matching && matching.length < allForState.length ? " that match your filters." : "."))}
     ${section("Other AI laws, bills and guidance", other, "None on this map" + (entries === matching && matching.length < allForState.length ? " that match your filters." : "."))}
@@ -472,7 +472,7 @@ function responseOf(name) {
   return { level, measures: w };
 }
 
-// Red vs. blue: share of Trump-won and Harris-won states with at least one enacted law per topic
+// Red vs. blue: share of Republican- and Democratic-voting states with at least one enacted law per topic
 const RB_TOPICS = ["synthetic_media", "chatbots", "consumer_transparency", "workforce", "healthcare", "government", "frontier_models", "comprehensive", "biometrics"];
 let activeTopic = null;
 function drawFindings() {
@@ -488,12 +488,12 @@ function drawFindings() {
   const rows = RB_TOPICS.map(sec => ({ sec, t: share(T, sec), d: share(D, sec) }))
     .filter(r => r.t || r.d).sort((a, b) => Math.max(b.t, b.d) - Math.max(a.t, a.d));
   const max = Math.max(...rows.map(r => Math.max(r.t, r.d)), 1);
-  const lead = r => Math.abs(r.t - r.d) < 10 ? "similar" : (r.t > r.d ? "red states lead" : "blue states lead");
+  const lead = r => Math.abs(r.t - r.d) < 10 ? "similar" : (r.t > r.d ? "Republican states lead" : "Democratic states lead");
   el.innerHTML = `
-    <div class="rb-key"><span><i style="background:#c0392b"></i>Trump-won (${T.length} states)</span><span><i style="background:#2c6fbb"></i>Harris-won (${D.length})</span></div>
-    <p class="rb-headline">AI laws passed per state: <b>${perState(T)}</b> in Trump-won states, <b>${perState(D)}</b> in Harris-won states.</p>
-    <div class="muted" style="font-size:11.5px;margin-bottom:4px">Share of states that have passed a law on…</div>
-    ${rows.map(r => `<div class="rb-row${activeTopic === r.sec ? " active" : ""}" tabindex="0" role="button" data-sector="${r.sec}" aria-label="${safe(SECTOR_LABELS[r.sec])}: ${r.t}% of Trump-won states, ${r.d}% of Harris-won states">
+    <div class="rb-key"><span><i style="background:#c0392b"></i>Republican states (${T.length})</span><span><i style="background:#2c6fbb"></i>Democratic states (${D.length})</span></div>
+    <p class="rb-headline">AI laws passed per state: <b>${perState(T)}</b> in Republican states, <b>${perState(D)}</b> in Democratic states.</p>
+    <div class="muted" style="font-size:11.5px;margin-bottom:4px">States grouped by their 2024 presidential vote. Share that have passed a law on…</div>
+    ${rows.map(r => `<div class="rb-row${activeTopic === r.sec ? " active" : ""}" tabindex="0" role="button" data-sector="${r.sec}" aria-label="${safe(SECTOR_LABELS[r.sec])}: ${r.t}% of Republican states, ${r.d}% of Democratic states">
       <div class="rb-label">${safe(SECTOR_LABELS[r.sec])}<small>${lead(r)}</small></div>
       <div class="rb-bar"><div class="rb-track"><span class="t" style="width:${(r.t / max) * 80}%"></span>${r.t}%</div></div>
       <div class="rb-bar"><div class="rb-track"><span class="d" style="width:${(r.d / max) * 80}%"></span>${r.d}%</div></div>
