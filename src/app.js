@@ -5,7 +5,14 @@
 // ============================
 
 // 1) Create map
-const map = L.map("map", { zoomControl: true }).setView([39.5, -98.35], 4);
+const map = L.map("map", { zoomControl: true, zoomSnap: 0.25 });
+const US_BOUNDS = [[24.3, -124.8], [49.4, -64.5]];
+function fitUS() {
+  // Leave room on the right for the Northeast callout column
+  const narrow = document.getElementById("map").clientWidth < 700;
+  map.fitBounds(US_BOUNDS, { paddingTopLeft: [6, 6], paddingBottomRight: [narrow ? 44 : 10, 6] });
+}
+fitUS();
 
 // 2) Tiles
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -22,6 +29,8 @@ const countEl = document.getElementById("count");
 
 // 4) Data + layers
 let allFeatures = [];
+let currentProfile = null;   // state whose profile panel is open
+let profileShowAll = false;  // profile ignores filters when true
 let layerGroup = L.layerGroup().addTo(map);
 
 function selectedStatuses() {
@@ -75,136 +84,128 @@ function sectorText(p) {
 const safe = (x) => (x ?? "").toString()
   .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-function markerStyle(props) {
-  const fill = STATUS_COLORS[props.status] || "#555";
-  return { radius: 7, weight: 1.5, color: "#fff", fillColor: fill, fillOpacity: 0.95 };
+// ----------------------------
+// One summary badge per state (count + status ring), instead of one dot per entry
+// ----------------------------
+
+// Approximate visual centers [lat, lng] so badges sit inside each state
+const STATE_CENTERS = {
+  "Alabama": [32.8, -86.8], "Alaska": [64.0, -152.0], "Arizona": [34.3, -111.7], "Arkansas": [34.9, -92.4],
+  "California": [37.2, -119.5], "Colorado": [39.0, -105.5], "Connecticut": [41.6, -72.7], "Delaware": [39.0, -75.5],
+  "Florida": [28.4, -81.6], "Georgia": [32.7, -83.4], "Hawaii": [20.8, -156.4], "Idaho": [44.0, -114.7],
+  "Illinois": [40.0, -89.2], "Indiana": [39.9, -86.3], "Iowa": [42.0, -93.5], "Kansas": [38.5, -98.4],
+  "Kentucky": [37.5, -85.3], "Louisiana": [31.0, -92.2], "Maine": [45.3, -69.2], "Maryland": [39.0, -76.8],
+  "Massachusetts": [42.3, -71.8], "Michigan": [43.6, -84.7], "Minnesota": [46.3, -94.3], "Mississippi": [32.7, -89.7],
+  "Missouri": [38.4, -92.5], "Montana": [47.0, -109.6], "Nebraska": [41.5, -99.8], "Nevada": [39.3, -116.6],
+  "New Hampshire": [43.7, -71.6], "New Jersey": [40.1, -74.6], "New Mexico": [34.4, -106.1], "New York": [42.9, -75.5],
+  "North Carolina": [35.5, -79.4], "North Dakota": [47.5, -100.5], "Ohio": [40.3, -82.8], "Oklahoma": [35.6, -97.5],
+  "Oregon": [43.9, -120.6], "Pennsylvania": [40.9, -77.8], "Rhode Island": [41.7, -71.5], "South Carolina": [33.9, -80.9],
+  "South Dakota": [44.4, -100.2], "Tennessee": [35.86, -86.4], "Texas": [31.2, -99.3], "Utah": [39.3, -111.7],
+  "Vermont": [44.0, -72.7], "Virginia": [37.5, -78.8], "Washington": [47.4, -120.5], "West Virginia": [38.6, -80.6],
+  "Wisconsin": [44.6, -89.9], "Wyoming": [43.0, -107.5]
+};
+
+// Small Northeastern states get a labeled callout off the coast at low zoom, so badges don't overlap
+const CALLOUT_STATES = ["Vermont", "New Hampshire", "Massachusetts", "Rhode Island", "Connecticut", "New Jersey", "Delaware", "Maryland"];
+const CALLOUT_ABBR = { "Vermont": "VT", "New Hampshire": "NH", "Massachusetts": "MA", "Rhode Island": "RI",
+  "Connecticut": "CT", "New Jersey": "NJ", "Delaware": "DE", "Maryland": "MD" };
+const CALLOUT_MAX_ZOOM = 6;
+
+function badgeSize(n) {
+  const z = map.getZoom();
+  if (z < 4) return Math.round(14 + 2.2 * Math.sqrt(n)); // small screens: compact badges
+  const scale = z >= 5 ? 1.15 : 1;
+  return Math.round((18 + 4 * Math.sqrt(n)) * scale);
 }
 
-function popupHTML(p) {
-  const sourceLink = p.source_url
-    ? `<div style="margin-top:6px;">
-         <a href="${safe(p.source_url)}" target="_blank" rel="noopener">
-           ${safe(p.source_title || "Official source")}
-         </a>
-       </div>`
-    : "";
-
-  const analysisLink = p.analysis_url
-    ? `<div>
-         <a href="${safe(p.analysis_url)}" target="_blank" rel="noopener">
-           ${safe(p.analysis_title || "Analysis")}
-         </a>
-       </div>`
-    : "";
-
-  return `
-    <div class="popup">
-      <h3>${safe(p.title || "AI policy hub")}</h3>
-      <div class="meta">
-        <div><strong>${safe(p.state || "")}</strong></div>
-        <div>Status: ${safe(STATUS_LABELS[p.status] || p.status || "—")} · Sector: ${safe(sectorText(p))} · Updated: ${safe(p.last_updated || "—")}</div>
-      </div>
-      <div>${safe(p.summary || "")}</div>
-      ${sourceLink}
-      ${analysisLink}
-      <a href="#" class="profile-link" data-state="${safe(p.state)}">${safe(p.state)} state profile →</a>
-    </div>
-  `;
+function badgeIcon(list, label) {
+  const n = list.length;
+  const c = { passed: 0, pending: 0, guidance: 0 };
+  list.forEach(p => { c[p.status] = (c[p.status] || 0) + 1; });
+  const a = (c.passed / n) * 100, b = a + (c.pending / n) * 100;
+  const ring = `conic-gradient(${STATUS_COLORS.passed} 0 ${a}%, ${STATUS_COLORS.pending} ${a}% ${b}%, ${STATUS_COLORS.guidance} ${b}% 100%)`;
+  const size = badgeSize(n);
+  const tag = label ? `<span class="badge-abbr">${label}</span>` : "";
+  return L.divIcon({
+    className: "state-badge-wrap",
+    html: `<div class="state-badge" style="width:${size}px;height:${size}px;background:${ring}"><span style="font-size:${Math.max(8.5, Math.min(12, size * 0.42))}px">${n}</span></div>${tag}`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2]
+  });
 }
 
-function attachHoverPopupBehavior(marker) {
-  let closeTimer = null;
-
-  function scheduleClose() {
-    closeTimer = setTimeout(() => marker.closePopup(), 180);
-  }
-
-  function cancelClose() {
-    if (closeTimer) {
-      clearTimeout(closeTimer);
-      closeTimer = null;
-    }
-  }
-
-  marker.on("mouseover", () => {
-    cancelClose();
-    marker.openPopup();
-  });
-
-  marker.on("mouseout", () => {
-    scheduleClose();
-  });
-
-  marker.on("popupopen", (e) => {
-    const el = e.popup.getElement();
-    if (!el) return;
-
-    // bind once
-    if (el.dataset.hoverBound === "1") return;
-    el.dataset.hoverBound = "1";
-
-    el.addEventListener("mouseenter", cancelClose);
-    el.addEventListener("mouseleave", scheduleClose);
-  });
+function badgeTooltip(state, list) {
+  const c = { passed: 0, pending: 0, guidance: 0 };
+  list.forEach(p => { c[p.status]++; });
+  const parts = ["passed", "pending", "guidance"].filter(k => c[k])
+    .map(k => `<span style="color:${STATUS_COLORS[k]};font-weight:600">${c[k]} ${STATUS_LABELS[k].toLowerCase()}</span>`);
+  const r = RISK && RISK.states[state];
+  return `<strong>${safe(state)}</strong><br>${list.length} ${list.length === 1 ? "entry" : "entries"}: ${parts.join(" · ")}` +
+    (r && riskToggle && riskToggle.checked ? `<br>${pct(r.pct_median)} of jobs at risk (Tufts, median scenario)` : "") +
+    `<br><span style="opacity:.7">Click to see them</span>`;
 }
 
 function render() {
   layerGroup.clearLayers();
 
-  const filtered = allFeatures.filter(f => {
-    const c = f.geometry && f.geometry.coordinates;
-    return c && c.length === 2 && passesFilters(f.properties || {});
-  });
-
-  // Group entries that share a location so they can be fanned out in a ring
-  const groups = new Map();
-  filtered.forEach(f => {
-    const key = f.geometry.coordinates.join(",");
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push(f);
+  const filtered = allFeatures.map(f => f.properties || {}).filter(passesFilters);
+  const byState = new Map();
+  filtered.forEach(p => {
+    if (!byState.has(p.state)) byState.set(p.state, []);
+    byState.get(p.state).push(p);
   });
 
   const zoom = map.getZoom();
-  const placed = [];
-  groups.forEach(list => {
-    const [lng, lat] = list[0].geometry.coordinates;
-    if (list.length === 1) { placed.push([list[0], [lat, lng]]); return; }
-    const center = map.project([lat, lng], zoom);
-    const radiusPx = 9 + list.length * 2.5;
-    list.forEach((f, i) => {
-      const angle = (2 * Math.PI * i) / list.length - Math.PI / 2;
-      const pt = L.point(center.x + radiusPx * Math.cos(angle), center.y + radiusPx * Math.sin(angle));
-      const ll = map.unproject(pt, zoom);
-      placed.push([f, [ll.lat, ll.lng]]);
+  const useCallouts = zoom <= CALLOUT_MAX_ZOOM;
+
+  // Callout column: just east of the coast, stacked top-to-bottom without overlapping
+  const calloutPos = new Map();
+  if (useCallouts) {
+    // Keep the column on screen (narrow phones), but never west of the coast
+    const pane = map.getPixelBounds();
+    const coastX = map.project([41.0, -69.4], zoom).x;
+    const colX = Math.max(coastX + 14, Math.min(coastX + 34, pane.max.x - 30));
+    let lastBottom = -Infinity;
+    CALLOUT_STATES.filter(s => byState.has(s)).forEach(s => {
+      const size = badgeSize(byState.get(s).length);
+      const ideal = map.project(STATE_CENTERS[s], zoom).y;
+      const y = Math.max(ideal, lastBottom + size / 2 + 4);
+      lastBottom = y + size / 2;
+      calloutPos.set(s, map.unproject(L.point(colX, y), zoom));
     });
-  });
+  }
 
-  placed.forEach(([f, latlng]) => {
-    const p = f.properties || {};
-
-    const marker = L.circleMarker(latlng, markerStyle(p));
-
-    marker.bindPopup(popupHTML(p), {
-      maxWidth: 320,
-      closeButton: true,
-      autoPan: true,
-      closeOnClick: true
+  byState.forEach((list, state) => {
+    const center = STATE_CENTERS[state];
+    if (!center) return;
+    const callout = calloutPos.get(state);
+    const pos = callout || L.latLng(center);
+    if (callout) {
+      L.polyline([center, callout], { color: "#777", weight: 1, opacity: 0.8, interactive: false }).addTo(layerGroup);
+      L.circleMarker(center, { radius: 2.5, weight: 0, fillColor: "#555", fillOpacity: 0.9, interactive: false }).addTo(layerGroup);
+    }
+    const marker = L.marker(pos, {
+      icon: badgeIcon(list, callout ? CALLOUT_ABBR[state] : ""),
+      riseOnHover: true,
+      keyboard: true,
+      title: `${state}: ${list.length} entries`
     });
-
-    attachHoverPopupBehavior(marker);
+    marker.bindTooltip(badgeTooltip(state, list), { direction: "top", offset: [0, -badgeSize(list.length) / 2], opacity: 0.96 });
+    marker.on("click", () => openProfile(state));
     marker.addTo(layerGroup);
   });
 
-  if (countEl) countEl.textContent = `${filtered.length} entries shown`;
+  if (countEl) {
+    countEl.textContent = `${filtered.length} ${filtered.length === 1 ? "entry" : "entries"} in ${byState.size} ${byState.size === 1 ? "state" : "states"}`;
+  }
+  const panel = document.getElementById("profile");
+  if (panel && !panel.hidden && currentProfile) openProfile(currentProfile, { keepScroll: true });
 }
 
-// Re-fan clustered markers when zoom changes so rings keep a constant on-screen size
-map.on("zoomend", render);
 
-// Load hubs from window.HUBS
+// Load entries from window.HUBS (rendered once the rest of the script has loaded)
 const fc = window.HUBS;
 allFeatures = (fc && Array.isArray(fc.features)) ? fc.features : [];
-render();
 
 // React to filter changes
 if (sectorEl) sectorEl.addEventListener("change", () => {
@@ -303,9 +304,10 @@ riskToggle?.addEventListener("change", () => {
 const profileEl = document.getElementById("profile");
 const profileBody = document.getElementById("profileBody");
 document.getElementById("profileClose")?.addEventListener("click", () => { profileEl.hidden = true; });
-document.addEventListener("click", e => {
-  const a = e.target.closest && e.target.closest(".profile-link");
-  if (a) { e.preventDefault(); map.closePopup(); openProfile(a.dataset.state); }
+document.getElementById("profileClose")?.addEventListener("click", () => { currentProfile = null; });
+profileBody?.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest("[data-show-all]");
+  if (b) { e.preventDefault(); profileShowAll = b.dataset.showAll === "1"; openProfile(currentProfile, { keepScroll: true }); }
 });
 
 function billHTML(p) {
@@ -318,10 +320,18 @@ function billHTML(p) {
   </div>`;
 }
 
-function openProfile(name) {
+function openProfile(name, opts = {}) {
   if (!profileEl || !name) return;
+  if (name !== currentProfile) profileShowAll = false;
+  currentProfile = name;
   const r = RISK && RISK.states[name];
-  const entries = allFeatures.map(f => f.properties).filter(p => p.state === name);
+  const allForState = allFeatures.map(f => f.properties).filter(p => p.state === name);
+  const matching = allForState.filter(passesFilters);
+  const entries = profileShowAll ? allForState : matching;
+  const filterNote = matching.length === allForState.length ? "" :
+    (profileShowAll
+      ? `<p class="filter-note">Showing all ${allForState.length} entries. <a href="#" data-show-all="0">Show only the ${matching.length} matching your filters</a></p>`
+      : `<p class="filter-note">Showing ${matching.length} of ${allForState.length} entries that match your filters. <a href="#" data-show-all="1">Show all</a></p>`);
   const order = { passed: 0, pending: 1, guidance: 2 };
   const isWf = p => p.sector === "workforce" || isAlso(p, "workforce");
   const workforce = entries.filter(isWf).sort((a, b) => order[a.status] - order[b.status]);
@@ -347,11 +357,16 @@ function openProfile(name) {
   profileBody.innerHTML = `
     <h2>${safe(name)}</h2>
     <div class="note" style="margin-top:0">State profile · current as of Oct 13, 2026</div>
+    ${filterNote}
+    ${section("AI and workforce measures", workforce, "None on this map" + (entries === matching && matching.length < allForState.length ? " that match your filters." : "."))}
+    ${section("Other AI laws, bills and guidance", other, "None on this map" + (entries === matching && matching.length < allForState.length ? " that match your filters." : "."))}
     <h3>AI job-risk exposure</h3>
     ${exposure}
-    ${section("AI and workforce measures", workforce, "No AI-and-workforce measures on this map for this state.")}
-    ${section("Other AI laws, bills and guidance", other, "No other entries on this map for this state.")}
     <div class="caveat"><strong>About this profile.</strong> This profile deliberately gives no "preparedness" score. Legislation is only one part of how a state responds to AI; budgets, workforce and education programs, agency action and private-sector efforts are not captured here, and this map does not list every AI-related bill.</div>`;
   profileEl.hidden = false;
-  profileEl.scrollTop = 0;
+  if (!opts.keepScroll) profileEl.scrollTop = 0;
 }
+
+// Draw once everything above is defined; badge sizes and callout positions depend on zoom
+render();
+map.on("zoomend", render);
