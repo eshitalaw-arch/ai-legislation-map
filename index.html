@@ -6,7 +6,7 @@
   <title>US AI Legislation Map</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="./styles.css?v=20261014l" />
+  <link rel="stylesheet" href="./styles.css?v=20261014m" />
 </head>
 <body>
   <header class="topbar">
@@ -55,7 +55,7 @@
           <select id="shadeSelect">
             <option value="none">Nothing</option>
             <option value="risk">Job-risk context (AI)</option>
-            <option value="politics">2024 presidential vote</option>
+            <option value="politics">Presidential vote</option>
             <option value="redblue">Republican vs. Democratic states</option>
           </select>
         </label>
@@ -64,12 +64,12 @@
           <span class="risk-caption">share of jobs at risk from AI · <a href="#" class="about-open">Tufts Digital Planet</a></span>
         </div>
         <div id="gapScale" class="gap-legend" hidden>
-          <div class="gap-row"><i class="sw" style="background:#f2a7a9"></i>Voted Republican (2024) &nbsp; <i class="sw" style="background:#a6c8ea"></i>Voted Democratic (2024)</div>
+          <div class="gap-row"><i class="sw" style="background:#f2a7a9"></i>Voted Republican &nbsp; <i class="sw" style="background:#a6c8ea"></i>Voted Democratic</div>
           <div class="muted" style="font-size:11.5px">Circles show each state's AI laws, bills and guidance</div>
         </div>
         <div id="polScale" class="risk-scale" hidden>
           <span>D+30</span><span class="risk-bar pol-bar"></span><span>R+30</span>
-          <span class="risk-caption">2024 presidential margin · <a href="#" class="about-open">FEC official results</a></span>
+          <span class="risk-caption">presidential vote margin · <a href="#" class="about-open">FEC official results</a></span>
         </div>
       </div>
     </div>
@@ -111,10 +111,10 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-  <script src="./data/us-states.js?v=20261014l"></script>
-  <script src="./data/jobrisk.js?v=20261014l"></script>
-  <script src="./data/politics.js?v=20261014l"></script>
-  <script src="./data/hubs.js?v=20261014l"></script>
-  <script src="./src/app.js?v=20261014l"></script>
+  <script src="./data/us-states.js?v=20261014m"></script>
+  <script src="./data/jobrisk.js?v=20261014m"></script>
+  <script src="./data/politics.js?v=20261014m"></script>
+  <script src="./data/hubs.js?v=20261014m"></script>
+  <script src="./src/app.js?v=20261014m"></script>
 </body>
 </html>
