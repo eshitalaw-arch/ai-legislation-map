@@ -54,7 +54,7 @@ function passesFilters(props) {
 }
 
 const STATUS_COLORS = { passed: "#1b7f3b", pending: "#d97706", guidance: "#2563eb" };
-const STATUS_LABELS = { passed: "Passed", pending: "Pending", guidance: "Guidance" };
+const STATUS_LABELS = { passed: "Enacted", pending: "Pending", guidance: "Other action" };
 const SECTOR_LABELS = {
   healthcare: "Healthcare",
   workforce: "AI and Workforce Impact",
@@ -396,13 +396,25 @@ profileBody?.addEventListener("click", e => {
   if (b) { e.preventDefault(); profileShowAll = b.dataset.showAll === "1"; openProfile(currentProfile, { keepScroll: true }); }
 });
 
+function fmtDate(iso) {
+  const d = new Date(iso + "T12:00:00");
+  return isNaN(d) ? iso : d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+
 function billHTML(p) {
   return `<div class="bill">
     <div><span class="pill ${safe(p.status)}">${safe(STATUS_LABELS[p.status] || p.status)}</span><span class="bill-title">${safe(p.title.replace(/^[^–]+–\s*/, ""))}</span></div>
     <div class="note" style="margin-top:2px">${safe(sectorText(p))}</div>
+    <dl class="facts">
+      ${p.instrument ? `<dt>Type</dt><dd>${safe(p.instrument)}</dd>` : ""}
+      ${p.stage ? `<dt>Stage</dt><dd>${safe(p.stage)}</dd>` : ""}
+      ${p.effective ? `<dt>Effective</dt><dd>${safe(p.effective)}</dd>` : ""}
+      ${p.litigation ? `<dt>Litigation</dt><dd>${safe(p.litigation)}</dd>` : ""}
+    </dl>
     <div style="margin-top:4px">${safe(p.summary)}</div>
     <div style="margin-top:4px"><a href="${safe(p.source_url)}" target="_blank" rel="noopener">${safe(p.source_title || "Official source")}</a>${
       p.analysis_url ? ` · <a href="${safe(p.analysis_url)}" target="_blank" rel="noopener">${safe(p.analysis_title || "Analysis")}</a>` : ""}</div>
+    ${p.last_verified ? `<div class="note" style="margin-top:3px">Last verified against sources: ${safe(fmtDate(p.last_verified))}</div>` : ""}
   </div>`;
 }
 
@@ -442,11 +454,11 @@ function openProfile(name, opts = {}) {
 
   profileBody.innerHTML = `
     <h2>${safe(name)}</h2>
-    <div class="note" style="margin-top:0">State profile · current as of Oct 13, 2026</div>
+    <div class="note" style="margin-top:0">State profile · current as of Oct 14, 2026</div>
     ${POL && POL.states[name] ? `<p class="pol-line"><span class="pol-chip" style="background:${polColor(POL.states[name].margin)}"></span>Presidential vote: <strong>${marginText(POL.states[name].margin)}</strong> (Republican ${pct(POL.states[name].r_pct)}, Democratic ${pct(POL.states[name].d_pct)}) <span class="note">· <a href="${safe(POL.source_url)}" target="_blank" rel="noopener">FEC</a></span></p>` : ""}
     ${filterNote}
     ${section("AI and workforce measures", workforce, "None on this map" + (entries === matching && matching.length < allForState.length ? " that match your filters." : "."))}
-    ${section("Other AI laws, bills and guidance", other, "None on this map" + (entries === matching && matching.length < allForState.length ? " that match your filters." : "."))}
+    ${section("Other AI laws, bills and actions", other, "None on this map" + (entries === matching && matching.length < allForState.length ? " that match your filters." : "."))}
     <h3>AI job-risk exposure</h3>
     ${exposure}
     <div class="caveat"><strong>About this profile.</strong> This profile deliberately gives no "preparedness" score. Legislation is only one part of how a state responds to AI; budgets, workforce and education programs, agency action and private-sector efforts are not captured here, and this map does not list every AI-related bill.</div>`;
@@ -510,8 +522,8 @@ function drawFindings() {
   const lead = r => Math.abs(r.t - r.d) < 10 ? "similar" : (r.t > r.d ? "Republican states lead" : "Democratic states lead");
   el.innerHTML = `
     <div class="rb-key"><span><i style="background:#c0392b"></i>Republican states (${T.length})</span><span><i style="background:#2c6fbb"></i>Democratic states (${D.length})</span></div>
-    <p class="rb-headline">AI laws passed per state: <b>${perState(T)}</b> in Republican states, <b>${perState(D)}</b> in Democratic states.</p>
-    <div class="muted" style="font-size:11.5px;margin-bottom:4px">States grouped by how they voted for president. Share that have passed a law on…</div>
+    <p class="rb-headline">Enacted AI laws and regulations per state: <b>${perState(T)}</b> in Republican states, <b>${perState(D)}</b> in Democratic states.</p>
+    <div class="muted" style="font-size:11.5px;margin-bottom:4px">States grouped by how they voted for president. Share that have enacted a law or regulation on…</div>
     ${rows.map(r => `<div class="rb-row${activeTopic === r.sec ? " active" : ""}" tabindex="0" role="button" data-sector="${r.sec}" aria-label="${safe(SECTOR_LABELS[r.sec])}: ${r.t}% of Republican states, ${r.d}% of Democratic states">
       <div class="rb-label">${safe(SECTOR_LABELS[r.sec])}<small>${lead(r)}</small></div>
       <div class="rb-bar"><div class="rb-track"><span class="t" style="width:${(r.t / max) * 80}%"></span>${r.t}%</div></div>
@@ -535,7 +547,7 @@ function drawFindings() {
 // ============================
 // Downloads: entries shown, all entries, state summary (CSV)
 // ============================
-const STATUS_TEXT = { passed: "Passed (enacted)", pending: "Pending bill", guidance: "Guidance (executive/agency action)" };
+const STATUS_TEXT = { passed: "Enacted (law or adopted regulation)", pending: "Pending (bill or proposed regulation)", guidance: "Other official action" };
 
 function csvCell(v) {
   const t = (v ?? "").toString();
@@ -566,13 +578,14 @@ function describeFilters() {
 function slug(t) { return t.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60); }
 
 function entryRows(list) {
-  const header = ["State", "Title", "Topic", "Workforce subcategory", "Also listed under", "Status", "Summary",
-    "Official source", "Official source URL", "Analysis", "Analysis URL", "Last updated"];
+  const header = ["State", "Title", "Topic", "Workforce subcategory", "Also listed under", "Map category", "Instrument type",
+    "Stage", "Effective date", "Litigation", "Summary", "Official source", "Official source URL", "Analysis", "Analysis URL", "Last verified"];
   const rows = list.map(p => {
     const [alsoSec, alsoSub] = (p.also || "").split(":");
     const also = p.also ? `${SECTOR_LABELS[alsoSec] || alsoSec}${alsoSub && SUBCAT_LABELS[alsoSub] ? " › " + SUBCAT_LABELS[alsoSub] : ""}` : "";
     return [p.state, p.title, SECTOR_LABELS[p.sector] || p.sector, SUBCAT_LABELS[workforceSubcat(p)] || "", also,
-      STATUS_TEXT[p.status] || p.status, p.summary, p.source_title, p.source_url, p.analysis_title, p.analysis_url, p.last_updated];
+      STATUS_TEXT[p.status] || p.status, p.instrument, p.stage, p.effective, p.litigation,
+      p.summary, p.source_title, p.source_url, p.analysis_title, p.analysis_url, p.last_verified || p.last_updated];
   }).sort((a, b) => a[0].localeCompare(b[0]) || a[1].localeCompare(b[1]));
   return [header, rows];
 }
@@ -580,7 +593,7 @@ function entryRows(list) {
 function stateSummaryRows() {
   const all = allFeatures.map(f => f.properties);
   const names = Object.keys(STATE_CENTERS).sort();
-  const header = ["State", "Entries on map", "Passed", "Pending", "Guidance", "AI and workforce measures",
+  const header = ["State", "Entries on map", "Enacted", "Pending", "Other action", "AI and workforce measures",
     "Share of jobs at risk from AI (Tufts Digital Planet, Mar 2026, median scenario)", "Jobs at risk (Tufts, median scenario)",
     "Presidential vote (FEC 2024 official results)", "Republican vote share", "Democratic vote share", "Presidential margin"];
   const rows = names.map(n => {

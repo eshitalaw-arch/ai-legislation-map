@@ -203,3 +203,8 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
 .vr-grid i { display: block; height: 13px; border-radius: 2px; }
 .vr-lab { padding-right: 6px; white-space: nowrap; }
 
+
+/* Structured facts in state profiles */
+.profile dl.facts { display: grid; grid-template-columns: auto 1fr; gap: 1px 8px; margin: 6px 0 0; font-size: 12px; }
+.profile dl.facts dt { color: #777; }
+.profile dl.facts dd { margin: 0; color: #222; }
