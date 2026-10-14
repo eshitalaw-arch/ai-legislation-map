@@ -117,6 +117,12 @@ const CALLOUT_STATES = ["Vermont", "New Hampshire", "Massachusetts", "Rhode Isla
 const CALLOUT_ABBR = { "Vermont": "VT", "New Hampshire": "NH", "Massachusetts": "MA", "Rhode Island": "RI",
   "Connecticut": "CT", "New Jersey": "NJ", "Delaware": "DE", "Maryland": "MD" };
 const CALLOUT_MAX_ZOOM = 6;
+const ABBR2 = { "Alabama":"AL","Alaska":"AK","Arizona":"AZ","Arkansas":"AR","California":"CA","Colorado":"CO","Florida":"FL","Georgia":"GA",
+  "Hawaii":"HI","Idaho":"ID","Illinois":"IL","Indiana":"IN","Iowa":"IA","Kansas":"KS","Kentucky":"KY","Louisiana":"LA","Maine":"ME",
+  "Michigan":"MI","Minnesota":"MN","Mississippi":"MS","Missouri":"MO","Montana":"MT","Nebraska":"NE","Nevada":"NV","New Mexico":"NM",
+  "New York":"NY","North Carolina":"NC","North Dakota":"ND","Ohio":"OH","Oklahoma":"OK","Oregon":"OR","Pennsylvania":"PA",
+  "South Carolina":"SC","South Dakota":"SD","Tennessee":"TN","Texas":"TX","Utah":"UT","Virginia":"VA","Washington":"WA",
+  "West Virginia":"WV","Wisconsin":"WI","Wyoming":"WY" };
 
 function badgeSize(n) {
   const z = map.getZoom();
@@ -163,6 +169,49 @@ function render() {
 
   const zoom = map.getZoom();
   const useCallouts = zoom <= CALLOUT_MAX_ZOOM;
+  const gapMode = shadeMode() === "gap";
+  if (gapMode) {
+    // Replace circles with simple labels on the highlighted states: abbreviation + 2024 result
+    const shown = Object.keys(STATE_CENTERS).filter(st => gapClass(st) !== "other");
+    const compact = document.getElementById("map").clientWidth < 600;
+    const step = compact ? 20 : 34;
+    const pos = new Map();
+    if (useCallouts) {
+      const pane = map.getPixelBounds();
+      const coastX = map.project([41.0, -69.4], zoom).x;
+      const colX = Math.max(coastX + (compact ? 16 : 30), Math.min(coastX + 50, pane.max.x - (compact ? 22 : 45)));
+      let lastBottom = -Infinity;
+      CALLOUT_STATES.filter(st => shown.includes(st)).forEach(st => {
+        const y = Math.max(map.project(STATE_CENTERS[st], zoom).y, lastBottom + step);
+        lastBottom = y;
+        pos.set(st, map.unproject(L.point(colX, y), zoom));
+      });
+    }
+    shown.forEach(st => {
+      const v = POL && POL.states[st];
+      const center = STATE_CENTERS[st], at = pos.get(st) || L.latLng(center);
+      if (pos.has(st)) {
+        L.polyline([center, at], { color: "#777", weight: 1, opacity: 0.8, interactive: false }).addTo(layerGroup);
+        L.circleMarker(center, { radius: 2.5, weight: 0, fillColor: "#555", fillOpacity: 0.9, interactive: false }).addTo(layerGroup);
+      }
+      const abbr = CALLOUT_ABBR[st] || ABBR2[st] || st;
+      const cls = v ? (v.margin > 0 ? "vote-r" : "vote-d") : "";
+      const vote = v ? `<span class="${cls}">${v.margin > 0 ? "Trump" : "Harris"} +${Math.round(Math.abs(v.margin) * 100)}</span>` : "";
+      // Small screens: abbreviation only, colored by 2024 winner
+      const html = compact ? `<div class="gap-chip compact"><b class="${cls}">${abbr}</b></div>` : `<div class="gap-chip"><b>${abbr}</b>${vote}</div>`;
+      const m = L.marker(at, {
+        icon: L.divIcon({ className: "gap-chip-wrap", html, iconSize: [0, 0] }),
+        keyboard: true, title: st
+      });
+      m.bindTooltip(`<strong>${safe(st)}</strong>` + shadeLine(st) + `<br><span style="opacity:.7">Click for state profile</span>`, { direction: "top", offset: [0, -16], opacity: 0.96 });
+      m.on("click", () => openProfile(st));
+      m.addTo(layerGroup);
+    });
+    if (countEl) countEl.textContent = `${shown.length} higher-risk states highlighted`;
+    const panel0 = document.getElementById("profile");
+    if (panel0 && !panel0.hidden && currentProfile) openProfile(currentProfile, { keepScroll: true });
+    return;
+  }
 
   // Callout column: just east of the coast, stacked top-to-bottom without overlapping
   const calloutPos = new Map();
@@ -280,9 +329,10 @@ function polColor(m) {
 }
 
 // AI response gap: highlight the top third of states by job risk, colored by their strongest workforce measure
-const GAP_COLORS = { none: "#e6550d", partial: "#fdd0a2", law: "#74c476", other: "#f0f0f0" };
+// "partial" (study, executive action or pending bill) and "none" share a color: neither is a workforce law
+const GAP_COLORS = { none: "#fd8d3c", partial: "#fd8d3c", law: "#74c476", other: "#ececec" };
 const GAP_OUTLINE = { d: "#08306b", r: "#67000d" };
-const GAP_LABELS = { none: "No workforce measure", partial: "Study, executive action or pending bill only", law: "Workforce law enacted" };
+const GAP_LABELS = { none: "No workforce measure of any kind", partial: "No law yet (study, executive action or pending bill only)", law: "Workforce law in place" };
 const HIGH_RISK_MIN = (() => {
   if (!RISK) return Infinity;
   const v = Object.entries(RISK.states).filter(([k]) => k !== "District of Columbia" && k !== "Puerto Rico")
@@ -309,16 +359,8 @@ function stateStyle(feature) {
   if (mode === "risk") { const r = RISK && RISK.states[name]; fill = r ? riskColor(r.pct_median) : "#ccc"; }
   if (mode === "politics") { const v = POL && POL.states[name]; fill = v ? polColor(v.margin) : "#ccc"; }
   if (mode === "gap") {
-    const k = gapClass(name), v = POL && POL.states[name];
-    const highlighted = k !== "other";
-    return {
-      pane: "statesPane",
-      weight: highlighted ? 3 : 0.8,
-      color: highlighted && v ? (v.margin > 0 ? GAP_OUTLINE.r : GAP_OUTLINE.d) : "#fff",
-      opacity: 1,
-      fillColor: GAP_COLORS[k],
-      fillOpacity: highlighted ? 0.9 : 0.75
-    };
+    const k = gapClass(name);
+    return { pane: "statesPane", weight: 0.8, color: "#fff", opacity: 1, fillColor: GAP_COLORS[k], fillOpacity: 0.9 };
   }
   return {
     pane: "statesPane",
@@ -384,7 +426,6 @@ shadeSelect?.addEventListener("change", () => {
   if (untouchedBefore) fitUSAndRemember();
   statesLayer?.setStyle(stateStyle);
   // Draw highlighted states last so their outlines aren't hidden under neighbors
-  if (mode === "gap") statesLayer?.eachLayer(l => { if (gapClass(l.feature.properties.name) !== "other") l.bringToFront(); });
   syncChromeHeights();
   render();
 });
@@ -509,9 +550,9 @@ function drawFindings() {
   const enacted = g => g.reduce((a, r) => a + r.measures.filter(p => p.status === "passed").length, 0);
   const high = rows.filter(r => r.risk >= HIGH_RISK_MIN);
   const gaps = high.filter(r => r.level === 0).map(r => r.name);
+  const noLaw = high.filter(r => r.level < 3);
   el.innerHTML = `
-    <li><b>${gaps.length} of the ${high.length}</b> highest-risk states have no AI-workforce measure${gaps.length ? `: ${gaps.join(", ")}` : ""}.</li>
-    <li><b>${share(r => r.level === 0)}%</b> of the ${(total / 1e6).toFixed(1)}M jobs at risk are in states with no AI-workforce measure.</li>
-    <li><b>${share(r => notice.includes(r.name))}%</b> are in states that require AI to be disclosed in layoff notices${notice.length ? ` (${notice.join(" and ")})` : ""}.</li>
-    <li><b>${enacted(trump)} vs ${enacted(harris)}</b> enacted AI-workforce laws in Trump-won vs Harris-won states.${enacted(trump) === 0 ? " Trump-won states have used executive orders, training programs and studies." : ""}</li>`;
+    <li><b>${noLaw.length} of the ${high.length}</b> states with the highest AI job risk have no AI-workforce law yet${gaps.length ? `; ${gaps.join(", ")} have taken no workforce action at all` : ""}.</li>
+    <li>Only <b>${share(r => notice.includes(r.name))}%</b> of the ${(total / 1e6).toFixed(1)}M jobs at risk are in states that require AI to be disclosed in layoff notices${notice.length ? ` (${notice.join(" and ")})` : ""}.</li>
+    <li>${enacted(trump) === 0 ? "Every state with an AI-workforce law voted for Harris. " : ""}AI-workforce laws enacted: <b>${enacted(trump)}</b> in Trump-won states, <b>${enacted(harris)}</b> in Harris-won states.</li>`;
 }

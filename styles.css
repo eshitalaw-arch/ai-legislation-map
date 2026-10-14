@@ -155,3 +155,14 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
 .gap-note.collapsed ul, .gap-note.collapsed .gap-caveat { display: none; }
 .gap-note.collapsed { width: auto; }
 @media (max-width: 600px) { .gap-note { width: auto; left: 12px; right: 12px; max-height: 45%; } .gap-note.collapsed { left: auto; } }
+
+/* Response gap labels (replace the law-count circles in this view) */
+.gap-chip-wrap { background: none; border: 0; }
+.gap-chip { background: #fff; border-radius: 6px; padding: 2px 6px; box-shadow: 0 1px 4px rgba(0,0,0,.3); text-align: center;
+  line-height: 1.15; white-space: nowrap; cursor: pointer; display: inline-block; transform: translate(-50%, -50%); }
+.gap-chip b { display: block; font-size: 11.5px; color: #1f1f1f; }
+.gap-chip span { display: block; font-size: 10px; font-weight: 600; }
+.gap-chip .vote-r { color: #a50f15; } .gap-chip .vote-d { color: #08519c; }
+.gap-chip.compact { padding: 1px 4px; border-radius: 4px; }
+.gap-chip.compact b { font-size: 10px; }
+.gap-chip b.vote-r { color: #a50f15; } .gap-chip b.vote-d { color: #08519c; }

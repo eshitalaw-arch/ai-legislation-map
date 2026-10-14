@@ -6,7 +6,7 @@
   <title>US AI Legislation Map</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="./styles.css?v=20261014h" />
+  <link rel="stylesheet" href="./styles.css?v=20261014i" />
 </head>
 <body>
   <header class="topbar">
@@ -64,11 +64,10 @@
           <span class="risk-caption">share of jobs at risk from AI · <a href="#" class="about-open">Tufts Digital Planet</a></span>
         </div>
         <div id="gapScale" class="gap-legend" hidden>
-          <div class="gap-row"><i class="sw" data-gap="none"></i>High job risk · no workforce measure</div>
-          <div class="gap-row"><i class="sw" data-gap="partial"></i>High job risk · study, executive action or pending bill</div>
-          <div class="gap-row"><i class="sw" data-gap="law"></i>High job risk · workforce law enacted</div>
-          <div class="gap-row"><i class="sw" data-gap="other"></i>Lower or middle job risk</div>
-          <div class="gap-row"><i class="ol d"></i><i class="ol r"></i>Outline: 2024 winner (Harris / Trump)</div>
+          <div class="gap-row"><i class="sw" data-gap="none"></i>Higher AI job risk · no workforce law yet</div>
+          <div class="gap-row"><i class="sw" data-gap="law"></i>Higher AI job risk · workforce law in place</div>
+          <div class="gap-row"><i class="sw" data-gap="other"></i>Lower AI job risk</div>
+          <div class="muted" style="font-size:11.5px">Labels show how each highlighted state voted in 2024 (<span style="color:#08519c;font-weight:600">blue = Harris</span>, <span style="color:#a50f15;font-weight:600">red = Trump</span>)</div>
         </div>
         <div id="polScale" class="risk-scale" hidden>
           <span>D+30</span><span class="risk-bar pol-bar"></span><span>R+30</span>
@@ -114,10 +113,10 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-  <script src="./data/us-states.js?v=20261014h"></script>
-  <script src="./data/jobrisk.js?v=20261014h"></script>
-  <script src="./data/politics.js?v=20261014h"></script>
-  <script src="./data/hubs.js?v=20261014h"></script>
-  <script src="./src/app.js?v=20261014h"></script>
+  <script src="./data/us-states.js?v=20261014i"></script>
+  <script src="./data/jobrisk.js?v=20261014i"></script>
+  <script src="./data/politics.js?v=20261014i"></script>
+  <script src="./data/hubs.js?v=20261014i"></script>
+  <script src="./src/app.js?v=20261014i"></script>
 </body>
 </html>
