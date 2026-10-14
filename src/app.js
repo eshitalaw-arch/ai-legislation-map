@@ -289,7 +289,32 @@ function polColor(m) {
 }
 
 // Presidential vote + AI job risk: hue = vote, darkness = job-risk third of the 50 states
-const VR_COLORS = { R: ["#fcbba1", "#fb6a4a", "#a50f15"], D: ["#c6dbef", "#6baed6", "#08519c"] };
+// Diagonal hatching: line color = vote, line spacing = job-risk third (sparse / medium / dense)
+const VR_LINE = { R: "#c0392b", D: "#1f5fae" };
+const VR_GAP = [11, 6.5, 3.6];   // px between lines for lower / middle / higher job risk
+const VR_WIDTH = [1.4, 1.6, 1.7];
+function ensureHatchPatterns() {
+  const anyPath = statesLayer && statesLayer.getLayers()[0] && statesLayer.getLayers()[0]._path;
+  const svg = anyPath && anyPath.ownerSVGElement;
+  if (!svg || svg.querySelector("#vr-R-0")) return;
+  const NS = "http://www.w3.org/2000/svg";
+  let defs = svg.querySelector("defs");
+  if (!defs) { defs = document.createElementNS(NS, "defs"); svg.insertBefore(defs, svg.firstChild); }
+  ["R", "D"].forEach(party => [0, 1, 2].forEach(t => {
+    const gap = VR_GAP[t];
+    const pat = document.createElementNS(NS, "pattern");
+    pat.setAttribute("id", `vr-${party}-${t}`);
+    pat.setAttribute("patternUnits", "userSpaceOnUse");
+    pat.setAttribute("width", gap); pat.setAttribute("height", gap);
+    pat.setAttribute("patternTransform", "rotate(45)");
+    const bg = document.createElementNS(NS, "rect");
+    bg.setAttribute("width", gap); bg.setAttribute("height", gap); bg.setAttribute("fill", "#fff");
+    const line = document.createElementNS(NS, "line");
+    line.setAttribute("x1", 0); line.setAttribute("y1", 0); line.setAttribute("x2", 0); line.setAttribute("y2", gap);
+    line.setAttribute("stroke", VR_LINE[party]); line.setAttribute("stroke-width", VR_WIDTH[t]);
+    pat.appendChild(bg); pat.appendChild(line); defs.appendChild(pat);
+  }));
+}
 const RISK_BREAKS = (() => {
   if (!RISK) return [Infinity, Infinity];
   const v = Object.entries(RISK.states).filter(([k]) => k !== "District of Columbia" && k !== "Puerto Rico")
@@ -312,8 +337,8 @@ function stateStyle(feature) {
   if (mode === "politics") { const v = POL && POL.states[name]; fill = v ? polColor(v.margin) : "#ccc"; }
   if (mode === "voterisk") {
     const v = POL && POL.states[name], r = RISK && RISK.states[name];
-    const fill = v && r && name !== "District of Columbia" ? VR_COLORS[v.margin > 0 ? "R" : "D"][riskTier(r.pct_median)] : "#ececec";
-    return { pane: "statesPane", weight: 0.8, color: "#fff", opacity: 1, fillColor: fill, fillOpacity: 0.9 };
+    const fill = v && r && name !== "District of Columbia" ? `url(#vr-${v.margin > 0 ? "R" : "D"}-${riskTier(r.pct_median)})` : "#ececec";
+    return { pane: "statesPane", weight: 1, color: "#8a8a8a", opacity: 0.9, fillColor: fill, fillOpacity: 1 };
   }
   if (mode === "redblue") {
     const v = POL && POL.states[name];
@@ -369,6 +394,7 @@ function shadeLine(name) {
 
 shadeSelect?.addEventListener("change", () => {
   const mode = shadeMode();
+  if (mode === "voterisk") ensureHatchPatterns();
   if (riskScale) riskScale.hidden = mode !== "risk";
   if (polScale) polScale.hidden = mode !== "politics";
   if (gapScale) gapScale.hidden = mode !== "redblue";
