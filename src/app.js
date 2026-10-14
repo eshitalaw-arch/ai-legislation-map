@@ -7,18 +7,22 @@
 // 1) Create map
 const map = L.map("map", { zoomControl: true, zoomSnap: 0.25 });
 const US_BOUNDS = [[24.3, -124.8], [49.4, -64.5]];
+let fitting = false;
 function fitUS() {
   // Leave room on the right for the Northeast callouts, plus the findings note when it's open on wide screens
   const w = document.getElementById("map").clientWidth;
   const note = document.getElementById("gapNote");
   const noteRoom = note && !note.hidden && !note.classList.contains("collapsed") && w >= 900 ? 340 : 0;
-  map.fitBounds(US_BOUNDS, { paddingTopLeft: [6, 6], paddingBottomRight: [(w < 700 ? 44 : 10) + noteRoom, 6] });
+  fitting = true;
+  map.fitBounds(US_BOUNDS, { paddingTopLeft: [6, 6], paddingBottomRight: [(w < 700 ? 44 : 10) + noteRoom, 6], animate: false });
+  fitting = false;
 }
-let lastFit = null;
-function fitUSAndRemember() { fitUS(); lastFit = { c: map.getCenter(), z: map.getZoom() }; }
-function userHasMovedMap() {
-  return !lastFit || map.getZoom() !== lastFit.z || map.getCenter().distanceTo(lastFit.c) > 1000;
-}
+// Re-fit the view automatically (e.g. when panels open or the header grows) until the user pans or zooms
+let userMoved = false;
+map.on("dragstart", () => { userMoved = true; });
+map.on("zoomstart", () => { if (!fitting) userMoved = true; });
+function fitUSAndRemember() { fitUS(); }
+function userHasMovedMap() { return userMoved; }
 fitUSAndRemember();
 
 // 2) Tiles
@@ -244,7 +248,6 @@ const RISK = window.JOB_RISK || null;
 const POL = window.POLITICS_2024 || null;
 const shadeSelect = document.getElementById("shadeSelect");
 const riskScale = document.getElementById("riskScale");
-const polScale = document.getElementById("polScale");
 const shadeMode = () => (shadeSelect ? shadeSelect.value : "none");
 // "R+1.7" / "D+5.9" from a signed margin (Republican positive)
 const marginText = (m) => (m == null ? "—" : (m > 0 ? "R+" : "D+") + (Math.abs(m) * 100).toFixed(1));
@@ -276,17 +279,6 @@ function riskColor(v) {
   return "#" + a.map((c, k) => Math.round(c + (b[k] - c) * local).toString(16).padStart(2, "0")).join("");
 }
 
-function polColor(m) {
-  // Diverging blue-white-red scale, capped at a 30-point margin
-  if (m == null) return "#ccc";
-  const stops = ["#2166ac", "#92c5de", "#f7f7f7", "#f4a582", "#b2182b"];
-  const t = (Math.max(-0.3, Math.min(0.3, m)) + 0.3) / 0.6;
-  const i = Math.min(stops.length - 2, Math.floor(t * (stops.length - 1)));
-  const local = t * (stops.length - 1) - i;
-  const a = stops[i].match(/\w\w/g).map(h => parseInt(h, 16));
-  const b = stops[i + 1].match(/\w\w/g).map(h => parseInt(h, 16));
-  return "#" + a.map((c, k) => Math.round(c + (b[k] - c) * local).toString(16).padStart(2, "0")).join("");
-}
 
 // Presidential vote + AI job risk: hue = vote, darkness = job-risk third of the 50 states
 const VR_COLORS = { R: ["#fcbba1", "#fb6a4a", "#a50f15"], D: ["#c6dbef", "#6baed6", "#08519c"] };
@@ -309,13 +301,12 @@ function stateStyle(feature) {
   const on = mode !== "none";
   let fill = "#ccc";
   if (mode === "risk") { const r = RISK && RISK.states[name]; fill = r ? riskColor(r.pct_median) : "#ccc"; }
-  if (mode === "politics") { const v = POL && POL.states[name]; fill = v ? polColor(v.margin) : "#ccc"; }
   if (mode === "voterisk") {
     const v = POL && POL.states[name], r = RISK && RISK.states[name];
     const fill = v && r && name !== "District of Columbia" ? VR_COLORS[v.margin > 0 ? "R" : "D"][riskTier(r.pct_median)] : "#ececec";
     return { pane: "statesPane", weight: 0.8, color: "#fff", opacity: 1, fillColor: fill, fillOpacity: 0.9 };
   }
-  if (mode === "redblue") {
+  if (mode === "politics") {
     const v = POL && POL.states[name];
     return { pane: "statesPane", weight: 0.8, color: "#fff", opacity: 1,
       fillColor: v ? (v.margin > 0 ? "#f2a7a9" : "#a6c8ea") : "#ececec", fillOpacity: 0.85 };
@@ -362,7 +353,6 @@ function shadeLine(name) {
   const r = RISK && RISK.states[name], v = POL && POL.states[name];
   const voteLine = v ? `<br>Presidential vote: <b>${marginText(v.margin)}</b> (Republican ${pct(v.r_pct)}, Democratic ${pct(v.d_pct)})` : "";
   if (mode === "politics") return voteLine;
-  if (mode === "redblue") return voteLine;
   if (mode === "voterisk") return voteLine + (r ? `<br>Jobs at risk from AI: <b>${pct(r.pct_median)}</b> (${TIER_NAMES[riskTier(r.pct_median)]} third of states)` : "");
   return "";
 }
@@ -370,14 +360,16 @@ function shadeLine(name) {
 shadeSelect?.addEventListener("change", () => {
   const mode = shadeMode();
   if (riskScale) riskScale.hidden = mode !== "risk";
-  if (polScale) polScale.hidden = mode !== "politics";
-  if (gapScale) gapScale.hidden = mode !== "redblue";
+  if (gapScale) gapScale.hidden = mode !== "politics";
   const vr = document.getElementById("vrScale"); if (vr) vr.hidden = mode !== "voterisk";
   const untouchedBefore = !userHasMovedMap();
   if (gapNote) {
-    gapNote.hidden = mode !== "redblue";
+    // The Republican vs. Democratic comparison accompanies both vote views
+    const voteView = mode === "politics" || mode === "voterisk";
+    const wasHidden = gapNote.hidden;
+    gapNote.hidden = !voteView;
     // Start collapsed on phones so the map stays visible
-    if (mode === "redblue") { drawFindings(); setGapCollapsed(window.innerWidth < 600); }
+    if (voteView) { drawFindings(); if (wasHidden) setGapCollapsed(window.innerWidth < 600); }
     else if (activeTopic) { activeTopic = null; if (sectorEl) { sectorEl.value = "all"; sectorEl.dispatchEvent(new Event("change")); } }
   }
   if (untouchedBefore) fitUSAndRemember();
@@ -455,7 +447,7 @@ function openProfile(name, opts = {}) {
   profileBody.innerHTML = `
     <h2>${safe(name)}</h2>
     <div class="note" style="margin-top:0">State profile · current as of Oct 14, 2026</div>
-    ${POL && POL.states[name] ? `<p class="pol-line"><span class="pol-chip" style="background:${polColor(POL.states[name].margin)}"></span>Presidential vote: <strong>${marginText(POL.states[name].margin)}</strong> (Republican ${pct(POL.states[name].r_pct)}, Democratic ${pct(POL.states[name].d_pct)}) <span class="note">· <a href="${safe(POL.source_url)}" target="_blank" rel="noopener">FEC</a></span></p>` : ""}
+    ${POL && POL.states[name] ? `<p class="pol-line"><span class="pol-chip" style="background:${POL.states[name].margin > 0 ? "#f2a7a9" : "#a6c8ea"}"></span>Presidential vote: <strong>${marginText(POL.states[name].margin)}</strong> (Republican ${pct(POL.states[name].r_pct)}, Democratic ${pct(POL.states[name].d_pct)}) <span class="note">· <a href="${safe(POL.source_url)}" target="_blank" rel="noopener">FEC</a></span></p>` : ""}
     ${filterNote}
     ${section("AI and workforce measures", workforce, "None on this map" + (entries === matching && matching.length < allForState.length ? " that match your filters." : "."))}
     ${section("Other AI laws, bills and actions", other, "None on this map" + (entries === matching && matching.length < allForState.length ? " that match your filters." : "."))}
