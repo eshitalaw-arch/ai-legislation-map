@@ -139,9 +139,8 @@ function badgeTooltip(state, list) {
   list.forEach(p => { c[p.status]++; });
   const parts = ["passed", "pending", "guidance"].filter(k => c[k])
     .map(k => `<span style="color:${STATUS_COLORS[k]};font-weight:600">${c[k]} ${STATUS_LABELS[k].toLowerCase()}</span>`);
-  const r = RISK && RISK.states[state];
   return `<strong>${safe(state)}</strong><br>${list.length} ${list.length === 1 ? "entry" : "entries"}: ${parts.join(" · ")}` +
-    (r && riskToggle && riskToggle.checked ? `<br>${pct(r.pct_median)} of jobs at risk (Tufts, median scenario)` : "") +
+    shadeLine(state) +
     `<br><span style="opacity:.7">Click to see them</span>`;
 }
 
@@ -226,8 +225,13 @@ document.getElementById("aboutClose")?.addEventListener("click", () => { aboutPa
 // Job-risk context (Tufts Digital Planet) + state profiles
 // ============================
 const RISK = window.JOB_RISK || null;
-const riskToggle = document.getElementById("riskToggle");
+const POL = window.POLITICS_2024 || null;
+const shadeSelect = document.getElementById("shadeSelect");
 const riskScale = document.getElementById("riskScale");
+const polScale = document.getElementById("polScale");
+const shadeMode = () => (shadeSelect ? shadeSelect.value : "none");
+// "R+1.7" / "D+5.9" from a signed margin (Republican positive)
+const marginText = (m) => (m == null ? "—" : (m > 0 ? "R+" : "D+") + (Math.abs(m) * 100).toFixed(1));
 const pct = (x) => (x == null ? "—" : (Math.round(x * 1000) / 10).toFixed(1) + "%");
 
 // Keep floating panels clear of the header and footer, whose heights change with wrapping
@@ -254,20 +258,35 @@ function riskColor(v) {
   return "#" + a.map((c, k) => Math.round(c + (b[k] - c) * local).toString(16).padStart(2, "0")).join("");
 }
 
+function polColor(m) {
+  // Diverging blue-white-red scale, capped at a 30-point margin
+  if (m == null) return "#ccc";
+  const stops = ["#2166ac", "#92c5de", "#f7f7f7", "#f4a582", "#b2182b"];
+  const t = (Math.max(-0.3, Math.min(0.3, m)) + 0.3) / 0.6;
+  const i = Math.min(stops.length - 2, Math.floor(t * (stops.length - 1)));
+  const local = t * (stops.length - 1) - i;
+  const a = stops[i].match(/\w\w/g).map(h => parseInt(h, 16));
+  const b = stops[i + 1].match(/\w\w/g).map(h => parseInt(h, 16));
+  return "#" + a.map((c, k) => Math.round(c + (b[k] - c) * local).toString(16).padStart(2, "0")).join("");
+}
+
 map.createPane("statesPane");
 map.getPane("statesPane").style.zIndex = 350; // below markers (overlayPane = 400)
 
 let statesLayer = null;
 function stateStyle(feature) {
   const name = feature.properties.name;
-  const r = RISK && RISK.states[name];
-  const on = riskToggle && riskToggle.checked;
+  const mode = shadeMode();
+  const on = mode !== "none";
+  let fill = "#ccc";
+  if (mode === "risk") { const r = RISK && RISK.states[name]; fill = r ? riskColor(r.pct_median) : "#ccc"; }
+  if (mode === "politics") { const v = POL && POL.states[name]; fill = v ? polColor(v.margin) : "#ccc"; }
   return {
     pane: "statesPane",
     weight: on ? 0.8 : 0.5,
     color: on ? "#fff" : "#9a9a9a",
     opacity: on ? 1 : 0.35,
-    fillColor: r ? riskColor(r.pct_median) : "#ccc",
+    fillColor: fill,
     fillOpacity: on ? 0.72 : 0
   };
 }
@@ -281,9 +300,7 @@ if (window.topojson && window.US_STATES_TOPO) {
       layer.on("click", () => openProfile(f.properties.name));
       layer.on("mouseover", () => layer.setStyle({ weight: 2, color: "#54278f", opacity: 0.9 }));
       layer.on("mouseout", () => statesLayer.resetStyle(layer));
-      const r = RISK && RISK.states[f.properties.name];
-      layer.bindTooltip(
-        `<strong>${safe(f.properties.name)}</strong>` + (r ? `<br>${pct(r.pct_median)} of jobs at risk (Tufts, median scenario)` : "") +
+      layer.bindTooltip(() => `<strong>${safe(f.properties.name)}</strong>` + shadeLine(f.properties.name) +
         `<br><span style="opacity:.7">Click for state profile</span>`,
         { sticky: true, direction: "top", opacity: 0.95 });
     }
@@ -294,10 +311,27 @@ if (RISK) {
   document.getElementById("riskMin").textContent = pct(RISK.min_pct);
   document.getElementById("riskMax").textContent = pct(RISK.max_pct);
 }
-riskToggle?.addEventListener("change", () => {
-  if (riskScale) riskScale.hidden = !riskToggle.checked;
+// One line describing the active shading for a state, used in tooltips
+function shadeLine(name) {
+  const mode = shadeMode();
+  if (mode === "risk") {
+    const r = RISK && RISK.states[name];
+    return r ? `<br>${pct(r.pct_median)} of jobs at risk (Tufts, median scenario)` : "";
+  }
+  if (mode === "politics") {
+    const v = POL && POL.states[name];
+    return v ? `<br>2024 president: <b>${marginText(v.margin)}</b> (Trump ${pct(v.r_pct)}, Harris ${pct(v.d_pct)})` : "";
+  }
+  return "";
+}
+
+shadeSelect?.addEventListener("change", () => {
+  const mode = shadeMode();
+  if (riskScale) riskScale.hidden = mode !== "risk";
+  if (polScale) polScale.hidden = mode !== "politics";
   statesLayer?.setStyle(stateStyle);
   syncChromeHeights();
+  render();
 });
 
 // State profile panel
@@ -357,6 +391,7 @@ function openProfile(name, opts = {}) {
   profileBody.innerHTML = `
     <h2>${safe(name)}</h2>
     <div class="note" style="margin-top:0">State profile · current as of Oct 13, 2026</div>
+    ${POL && POL.states[name] ? `<p class="pol-line"><span class="pol-chip" style="background:${polColor(POL.states[name].margin)}"></span>2024 presidential vote: <strong>${marginText(POL.states[name].margin)}</strong> (Trump ${pct(POL.states[name].r_pct)}, Harris ${pct(POL.states[name].d_pct)}) <span class="note">· <a href="${safe(POL.source_url)}" target="_blank" rel="noopener">FEC</a></span></p>` : ""}
     ${filterNote}
     ${section("AI and workforce measures", workforce, "None on this map" + (entries === matching && matching.length < allForState.length ? " that match your filters." : "."))}
     ${section("Other AI laws, bills and guidance", other, "None on this map" + (entries === matching && matching.length < allForState.length ? " that match your filters." : "."))}
