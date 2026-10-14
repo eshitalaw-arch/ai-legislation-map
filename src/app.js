@@ -11,7 +11,7 @@ function fitUS() {
   // Leave room on the right for the Northeast callouts, plus the findings note when it's open on wide screens
   const w = document.getElementById("map").clientWidth;
   const note = document.getElementById("gapNote");
-  const noteRoom = note && !note.hidden && !note.classList.contains("collapsed") && w >= 900 ? 300 : 0;
+  const noteRoom = note && !note.hidden && !note.classList.contains("collapsed") && w >= 900 ? 340 : 0;
   map.fitBounds(US_BOUNDS, { paddingTopLeft: [6, 6], paddingBottomRight: [(w < 700 ? 44 : 10) + noteRoom, 6] });
 }
 let lastFit = null;
@@ -59,7 +59,7 @@ const SECTOR_LABELS = {
   healthcare: "Healthcare",
   workforce: "AI and Workforce Impact",
   biometrics: "Biometrics",
-  synthetic_media: "Synthetic media",
+  synthetic_media: "Deepfakes & synthetic media",
   consumer_transparency: "Consumer transparency",
   chatbots: "Chatbots & AI companions",
   comprehensive: "Comprehensive / algorithmic discrimination",
@@ -169,49 +169,6 @@ function render() {
 
   const zoom = map.getZoom();
   const useCallouts = zoom <= CALLOUT_MAX_ZOOM;
-  const gapMode = shadeMode() === "gap";
-  if (gapMode) {
-    // Replace circles with simple labels on the highlighted states: abbreviation + 2024 result
-    const shown = Object.keys(STATE_CENTERS).filter(st => gapClass(st) !== "other");
-    const compact = document.getElementById("map").clientWidth < 600;
-    const step = compact ? 20 : 34;
-    const pos = new Map();
-    if (useCallouts) {
-      const pane = map.getPixelBounds();
-      const coastX = map.project([41.0, -69.4], zoom).x;
-      const colX = Math.max(coastX + (compact ? 16 : 30), Math.min(coastX + 50, pane.max.x - (compact ? 22 : 45)));
-      let lastBottom = -Infinity;
-      CALLOUT_STATES.filter(st => shown.includes(st)).forEach(st => {
-        const y = Math.max(map.project(STATE_CENTERS[st], zoom).y, lastBottom + step);
-        lastBottom = y;
-        pos.set(st, map.unproject(L.point(colX, y), zoom));
-      });
-    }
-    shown.forEach(st => {
-      const v = POL && POL.states[st];
-      const center = STATE_CENTERS[st], at = pos.get(st) || L.latLng(center);
-      if (pos.has(st)) {
-        L.polyline([center, at], { color: "#777", weight: 1, opacity: 0.8, interactive: false }).addTo(layerGroup);
-        L.circleMarker(center, { radius: 2.5, weight: 0, fillColor: "#555", fillOpacity: 0.9, interactive: false }).addTo(layerGroup);
-      }
-      const abbr = CALLOUT_ABBR[st] || ABBR2[st] || st;
-      const cls = v ? (v.margin > 0 ? "vote-r" : "vote-d") : "";
-      const vote = v ? `<span class="${cls}">${v.margin > 0 ? "Trump" : "Harris"} +${Math.round(Math.abs(v.margin) * 100)}</span>` : "";
-      // Small screens: abbreviation only, colored by 2024 winner
-      const html = compact ? `<div class="gap-chip compact"><b class="${cls}">${abbr}</b></div>` : `<div class="gap-chip"><b>${abbr}</b>${vote}</div>`;
-      const m = L.marker(at, {
-        icon: L.divIcon({ className: "gap-chip-wrap", html, iconSize: [0, 0] }),
-        keyboard: true, title: st
-      });
-      m.bindTooltip(`<strong>${safe(st)}</strong>` + shadeLine(st) + `<br><span style="opacity:.7">Click for state profile</span>`, { direction: "top", offset: [0, -16], opacity: 0.96 });
-      m.on("click", () => openProfile(st));
-      m.addTo(layerGroup);
-    });
-    if (countEl) countEl.textContent = `${shown.length} higher-risk states highlighted`;
-    const panel0 = document.getElementById("profile");
-    if (panel0 && !panel0.hidden && currentProfile) openProfile(currentProfile, { keepScroll: true });
-    return;
-  }
 
   // Callout column: just east of the coast, stacked top-to-bottom without overlapping
   const calloutPos = new Map();
@@ -265,6 +222,9 @@ allFeatures = (fc && Array.isArray(fc.features)) ? fc.features : [];
 // React to filter changes
 if (sectorEl) sectorEl.addEventListener("change", () => {
   if (subcatWrap) subcatWrap.hidden = sectorEl.value !== "workforce";
+  // Keep the red/blue comparison's highlighted topic in step with the sector filter
+  const note = document.getElementById("gapNote");
+  if (note && !note.hidden) { activeTopic = sectorEl.value === "all" ? null : sectorEl.value; drawFindings(); }
   syncChromeHeights();
   render();
 });
@@ -328,25 +288,6 @@ function polColor(m) {
   return "#" + a.map((c, k) => Math.round(c + (b[k] - c) * local).toString(16).padStart(2, "0")).join("");
 }
 
-// AI response gap: highlight the top third of states by job risk, colored by their strongest workforce measure
-// "partial" (study, executive action or pending bill) and "none" share a color: neither is a workforce law
-const GAP_COLORS = { none: "#fd8d3c", partial: "#fd8d3c", law: "#74c476", other: "#ececec" };
-const GAP_OUTLINE = { d: "#08306b", r: "#67000d" };
-const GAP_LABELS = { none: "No workforce measure of any kind", partial: "No law yet (study, executive action or pending bill only)", law: "Workforce law in place" };
-const HIGH_RISK_MIN = (() => {
-  if (!RISK) return Infinity;
-  const v = Object.entries(RISK.states).filter(([k]) => k !== "District of Columbia" && k !== "Puerto Rico")
-    .map(([, x]) => x.pct_median).sort((a, b) => b - a);
-  return v[Math.round(v.length / 3) - 1]; // value of the 17th-highest state
-})();
-function gapClass(name) {
-  const r = RISK && RISK.states[name];
-  // DC and territories aren't covered by this map's research, so they're never highlighted
-  if (!r || name === "District of Columbia" || name === "Puerto Rico" || r.pct_median < HIGH_RISK_MIN) return "other";
-  const lvl = responseOf(name).level;
-  return lvl === 3 ? "law" : lvl === 0 ? "none" : "partial";
-}
-
 map.createPane("statesPane");
 map.getPane("statesPane").style.zIndex = 350; // below markers (overlayPane = 400)
 
@@ -358,9 +299,10 @@ function stateStyle(feature) {
   let fill = "#ccc";
   if (mode === "risk") { const r = RISK && RISK.states[name]; fill = r ? riskColor(r.pct_median) : "#ccc"; }
   if (mode === "politics") { const v = POL && POL.states[name]; fill = v ? polColor(v.margin) : "#ccc"; }
-  if (mode === "gap") {
-    const k = gapClass(name);
-    return { pane: "statesPane", weight: 0.8, color: "#fff", opacity: 1, fillColor: GAP_COLORS[k], fillOpacity: 0.9 };
+  if (mode === "redblue") {
+    const v = POL && POL.states[name];
+    return { pane: "statesPane", weight: 0.8, color: "#fff", opacity: 1,
+      fillColor: v ? (v.margin > 0 ? "#f2a7a9" : "#a6c8ea") : "#ececec", fillOpacity: 0.85 };
   }
   return {
     pane: "statesPane",
@@ -402,13 +344,7 @@ function shadeLine(name) {
   const r = RISK && RISK.states[name], v = POL && POL.states[name];
   const voteLine = v ? `<br>2024 president: <b>${marginText(v.margin)}</b> (Trump ${pct(v.r_pct)}, Harris ${pct(v.d_pct)})` : "";
   if (mode === "politics") return voteLine;
-  if (mode === "gap") {
-    const k = gapClass(name), resp = responseOf(name);
-    const riskLine = r ? `<br>${pct(r.pct_median)} of jobs at risk${k !== "other" ? " (top third of states)" : ""}` : "";
-    const respLine = `<br>Workforce response: <b>${k === "other" ? RESPONSE_LEVELS[resp.level].label : GAP_LABELS[k]}</b>` +
-      (resp.measures.length ? ` (${resp.measures.length})` : "");
-    return riskLine + respLine + voteLine;
-  }
+  if (mode === "redblue") return voteLine;
   return "";
 }
 
@@ -416,12 +352,13 @@ shadeSelect?.addEventListener("change", () => {
   const mode = shadeMode();
   if (riskScale) riskScale.hidden = mode !== "risk";
   if (polScale) polScale.hidden = mode !== "politics";
-  if (gapScale) gapScale.hidden = mode !== "gap";
+  if (gapScale) gapScale.hidden = mode !== "redblue";
   const untouchedBefore = !userHasMovedMap();
   if (gapNote) {
-    gapNote.hidden = mode !== "gap";
+    gapNote.hidden = mode !== "redblue";
     // Start collapsed on phones so the map stays visible
-    if (mode === "gap") { drawFindings(); setGapCollapsed(window.innerWidth < 600); }
+    if (mode === "redblue") { drawFindings(); setGapCollapsed(window.innerWidth < 600); }
+    else if (activeTopic) { activeTopic = null; if (sectorEl) { sectorEl.value = "all"; sectorEl.dispatchEvent(new Event("change")); } }
   }
   if (untouchedBefore) fitUSAndRemember();
   statesLayer?.setStyle(stateStyle);
@@ -507,7 +444,6 @@ map.on("zoomend", render);
 // ============================
 const gapScale = document.getElementById("gapScale");
 const gapNote = document.getElementById("gapNote");
-document.querySelectorAll(".gap-legend .sw").forEach(el => { el.style.background = GAP_COLORS[el.dataset.gap]; });
 document.getElementById("gapNoteClose")?.addEventListener("click", () => {
   const untouched = !userHasMovedMap();
   gapNote.hidden = true;
@@ -536,23 +472,43 @@ function responseOf(name) {
   return { level, measures: w };
 }
 
+// Red vs. blue: share of Trump-won and Harris-won states with at least one enacted law per topic
+const RB_TOPICS = ["synthetic_media", "chatbots", "consumer_transparency", "workforce", "healthcare", "government", "frontier_models", "comprehensive", "biometrics"];
+let activeTopic = null;
 function drawFindings() {
   const el = document.getElementById("gapFindings");
-  if (!el || !RISK || !POL) return;
-  const rows = Object.keys(POL.states).filter(n => n !== "District of Columbia" && RISK.states[n]).map(n => {
-    const resp = responseOf(n);
-    return { name: n, margin: POL.states[n].margin, risk: RISK.states[n].pct_median, jobs: RISK.states[n].jobs_median, level: resp.level, measures: resp.measures };
-  });
-  const total = rows.reduce((a, r) => a + r.jobs, 0);
-  const share = f => Math.round(rows.filter(f).reduce((a, r) => a + r.jobs, 0) / total * 100);
-  const notice = rows.filter(r => r.measures.some(p => p.layoff_notice === true && p.status === "passed")).map(r => r.name);
-  const trump = rows.filter(r => r.margin > 0), harris = rows.filter(r => r.margin < 0);
-  const enacted = g => g.reduce((a, r) => a + r.measures.filter(p => p.status === "passed").length, 0);
-  const high = rows.filter(r => r.risk >= HIGH_RISK_MIN);
-  const gaps = high.filter(r => r.level === 0).map(r => r.name);
-  const noLaw = high.filter(r => r.level < 3);
+  if (!el || !POL) return;
+  gapNote.classList.add("wide");
+  const H = allFeatures.map(f => f.properties);
+  const states = Object.keys(POL.states).filter(n => n !== "District of Columbia");
+  const T = states.filter(n => POL.states[n].margin > 0), D = states.filter(n => POL.states[n].margin < 0);
+  const inTopic = (p, sec) => p.sector === sec || isAlso(p, sec);
+  const share = (g, sec) => Math.round(g.filter(n => H.some(p => p.state === n && p.status === "passed" && inTopic(p, sec))).length / g.length * 100);
+  const perState = g => (H.filter(p => p.status === "passed" && g.includes(p.state)).length / g.length).toFixed(1);
+  const rows = RB_TOPICS.map(sec => ({ sec, t: share(T, sec), d: share(D, sec) }))
+    .filter(r => r.t || r.d).sort((a, b) => Math.max(b.t, b.d) - Math.max(a.t, a.d));
+  const max = Math.max(...rows.map(r => Math.max(r.t, r.d)), 1);
+  const lead = r => Math.abs(r.t - r.d) < 10 ? "similar" : (r.t > r.d ? "red states lead" : "blue states lead");
   el.innerHTML = `
-    <li><b>${noLaw.length} of the ${high.length}</b> states with the highest AI job risk have no AI-workforce law yet${gaps.length ? `; ${gaps.join(", ")} have taken no workforce action at all` : ""}.</li>
-    <li>Only <b>${share(r => notice.includes(r.name))}%</b> of the ${(total / 1e6).toFixed(1)}M jobs at risk are in states that require AI to be disclosed in layoff notices${notice.length ? ` (${notice.join(" and ")})` : ""}.</li>
-    <li>${enacted(trump) === 0 ? "Every state with an AI-workforce law voted for Harris. " : ""}AI-workforce laws enacted: <b>${enacted(trump)}</b> in Trump-won states, <b>${enacted(harris)}</b> in Harris-won states.</li>`;
+    <div class="rb-key"><span><i style="background:#c0392b"></i>Trump-won (${T.length} states)</span><span><i style="background:#2c6fbb"></i>Harris-won (${D.length})</span></div>
+    <p class="rb-headline">AI laws passed per state: <b>${perState(T)}</b> in Trump-won states, <b>${perState(D)}</b> in Harris-won states.</p>
+    <div class="muted" style="font-size:11.5px;margin-bottom:4px">Share of states that have passed a law on…</div>
+    ${rows.map(r => `<div class="rb-row${activeTopic === r.sec ? " active" : ""}" tabindex="0" role="button" data-sector="${r.sec}" aria-label="${safe(SECTOR_LABELS[r.sec])}: ${r.t}% of Trump-won states, ${r.d}% of Harris-won states">
+      <div class="rb-label">${safe(SECTOR_LABELS[r.sec])}<small>${lead(r)}</small></div>
+      <div class="rb-bar"><div class="rb-track"><span class="t" style="width:${(r.t / max) * 80}%"></span>${r.t}%</div></div>
+      <div class="rb-bar"><div class="rb-track"><span class="d" style="width:${(r.d / max) * 80}%"></span>${r.d}%</div></div>
+    </div>`).join("")}
+    <p class="rb-hint">Click a topic to show only those entries on the map${activeTopic ? ` · <a href="#" id="rbClear">show all</a>` : ""}.</p>`;
+  el.querySelectorAll(".rb-row").forEach(row => {
+    const pick = () => {
+      activeTopic = activeTopic === row.dataset.sector ? null : row.dataset.sector;
+      if (sectorEl) { sectorEl.value = activeTopic || "all"; if (subcatWrap) subcatWrap.hidden = sectorEl.value !== "workforce"; }
+      render(); drawFindings();
+    };
+    row.addEventListener("click", pick);
+    row.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
+  });
+  el.querySelector("#rbClear")?.addEventListener("click", e => {
+    e.preventDefault(); activeTopic = null; if (sectorEl) sectorEl.value = "all"; render(); drawFindings();
+  });
 }

@@ -166,3 +166,18 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
 .gap-chip.compact { padding: 1px 4px; border-radius: 4px; }
 .gap-chip.compact b { font-size: 10px; }
 .gap-chip b.vote-r { color: #a50f15; } .gap-chip b.vote-d { color: #08519c; }
+
+/* Red vs. blue comparison bars */
+.rb-key { display: flex; gap: 12px; font-size: 11.5px; margin: 0 0 6px; }
+.rb-key i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+.rb-headline { font-size: 12px; margin: 0 0 8px; }
+.rb-row { padding: 4px 4px 5px; border-radius: 6px; cursor: pointer; }
+.rb-row:hover, .rb-row:focus, .rb-row.active { background: #f3f3f7; outline: none; }
+.rb-label { font-size: 12px; font-weight: 600; margin-bottom: 2px; display: flex; justify-content: space-between; }
+.rb-label small { font-weight: 400; color: #777; }
+.rb-bar { display: flex; align-items: center; gap: 6px; height: 11px; margin: 2px 0; font-size: 10.5px; color: #333; }
+.rb-bar span { display: block; flex: none; height: 10px; border-radius: 0 3px 3px 0; min-width: 2px; }
+.rb-bar .t { background: #c0392b; } .rb-bar .d { background: #2c6fbb; }
+.rb-track { flex: 1; display: flex; align-items: center; gap: 5px; height: 11px; }
+.rb-hint { font-size: 11px; color: #666; margin: 6px 0 0; }
+.gap-note.wide { width: 330px; }
