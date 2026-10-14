@@ -203,11 +203,3 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
 .vr-grid i { display: block; height: 13px; border-radius: 2px; }
 .vr-lab { padding-right: 6px; white-space: nowrap; }
 
-/* Hatched legend swatches (match the map's line spacing) */
-.vr-grid i.hatch { height: 16px; border: 1px solid #bbb; border-radius: 2px; background-color: #fff; }
-.hatch.r.t0 { background-image: repeating-linear-gradient(135deg, #c0392b 0 1.4px, transparent 1.4px 11px); }
-.hatch.r.t1 { background-image: repeating-linear-gradient(135deg, #c0392b 0 1.6px, transparent 1.6px 6.5px); }
-.hatch.r.t2 { background-image: repeating-linear-gradient(135deg, #c0392b 0 1.7px, transparent 1.7px 3.6px); }
-.hatch.d.t0 { background-image: repeating-linear-gradient(135deg, #1f5fae 0 1.4px, transparent 1.4px 11px); }
-.hatch.d.t1 { background-image: repeating-linear-gradient(135deg, #1f5fae 0 1.6px, transparent 1.6px 6.5px); }
-.hatch.d.t2 { background-image: repeating-linear-gradient(135deg, #1f5fae 0 1.7px, transparent 1.7px 3.6px); }

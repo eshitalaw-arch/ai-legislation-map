@@ -6,7 +6,7 @@
   <title>US AI Legislation Map</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="./styles.css?v=20261014p" />
+  <link rel="stylesheet" href="./styles.css?v=20261014q" />
 </head>
 <body>
   <header class="topbar">
@@ -81,10 +81,10 @@
         <div id="vrScale" class="vr-legend" hidden>
           <div class="vr-grid">
             <span></span><b>Lower</b><b>Middle</b><b>Higher</b>
-            <span class="vr-lab">Voted Republican</span><i class="hatch r t0"></i><i class="hatch r t1"></i><i class="hatch r t2"></i>
-            <span class="vr-lab">Voted Democratic</span><i class="hatch d t0"></i><i class="hatch d t1"></i><i class="hatch d t2"></i>
+            <span class="vr-lab">Voted Republican</span><i style="background:#fcbba1"></i><i style="background:#fb6a4a"></i><i style="background:#a50f15"></i>
+            <span class="vr-lab">Voted Democratic</span><i style="background:#c6dbef"></i><i style="background:#6baed6"></i><i style="background:#08519c"></i>
           </div>
-          <span class="risk-caption">Denser lines = higher share of jobs at risk from AI (<span id="vrBreaks"></span>) · <a href="#" class="about-open">Sources</a></span>
+          <span class="risk-caption">Darker = higher share of jobs at risk from AI (<span id="vrBreaks"></span>) · <a href="#" class="about-open">Sources</a></span>
         </div>
         <div id="polScale" class="risk-scale" hidden>
           <span>D+30</span><span class="risk-bar pol-bar"></span><span>R+30</span>
@@ -110,7 +110,7 @@
     <p><strong>Method.</strong> Entries were compiled from state legislature records, executive and agency publications and reputable legal trackers, then checked individually against the official source. Summaries are written in our own words and are simplified; read the linked text for the precise legal requirements.</p>
     <p><strong>Job-risk context.</strong> The optional state shading and the exposure figures in state profiles come from Tufts University's Digital Planet: Chakravorti, Bhaskar et al., "When Wired Belts Become the New Rust Belts: AI and the Emerging Geography of American Job Risk," Digital Planet, The Fletcher School at Tufts University, March 17, 2026 (<a href="https://digitalplanet.tufts.edu/ai-and-the-emerging-geography-of-american-job-risk-page/" target="_blank" rel="noopener">report and interactive site</a>), using its March 2026 data booklet. Figures are the study's median adoption scenario: the estimated share of each state's jobs at risk of loss as AI is adopted. They are projections, not forecasts of actual job losses, and they vary widely across the study's slower and faster scenarios. Tufts does not publish industry figures by state, so state profiles show the state's most at-risk metro areas and the study's national industry figures. The figures are reproduced from Tufts' data; this map does not modify their methodology.</p>
     <p><strong>Political leaning.</strong> The optional red/blue shading shows each state's 2024 presidential result: the Republican candidate's share of the presidential vote minus the Democratic candidate's, as a percentage of all votes cast (R+ means the state voted Republican, D+ Democratic), from the Federal Election Commission's <a href="https://www.fec.gov/documents/5644/2024presgeresults.pdf" target="_blank" rel="noopener">Official 2024 Presidential General Election Results</a>. Darker means a wider margin; the scale is capped at 30 points. It describes how a state voted for president, not the party that controls its government or how its AI laws were passed.</p>
-    <p><strong>Presidential vote + AI job risk.</strong> Red or blue lines show how a state voted for president (FEC, 2024 official results); sparse, medium or dense diagonal lines show its share of jobs at risk from AI (Tufts Digital Planet, median scenario), split into thirds of the 50 states. It shows where the two overlap, not that either one causes the other.</p>
+    <p><strong>Presidential vote + AI job risk.</strong> Red or blue shows how a state voted for president (FEC, 2024 official results); light, medium or dark shows its share of jobs at risk from AI (Tufts Digital Planet, median scenario), split into thirds of the 50 states. It shows where the two overlap, not that either one causes the other.</p>
     <p><strong>Red vs. blue states.</strong> This view colors each state by its 2024 presidential winner (FEC) and compares the two groups: the share of states that voted Republican and states that voted Democratic for president in 2024 that have passed at least one law in each topic on this map. Shares are used because the groups differ in size (31 and 19 states). The map lists notable measures rather than every bill, so the comparison describes what is on this map.</p>
     <p><strong>No preparedness score.</strong> State profiles deliberately do not rate how prepared a state is. Legislation is only one part of a state's response; budgets, workforce programs, education systems and private-sector action are not captured here.</p>
     <p><strong>Map data.</strong> State outlines from the us-atlas project (U.S. Census Bureau cartographic boundaries). Base map © OpenStreetMap contributors.</p>
@@ -131,10 +131,10 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-  <script src="./data/us-states.js?v=20261014p"></script>
-  <script src="./data/jobrisk.js?v=20261014p"></script>
-  <script src="./data/politics.js?v=20261014p"></script>
-  <script src="./data/hubs.js?v=20261014p"></script>
-  <script src="./src/app.js?v=20261014p"></script>
+  <script src="./data/us-states.js?v=20261014q"></script>
+  <script src="./data/jobrisk.js?v=20261014q"></script>
+  <script src="./data/politics.js?v=20261014q"></script>
+  <script src="./data/hubs.js?v=20261014q"></script>
+  <script src="./src/app.js?v=20261014q"></script>
 </body>
 </html>
