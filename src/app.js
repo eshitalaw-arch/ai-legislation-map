@@ -393,20 +393,37 @@ function fmtDate(iso) {
   return isNaN(d) ? iso : d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
+// Independent source audit (Oct. 14, 2026) results, in plain language
+const VERIFY = {
+  confirmed: { icon: "✓", cls: "ok", label: "Core facts confirmed against official sources" },
+  corrected: { icon: "✓", cls: "ok", label: "Corrected and re-checked against official sources" },
+  qualified: { icon: "~", cls: "part", label: "Confirmed, with qualifications" },
+  partial: { icon: "~", cls: "part", label: "Partly confirmed; some details still need the final official text" },
+  needs_correction: { icon: "!", cls: "warn", label: "Correction pending" },
+  unresolved: { icon: "?", cls: "none", label: "Not yet confirmed from an official primary source" }
+};
+const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return u; } };
+
 function billHTML(p) {
+  const v = VERIFY[p.verification];
+  const more = (p.more_sources || []).map(u => `<a href="${safe(u)}" target="_blank" rel="noopener">${safe(hostOf(u))}</a>`).join(", ");
   return `<div class="bill">
-    <div><span class="pill ${safe(p.status)}">${safe(STATUS_LABELS[p.status] || p.status)}</span><span class="bill-title">${safe(p.title.replace(/^[^–]+–\s*/, ""))}</span></div>
+    <div><span class="pill ${safe(p.status)}">${safe(STATUS_LABELS[p.status] || p.status)}</span>${
+      p.court_status ? `<span class="pill court">Blocked by court</span>` : ""}${
+      p.jurisdiction && p.jurisdiction !== "State" ? `<span class="pill local">City law</span>` : ""}<span class="bill-title">${safe(p.title.replace(/^[^–]+–\s*/, ""))}</span></div>
     <div class="note" style="margin-top:2px">${safe(sectorText(p))}</div>
     <dl class="facts">
       ${p.instrument ? `<dt>Type</dt><dd>${safe(p.instrument)}</dd>` : ""}
       ${p.stage ? `<dt>Stage</dt><dd>${safe(p.stage)}</dd>` : ""}
       ${p.effective ? `<dt>Effective</dt><dd>${safe(p.effective)}</dd>` : ""}
       ${p.litigation ? `<dt>Litigation</dt><dd>${safe(p.litigation)}</dd>` : ""}
+      ${p.court_status ? `<dt>Court status</dt><dd class="court-text">${safe(p.court_status)}</dd>` : ""}
     </dl>
     <div style="margin-top:4px">${safe(p.summary)}</div>
-    <div style="margin-top:4px"><a href="${safe(p.source_url)}" target="_blank" rel="noopener">${safe(p.source_title || "Official source")}</a>${
-      p.analysis_url ? ` · <a href="${safe(p.analysis_url)}" target="_blank" rel="noopener">${safe(p.analysis_title || "Analysis")}</a>` : ""}</div>
-    ${p.last_verified ? `<div class="note" style="margin-top:3px">Last verified against sources: ${safe(fmtDate(p.last_verified))}</div>` : ""}
+    <div style="margin-top:4px"><span class="src-tag">Official</span><a href="${safe(p.source_url)}" target="_blank" rel="noopener">${safe(p.source_title || "Official source")}</a></div>
+    ${more ? `<div style="margin-top:2px"><span class="src-tag">More official</span>${more}</div>` : ""}
+    ${p.analysis_url ? `<div style="margin-top:2px"><span class="src-tag ${p.analysis_type === "Official" ? "" : "third"}">${p.analysis_type === "Official" ? "Official" : "Analysis (third-party)"}</span><a href="${safe(p.analysis_url)}" target="_blank" rel="noopener">${safe(p.analysis_title || "Analysis")}</a></div>` : ""}
+    ${v ? `<details class="verify ${v.cls}"><summary><span class="vi">${v.icon}</span>${v.label}</summary><p>${safe(p.verification_note)}</p><p class="note">Independent source audit, Oct. 14, 2026${p.last_verified ? ` · last checked ${safe(fmtDate(p.last_verified))}` : ""}</p></details>` : ""}
   </div>`;
 }
 
@@ -570,15 +587,18 @@ function describeFilters() {
 function slug(t) { return t.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60); }
 
 function entryRows(list) {
-  const header = ["State", "Title", "Topic", "Workforce subcategory", "Also listed under", "Map category", "Instrument type",
-    "Stage", "Effective date", "Litigation", "Summary", "Official source", "Official source URL", "Analysis", "Analysis URL", "Last verified"];
+  const header = ["State", "Jurisdiction", "Title", "Topic", "Workforce subcategory", "Also listed under", "Map category", "Instrument type",
+    "Stage", "Effective date", "Litigation", "Court status", "Summary", "Official source", "Official source URL",
+    "Additional official sources", "Analysis", "Analysis URL", "Analysis source type",
+    "Verification result (independent audit, Oct 14 2026)", "Verification note", "Last verified"];
   const rows = list.map(p => {
     const [alsoSec, alsoSub] = (p.also || "").split(":");
     const also = p.also ? `${SECTOR_LABELS[alsoSec] || alsoSec}${alsoSub && SUBCAT_LABELS[alsoSub] ? " › " + SUBCAT_LABELS[alsoSub] : ""}` : "";
-    return [p.state, p.title, SECTOR_LABELS[p.sector] || p.sector, SUBCAT_LABELS[workforceSubcat(p)] || "", also,
-      STATUS_TEXT[p.status] || p.status, p.instrument, p.stage, p.effective, p.litigation,
-      p.summary, p.source_title, p.source_url, p.analysis_title, p.analysis_url, p.last_verified || p.last_updated];
-  }).sort((a, b) => a[0].localeCompare(b[0]) || a[1].localeCompare(b[1]));
+    return [p.state, p.jurisdiction, p.title, SECTOR_LABELS[p.sector] || p.sector, SUBCAT_LABELS[workforceSubcat(p)] || "", also,
+      STATUS_TEXT[p.status] || p.status, p.instrument, p.stage, p.effective, p.litigation, p.court_status,
+      p.summary, p.source_title, p.source_url, (p.more_sources || []).join("; "), p.analysis_title, p.analysis_url, p.analysis_type,
+      (VERIFY[p.verification] || {}).label || "", p.verification_note, p.last_verified || p.last_updated];
+  }).sort((a, b) => a[0].localeCompare(b[0]) || a[2].localeCompare(b[2]));
   return [header, rows];
 }
 
@@ -623,3 +643,13 @@ downloadMenu?.querySelectorAll("[data-dl]").forEach(btn => btn.addEventListener(
   }
   downloadMenu.open = false;
 }));
+
+// About panel: audit result counts, computed from the data
+(() => {
+  const el = document.getElementById("auditCounts");
+  if (!el) return;
+  const c = {};
+  allFeatures.forEach(f => { const v = f.properties.verification; if (v) c[v] = (c[v] || 0) + 1; });
+  const order = ["confirmed", "corrected", "qualified", "partial", "needs_correction", "unresolved"];
+  el.textContent = order.filter(k => c[k]).map(k => `${c[k]} ${VERIFY[k].label.toLowerCase()}`).join("; ") + ".";
+})();
