@@ -6,7 +6,7 @@
   <title>US AI Legislation Map</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="./styles.css?v=20261014v" />
+  <link rel="stylesheet" href="./styles.css?v=20261014y" />
 </head>
 <body>
   <header class="topbar">
@@ -15,7 +15,9 @@
       <div class="subtitle">State-level AI laws, bills and official actions · current as of Oct 14, 2026</div>
     </div>
 
-    <div class="controls">
+    <button type="button" id="filtersToggle" class="filters-toggle" aria-expanded="false" aria-controls="controlsPanel">☰ Filters &amp; layers</button>
+
+    <div class="controls" id="controlsPanel">
       <label>
         Sector
         <select id="sectorFilter">
@@ -93,14 +95,15 @@
 
   <footer class="footer">
     <span id="count"></span>
-    <span class="muted"><b class="c-passed">Enacted</b> = law or adopted regulation · <b class="c-pending">Pending</b> = bill or proposed rule · <b class="c-guidance">Other action</b> = executive orders, guidance, programs, studies. Each circle shows how many entries a state has; its ring shows the mix. Click a state to see them. · <a href="#" id="aboutLink" class="about-open">About &amp; sources</a></span>
+    <span class="footer-short"><span id="mobileLegend" class="mobile-legend"></span><a href="#" class="about-open">About</a></span>
+    <span class="muted footer-long"><b class="c-passed">Enacted</b> = law or adopted regulation · <b class="c-pending">Pending</b> = bill or proposed rule · <b class="c-guidance">Other action</b> = executive orders, guidance, programs, studies. Each circle shows how many entries a state has; its ring shows the mix. Click a state to see them. · <a href="#" id="aboutLink" class="about-open">About &amp; sources</a></span>
   </footer>
 
 
   <div id="aboutPanel" class="about" hidden>
     <button class="about-close" id="aboutClose" aria-label="Close">×</button>
     <h2>About &amp; sources</h2>
-    <p><strong>What this is.</strong> A reference map of notable state-level AI laws, pending bills and official guidance in the United States. Status is current as of October 13, 2026. It is not a complete list of every AI-related bill.</p>
+    <p><strong>What this is.</strong> A reference map of notable state-level AI laws, pending bills and official guidance in the United States. Status is current as of October 14, 2026. It is not a complete list of every AI-related bill.</p>
     <p><strong>Sources.</strong> Every entry's first link is an official government source: the state legislature's bill page or enacted text, a governor's order or signing release, an attorney general, or a state agency. Where a second link appears, it is independent analysis (a law firm, news outlet or policy tracker) and is labeled with its publisher. Dates, numbers and court rulings in each summary were checked against the linked sources.</p>
     <p><strong>Method.</strong> Entries were compiled from state legislature records, executive and agency publications and reputable legal trackers, then checked individually against the official source. Summaries are written in our own words and are simplified; read the linked text for the precise legal requirements.</p>
     <p><strong>Job-risk context.</strong> The optional state shading and the exposure figures in state profiles come from Tufts University's Digital Planet: Chakravorti, Bhaskar et al., "When Wired Belts Become the New Rust Belts: AI and the Emerging Geography of American Job Risk," Digital Planet, The Fletcher School at Tufts University, March 17, 2026 (<a href="https://digitalplanet.tufts.edu/ai-and-the-emerging-geography-of-american-job-risk-page/" target="_blank" rel="noopener">report and interactive site</a>), using its March 2026 data booklet. Figures are the study's median adoption scenario: the estimated share of each state's jobs at risk of loss as AI is adopted. They are projections, not forecasts of actual job losses, and they vary widely across the study's slower and faster scenarios. Tufts does not publish industry figures by state, so state profiles show the state's most at-risk metro areas and the study's national industry figures. The figures are reproduced from Tufts' data; this map does not modify their methodology.</p>
@@ -129,10 +132,10 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-  <script src="./data/us-states.js?v=20261014v"></script>
-  <script src="./data/jobrisk.js?v=20261014v"></script>
-  <script src="./data/politics.js?v=20261014v"></script>
-  <script src="./data/hubs.js?v=20261014v"></script>
-  <script src="./src/app.js?v=20261014v"></script>
+  <script src="./data/us-states.js?v=20261014y"></script>
+  <script src="./data/jobrisk.js?v=20261014y"></script>
+  <script src="./data/politics.js?v=20261014y"></script>
+  <script src="./data/hubs.js?v=20261014y"></script>
+  <script src="./src/app.js?v=20261014y"></script>
 </body>
 </html>

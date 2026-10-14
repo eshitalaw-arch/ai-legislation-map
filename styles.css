@@ -152,9 +152,9 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
 .gap-note h3 { cursor: pointer; }
 .gap-note h3::before { content: "▾ "; color: #888; }
 .gap-note.collapsed h3::before { content: "▸ "; }
-.gap-note.collapsed ul, .gap-note.collapsed .gap-caveat { display: none; }
+.gap-note.collapsed ul, .gap-note.collapsed #gapFindings, .gap-note.collapsed .gap-caveat { display: none; }
 .gap-note.collapsed { width: auto; }
-@media (max-width: 600px) { .gap-note { width: auto; left: 12px; right: 12px; max-height: 45%; } .gap-note.collapsed { left: auto; } }
+@media (max-width: 600px) { .gap-note, .gap-note.wide { width: auto; left: 12px; right: 12px; max-height: 45%; } }
 
 /* Response gap labels (replace the law-count circles in this view) */
 .gap-chip-wrap { background: none; border: 0; }
@@ -217,3 +217,39 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
   color: #1b5e20; background: #e8f5e9; border-radius: 3px; padding: 0 4px; margin-right: 6px; }
 .src-tag.third { color: #6b4e00; background: #fff4d6; }
 .src-tag.plain { color: #555; background: #eee; }
+
+/* ---------- Phones: compact header, controls in a drop-down, map fills the screen ---------- */
+.filters-toggle, .footer-short { display: none; }
+@media (max-width: 700px) {
+  html, body { height: 100%; overflow: hidden; }
+  body { height: 100dvh; }
+  .topbar { padding: 8px 12px; gap: 8px; flex-wrap: nowrap; position: relative; z-index: 1300; }
+  .brand { min-width: 0; flex: 1; }
+  .title { font-size: 15px; }
+  .subtitle { font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .filters-toggle { display: inline-block; flex: none; font: inherit; font-size: 13px; font-weight: 600; padding: 8px 10px;
+    border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; }
+  .filters-toggle[aria-expanded="true"] { background: #f0f0f5; }
+  .controls { display: none; position: absolute; left: 0; right: 0; top: 100%; background: #fff; padding: 12px;
+    border-bottom: 1px solid #e2e2e2; box-shadow: 0 10px 24px rgba(0,0,0,.15); flex-direction: column; align-items: stretch;
+    gap: 12px; max-height: calc(100dvh - 120px); overflow-y: auto; }
+  .controls.open { display: flex; }
+  .controls label { font-size: 13px; }
+  .controls select { width: 100%; font-size: 15px; padding: 9px 10px; }
+  .checks { justify-content: space-between; font-size: 14px; }
+  .download { align-self: stretch; }
+  .download summary { text-align: center; }
+  .download-menu { left: 0; right: 0; width: auto; }
+  .footer { padding: 6px 12px; font-size: 12px; justify-content: space-between; flex-wrap: nowrap; }
+  .footer-long { display: none; }
+  .footer-short { display: inline; }
+  .leaflet-control-zoom a { width: 34px !important; height: 34px !important; line-height: 34px !important; }
+}
+@media (max-width: 700px) {
+  .footer-short { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  #count { white-space: nowrap; }
+  .mobile-legend { display: inline-flex; gap: 8px; font-size: 11.5px; white-space: nowrap; }
+  .mobile-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 3px; vertical-align: -1px; }
+  .gap-note h3 { font-size: 13px; }
+}
+@media (max-width: 600px) { aside.gap-note.wide, aside.gap-note { width: auto; left: 12px; right: 12px; } }

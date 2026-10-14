@@ -212,7 +212,8 @@ function render() {
   });
 
   if (countEl) {
-    countEl.textContent = `${filtered.length} ${filtered.length === 1 ? "entry" : "entries"} in ${byState.size} ${byState.size === 1 ? "state" : "states"}`;
+    const n = `${filtered.length} ${filtered.length === 1 ? "entry" : "entries"}`;
+    countEl.textContent = window.innerWidth <= 700 ? n : `${n} in ${byState.size} ${byState.size === 1 ? "state" : "states"}`;
   }
   const panel = document.getElementById("profile");
   if (panel && !panel.hidden && currentProfile) openProfile(currentProfile, { keepScroll: true });
@@ -632,3 +633,27 @@ downloadMenu?.querySelectorAll("[data-dl]").forEach(btn => btn.addEventListener(
   }
   downloadMenu.open = false;
 }));
+
+// Phones: show/hide the controls panel
+(() => {
+  const btn = document.getElementById("filtersToggle"), panel = document.getElementById("controlsPanel");
+  if (!btn || !panel) return;
+  const set = open => { panel.classList.toggle("open", open); btn.setAttribute("aria-expanded", String(open)); btn.textContent = open ? "✕ Close" : "☰ Filters & layers"; };
+  btn.addEventListener("click", () => set(!panel.classList.contains("open")));
+  // Tapping the map closes the panel
+  document.getElementById("map").addEventListener("pointerdown", () => { if (panel.classList.contains("open")) set(false); });
+})();
+
+// Phones: one-line legend in the footer for the active shading (the full legend lives in the Filters panel)
+function updateMobileLegend() {
+  const el = document.getElementById("mobileLegend");
+  if (!el) return;
+  const sw = c => `<i style="background:${c}"></i>`;
+  const mode = shadeMode();
+  el.innerHTML =
+    mode === "risk" ? `${sw("#efedf5")}→${sw("#54278f")} AI job risk` :
+    mode === "politics" ? `<span>${sw("#f2a7a9")}Rep.</span><span>${sw("#a6c8ea")}Dem.</span>` :
+    mode === "voterisk" ? `<span>${sw("#fcbba1")}${sw("#a50f15")}Rep.</span><span>${sw("#c6dbef")}${sw("#08519c")}Dem.</span><span>dark = more risk</span>` : "";
+}
+shadeSelect?.addEventListener("change", updateMobileLegend);
+updateMobileLegend();
