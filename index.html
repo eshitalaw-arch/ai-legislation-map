@@ -6,7 +6,7 @@
   <title>US AI Legislation Map</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="./styles.css?v=20261014m" />
+  <link rel="stylesheet" href="./styles.css?v=20261014n" />
 </head>
 <body>
   <header class="topbar">
@@ -48,6 +48,16 @@
         <label class="status-label pending" title="Bill still moving through the legislature or awaiting signature"><input type="checkbox" class="statusFilter" value="pending" checked /> Pending</label>
         <label class="status-label guidance" title="Not a statute: executive orders, AG advisories, agency rules or policies"><input type="checkbox" class="statusFilter" value="guidance" checked /> Guidance</label>
       </div>
+
+      <details class="download" id="downloadMenu">
+        <summary>⬇ Download data</summary>
+        <div class="download-menu">
+          <button type="button" data-dl="shown"><strong>What's shown on the map</strong><span id="dlShownNote">Entries matching your current filters (CSV)</span></button>
+          <button type="button" data-dl="all"><strong>All entries</strong><span>Every law, bill and guidance item on the map (CSV)</span></button>
+          <button type="button" data-dl="states"><strong>State summary</strong><span>One row per state: counts, AI job risk, presidential vote (CSV)</span></button>
+          <p class="download-note">Opens in Excel or Google Sheets. Please cite the original sources listed in <a href="#" class="about-open">About &amp; sources</a>.</p>
+        </div>
+      </details>
 
       <div class="risk-toggle">
         <label>
@@ -111,10 +121,10 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-  <script src="./data/us-states.js?v=20261014m"></script>
-  <script src="./data/jobrisk.js?v=20261014m"></script>
-  <script src="./data/politics.js?v=20261014m"></script>
-  <script src="./data/hubs.js?v=20261014m"></script>
-  <script src="./src/app.js?v=20261014m"></script>
+  <script src="./data/us-states.js?v=20261014n"></script>
+  <script src="./data/jobrisk.js?v=20261014n"></script>
+  <script src="./data/politics.js?v=20261014n"></script>
+  <script src="./data/hubs.js?v=20261014n"></script>
+  <script src="./src/app.js?v=20261014n"></script>
 </body>
 </html>

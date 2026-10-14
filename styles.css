@@ -181,3 +181,16 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
 .rb-track { flex: 1; display: flex; align-items: center; gap: 5px; height: 11px; }
 .rb-hint { font-size: 11px; color: #666; margin: 6px 0 0; }
 .gap-note.wide { width: 330px; }
+
+/* Download menu */
+.download { position: relative; font-size: 12px; align-self: flex-end; }
+.download summary { list-style: none; cursor: pointer; font-weight: 600; padding: 7px 11px; border: 1px solid #ccc; border-radius: 8px; background: #fff; white-space: nowrap; }
+.download summary::-webkit-details-marker { display: none; }
+.download[open] summary { background: #f3f3f7; }
+.download-menu { position: absolute; right: 0; top: calc(100% + 4px); width: min(280px, calc(100vw - 24px)); background: #fff; border: 1px solid #e2e2e2;
+  border-radius: 10px; box-shadow: 0 10px 28px rgba(0,0,0,.14); padding: 6px; z-index: 1400; }
+.download-menu button { display: block; width: 100%; text-align: left; background: none; border: 0; border-radius: 6px; padding: 7px 8px; cursor: pointer; font: inherit; }
+.download-menu button:hover, .download-menu button:focus { background: #f3f3f7; outline: none; }
+.download-menu button strong { display: block; font-size: 12.5px; }
+.download-menu button span { display: block; color: #666; font-size: 11.5px; margin-top: 1px; }
+.download-note { margin: 4px 8px 4px; font-size: 11px; color: #777; }

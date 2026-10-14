@@ -512,3 +512,90 @@ function drawFindings() {
     e.preventDefault(); activeTopic = null; if (sectorEl) sectorEl.value = "all"; render(); drawFindings();
   });
 }
+
+// ============================
+// Downloads: entries shown, all entries, state summary (CSV)
+// ============================
+const STATUS_TEXT = { passed: "Passed (enacted)", pending: "Pending bill", guidance: "Guidance (executive/agency action)" };
+
+function csvCell(v) {
+  const t = (v ?? "").toString();
+  return /[",\n\r]/.test(t) ? `"${t.replace(/"/g, '""')}"` : t;
+}
+function toCSV(header, rows) {
+  return [header, ...rows].map(r => r.map(csvCell).join(",")).join("\r\n");
+}
+function saveCSV(name, csv) {
+  // BOM so Excel reads accented characters and dashes correctly
+  const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+const today = () => new Date().toISOString().slice(0, 10);
+
+function describeFilters() {
+  const parts = [];
+  if (sectorEl && sectorEl.value !== "all") parts.push(sectorEl.options[sectorEl.selectedIndex].text);
+  if (sectorEl && sectorEl.value === "workforce" && subcatEl && subcatEl.value !== "all") parts.push(subcatEl.options[subcatEl.selectedIndex].text);
+  const st = statusEls.filter(x => x.checked).map(x => x.value);
+  if (st.length < statusEls.length) parts.push(st.map(x => STATUS_LABELS[x]).join(" + ") || "no statuses");
+  return parts.join(", ");
+}
+function slug(t) { return t.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60); }
+
+function entryRows(list) {
+  const header = ["State", "Title", "Topic", "Workforce subcategory", "Also listed under", "Status", "Summary",
+    "Official source", "Official source URL", "Analysis", "Analysis URL", "Last updated"];
+  const rows = list.map(p => {
+    const [alsoSec, alsoSub] = (p.also || "").split(":");
+    const also = p.also ? `${SECTOR_LABELS[alsoSec] || alsoSec}${alsoSub && SUBCAT_LABELS[alsoSub] ? " › " + SUBCAT_LABELS[alsoSub] : ""}` : "";
+    return [p.state, p.title, SECTOR_LABELS[p.sector] || p.sector, SUBCAT_LABELS[workforceSubcat(p)] || "", also,
+      STATUS_TEXT[p.status] || p.status, p.summary, p.source_title, p.source_url, p.analysis_title, p.analysis_url, p.last_updated];
+  }).sort((a, b) => a[0].localeCompare(b[0]) || a[1].localeCompare(b[1]));
+  return [header, rows];
+}
+
+function stateSummaryRows() {
+  const all = allFeatures.map(f => f.properties);
+  const names = Object.keys(STATE_CENTERS).sort();
+  const header = ["State", "Entries on map", "Passed", "Pending", "Guidance", "AI and workforce measures",
+    "Share of jobs at risk from AI (Tufts Digital Planet, Mar 2026, median scenario)", "Jobs at risk (Tufts, median scenario)",
+    "Presidential vote (FEC 2024 official results)", "Republican vote share", "Democratic vote share", "Presidential margin"];
+  const rows = names.map(n => {
+    const e = all.filter(p => p.state === n);
+    const r = RISK && RISK.states[n], v = POL && POL.states[n];
+    return [n, e.length, e.filter(p => p.status === "passed").length, e.filter(p => p.status === "pending").length,
+      e.filter(p => p.status === "guidance").length, e.filter(p => p.sector === "workforce" || isAlso(p, "workforce")).length,
+      r ? (r.pct_median * 100).toFixed(2) + "%" : "", r ? Math.round(r.jobs_median) : "",
+      v ? (v.margin > 0 ? "Republican" : "Democratic") : "", v ? (v.r_pct * 100).toFixed(1) + "%" : "", v ? (v.d_pct * 100).toFixed(1) + "%" : "",
+      v ? marginText(v.margin) : ""];
+  });
+  return [header, rows];
+}
+
+const downloadMenu = document.getElementById("downloadMenu");
+downloadMenu?.addEventListener("toggle", () => {
+  if (!downloadMenu.open) return;
+  const n = allFeatures.map(f => f.properties).filter(passesFilters).length;
+  const f = describeFilters();
+  document.getElementById("dlShownNote").textContent = `${n} entries${f ? " · " + f : " · no filters applied"} (CSV)`;
+});
+document.addEventListener("click", e => { if (downloadMenu?.open && !downloadMenu.contains(e.target)) downloadMenu.open = false; });
+downloadMenu?.querySelectorAll("[data-dl]").forEach(btn => btn.addEventListener("click", () => {
+  const kind = btn.dataset.dl;
+  if (kind === "shown") {
+    const [h, rows] = entryRows(allFeatures.map(f => f.properties).filter(passesFilters));
+    const f = describeFilters();
+    saveCSV(`ai-legislation-map_${f ? slug(f) : "all"}_${today()}.csv`, toCSV(h, rows));
+  } else if (kind === "all") {
+    const [h, rows] = entryRows(allFeatures.map(f => f.properties));
+    saveCSV(`ai-legislation-map_all-entries_${today()}.csv`, toCSV(h, rows));
+  } else if (kind === "states") {
+    const [h, rows] = stateSummaryRows();
+    saveCSV(`ai-legislation-map_state-summary_${today()}.csv`, toCSV(h, rows));
+  }
+  downloadMenu.open = false;
+}));
