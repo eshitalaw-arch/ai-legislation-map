@@ -983,19 +983,19 @@
       "type": "Feature",
       "properties": {
         "state": "Connecticut",
-        "title": "Connecticut – Surveillance pricing law (HB 5563, P.A. 26-130)",
+        "title": "Connecticut – Surveillance pricing law (SB 4 / P.A. 26-64; HB 5563 / P.A. 26-130)",
         "sector": "consumer_transparency",
         "subcategory": "",
         "also": "",
         "layoff_notice": "",
         "status": "passed",
         "instrument": "Statute",
-        "stage": "Enacted; signed June 4, 2026",
+        "stage": "Enacted; P.A. 26-64 approved May 27, 2026; P.A. 26-130 signed June 4, 2026",
         "effective": "Pricing provisions July 1, 2027",
         "litigation": "",
-        "last_verified": "2026-10-13",
+        "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "Generally bars retailers and third-party delivery platforms from setting prices based on personal data. Other businesses that advertise an online price set by surveillance pricing must disclose 'THIS PRICE WAS INCREASED USING YOUR PERSONAL DATA' or a similar statement. Signed June 4, 2026; the pricing provisions take effect July 1, 2027.",
+        "summary": "Retail sellers and third-party delivery services may not set individualized prices from a consumer's personal data, subject to exceptions such as certain loyalty and broadly available discounts. Other businesses that advertise an online price set this way must show 'THIS PRICE WAS INCREASED USING YOUR PERSONAL DATA' or a substantially similar notice, with Attorney General enforcement under CUTPA and no private right of action. Connecticut first enacted the ban in P.A. 26-64 (SB 4, §11, approved May 27, 2026); the version in P.A. 26-130 §11 (signed June 4, 2026) takes effect July 1, 2027.",
         "source_title": "Connecticut General Assembly – Public Act 26-130 (HB 5563)",
         "source_url": "https://cga.ct.gov/2026/ACT/PA/PDF/2026PA-00130-R00HB-05563-PA.PDF",
         "analysis_title": "EPIC – Connecticut enacts surveillance pricing ban",
@@ -1004,9 +1004,10 @@
         "jurisdiction": "State",
         "court_status": "",
         "verification": "qualified",
-        "verification_note": "The pricing framework originated in PA 26-64 (SB 4); PA 26-130 modifies it and delays pricing provisions to July 1, 2027. Cite both/current law. Official summary allows substantially similar disclosure, so that CSV wording is not by itself an error.",
+        "verification_note": "The pricing framework originated in PA 26-64 (SB 4); PA 26-130 modifies it and delays pricing provisions to July 1, 2027. Cite both/current law. Official summary allows substantially similar disclosure, so that CSV wording is not by itself an error. Follow-up (Oct. 14, 2026): The audit's origin claim is confirmed. PA 26-64 (SB 4) §11, approved May 27, 2026 and effective Oct 1, 2026, enacted the original ban for retail sellers and third-party delivery services, with the disclosure 'THIS PRICE WAS INCREASED BY A PRICE SETTING DEVICE USING YOUR PERSONAL DATA' (www.cga.ct.gov PA 26-64 PDF). PA 26-130 §11, signed June 4, 2026, is marked '(NEW)', takes effect July 1, 2027, permits a 'substantially similar' disclosure, gives the AG enforcement under CUTPA and creates no private right of action. The audit's 'modifies' claim is not confirmed from text I could read: PA 26-130 never cites PA 26-64. Its only relevant repealer is §19, which repeals §44 of PA 26-100. A secondary source (recordinglaw.com) says PA 26-100 §66 repealed PA 26-64 §11 and §44 enacted a replacement, which PA 26-130 then repealed and re-enacted for July 1, 2027. The PA 26-100 PDF and the OLR summaries were blocked by robots, so I could not verify that chain. The summary is worded to avoid asserting the exact mechanism.",
         "more_sources": [
-          "https://www.cga.ct.gov/2026/SUM/PDF/2026SUM00064-R02SB-00004-SUM.PDF"
+          "https://www.cga.ct.gov/2026/SUM/PDF/2026SUM00064-R02SB-00004-SUM.PDF",
+          "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00064-R00SB-00004-PA.PDF"
         ]
       },
       "geometry": {
@@ -1167,7 +1168,7 @@
       "type": "Feature",
       "properties": {
         "state": "Georgia",
-        "title": "Georgia – Conversational AI safeguards for minors (SB 540)",
+        "title": "Georgia – AI companion chatbot safeguards (SB 540, O.C.G.A. 39-5-6)",
         "sector": "chatbots",
         "subcategory": "",
         "also": "",
@@ -1177,9 +1178,9 @@
         "stage": "Enacted; signed May 11, 2026",
         "effective": "July 1, 2027",
         "litigation": "",
-        "last_verified": "2026-10-13",
+        "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "Georgia's Conversational AI Safety Act requires conversational AI services to disclose that users are talking to AI, bars sexually explicit interactions and simulated romantic relationships with minors, requires a crisis-referral protocol for users expressing suicidal thoughts, and requires parental control tools. The Attorney General enforces it, with no private right of action. Gov. Kemp signed it on 5/11/2026 (Act 518), and it takes effect 7/1/2027.",
+        "summary": "SB 540 adds O.C.G.A. 39-5-6, which regulates operators of 'AI companion chatbots': systems built to simulate an ongoing human-like relationship by remembering past exchanges, raising unprompted emotional questions and sustaining personal conversation. Customer-service, enterprise and productivity tools, narrow educational tools and certain game features are excluded. Operators must repeatedly disclose that the user is talking to AI and keep a suicide and self-harm crisis-referral protocol; for minors they must also block sexual content and simulated romantic relationships and offer account and parental tools. The Attorney General enforces with civil penalties up to $10,000 per knowing violation and no private right of action; signed May 11, 2026, effective July 1, 2027.",
         "source_title": "Georgia General Assembly – SB 540 (2025-2026) bill page",
         "source_url": "https://www.legis.ga.gov/legislation/73452",
         "analysis_title": "Regulations.ai – Georgia SB 540 summary",
@@ -1187,8 +1188,8 @@
         "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "needs_correction",
-        "verification_note": "Scope should be AI companion chatbots meeting the statutory definition, not all conversational AI services. The governor-hosted final text expressly excludes several customer-service, enterprise and narrow educational tools. Use SB 540 / O.C.G.A. 39-5-6 rather than implying an unverified formal short title.",
+        "verification": "corrected",
+        "verification_note": "Scope should be AI companion chatbots meeting the statutory definition, not all conversational AI services. The governor-hosted final text expressly excludes several customer-service, enterprise and narrow educational tools. Use SB 540 / O.C.G.A. 39-5-6 rather than implying an unverified formal short title. Follow-up (Oct. 14, 2026): The governor's download URL was blocked (permission prompt timed out). The legis.ga.gov bill page renders only a loading shell. The official enrolled-text document (legis.ga.gov/api/legislation/document/20252026/248169) returned binary data I could not parse. I read the enrolled text through LegiScan's copy of that same official PDF. It adds O.C.G.A. 39-5-6 with no short title. It covers 'AI companion chatbots', defined by three features: retaining prior interactions, asking unprompted emotion-based questions, and sustaining personal dialogue. It excludes internal business tools, enterprise, productivity and research tools, customer-service bots, voice assistants, narrow educational tools, and certain game and entertainment features. Duties include AI disclosure at session start and every 3 hours (hourly for minors), a crisis protocol with 988 referral and annual reporting, minors' protections against sexual content and romantic role-play, and account and parental tools for known minors. The AG may seek civil penalties up to $10,000 per knowing violation, with a 30-day cure for certain first violations; no private right of action is created. Effective July 1, 2027. LegiScan shows passage and signature on 2026-05-11. I could not verify 'Act 518' and dropped it from the summary.",
         "more_sources": [
           "https://gov.georgia.gov/document/2026-signed-legislation/sb-540/download"
         ]
@@ -1325,9 +1326,9 @@
         "stage": "Enacted; signed March 31, 2026",
         "effective": "July 1, 2027",
         "litigation": "",
-        "last_verified": "2026-10-13",
+        "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "Public conversational AI services must disclose AI use, refer users who express suicidal ideation to crisis services, and may not be programmed to claim they provide professional mental or behavioral health care. For known minors, the law adds recurring disclosures, limits on unpredictable engagement rewards, measures against sexual content, and parental tools. The Attorney General can seek $1,000 per violation, capped at $500,000 per operator, with no private right of action. Signed March 31, 2026 (Ch. 249), effective July 1, 2027.",
+        "summary": "Publicly available conversational AI services must disclose AI use, refer users who express suicidal ideation to crisis services, and may not be programmed to claim they provide professional mental or behavioral health care. For known minors, the law adds recurring or persistent disclosures, a ban on unpredictable engagement rewards, measures against sexual content, and parental and account tools. The Attorney General may seek injunctions and $1,000 per violation, capped at $500,000 per operator, or actual damages if greater; there is no private right of action. Signed March 31, 2026 (Ch. 249), effective July 1, 2027.",
         "source_title": "Idaho Legislature – S 1297 (2026) bill page (Session Law Ch. 249)",
         "source_url": "https://legislature.idaho.gov/sessioninfo/2026/legislation/S1297/",
         "analysis_title": "Orrick – 2026 State Chatbot Laws: Key Provisions and Regulatory Trends",
@@ -1335,9 +1336,11 @@
         "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "unresolved",
-        "verification_note": "Official Idaho legislative host is legitimate, but the linked page/final PDF did not yield primary text in this review. Secondary trackers corroborate status but were not substituted for primary verification.",
-        "more_sources": []
+        "verification": "corrected",
+        "verification_note": "Official Idaho legislative host is legitimate, but the linked page/final PDF did not yield primary text in this review. Secondary trackers corroborate status but were not substituted for primary verification. Follow-up (Oct. 14, 2026): Resolved. The official bill page (legislature.idaho.gov) loaded. Its history shows: passed Senate 21-12-2 on 3/19, passed House 54-12-4 on 3/26, signed by the Governor 3/31/26, Session Law Ch. 249, effective 07/01/2027. The House passed the engrossed version without amendment, so S1297E1 is the final text, and I loaded it. It adds Idaho Code Title 48, Chapter 21. It covers publicly accessible 'conversational AI services', with exclusions for developer, enterprise, narrow-topic, voice-assistant, customer-service and game tools. General duties: AI disclosure, a suicidal-ideation crisis-referral protocol, and no programming to claim professional mental or behavioral health care. Known-minor duties: persistent disclosure or disclosure every 3 hours, no unpredictable engagement rewards, measures against sexual content, and parental and account tools. The AG enforces with $1,000 per violation capped at $500,000 per operator, or actual damages if greater, plus injunctions; the law states it creates no private right of action. The existing summary is accurate; I made one small addition.",
+        "more_sources": [
+          "https://legislature.idaho.gov/wp-content/uploads/sessioninfo/2026/legislation/S1297E1.pdf"
+        ]
       },
       "geometry": {
         "type": "Point",
@@ -1542,12 +1545,12 @@
         "layoff_notice": "",
         "status": "pending",
         "instrument": "Bill",
-        "stage": "Introduced (filed Apr. 30, 2026)",
+        "stage": "Referred to House Rules Committee (May 5, 2026)",
         "effective": "",
         "litigation": "",
-        "last_verified": "2026-10-13",
+        "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "Filed April 30, 2026, HB 5760 would create a commission to assess how generative and frontier AI affect Illinois workers and to review workforce, apprenticeship, unemployment insurance and income-support programs. The Act would sunset January 1, 2034.",
+        "summary": "HB 5760 would create a Commission on Artificial Intelligence and Workforce Transition to assess how generative and frontier AI affect Illinois industries, occupations and workers, and to review workforce, education, apprenticeship, unemployment insurance and income-support programs, with an initial report and biennial updates. Filed April 30, 2026, it was referred to the House Rules Committee on May 5, 2026. The Act would be repealed January 1, 2034.",
         "source_title": "Illinois General Assembly – HB 5760 bill status",
         "source_url": "https://my.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB5760.xml",
         "analysis_title": "",
@@ -1556,7 +1559,7 @@
         "jurisdiction": "State",
         "court_status": "",
         "verification": "qualified",
-        "verification_note": "Pending status and January 1, 2034 sunset supported. Add latest action: referred to House Rules on May 5, 2026; filing on April 30 alone is not the current procedural position.",
+        "verification_note": "Pending status and January 1, 2034 sunset supported. Add latest action: referred to House Rules on May 5, 2026; filing on April 30 alone is not the current procedural position. Follow-up (Oct. 14, 2026): The official ILGA bill-status XML (my.ilga.gov) loaded but appears stale; its only action is the April 30, 2026 filing. It confirms the commission's scope and the January 1, 2034 repeal. The ilga.gov BillStatus page and the my.ilga.gov HTML page were robots-blocked, and lrb.ilga.gov was permission-blocked. LegiScan (secondary) shows First Reading and referral to the House Rules Committee on May 5, 2026 as the last action, matching the audit. The stage update rests on LegiScan, not an official page I could load.",
         "more_sources": [
           "https://www.ilga.gov/Legislation/BillStatus?DocNum=5760&DocTypeID=HB&GAID=18&LegId=0&Print=1&SessionID=114"
         ]
@@ -1652,12 +1655,12 @@
         "layoff_notice": "",
         "status": "pending",
         "instrument": "Bill",
-        "stage": "Introduced; in committee",
+        "stage": "Re-referred to Senate Assignments under Rule 3-9(a) (May 22, 2026)",
         "effective": "",
         "litigation": "",
-        "last_verified": "2026-10-13",
+        "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "SB 3571 would amend the Illinois WARN Act so employers must disclose AI-related job impacts when giving notice of a mass layoff or closing, including how many workers lost jobs substantially because AI replaced or automated their work. It was assigned to the Senate AI and Social Media Committee in March 2026.",
+        "summary": "SB 3571 would amend the Illinois WARN Act so that employers reporting the reason for a mass layoff or closing also disclose AI-related job impacts, including how many workers were let go mainly because AI replaced or automated their work. Any DCEO report on layoffs and closings would also have to say whether AI was the main cause. After referral to the Senate AI and Social Media committee, the bill was re-referred to Assignments under Rule 3-9(a) on May 22, 2026.",
         "source_title": "Illinois General Assembly – SB 3571 bill status",
         "source_url": "https://my.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB3571.xml",
         "analysis_title": "",
@@ -1665,8 +1668,8 @@
         "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "needs_correction",
-        "verification_note": "Update last action to May 22, 2026: Rule 3-9(a), re-referred to Assignments. The CSV mentions an earlier March committee assignment. Pending status remains appropriate.",
+        "verification": "qualified",
+        "verification_note": "Update last action to May 22, 2026: Rule 3-9(a), re-referred to Assignments. The CSV mentions an earlier March committee assignment. Pending status remains appropriate. Follow-up (Oct. 14, 2026): The official XML (my.ilga.gov) loaded but is stale; its last entry is the 3/27/2026 Rule 2-10 deadline extension. It confirms the WARN Act amendments (820 ILCS 65/10, 65/45, new 65/47) and the assignment to the AI and Social Media committee. The official HTML status page was robots-blocked and lrb.ilga.gov was permission-blocked. LegiScan (secondary) shows the bill and Senate Committee Amendment 1 re-referred to Assignments under Rule 3-9(a) on May 22, 2026, matching the audit.",
         "more_sources": [
           "https://www.ilga.gov/ftp/legislation/104/BillStatus/HTML/10400SB3571.html"
         ]
@@ -2137,7 +2140,7 @@
         "stage": "Enacted; signed Apr. 13, 2026",
         "effective": "",
         "litigation": "",
-        "last_verified": "2026-10-13",
+        "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
         "summary": "Only licensed professionals may offer therapy or psychotherapy to the public, including services delivered through AI. Licensees may use AI only for administrative or supplementary support. They may not let it make independent therapeutic decisions or communicate therapeutically with clients, and supplementary use requires the client's written consent. Signed Apr. 13, 2026 as Public Law ch. 687.",
         "source_title": "Maine Legislature – LD 2082 chaptered law (P.L. ch. 687)",
@@ -2147,8 +2150,8 @@
         "analysis_type": "Official",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "needs_correction",
-        "verification_note": "Change written consent to written disclosure and consent. The act requires specified information in writing and separately requires client/representative consent, without specifying that consent itself is written in the reviewed clause.",
+        "verification": "confirmed",
+        "verification_note": "Change written consent to written disclosure and consent. The act requires specified information in writing and separately requires client/representative consent, without specifying that consent itself is written in the reviewed clause. Follow-up (Oct. 14, 2026): I loaded the chaptered law (P.L. ch. 687, approved Apr. 13, 2026). The audit is right that the client must be informed in writing of three things: that AI will be used, its specific purpose, and how session data is stored, retained, used for training and deleted. The audit is wrong that consent need not be written. Each licensing section defines 'Consent' as a clear, explicit and affirmative act communicating the individual's 'express, informed, voluntary, specific and unambiguous written agreement' (electronic or by initialing a section of a general consent-to-treatment form), revocable, and excluding broad terms-of-use acceptance. The existing summary's 'written consent' is therefore correct, and I made no change. Optional clarification: 'supplementary use requires written disclosure of specified information and the client's written, revocable consent.'",
         "more_sources": [
           "https://legislature.maine.gov/legis/bills/getPDF.asp?item=3&paper=HP1397&snum=132"
         ]
@@ -2572,12 +2575,12 @@
         "layoff_notice": "",
         "status": "pending",
         "instrument": "Bill",
-        "stage": "Passed one chamber",
+        "stage": "Passed Senate Apr. 29, 2026; in House Communications and Technology Committee",
         "effective": "",
         "litigation": "",
-        "last_verified": "2026-10-13",
+        "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "This bill would bar making companion chatbots available to minors and regulate their operators. The Senate passed it 20–17 on April 29, 2026. It is waiting in the House Communications and Technology Committee.",
+        "summary": "SB 760 would bar chatbot operators from offering companionship-simulating features, content that encourages self-harm or secrecy, or sexual content to any user unless the operator actually knows the user is an adult. Customer-service, productivity, clinical and narrow educational tools are excluded. The Attorney General could seek $25,000 per violation, and harmed minors or their parents could sue. The Senate passed a substitute 20–17 on April 29, 2026, and the House referred it that day to its Communications and Technology Committee.",
         "source_title": "Michigan Legislature – SB 760 of 2025",
         "source_url": "https://legislature.mi.gov/Bills/Bill?ObjectName=2025-SB-0760",
         "analysis_title": "",
@@ -2585,9 +2588,11 @@
         "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "unresolved",
-        "verification_note": "Official Michigan host authenticated; direct latest SB 760 history was unavailable and primary searches did not establish the claimed vote/current House committee. Do not mark fully verified.",
-        "more_sources": []
+        "verification": "corrected",
+        "verification_note": "Official Michigan host authenticated; direct latest SB 760 history was unavailable and primary searches did not establish the claimed vote/current House committee. Do not mark fully verified. Follow-up (Oct. 14, 2026): Resolved. The official Michigan bill page (legislature.mi.gov) loaded. History shows: Senate passed the S-1 substitute on 4/29/2026, roll call #66, 20 yeas and 17 nays (SJ 38, p. 394). The House received it the same day and referred it to the Committee on Communications and Technology (HJ 33, p. 549). The official description reads 'availability of companion chatbots to minors; prohibit'. I loaded the as-passed-Senate text. It regulates 'advanced chatbots', with exclusions for customer-service, research, internal, clinical and narrow educational tools. Unless the operator actually knows the user is an adult, it bars features that simulate companionship, facilitate self-harm, encourage secrecy or isolation, put engagement over safety, or generate sexual content. Enforcement: AG civil fines of $25,000 per violation and a private action for harmed minors or parents. Key provisions take effect when AG rules take effect. I enriched the summary.",
+        "more_sources": [
+          "https://legislature.mi.gov/documents/2025-2026/billengrossed/Senate/htm/2025-SEBS-0760.htm"
+        ]
       },
       "geometry": {
         "type": "Point",
@@ -3020,9 +3025,9 @@
         "stage": "Enacted; approved Aug. 1, 2025",
         "effective": "Jan. 1, 2026",
         "litigation": "",
-        "last_verified": "2026-10-13",
+        "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "Operators of AI chat services can be charged with endangering the welfare of a child if they knowingly direct communications meant to push a minor toward sexual conduct, drug or alcohol use, self-harm, or violence. Operators are also liable for $1,000 per violation in liquidated damages, which the attorney general enforces after a 90-day cure period. Approved Aug. 1, 2025 (ch. 270); effective Jan. 1, 2026.",
+        "summary": "A chatbot owner or operator commits endangering the welfare of a child if it directs a communication to a child knowing the communication is meant to get the child to imminently engage in sexual conduct, illegal drug or alcohol use, self-harm or suicide, or violence against others. Operators are also civilly liable for liquidated damages of at least $1,000 per violation, but only the attorney general may sue, after giving the operator 90 days to provide satisfactory assurances of a cure. Approved Aug. 1, 2025 (ch. 270); effective Jan. 1, 2026.",
         "source_title": "New Hampshire General Court – HB 143 chaptered final version (Chapter 270, 2025)",
         "source_url": "https://gc.nh.gov/bill_status/pdf.aspx?q=billVersion&id=17004",
         "analysis_title": "",
@@ -3030,8 +3035,8 @@
         "analysis_type": "",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "needs_correction",
-        "verification_note": "Liquidated damages are at least $1,000 per violation, not a fixed $1,000 ceiling or exclusive remedy. Final Chapter 270 confirms AG-only action, 90-day cure, August 1 approval and January 1, 2026 effect.",
+        "verification": "corrected",
+        "verification_note": "Liquidated damages are at least $1,000 per violation, not a fixed $1,000 ceiling or exclusive remedy. Final Chapter 270 confirms AG-only action, 90-day cure, August 1 approval and January 1, 2026 effect. Follow-up (Oct. 14, 2026): I loaded the official Chapter 270 text (gc.nh.gov). RSA 507:8-k III makes the operator liable for no less than $1,000 per violation in liquidated damages, so $1,000 is a floor, not a fixed amount. Paragraph II gives the AG 'the sole right of action' and requires 90 days for satisfactory assurances of a cure before suit. RSA 639:3 III-a covers knowingly directing communications intended to get a child to imminently engage in sexual conduct (or the production of depictions of it), illegal drug or alcohol use, self-harm or suicide, or violent crime. Approved Aug. 1, 2025; effective Jan. 1, 2026.",
         "more_sources": []
       },
       "geometry": {
@@ -3307,24 +3312,25 @@
         "layoff_notice": "",
         "status": "pending",
         "instrument": "Bill",
-        "stage": "Reported by Senate Labor Committee; to Senate Budget Committee",
+        "stage": "Reported by Senate Labor Committee Oct. 1, 2026; referred to Senate Budget and Appropriations Committee",
         "effective": "",
         "litigation": "",
-        "last_verified": "2026-10-13",
+        "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "Would require an independent impact assessment before employers or public entities deploy electronic monitoring tools, automated employment decision systems, or automated benefit or service decision systems. Workers and their unions would get 60 days' written notice, and the bill would restrict certain surveillance and guarantee human review of adverse decisions. Public employees displaced by these systems would receive severance, health benefits and retraining. The Senate Labor Committee reported it favorably on Oct. 1, 2026, and it now goes to the Senate Budget Committee.",
-        "source_title": "NJ Legislature – S4075, Senate Labor Committee statement (Oct. 1, 2026)",
-        "source_url": "https://pub.njleg.state.nj.us/bills/2026/S4500/4075_S1.HTM",
+        "summary": "S4075 would bar employers and public entities from using electronic monitoring tools, automated employment decision systems, or automated benefit and service decision systems until an independent impact assessment (or a Labor Department review for public employers) approves them. Workers and their unions would get 60 days' written notice, with limits on certain surveillance, meaningful human review of decisions, and a right to contest adverse decisions; public employees displaced by these systems would receive severance, health benefits, recall rights and retraining. Introduced May 4, 2026, it was reported favorably by the Senate Labor Committee on Oct. 1, 2026 and referred to Senate Budget and Appropriations.",
+        "source_title": "New Jersey Legislature – S4075 (2026), introduced bill text",
+        "source_url": "https://pub.njleg.state.nj.us/bills/2026/S4500/4075_I1.HTM",
         "analysis_title": "Philadelphia Inquirer – NJ bill on AI and workers (Oct. 2026)",
         "analysis_url": "https://www.inquirer.com/politics/ai-worker-protection-nj-bill-20261007.html",
         "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "qualified",
-        "verification_note": "Official October 1 committee statement supports favourable Labor action and core proposal. The source is a committee statement, not bill text. Add introduced/current text and current status record.",
+        "verification": "corrected",
+        "verification_note": "Official October 1 committee statement supports favourable Labor action and core proposal. The source is a committee statement, not bill text. Add introduced/current text and current status record. Follow-up (Oct. 14, 2026): I loaded the official introduced text (pub.njleg.state.nj.us .../4075_I1.HTM): introduced May 4, 2026 by Sens. Zwicker, Turner and Scutari; effective 18 months after enactment. The pub.njleg.gov host the audit cited was permission-blocked, so I used the state.nj.us host. I also loaded the Oct. 1, 2026 Senate Labor Committee statement, which confirms the favorable report and the core provisions. The official bill-search page rendered without data. LegiScan (secondary) shows a 5-0 committee vote, referral to Senate Budget and Appropriations on Oct. 1, 2026, and Assembly companion A4981. The source now points to the bill text and the committee statement moves to extra_sources.",
         "more_sources": [
           "https://pub.njleg.gov/Bills/2026/S4500/4075_S1.PDF",
-          "https://pub.njleg.gov/Bills/2026/S4500/4075_I1.HTM"
+          "https://pub.njleg.gov/Bills/2026/S4500/4075_I1.HTM",
+          "https://pub.njleg.state.nj.us/bills/2026/S4500/4075_S1.HTM"
         ]
       },
       "geometry": {
@@ -3349,9 +3355,9 @@
         "stage": "Enacted; signed Mar. 5, 2024",
         "effective": "",
         "litigation": "",
-        "last_verified": "2026-10-13",
+        "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "Political ads that use AI-generated images, video or audio to deceive or mislead must carry a clear disclaimer. Audio-only ads must state it at the beginning and end. The State Ethics Commission leads enforcement and shares it with the Secretary of State. Gov. Lujan Grisham signed the law on March 5, 2024 (Laws 2024, ch. 57).",
+        "summary": "Political ads containing 'materially deceptive media' (AI-generated images, video or audio showing a real person saying or doing something they did not, published without consent) must carry a clear disclaimer, enforced through Campaign Reporting Act civil penalties; audio-only ads must speak it at the start, at the end, and at least every two minutes if longer than two minutes. Separately, knowingly distributing such media within 90 days of an election to mislead voters without a disclaimer is a misdemeanor (a fourth-degree felony for a second conviction), and prosecutors, the depicted person, candidates or voter groups can seek injunctions. Signed March 5, 2024 (Laws 2024, ch. 57).",
         "source_title": "New Mexico Legislature – HB 182 (2024), chaptered",
         "source_url": "https://www.nmlegis.gov/Legislation/Legislation?chamber=H&legType=B&legNo=182&year=24",
         "analysis_title": "BABL AI – New Mexico enacts AI disclosure law for campaign ads",
@@ -3359,8 +3365,8 @@
         "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "needs_correction",
-        "verification_note": "Final law also requires the disclaimer at intervals no longer than two minutes for audio over two minutes. Clarify materially deceptive media as defined and the separate civil/criminal enforcement routes.",
+        "verification": "corrected",
+        "verification_note": "Final law also requires the disclaimer at intervals no longer than two minutes for audio over two minutes. Clarify materially deceptive media as defined and the separate civil/criminal enforcement routes. Follow-up (Oct. 14, 2026): I loaded the final HB 182 text (nmlegis.gov/Sessions/24 Regular/final/HB0182.pdf) and the bill page (chaptered as ch. 57, signed 3/5/2024). Confirmed:\n- 'Materially deceptive media' is defined (§1-19-26) as AI-made image, video or audio depicting a person in speech or conduct they did not engage in, published without consent.\n- For audio-only ads (§1-19-26.4), the disclaimer must be spoken at the beginning, at the end, and at intervals of at most two minutes for audio longer than two minutes.\n- Disclaimer violations carry civil penalties under §1-19-34.6.\n- §1-19-26.8 separately prohibits knowingly distributing such media within 90 days before an election with intent to mislead voters, unless it carries a disclaimer.\n- Willful and knowing violations are a misdemeanor, or a fourth-degree felony on a second conviction.\n- The AG, DAs, the depicted person, candidates or voter organizations may seek injunctions.\nCorrection beyond the audit: the text never mentions the State Ethics Commission, and mentions the Secretary of State only to define 'prescribed form'. I removed the existing claim that the Commission leads enforcement alongside the SoS because the loaded text does not support it.",
         "more_sources": [
           "https://www.nmlegis.gov/Sessions/24%20Regular/final/HB0182.pdf"
         ]
@@ -3461,7 +3467,7 @@
         "litigation": "",
         "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "This Assembly bill would require employers with 50 or more full-time workers to give at least 90 days' notice before an AI-driven displacement affecting 25 employees or 25% of the workforce, and to provide a 90-day transition period with continued pay or funded retraining. Violators could lose state incentives for five years and face penalties up to $10,000 per day for willful violations; it was referred to the Codes Committee on April 28, 2026.",
+        "summary": "A9533A would require employers with 50 or more full-time employees in New York to give at least 90 days' written notice before a technological displacement affecting 25 employees or 25% of the workforce, whichever is less. The notice would start a 90-day transition period with continued work or equivalent wages, or employer-paid approved retraining. Violators could lose state grants, loans and tax incentives for five years and face penalties up to $10,000 per day for willful violations. Amended on April 23, 2026, it was referred to the Assembly Codes Committee on April 28, 2026.",
         "source_title": "New York State Senate – Assembly Bill A9533 (2025-2026)",
         "source_url": "https://www.nysenate.gov/legislation/bills/2025/A9533",
         "analysis_title": "",
@@ -3470,7 +3476,7 @@
         "jurisdiction": "State",
         "court_status": "",
         "verification": "corrected",
-        "verification_note": "Identify current version as A9533A. Text specifies the lesser of 25 employees or 25% of workforce and a 90-day transition measured from notice; avoid implying an additional consecutive 90-day period.",
+        "verification_note": "Identify current version as A9533A. Text specifies the lesser of 25 employees or 25% of workforce and a 90-day transition measured from notice; avoid implying an additional consecutive 90-day period. Follow-up (Oct. 14, 2026): I loaded the nysenate.gov A9533 page. The active version is A9533A (amended and recommitted to Labor 4/23/2026; reported and referred to Codes 4/28/2026). The text confirms:\n- 50+ full-time employees in the state.\n- No fewer than 90 days' written notice before a technological displacement of 25 or more employees or 25% of the workforce, 'whichever is less'.\n- A 'transition employment period of ninety days from the date of notice', with continued employment or equivalent wages, or employer-paid approved retraining.\n- Five-year ineligibility for state grants, loans and tax incentives.\n- Up to $10,000 per day for willful violations, plus up to 60 days' back pay for failure to give notice.",
         "more_sources": []
       },
       "geometry": {
@@ -3710,24 +3716,25 @@
         "layoff_notice": "",
         "status": "passed",
         "instrument": "Statute",
-        "stage": "Enacted (ch. 96 of 2025); extended by ch. 711, signed Dec. 19, 2025",
+        "stage": "Enacted (ch. 96 of 2025); amended by ch. 711 of 2025 and ch. 86 of 2026 (S8831, signed Feb. 13, 2026)",
         "effective": "Expires July 1, 2028",
         "litigation": "",
-        "last_verified": "2026-10-13",
+        "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "New York law bars public employers from using AI or automated decision-making tools in ways that cause employees to be discharged or displaced, lose hours or benefits, or have their current duties transferred to an automated system. The protections were enacted as Chapter 96 of 2025. Chapter 711 of 2025, signed December 19, 2025, extended them to school districts, SUNY and CUNY, and they expire July 1, 2028.",
-        "source_title": "New York State Senate – S7599C (2025), automated decision-making by government agencies (Chapter 711)",
-        "source_url": "https://www.nysenate.gov/legislation/bills/2025/S7599/amendment/C",
+        "summary": "Civil Service Law §80(10) bars state and local public employers, including public authorities, school districts and BOCES, from using AI systems, as defined in State Technology Law §103-e, in ways that cause employees to be discharged or displaced (including cuts to hours, wages or benefits), transfer employees' existing duties to an AI system, or impair collective bargaining rights. Chapter 711 of 2025 briefly extended these protections to automated decision-making tools, but Chapter 86 of 2026 (S8831, signed Feb. 13, 2026) limited them again to AI systems as defined. The subdivision expires July 1, 2028.",
+        "source_title": "New York State Senate – Civil Service Law §80 (current text)",
+        "source_url": "https://www.nysenate.gov/legislation/laws/CVS/80",
         "analysis_title": "Manhattan Institute – New York's LOADinG Act: Protecting public-sector jobs from AI",
         "analysis_url": "https://manhattan.institute/article/new-yorks-loading-act-protecting-public-sector-jobs-from-ai",
         "analysis_type": "Third-party",
         "jurisdiction": "State",
         "court_status": "",
-        "verification": "needs_correction",
-        "verification_note": "Update for S8831, Chapter 86 of 2026, signed February 13. Current Civil Service Law 80(10) bars displacement by defined AI systems; do not extend it indiscriminately to all automated decision tools. July 1, 2028 sunset is confirmed.",
+        "verification": "corrected",
+        "verification_note": "Update for S8831, Chapter 86 of 2026, signed February 13. Current Civil Service Law 80(10) bars displacement by defined AI systems; do not extend it indiscriminately to all automated decision tools. July 1, 2028 sunset is confirmed. Follow-up (Oct. 14, 2026): I loaded three official pages.\n- S8831: signed as Chapter 86 on Feb 13, 2026, a chapter amendment to L.2025 c.711. Its §12 amends Civil Service Law §80(10) to strike 'and automated decision-making tools', and its §17 sets the July 1, 2028 expiration.\n- Current CVS §80 text (revision 2026-02-27): applies to 'artificial intelligence systems as defined by section one hundred three-e of the state technology law'. Use may not cause discharge, displacement or loss of position, including partial displacement (reduced hours, wages or benefits); may not transfer existing duties to an AI system; may not impair bargaining agreements; and must preserve existing employees' rights. It covers the state, public authorities, local governments, school districts and BOCES, and is marked 'Repealed July 1, 2028'.\n- S7599C: ch. 711 of 2025, signed Dec 19, 2025, which had extended the protections to automated decision-making tools before S8831 narrowed them back.\nThe source now points to the current statute.",
         "more_sources": [
           "https://www.nysenate.gov/legislation/bills/2025/S8831",
-          "https://www.nysenate.gov/legislation/laws/CVS/80"
+          "https://www.nysenate.gov/legislation/laws/CVS/80",
+          "https://www.nysenate.gov/legislation/bills/2025/S7599/amendment/C"
         ]
       },
       "geometry": {
@@ -4012,7 +4019,7 @@
         "litigation": "",
         "last_verified": "2026-10-13",
         "last_updated": "2026-10-13",
-        "summary": "Ohio's Department of Administrative Services adopted IT-17 in late 2023 to govern AI use by agencies under the Governor's authority, built around five principles including fairness, accountability, security and transparency. A multi-agency AI Council must approve generative AI use cases before development, keeps a central repository of approved uses, and audits AI solutions for compliance.",
+        "summary": "Ohio DAS Administrative Policy IT-17 governs state agencies' use of both conventional and generative AI under five principles: fairness, accountability, security and safety, transparency and explainability, and human-centricity. Generative AI use cases need agency executive review and then approval from a multi-agency AI Council before development or implementation. Work products made with generative AI must disclose that use, and only public-record data may be entered into such tools.",
         "source_title": "Ohio Department of Administrative Services – IT-17 Use of AI FAQs (PDF)",
         "source_url": "https://dam.assets.ohio.gov/image/upload/das.ohio.gov/technology-strategy/policy/Use_of_AI_FAQs.pdf",
         "analysis_title": "Community Solutions – Ohio DAS releases policy governing use of AI",
@@ -4021,7 +4028,7 @@
         "jurisdiction": "State",
         "court_status": "",
         "verification": "unresolved",
-        "verification_note": "Government host is authentic but linked FAQ PDF returns 404. This is an FAQ link, not the policy itself. The canonical IT-17 page also failed direct retrieval; obtain the current signed policy before certifying its full requirements.",
+        "verification_note": "Government host is authentic but linked FAQ PDF returns 404. This is an FAQ link, not the policy itself. The canonical IT-17 page also failed direct retrieval; obtain the current signed policy before certifying its full requirements. Follow-up (Oct. 14, 2026): The audit's claim that the FAQ link is broken is not confirmed: the FAQ PDF on dam.assets.ohio.gov loaded for me via WebFetch and is an official DAS document (possibly a cached copy). However, I could not load the policy itself. The canonical das.ohio.gov IT-17 page and a guessed dam.assets.ohio.gov/.../IT-17.pdf were both blocked by permission prompts. A non-official copy of the policy (digitalgovernmenthub.org/wp-content/uploads/2024/02/IT-17.pdf) shows an effective date of Dec. 4, 2023, signed by DAS Director Kathleen Madden under ORC 125.18. It covers agencies, boards and commissions under the Governor's authority, and the AI Council keeps a central repository of approved generative AI use cases and audits AI solutions. That copy matches the existing summary but is not official. I limited the summary to what the official FAQ supports:\n- five principles (fairness, accountability, security and safety, transparency and explainability, human-centricity)\n- AI Council approval of generative AI use cases before development\n- disclosure of generative AI use in deliverables\n- only public-record data entered\nThe source is unchanged; the owner should verify the das.ohio.gov IT-17 page manually.",
         "more_sources": [
           "https://das.ohio.gov/technology-and-strategy/policies/it-17"
         ]
