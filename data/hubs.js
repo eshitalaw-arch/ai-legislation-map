@@ -3897,12 +3897,12 @@ window.HUBS = {
         "layoff_notice": "",
         "status": "passed",
         "instrument": "Statute",
-        "stage": "Enacted 2026 (signature date not confirmed from official record)",
+        "stage": "Enacted; approved by Governor May 12, 2026",
         "effective": "District AI policies required before the 2027–28 school year",
         "litigation": "",
         "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "Creates the Oklahoma Responsible Technology in Schools Act. Student-facing AI tools must be used under a classroom educator's guidance, districts must tell parents when AI is used in the classroom and let them opt their child out, and the State Department of Education must issue guidance on responsible AI use. Local school boards must adopt district AI policies before the 2027–28 school year.",
+        "summary": "Approved by the Governor May 12, 2026, SB 1734 creates the Oklahoma Responsible Technology in Schools Act. Student-facing AI tools must be used under a classroom educator's guidance, districts must tell parents when AI is used in the classroom and let them opt their child out, and the State Department of Education must issue guidance on responsible AI use. Local school boards must adopt district AI policies before the 2027–28 school year.",
         "source_title": "Oklahoma Legislature – SB 1734 (enrolled)",
         "source_url": "https://www.oklegislature.gov/cf_pdf/2025-26%20ENR/SB/SB1734%20ENR.PDF",
         "analysis_title": "Lightspeed – SB 1734 is now law",
@@ -3910,7 +3910,8 @@ window.HUBS = {
         "jurisdiction": "State",
         "court_status": "",
         "more_sources": [
-          "https://oksenate.gov/press-releases/senator-seifried-advances-bill-setting-guardrails-ai-schools"
+          "https://oksenate.gov/press-releases/senator-seifried-advances-bill-setting-guardrails-ai-schools",
+          "https://www.oklegislature.gov/BillInfo.aspx?Bill=SB1734&Session=2600"
         ]
       },
       "geometry": {
@@ -4068,7 +4069,7 @@ window.HUBS = {
         "layoff_notice": "",
         "status": "passed",
         "instrument": "Statute",
-        "stage": "Enacted; signed into law (announced June 23, 2026)",
+        "stage": "Enacted; signed by Governor June 22, 2026 (S2195 is Chapter 376; H7350 is Chapter 375)",
         "effective": "Jan. 1, 2027; annual AG reporting begins July 1, 2027",
         "litigation": "",
         "last_verified": "2026-10-14",
@@ -4103,12 +4104,12 @@ window.HUBS = {
         "layoff_notice": "",
         "status": "passed",
         "instrument": "Statute",
-        "stage": "Enacted; signed into law (announced June 23, 2026)",
-        "effective": "Upon passage",
+        "stage": "Enacted; signed by Governor June 22, 2026 (H7349 is Chapter 373; S2197 is Chapter 374)",
+        "effective": "Upon passage (signed June 22, 2026)",
         "litigation": "",
         "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "Therapy or psychotherapy offered to the public, including through AI, must be conducted by a licensed professional, and clinicians may not let AI make independent therapeutic decisions or set treatment plans. Patients must be told in writing and give consent before AI provides supplementary support in recorded or transcribed sessions. Enacted in June 2026 and effective on passage; a companion law, H7538/S2570, requires providers to notify patients when AI documents a visit and lets them opt out.",
+        "summary": "Therapy or psychotherapy offered to the public, including through AI, must be conducted by a licensed professional, and clinicians may not let AI make independent therapeutic decisions or set treatment plans. Patients must be told in writing and give consent before AI provides supplementary support in recorded or transcribed sessions. Signed June 22, 2026 and effective on passage; a companion law, H7538/S2570, requires providers to notify patients when AI documents a visit and lets them opt out.",
         "source_title": "RI General Assembly – H 7349 Substitute A (enacted version) text",
         "source_url": "https://webserver.rilegislature.gov/BillText26/HouseText26/H7349A.htm",
         "analysis_title": "Transparency Coalition – Rhode Island enacts three new AI laws",
@@ -4514,12 +4515,12 @@ window.HUBS = {
         "layoff_notice": "",
         "status": "passed",
         "instrument": "Statute",
-        "stage": "Enacted; governor action Mar. 24, 2026",
+        "stage": "Enacted; signed by Governor Mar. 24, 2026",
         "effective": "Most duties Jan. 1, 2027; device duties for devices made on or after Jan. 1, 2028",
         "litigation": "",
         "last_verified": "2026-10-14",
         "last_updated": "2026-10-13",
-        "summary": "Generative AI services may not distribute counterfeit intimate images without verified consent, and platforms must remove such images within 48 hours of a valid notice. Large platforms must detect and display content provenance data, large generative AI providers and capture-device makers must embed latent disclosures, and the Division of Consumer Protection can fine up to $2,500 per violation. Acted on by the governor March 24, 2026; most duties begin January 1, 2027, with device duties covering devices made on or after January 1, 2028.",
+        "summary": "Generative AI services may not distribute counterfeit intimate images without verified consent, and platforms must remove such images within 48 hours of a valid notice. Large platforms must detect and display content provenance data, large generative AI providers and capture-device makers must embed latent disclosures, and the Division of Consumer Protection can fine up to $2,500 per violation. Signed March 24, 2026; most duties begin January 1, 2027, with device duties covering devices made on or after January 1, 2028.",
         "source_title": "Utah Legislature – HB 276 (2026) enrolled text",
         "source_url": "https://le.utah.gov/Session/2026/bills/enrolled/HB0276.pdf",
         "analysis_title": "Regulations.ai – Utah HB 276 summary",
@@ -4527,7 +4528,8 @@ window.HUBS = {
         "jurisdiction": "State",
         "court_status": "",
         "more_sources": [
-          "https://governor.utah.gov/bills/"
+          "https://governor.utah.gov/bills/",
+          "https://le.utah.gov/~2026/bills/static/HB0276.html"
         ]
       },
       "geometry": {
