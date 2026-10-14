@@ -6,7 +6,7 @@
   <title>US AI Legislation Map</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="./styles.css?v=20261014y" />
+  <link rel="stylesheet" href="./styles.css?v=20261014z" />
 </head>
 <body>
   <header class="topbar">
@@ -118,6 +118,7 @@
     <p><strong>Not legal advice.</strong> This map is for general information only. Laws change frequently, and effective dates, amendments and litigation can affect whether a provision applies. Consult the official text or a qualified attorney before relying on it.</p>
   </div>
 
+  <button type="button" id="compareBtn" class="compare-btn" hidden>📊 Compare Republican vs. Democratic states</button>
   <aside id="gapNote" class="gap-note" hidden aria-label="Red vs. blue comparison">
     <button class="about-close" id="gapNoteClose" aria-label="Hide comparison">×</button>
     <h3 id="gapNoteToggle" tabindex="0" role="button" aria-expanded="true">Do Republican and Democratic states respond differently?</h3>
@@ -132,10 +133,10 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-  <script src="./data/us-states.js?v=20261014y"></script>
-  <script src="./data/jobrisk.js?v=20261014y"></script>
-  <script src="./data/politics.js?v=20261014y"></script>
-  <script src="./data/hubs.js?v=20261014y"></script>
-  <script src="./src/app.js?v=20261014y"></script>
+  <script src="./data/us-states.js?v=20261014z"></script>
+  <script src="./data/jobrisk.js?v=20261014z"></script>
+  <script src="./data/politics.js?v=20261014z"></script>
+  <script src="./data/hubs.js?v=20261014z"></script>
+  <script src="./src/app.js?v=20261014z"></script>
 </body>
 </html>

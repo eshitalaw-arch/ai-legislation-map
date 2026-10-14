@@ -365,13 +365,14 @@ shadeSelect?.addEventListener("change", () => {
   const vr = document.getElementById("vrScale"); if (vr) vr.hidden = mode !== "voterisk";
   const untouchedBefore = !userHasMovedMap();
   if (gapNote) {
-    // The Republican vs. Democratic comparison accompanies both vote views
+    // The Republican vs. Democratic comparison is offered (not opened) in both vote views
     const voteView = mode === "politics" || mode === "voterisk";
-    const wasHidden = gapNote.hidden;
-    gapNote.hidden = !voteView;
-    // Start collapsed on phones so the map stays visible
-    if (voteView) { drawFindings(); if (wasHidden) setGapCollapsed(window.innerWidth < 600); }
-    else if (activeTopic) { activeTopic = null; if (sectorEl) { sectorEl.value = "all"; sectorEl.dispatchEvent(new Event("change")); } }
+    if (compareBtn) compareBtn.hidden = !voteView || !gapNote.hidden;
+    if (voteView) { if (!gapNote.hidden) drawFindings(); }
+    else {
+      gapNote.hidden = true;
+      if (activeTopic) { activeTopic = null; if (sectorEl) { sectorEl.value = "all"; sectorEl.dispatchEvent(new Event("change")); } }
+    }
   }
   if (untouchedBefore) fitUSAndRemember();
   statesLayer?.setStyle(stateStyle);
@@ -475,11 +476,16 @@ map.on("zoomend", render);
 // ============================
 const gapScale = document.getElementById("gapScale");
 const gapNote = document.getElementById("gapNote");
-document.getElementById("gapNoteClose")?.addEventListener("click", () => {
+const compareBtn = document.getElementById("compareBtn");
+function showComparison(open) {
   const untouched = !userHasMovedMap();
-  gapNote.hidden = true;
+  gapNote.hidden = !open;
+  if (compareBtn) compareBtn.hidden = open;
+  if (open) { drawFindings(); setGapCollapsed(false); }
   if (untouched) fitUSAndRemember();
-});
+}
+compareBtn?.addEventListener("click", () => showComparison(true));
+document.getElementById("gapNoteClose")?.addEventListener("click", () => showComparison(false));
 const gapToggle = document.getElementById("gapNoteToggle");
 function setGapCollapsed(c) {
   const untouched = !userHasMovedMap();
