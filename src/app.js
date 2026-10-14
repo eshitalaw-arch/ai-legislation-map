@@ -430,13 +430,26 @@ const ABBR = { "Alabama":"AL","Alaska":"AK","Arizona":"AZ","Arkansas":"AR","Cali
   "West Virginia":"WV","Wisconsin":"WI","Wyoming":"WY" };
 let compareTip = null;
 
+// Strongest AI-and-workforce measure a state has on this map (uses all entries, not the filters)
+const RESPONSE_LEVELS = [
+  { key: 0, label: "No workforce measure", sub: "nothing on this map" },
+  { key: 1, label: "Executive action or study", sub: "orders, programs, reports" },
+  { key: 2, label: "Bill pending", sub: "not yet law" },
+  { key: 3, label: "Law enacted", sub: "signed into law" }
+];
+function isWorkforce(p) { return p.sector === "workforce" || isAlso(p, "workforce"); }
+function responseOf(name) {
+  const w = allFeatures.map(f => f.properties).filter(p => p.state === name && isWorkforce(p));
+  const level = w.some(p => p.status === "passed") ? 3 : w.some(p => p.status === "pending") ? 2 : w.length ? 1 : 0;
+  return { level, measures: w };
+}
+
 function compareRows() {
-  const counts = {};
-  allFeatures.map(f => f.properties).filter(passesFilters).forEach(p => { counts[p.state] = (counts[p.state] || 0) + 1; });
-  return Object.keys(ABBR).filter(n => POL && POL.states[n] && RISK && RISK.states[n]).map(n => ({
-    name: n, abbr: ABBR[n], margin: POL.states[n].margin, r: POL.states[n].r_pct, d: POL.states[n].d_pct,
-    risk: RISK.states[n].pct_median, n: counts[n] || 0
-  }));
+  return Object.keys(ABBR).filter(n => POL && POL.states[n] && RISK && RISK.states[n]).map(n => {
+    const resp = responseOf(n);
+    return { name: n, abbr: ABBR[n], margin: POL.states[n].margin, r: POL.states[n].r_pct, d: POL.states[n].d_pct,
+      risk: RISK.states[n].pct_median, jobs: RISK.states[n].jobs_median, level: resp.level, measures: resp.measures };
+  });
 }
 
 function textOn(hex) {
@@ -444,72 +457,99 @@ function textOn(hex) {
   return (0.299 * r + 0.587 * g + 0.114 * b) > 150 ? "#1f1f1f" : "#fff";
 }
 
+function drawFindings(rows) {
+  const el = document.getElementById("compareFindings");
+  if (!el) return;
+  const total = rows.reduce((a, r) => a + r.jobs, 0);
+  const share = f => rows.filter(f).reduce((a, r) => a + r.jobs, 0) / total;
+  const noticeStates = rows.filter(r => r.measures.some(p => p.layoff_notice === true && p.status === "passed")).map(r => r.name);
+  const trump = rows.filter(r => r.margin > 0), harris = rows.filter(r => r.margin < 0);
+  const enacted = g => g.reduce((a, r) => a + r.measures.filter(p => p.status === "passed").length, 0);
+  const sorted = [...rows].sort((a, b) => b.risk - a.risk);
+  const topThird = sorted.slice(0, Math.round(rows.length / 3));
+  const gaps = topThird.filter(r => r.level === 0).map(r => r.name);
+  const fmtM = x => (x / 1e6).toFixed(1) + "M";
+  el.innerHTML = `
+    <div class="finding"><span class="fig">${Math.round(share(r => r.level === 0) * 100)}%</span>of the ${fmtM(total)} jobs at risk are in states with no AI-workforce measure on this map.</div>
+    <div class="finding"><span class="fig">${Math.round(share(r => noticeStates.includes(r.name)) * 100)}%</span>are in a state that has enacted a law requiring AI to be disclosed in layoff notices${noticeStates.length ? ` (${noticeStates.join(" and ")} only)` : ""}.</div>
+    <div class="finding"><span class="fig">${enacted(trump)} vs ${enacted(harris)}</span>enacted AI-workforce laws in the ${trump.length} Trump-won vs the ${harris.length} Harris-won states.${enacted(trump) === 0 ? " Trump-won states' measures so far are executive orders, training programs and studies." : ""}</div>
+    <div class="finding"><span class="fig">${gaps.length}</span>of the ${topThird.length} highest-risk states have no AI-workforce measure on this map${gaps.length ? `: ${gaps.join(", ")}` : ""}.</div>`;
+}
+
 function drawCompare() {
   if (!compareChart) return;
   const rows = compareRows();
+  drawFindings(rows);
   // Draw at the container's real width so text stays readable on phones
   const W = Math.max(340, Math.min(860, compareChart.clientWidth || 860));
   const narrow = W < 600;
-  const H = narrow ? 420 : 460, m = { t: 14, r: 14, b: 46, l: narrow ? 50 : 58 };
-  const xMin = -0.35, xMax = 0.5, yMin = 0.044, yMax = 0.076;
-  const X = v => m.l + ((v - xMin) / (xMax - xMin)) * (W - m.l - m.r);
+  const H = narrow ? 460 : 470, m = { t: 44, r: 10, b: 14, l: narrow ? 44 : 56 };
+  const yMin = 0.044, yMax = 0.076;
   const Y = v => H - m.b - ((v - yMin) / (yMax - yMin)) * (H - m.t - m.b);
-  const rad = n => (narrow ? 8 : 9) + (narrow ? 1.6 : 2.6) * Math.sqrt(n);
+  const colW = (W - m.l - m.r) / RESPONSE_LEVELS.length;
+  const colX = k => m.l + colW * (k + 0.5);
+  const maxJobs = Math.max(...rows.map(r => r.jobs));
+  const rad = j => (narrow ? 6.5 : 8) + (narrow ? 9 : 13) * Math.sqrt(j / maxJobs);
   let g = "";
+  RESPONSE_LEVELS.forEach((c, k) => {
+    if (k % 2 === 1) g += `<rect class="col-band" x="${m.l + colW * k}" y="${m.t - 6}" width="${colW}" height="${H - m.t - m.b + 6}"/>`;
+    const count = rows.filter(r => r.level === c.key).length;
+    g += `<text class="col-label" x="${colX(k)}" y="${narrow ? 14 : 16}" text-anchor="middle">${narrow ? ["None", "Action/study", "Pending", "Enacted"][k] : c.label}</text>` +
+         `<text class="col-sub" x="${colX(k)}" y="${narrow ? 28 : 31}" text-anchor="middle">${count} states${narrow ? "" : " · " + c.sub}</text>`;
+  });
   for (let t = 0.045; t <= 0.0751; t += 0.005) {
     g += `<line class="grid" x1="${m.l}" x2="${W - m.r}" y1="${Y(t)}" y2="${Y(t)}"/>` +
-         `<text class="axis-text" x="${m.l - 8}" y="${Y(t)}" text-anchor="end" dominant-baseline="central">${(t * 100).toFixed(1)}%</text>`;
+         `<text class="axis-text" x="${m.l - 6}" y="${Y(t)}" text-anchor="end" dominant-baseline="central">${(t * 100).toFixed(1)}%</text>`;
   }
-  for (let t = -0.3; t <= 0.501; t += (narrow ? 0.2 : 0.1)) {
-    const v = Math.round(t * 10) / 10;
-    const lab = v === 0 ? "Even" : (v < 0 ? "D+" : "R+") + Math.abs(v * 100).toFixed(0);
-    g += `<line class="grid" x1="${X(v)}" x2="${X(v)}" y1="${m.t}" y2="${H - m.b}"/>` +
-         `<text class="axis-text" x="${X(v)}" y="${H - m.b + 16}" text-anchor="middle">${lab}</text>`;
-  }
-  g += `<line class="zero" x1="${X(0)}" x2="${X(0)}" y1="${m.t}" y2="${H - m.b}"/>`;
-  g += `<text class="axis-title" x="${X(-0.18)}" y="${H - 6}" text-anchor="middle">← Harris won</text>`;
-  g += `<text class="axis-title" x="${X(0.25)}" y="${H - 6}" text-anchor="middle">Trump won →</text>`;
-  g += `<text class="axis-title" transform="translate(12 ${(H - m.b + m.t) / 2}) rotate(-90)" text-anchor="middle">${narrow ? "Jobs at risk ↑" : "Share of jobs at risk from AI ↑"}</text>`;
-  // Nudge overlapping dots apart (small, local moves) so every state stays visible and clickable
-  const pts = rows.map(d => ({ d, x0: X(d.margin), y0: Y(d.risk), x: X(d.margin), y: Y(d.risk), r: rad(d.n) }));
-  for (let it = 0; it < 200; it++) {
-    let moved = false;
-    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
-      const a = pts[i], b = pts[j];
-      let dx = b.x - a.x, dy = b.y - a.y, dist = Math.hypot(dx, dy);
-      const need = a.r + b.r + 1;
-      if (dist < need) {
-        if (dist < 0.01) { dx = 1; dy = 0; dist = 1; }
-        const push = (need - dist) / 2;
-        a.x -= (dx / dist) * push; a.y -= (dy / dist) * push;
-        b.x += (dx / dist) * push; b.y += (dy / dist) * push;
-        moved = true;
+  g += `<text class="axis-title" transform="translate(11 ${(H - m.b + m.t) / 2}) rotate(-90)" text-anchor="middle">${narrow ? "Jobs at risk ↑" : "Share of jobs at risk from AI ↑"}</text>`;
+
+  // Beeswarm within each column: height stays exact (job risk); dots slide sideways to the nearest free spot
+  const pts = rows.map(d => ({ d, x0: colX(d.level), y0: Y(d.risk), x: colX(d.level), y: Y(d.risk), r: rad(d.jobs) }));
+  RESPONSE_LEVELS.forEach(c => {
+    const col = pts.filter(q => q.d.level === c.key).sort((a, b) => b.r - a.r);
+    const placed = [];
+    col.forEach(q => {
+      const half = colW / 2 - q.r - 2;
+      const fits = (x, y) => placed.every(o => Math.hypot(o.x - x, o.y - y) >= o.r + q.r + 1);
+      let best = null;
+      // Try sideways offsets first; if the column is full, allow a small vertical nudge
+      for (let dy = 0; dy <= 60 && !best; dy += 2) {
+        for (const sy of dy ? [1, -1] : [1]) {
+          for (let off = 0; off <= half && !best; off += 1) {
+            for (const sx of off ? [1, -1] : [1]) {
+              const x = q.x0 + sx * off, y = q.y0 + sy * dy;
+              if (fits(x, y)) { best = { x, y }; break; }
+            }
+          }
+          if (best) break;
+        }
       }
-    }
-    pts.forEach(q => { q.x += (q.x0 - q.x) * 0.02; q.y += (q.y0 - q.y) * 0.02; }); // gentle pull back to the true spot
-    if (!moved) break;
-  }
-  // Big dots first so small ones stay on top
+      if (best) { q.x = best.x; q.y = best.y; }
+      placed.push(q);
+    });
+  });
   pts.sort((a, b) => b.r - a.r).forEach(q => {
     const d = q.d, fill = polColor(d.margin);
-    const shifted = Math.hypot(q.x - q.x0, q.y - q.y0) > 3;
-    g += `<g class="pt" tabindex="0" role="button" data-state="${safe(d.name)}" aria-label="${safe(d.name)}: ${marginText(d.margin)}, ${pct(d.risk)} of jobs at risk, ${d.n} entries">` +
-      (shifted ? `<line x1="${q.x0.toFixed(1)}" y1="${q.y0.toFixed(1)}" x2="${q.x.toFixed(1)}" y2="${q.y.toFixed(1)}" stroke="#999" stroke-width="1"/><circle cx="${q.x0.toFixed(1)}" cy="${q.y0.toFixed(1)}" r="1.8" fill="#777"/>` : "") +
-      `<circle class="dot" cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="${q.r.toFixed(1)}" fill="${fill}"/>
-      <text class="dot-label" x="${q.x.toFixed(1)}" y="${q.y.toFixed(1)}" fill="${textOn(fill)}">${d.abbr}</text></g>`;
+    g += `<g class="pt" tabindex="0" role="button" data-state="${safe(d.name)}" aria-label="${safe(d.name)}: ${pct(d.risk)} of jobs at risk; ${RESPONSE_LEVELS[d.level].label}; 2024 ${marginText(d.margin)}">` +
+      `<circle class="dot" cx="${q.x.toFixed(1)}" cy="${q.y.toFixed(1)}" r="${q.r.toFixed(1)}" fill="${fill}"/>` +
+      (q.r >= 8 ? `<text class="dot-label" x="${q.x.toFixed(1)}" y="${q.y.toFixed(1)}" fill="${textOn(fill)}">${d.abbr}</text>` : "") + `</g>`;
   });
-  compareChart.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Scatter chart of states by 2024 presidential margin and share of jobs at risk from AI">${g}</svg>`;
+  compareChart.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="States by share of jobs at risk from AI and strongest AI-workforce measure, colored by 2024 presidential result">${g}</svg>`;
 
   const byName = Object.fromEntries(rows.map(r => [r.name, r]));
   compareChart.querySelectorAll("g.pt").forEach(el => {
     const d = byName[el.dataset.state];
-    const show = (ev) => {
+    const show = () => {
       if (!compareTip) { compareTip = document.createElement("div"); compareTip.className = "compare-tip"; document.body.appendChild(compareTip); }
-      compareTip.innerHTML = `<strong>${safe(d.name)}</strong><br>2024: <b>${marginText(d.margin)}</b> (Trump ${pct(d.r)}, Harris ${pct(d.d)})` +
-        `<br>Jobs at risk: <b>${pct(d.risk)}</b><br>${d.n} AI ${d.n === 1 ? "entry" : "entries"} on this map<br><span style="opacity:.7">Click for state profile</span>`;
+      const list = d.measures.slice(0, 4).map(p => `<li>${safe(p.title.replace(/^[^–]+–\s*/, ""))} <span style="opacity:.7">(${safe(STATUS_LABELS[p.status])})</span></li>`).join("");
+      compareTip.innerHTML = `<strong>${safe(d.name)}</strong><br>Jobs at risk: <b>${pct(d.risk)}</b> (about ${num(d.jobs)})` +
+        `<br>2024: <b>${marginText(d.margin)}</b> (Trump ${pct(d.r)}, Harris ${pct(d.d)})` +
+        `<br>Workforce response: <b>${RESPONSE_LEVELS[d.level].label}</b>` +
+        (list ? `<ul style="margin:4px 0 0;padding-left:16px">${list}</ul>${d.measures.length > 4 ? `<span style="opacity:.7">+${d.measures.length - 4} more</span><br>` : ""}` : "<br>") +
+        `<span style="opacity:.7">Click for state profile</span>`;
       const b = el.getBoundingClientRect();
-      compareTip.style.left = Math.min(window.innerWidth - 270, b.right + 8) + "px";
-      compareTip.style.top = Math.max(8, b.top - 10) + "px";
+      compareTip.style.left = Math.max(8, Math.min(window.innerWidth - 270, b.right + 8)) + "px";
+      compareTip.style.top = Math.max(8, Math.min(window.innerHeight - 220, b.top - 10)) + "px";
       compareTip.hidden = false;
     };
     const hide = () => { if (compareTip) compareTip.hidden = true; };
@@ -522,8 +562,8 @@ function drawCompare() {
 
   if (compareTable) {
     const sorted = [...rows].sort((a, b) => b.risk - a.risk);
-    compareTable.innerHTML = `<table><thead><tr><th>State</th><th class="num">Jobs at risk</th><th class="num">2024 margin</th><th class="num">AI entries</th></tr></thead><tbody>` +
-      sorted.map(d => `<tr><td>${safe(d.name)}</td><td class="num">${pct(d.risk)}</td><td class="num">${marginText(d.margin)}</td><td class="num">${d.n}</td></tr>`).join("") +
+    compareTable.innerHTML = `<table><thead><tr><th>State</th><th class="num">Jobs at risk</th><th class="num">Number</th><th>Strongest workforce measure</th><th class="num">2024</th></tr></thead><tbody>` +
+      sorted.map(d => `<tr><td>${safe(d.name)}</td><td class="num">${pct(d.risk)}</td><td class="num">${num(d.jobs)}</td><td>${RESPONSE_LEVELS[d.level].label}</td><td class="num">${marginText(d.margin)}</td></tr>`).join("") +
       `</tbody></table>`;
   }
 }

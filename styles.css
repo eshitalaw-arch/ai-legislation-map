@@ -161,3 +161,12 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
 .compare-table th, .compare-table td { padding: 4px 6px; border-bottom: 1px solid #f0f0f0; text-align: left; }
 .compare-table td.num, .compare-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .compare-src { margin: 8px 0 0; font-size: 11px; color: #777; }
+
+/* Findings strip in the comparison panel */
+.findings { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin: 8px 0 6px; }
+.finding { background: #f7f7fa; border-radius: 8px; padding: 8px 10px; font-size: 12px; line-height: 1.4; color: #333; }
+.finding .fig { display: block; font-size: 20px; font-weight: 700; color: #1f1f1f; margin-bottom: 2px; }
+.compare-chart .col-label { font-size: 11.5px; font-weight: 600; fill: #333; }
+.compare-chart .col-sub { font-size: 10.5px; fill: #777; }
+.compare-chart .col-band { fill: #fafafa; }
+.compare-caveat { margin-top: 10px; }
