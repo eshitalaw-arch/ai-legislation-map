@@ -288,6 +288,17 @@ function polColor(m) {
   return "#" + a.map((c, k) => Math.round(c + (b[k] - c) * local).toString(16).padStart(2, "0")).join("");
 }
 
+// Presidential vote + AI job risk: hue = vote, darkness = job-risk third of the 50 states
+const VR_COLORS = { R: ["#fcbba1", "#fb6a4a", "#a50f15"], D: ["#c6dbef", "#6baed6", "#08519c"] };
+const RISK_BREAKS = (() => {
+  if (!RISK) return [Infinity, Infinity];
+  const v = Object.entries(RISK.states).filter(([k]) => k !== "District of Columbia" && k !== "Puerto Rico")
+    .map(([, x]) => x.pct_median).sort((a, b) => a - b);
+  return [v[Math.round(v.length / 3)], v[Math.round((2 * v.length) / 3)]];
+})();
+const riskTier = v => (v >= RISK_BREAKS[1] ? 2 : v >= RISK_BREAKS[0] ? 1 : 0);
+const TIER_NAMES = ["lower", "middle", "higher"];
+
 map.createPane("statesPane");
 map.getPane("statesPane").style.zIndex = 350; // below markers (overlayPane = 400)
 
@@ -299,6 +310,11 @@ function stateStyle(feature) {
   let fill = "#ccc";
   if (mode === "risk") { const r = RISK && RISK.states[name]; fill = r ? riskColor(r.pct_median) : "#ccc"; }
   if (mode === "politics") { const v = POL && POL.states[name]; fill = v ? polColor(v.margin) : "#ccc"; }
+  if (mode === "voterisk") {
+    const v = POL && POL.states[name], r = RISK && RISK.states[name];
+    const fill = v && r && name !== "District of Columbia" ? VR_COLORS[v.margin > 0 ? "R" : "D"][riskTier(r.pct_median)] : "#ececec";
+    return { pane: "statesPane", weight: 0.8, color: "#fff", opacity: 1, fillColor: fill, fillOpacity: 0.9 };
+  }
   if (mode === "redblue") {
     const v = POL && POL.states[name];
     return { pane: "statesPane", weight: 0.8, color: "#fff", opacity: 1,
@@ -331,6 +347,8 @@ if (window.topojson && window.US_STATES_TOPO) {
 }
 
 if (RISK) {
+  const b = document.getElementById("vrBreaks");
+  if (b) b.textContent = `lower: under ${pct(RISK_BREAKS[0])}, higher: ${pct(RISK_BREAKS[1])} or more`;
   document.getElementById("riskMin").textContent = pct(RISK.min_pct);
   document.getElementById("riskMax").textContent = pct(RISK.max_pct);
 }
@@ -345,6 +363,7 @@ function shadeLine(name) {
   const voteLine = v ? `<br>Presidential vote: <b>${marginText(v.margin)}</b> (Republican ${pct(v.r_pct)}, Democratic ${pct(v.d_pct)})` : "";
   if (mode === "politics") return voteLine;
   if (mode === "redblue") return voteLine;
+  if (mode === "voterisk") return voteLine + (r ? `<br>Jobs at risk from AI: <b>${pct(r.pct_median)}</b> (${TIER_NAMES[riskTier(r.pct_median)]} third of states)` : "");
   return "";
 }
 
@@ -353,6 +372,7 @@ shadeSelect?.addEventListener("change", () => {
   if (riskScale) riskScale.hidden = mode !== "risk";
   if (polScale) polScale.hidden = mode !== "politics";
   if (gapScale) gapScale.hidden = mode !== "redblue";
+  const vr = document.getElementById("vrScale"); if (vr) vr.hidden = mode !== "voterisk";
   const untouchedBefore = !userHasMovedMap();
   if (gapNote) {
     gapNote.hidden = mode !== "redblue";
@@ -362,7 +382,6 @@ shadeSelect?.addEventListener("change", () => {
   }
   if (untouchedBefore) fitUSAndRemember();
   statesLayer?.setStyle(stateStyle);
-  // Draw highlighted states last so their outlines aren't hidden under neighbors
   syncChromeHeights();
   render();
 });

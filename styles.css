@@ -194,3 +194,11 @@ select { padding: 6px 8px; border: 1px solid #ddd; border-radius: 8px; backgroun
 .download-menu button strong { display: block; font-size: 12.5px; }
 .download-menu button span { display: block; color: #666; font-size: 11.5px; margin-top: 1px; }
 .download-note { margin: 4px 8px 4px; font-size: 11px; color: #777; }
+
+/* Presidential vote + AI job risk legend */
+.vr-legend[hidden] { display: none; }
+.vr-legend { display: flex; flex-direction: column; gap: 3px; }
+.vr-grid { display: grid; justify-content: start; grid-template-columns: auto repeat(3, 44px); gap: 2px 3px; align-items: center; font-size: 11px; }
+.vr-grid b { font-size: 10px; font-weight: 600; text-align: center; color: #555; }
+.vr-grid i { display: block; height: 13px; border-radius: 2px; }
+.vr-lab { padding-right: 6px; white-space: nowrap; }
